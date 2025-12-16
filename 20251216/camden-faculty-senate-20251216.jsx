@@ -1,6 +1,6 @@
 const { useState, useEffect } = React;
 
-export default function Presentation() {
+function Presentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const slides = [
