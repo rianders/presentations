@@ -263,7 +263,7 @@ function Presentation() {
                 </div>
                 <div className="bg-purple-50 rounded p-3 border-l-4 border-purple-500">
                   <p className="text-xs font-bold text-purple-700">Faculty Sees:</p>
-                  <p className="text-xs text-gray-600 mt-1"><span className="font-semibold">Student behavior.</span> Students using AI to complete assignments that require demonstrating skills. How do we design around this?</p>
+                  <p className="text-xs text-gray-600 mt-1"><span className="font-semibold">Student behavior.</span> Students using AI to complete assignments that require demonstrating skills — faculty may respond by banning AI browsers. They face the same verification challenge: there is often no reliable way to tell whether the student or a tool produced the work. How do we design around this?</p>
                   <p className="text-xs text-purple-700 mt-2 italic">"Teach the trade-offs, redesign assignments"</p>
                 </div>
               </div>
