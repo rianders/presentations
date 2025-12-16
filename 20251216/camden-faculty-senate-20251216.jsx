@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+const { useState, useEffect } = React;
 
 export default function Presentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -719,3 +719,6 @@ export default function Presentation() {
     </div>
   );
 }
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Presentation />);
