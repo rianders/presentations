@@ -421,52 +421,48 @@ const slides = [
         </div>
 
         <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Streamlit - primary */}
+          <div className="flex flex-col gap-4">
+            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">Faculty Interface — Streamlit</div>
+            <div className="bg-red-600 text-white rounded-xl p-5 flex-1">
+              <div className="text-red-200 text-xs font-bold uppercase tracking-widest mb-2">Streamlit UI · Recommended for Faculty</div>
+              <p className="text-sm text-red-50 mb-3">
+                Guided workflow — upload a PDF, choose a language, and download accessible HTML and audio. No command line needed.
+              </p>
+              <div className="flex gap-2 flex-wrap">
+                {["Guided step-by-step", "Faculty mode", "Expert mode", "Single-page runner"].map((tag) => (
+                  <span key={tag} className="text-xs bg-red-700 text-red-100 px-2 py-0.5 rounded font-medium">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 flex-1">
+              <div className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">CLI · Scripted & Bulk Conversion</div>
+              <p className="text-gray-700 text-sm mb-2">
+                Good to know for automating batch jobs or integrating into workflows. Full control over every parameter.
+              </p>
+              {["--skip-audio (markdown only)", "--audio-only (re-generate TTS)", "--images-only (re-describe images)"].map((f, i) => (
+                <div key={i} className="text-gray-500 text-xs font-mono border-t border-gray-200 py-1.5">{f}</div>
+              ))}
+            </div>
+          </div>
+
           {/* Quick start */}
           <div>
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Quick Start (CLI)</div>
+            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Launch Commands</div>
             <div className="bg-gray-900 rounded-xl p-5 font-mono text-xs text-gray-300 space-y-3">
               <div>
-                <div className="text-gray-500 mb-1"># Install dependencies</div>
-                <div className="text-green-400">uv sync</div>
+                <div className="text-gray-500 mb-1"># Launch Streamlit UI (faculty)</div>
+                <div className="text-green-400">{"uv run -- streamlit run streamlit_app.py"}</div>
               </div>
               <div>
-                <div className="text-gray-500 mb-1"># Set your API key</div>
-                <div className="text-yellow-300">export HUGGINGFACE_TOKEN=<span className="text-gray-400">"hf_..."</span></div>
-              </div>
-              <div>
-                <div className="text-gray-500 mb-1"># Convert a PDF</div>
+                <div className="text-gray-500 mb-1"># Bulk convert via CLI</div>
                 <div className="text-green-400">{"assignment-conversion main \\"}</div>
                 <div className="text-green-400 pl-4">{"--pdf lesson.pdf \\"}</div>
                 <div className="text-green-400 pl-4">{"--language Italian"}</div>
               </div>
               <div>
-                <div className="text-gray-500 mb-1"># Launch Streamlit UI</div>
-                <div className="text-green-400">{"uv run -- streamlit run streamlit_app.py"}</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Two interface modes */}
-          <div className="flex flex-col gap-4">
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">Interface Options</div>
-            <div className="bg-red-600 text-white rounded-xl p-5 flex-1">
-              <div className="text-red-200 text-xs font-bold uppercase tracking-widest mb-2">CLI</div>
-              <p className="text-sm text-red-50 mb-3">
-                Full control over every parameter — provider, model, OCR backend, voice style, chunk size, and incremental re-runs.
-              </p>
-              {["--skip-audio (markdown only)", "--audio-only (re-generate TTS)", "--images-only (re-describe images)"].map((f, i) => (
-                <div key={i} className="text-red-100 text-xs font-mono border-t border-red-500 py-1.5">{f}</div>
-              ))}
-            </div>
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 flex-1">
-              <div className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">Streamlit UI</div>
-              <p className="text-gray-700 text-sm mb-2">
-                Guided 7-page workflow with Faculty and Expert modes. Single-page runner for quick faculty conversions.
-              </p>
-              <div className="flex gap-2 flex-wrap">
-                {["Faculty (guided)", "Expert (full controls)", "Step-by-step", "Single-page runner"].map((tag) => (
-                  <span key={tag} className="text-xs bg-gray-200 text-gray-700 px-2 py-0.5 rounded font-medium">{tag}</span>
-                ))}
+                <div className="text-gray-500 mb-1"># Install dependencies</div>
+                <div className="text-green-400">uv sync</div>
               </div>
             </div>
           </div>
