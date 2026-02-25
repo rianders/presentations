@@ -3,44 +3,42 @@ const { useState, useEffect } = React;
 const slides = [
   {
     id: 1,
-    title: "Assignment Conversion Tool",
-    subtitle: "Project Overview",
+    title: "Making Assignments Accessible Shouldn't Take Hours",
+    subtitle: "Overview",
     content: (
       <div className="p-6 sm:p-10 flex flex-col h-full">
-        {/* Header */}
         <div className="mb-6 pb-4 border-b-4 border-red-600">
           <div className="text-xs font-bold tracking-widest text-red-600 uppercase mb-1">
             UOES Emerging Technology · Rutgers University
           </div>
           <h1 className="text-2xl sm:text-4xl font-black text-gray-900 leading-tight">
-            Assignment Conversion Tool
+            Making Assignments Accessible Shouldn't Take Hours
           </h1>
           <p className="text-base sm:text-lg text-gray-500 font-medium mt-1">
-            PDF → Accessible Markdown, HTML & Audio Narration
+            Upload a PDF. Get back accessible content — ready for every student.
           </p>
         </div>
 
-        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1">
           <div className="bg-red-600 text-white rounded-xl p-5 flex flex-col">
-            <div className="text-3xl font-black mb-2">6+</div>
-            <div className="text-sm font-bold uppercase tracking-wide mb-2">AI-Powered Tools</div>
+            <div className="text-3xl mb-2">⏱️</div>
+            <div className="text-sm font-bold uppercase tracking-wide mb-2">Minutes, Not Hours</div>
             <p className="text-red-100 text-sm flex-1">
-              A modular pipeline of specialized tools: OCR, analysis, summarization, image description, TTS, and assembly.
+              What used to take significant manual effort now happens automatically — so you can focus on teaching, not formatting.
             </p>
           </div>
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 flex flex-col">
-            <div className="text-red-600 text-2xl mb-2">♿</div>
-            <div className="text-sm font-bold uppercase tracking-wide text-gray-700 mb-2">WCAG 2.1 AA</div>
+            <div className="text-red-600 text-3xl mb-2">🎧</div>
+            <div className="text-sm font-bold uppercase tracking-wide text-gray-700 mb-2">Every Student Reached</div>
             <p className="text-gray-600 text-sm flex-1">
-              AI-generated alt text and audio narration make every assignment accessible to all learners.
+              Audio narration, image descriptions, and bilingual summaries mean your content works for students with different abilities and backgrounds.
             </p>
           </div>
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 flex flex-col">
-            <div className="text-red-600 text-2xl mb-2">🌍</div>
-            <div className="text-sm font-bold uppercase tracking-wide text-gray-700 mb-2">Multi-Language</div>
+            <div className="text-red-600 text-3xl mb-2">🌍</div>
+            <div className="text-sm font-bold uppercase tracking-wide text-gray-700 mb-2">Multi-Language Support</div>
             <p className="text-gray-600 text-sm flex-1">
-              Bilingual summaries and native-quality TTS for Italian, Spanish, French, German, Portuguese, and more.
+              Bilingual summaries and native-quality audio narration in Italian, Spanish, French, German, and more.
             </p>
           </div>
         </div>
@@ -49,269 +47,205 @@ const slides = [
   },
   {
     id: 2,
-    title: "End-to-End Pipeline",
-    subtitle: "From PDF to Accessible Content",
+    title: "Three Steps for Faculty",
+    subtitle: "How It Works",
     content: (
       <div className="p-6 sm:p-10 flex flex-col h-full">
         <div className="mb-6 pb-4 border-b-4 border-red-600">
           <div className="text-xs font-bold tracking-widest text-red-600 uppercase mb-1">
-            Slide 2 · Pipeline
+            Slide 2 · How It Works
           </div>
           <h2 className="text-2xl sm:text-4xl font-black text-gray-900 leading-tight">
-            End-to-End Pipeline
+            Three Steps for Faculty
           </h2>
+          <p className="text-gray-500 text-base mt-1">No technical expertise needed.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
-          {/* Steps */}
-          <div className="bg-gray-900 rounded-xl p-5 flex flex-col justify-center space-y-4">
-            <div className="text-red-400 text-xs font-bold uppercase tracking-widest mb-2">Sequential Stages</div>
-            {[
-              { step: "01", label: "PDF Extraction", desc: "OCR + layout parsing via DeepSeek-OCR-2 or PyMuPDF" },
-              { step: "02", label: "Document Analysis", desc: "Detects document type, STEM content, and structure" },
-              { step: "03", label: "Bilingual Summary", desc: "Qwen3.5 Plus (1M context) generates EN + target-language summaries — no chunking needed" },
-              { step: "04", label: "Image Description", desc: "Qwen3.5 Plus vision writes WCAG-compliant alt text (parallel) — same model, no extra API call" },
-              { step: "05", label: "Audio Narration", desc: "Qwen3-TTS generates chunked WAV audio per section" },
-              { step: "06", label: "Final Assembly", desc: "Markdown + themed HTML output with embedded media" },
-            ].map((item) => (
-              <div key={item.step} className="flex gap-4 items-start">
-                <span className="text-red-500 font-black text-lg leading-tight flex-shrink-0">{item.step}</span>
-                <div>
-                  <div className="text-white font-bold text-sm">{item.label}</div>
-                  <div className="text-gray-400 text-xs mt-0.5">{item.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Output */}
-          <div className="flex flex-col gap-4">
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">Output Structure</div>
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 font-mono text-xs text-gray-600 flex-1">
-              <div className="text-gray-400 mb-2">output/lesson_name/</div>
-              {[
-                { indent: 1, name: "assignment.md", note: "← final markdown" },
-                { indent: 1, name: "assignment.html", note: "← themed HTML" },
-                { indent: 1, name: "manifest.json", note: "← run metadata" },
-                { indent: 1, name: "artifacts/", note: "" },
-                { indent: 2, name: "extraction.json", note: "" },
-                { indent: 2, name: "summary.json", note: "" },
-                { indent: 1, name: "images/", note: "← extracted PNGs" },
-                { indent: 1, name: "audio/", note: "← WAV chunks" },
-              ].map((f, i) => (
-                <div key={i} style={{ paddingLeft: `${f.indent * 12}px` }} className="leading-6">
-                  <span className="text-gray-800">{f.name}</span>
-                  {f.note && <span className="text-red-500 ml-2">{f.note}</span>}
-                </div>
-              ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1">
+          {[
+            { step: "1", icon: "📄", label: "Upload Your PDF", desc: "Any assignment — text-heavy, scanned, math formulas, charts, images. The tool handles it all." },
+            { step: "2", icon: "🌐", label: "Choose a Language", desc: "Select the target language for bilingual summaries and audio narration. English is always included." },
+            { step: "3", icon: "⬇️", label: "Download & Share", desc: "Get back a polished, accessible web page and audio files — ready to post directly to Canvas." },
+          ].map((item) => (
+            <div key={item.step} className="flex flex-col items-center text-center bg-gray-50 border border-gray-200 rounded-2xl p-6">
+              <div className="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-black text-xl mb-4">{item.step}</div>
+              <div className="text-3xl mb-3">{item.icon}</div>
+              <div className="font-bold text-gray-900 text-base mb-2">{item.label}</div>
+              <p className="text-gray-500 text-sm">{item.desc}</p>
             </div>
-          </div>
+          ))}
+        </div>
+
+        <div className="mt-6 bg-red-50 border border-red-200 rounded-xl px-5 py-4 flex items-center gap-3">
+          <span className="text-2xl">💡</span>
+          <p className="text-red-700 text-sm">
+            <strong>Used through a simple web interface</strong> — open it in your browser, upload, click go. No installs, no command line.
+          </p>
         </div>
       </div>
     ),
   },
   {
     id: 3,
-    title: "OCR & Document Extraction",
-    subtitle: "Input Handling Across Platforms",
+    title: "What Students Receive",
+    subtitle: "Output for Every Learner",
     content: (
       <div className="p-6 sm:p-10 flex flex-col h-full">
         <div className="mb-6 pb-4 border-b-4 border-red-600">
           <div className="text-xs font-bold tracking-widest text-red-600 uppercase mb-1">
-            Slide 3 · Extraction
+            Slide 3 · Student Experience
           </div>
           <h2 className="text-2xl sm:text-4xl font-black text-gray-900 leading-tight">
-            OCR & Document Extraction
+            What Students Receive
           </h2>
         </div>
 
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Backends */}
-          <div>
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">OCR Backends</div>
-            <div className="space-y-3">
-              {[
-                {
-                  tag: "DeepSeek-OCR-2",
-                  color: "bg-red-600 text-white",
-                  platform: "Linux · CUDA GPU",
-                  desc: "3B parameter model, 91.09 OmniDocBench accuracy. Best for complex layouts, tables, and LaTeX math.",
-                },
-                {
-                  tag: "PyMuPDF4LLM",
-                  color: "bg-gray-800 text-white",
-                  platform: "Mac · Cross-platform",
-                  desc: "Layout-preserving extraction with reading order detection. No GPU required.",
-                },
-              ].map((item) => (
-                <div key={item.tag} className="bg-white border border-gray-200 rounded-xl p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className={`text-xs font-black px-2 py-1 rounded ${item.color}`}>{item.tag}</span>
-                    <span className="text-xs text-gray-400 font-medium">{item.platform}</span>
-                  </div>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
-                </div>
-              ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 flex-1">
+          {[
+            {
+              icon: "🌐",
+              label: "Accessible Web Page",
+              desc: "A clean, readable version of the assignment that works on any device — phone, tablet, or laptop. No PDF viewer required.",
+            },
+            {
+              icon: "🎧",
+              label: "Audio Narration",
+              desc: "A natural-sounding audio version of the assignment, section by section. Helps students with visual impairments, reading difficulties, or those who learn better by listening.",
+            },
+            {
+              icon: "🌍",
+              label: "Bilingual Summary",
+              desc: "A side-by-side summary in English and the target language — helps non-native speakers engage with the material more confidently.",
+            },
+            {
+              icon: "🖼️",
+              label: "Described Images",
+              desc: "Every chart, diagram, and image gets an AI-written description — so no student is left out when the content is visual.",
+            },
+          ].map((item, i) => (
+            <div key={i} className="flex items-start gap-4 bg-gray-50 border border-gray-200 rounded-xl p-5">
+              <span className="text-3xl flex-shrink-0">{item.icon}</span>
+              <div>
+                <div className="font-bold text-gray-900 text-base mb-1">{item.label}</div>
+                <p className="text-gray-600 text-sm">{item.desc}</p>
+              </div>
             </div>
-          </div>
-
-          {/* Input sources */}
-          <div>
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Supported Input Types</div>
-            <div className="space-y-3">
-              {[
-                { icon: "📄", label: "Native PDFs", desc: "Text-embedded PDFs with complex multi-column layouts" },
-                { icon: "🖼️", label: "Scanned PDFs", desc: "Rasterized pages without selectable text — full OCR applied" },
-                { icon: "📐", label: "STEM Documents", desc: "Formulas, tables, LaTeX, matrices, and mixed content" },
-                { icon: "📚", label: "Batch Processing", desc: "Multiple PDFs in a single command with shared TTS model cache" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-lg p-4">
-                  <span className="text-xl">{item.icon}</span>
-                  <div>
-                    <div className="font-bold text-gray-800 text-sm">{item.label}</div>
-                    <div className="text-gray-500 text-xs mt-0.5">{item.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     ),
   },
   {
     id: 4,
-    title: "AI Capabilities",
-    subtitle: "Summarization, Vision & STEM",
+    title: "Who Benefits Most",
+    subtitle: "Reaching Every Student",
     content: (
       <div className="p-6 sm:p-10 flex flex-col h-full">
         <div className="mb-6 pb-4 border-b-4 border-red-600">
           <div className="text-xs font-bold tracking-widest text-red-600 uppercase mb-1">
-            Slide 4 · AI Capabilities
+            Slide 4 · Impact
           </div>
           <h2 className="text-2xl sm:text-4xl font-black text-gray-900 leading-tight">
-            AI Capabilities
+            Who Benefits Most
           </h2>
+          <p className="text-gray-500 text-base mt-1">Designed for specific needs — helpful for everyone.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
-          <div className="space-y-4">
-            <div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-5">
-              <h3 className="font-bold text-red-700 text-base mb-2">Bilingual Summaries</h3>
-              <p className="text-gray-700 text-sm">
-                LLM-generated summaries in both English and the target language, using whole-document context for accuracy. Supports HuggingFace and OpenRouter providers.
-              </p>
-            </div>
-            <div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-5">
-              <h3 className="font-bold text-red-700 text-base mb-2">Parallel Image Descriptions</h3>
-              <p className="text-gray-700 text-sm">
-                Multimodal vision model generates context-aware alt text (≤125 chars) concurrently across all images using ThreadPoolExecutor — WCAG 2.1 AA compliant.
-              </p>
-            </div>
-            <div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-5">
-              <h3 className="font-bold text-red-700 text-base mb-2">STEM Content Detection</h3>
-              <p className="text-gray-700 text-sm">
-                Automatically identifies LaTeX formulas, tables, definitions, and complex notation. MathJax or MathML rendering in HTML output.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gray-900 rounded-xl p-5 text-white flex flex-col justify-center">
-            <div className="text-red-400 text-xs font-bold uppercase tracking-widest mb-4">Supported LLM Providers</div>
-            {[
-              { name: "HuggingFace Router", model: "Qwen2.5-72B / Qwen2.5-VL-7B", tag: "Default" },
-              { name: "OpenRouter", model: "Qwen3.5 Plus · DeepSeek-V3 · Gemini 2.5 Flash", tag: "Recommended" },
-              { name: "Ollama (local)", model: "Any locally hosted model", tag: "Optional" },
-            ].map((item, i) => (
-              <div key={i} className="flex items-start gap-3 py-3 border-b border-gray-700 last:border-0">
-                <span className="text-red-500 font-black text-sm flex-shrink-0">0{i + 1}</span>
-                <div className="flex-1">
-                  <div className="text-white font-bold text-sm">{item.name}</div>
-                  <div className="text-gray-400 text-xs mt-0.5">{item.model}</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 flex-1">
+          {[
+            {
+              icon: "👁️",
+              label: "Students with Visual Impairments",
+              desc: "Audio narration and described images mean the full content of an assignment is available — not just the text portions.",
+              tag: "Accessibility",
+              tagColor: "bg-red-100 text-red-700",
+            },
+            {
+              icon: "🗣️",
+              label: "Non-Native English Speakers",
+              desc: "Bilingual summaries in the student's home language help them grasp the assignment expectations before diving into the English version.",
+              tag: "Language Support",
+              tagColor: "bg-blue-100 text-blue-700",
+            },
+            {
+              icon: "📖",
+              label: "Students with Reading Differences",
+              desc: "Dyslexia, processing differences, and attention challenges all benefit from having audio alongside readable text — at their own pace.",
+              tag: "Learning Differences",
+              tagColor: "bg-green-100 text-green-700",
+            },
+            {
+              icon: "🎓",
+              label: "All Students",
+              desc: "Cleaner formatting, structured summaries, and audio options help every student engage more deeply — not just those with specific needs.",
+              tag: "Universal Design",
+              tagColor: "bg-purple-100 text-purple-700",
+            },
+          ].map((item, i) => (
+            <div key={i} className="flex items-start gap-4 bg-gray-50 border border-gray-200 rounded-xl p-5">
+              <span className="text-3xl flex-shrink-0">{item.icon}</span>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="font-bold text-gray-900 text-sm">{item.label}</div>
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${item.tagColor}`}>{item.tag}</span>
                 </div>
-                <span className={`text-xs px-2 py-0.5 rounded font-medium flex-shrink-0 ${i === 1 ? "bg-red-600 text-white" : "bg-gray-700 text-gray-300"}`}>
-                  {item.tag}
-                </span>
+                <p className="text-gray-600 text-sm">{item.desc}</p>
               </div>
-            ))}
-            <div className="mt-4 bg-gray-800 rounded-lg p-3 border border-gray-600">
-              <div className="text-red-400 text-xs font-bold uppercase tracking-widest mb-2">Why Qwen3.5 Plus via OpenRouter</div>
-              {[
-                "1M token context — entire document in one pass, no chunking",
-                "Text + image + video inputs — one model handles steps 03 & 04",
-                "$0.40/M input tokens — cost-effective for batch processing",
-                "Future: route through PortKey for unified API management",
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2 py-1 border-b border-gray-700 last:border-0">
-                  <span className="text-red-500 text-xs">▸</span>
-                  <span className="text-gray-300 text-xs">{item}</span>
-                </div>
-              ))}
             </div>
-          </div>
+          ))}
         </div>
       </div>
     ),
   },
   {
     id: 5,
-    title: "Audio Narration with Qwen3-TTS",
-    subtitle: "Teaching-Quality Voice Generation",
+    title: "Works With Your Most Complex Assignments",
+    subtitle: "STEM, Scanned, and Multi-Column Layouts",
     content: (
       <div className="p-6 sm:p-10 flex flex-col h-full">
         <div className="mb-6 pb-4 border-b-4 border-red-600">
           <div className="text-xs font-bold tracking-widest text-red-600 uppercase mb-1">
-            Slide 5 · Audio
+            Slide 5 · Content Types
           </div>
           <h2 className="text-2xl sm:text-4xl font-black text-gray-900 leading-tight">
-            Audio Narration with Qwen3-TTS
+            Works With Your Most Complex Assignments
           </h2>
         </div>
 
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Built-in Voice Styles</div>
-            <div className="space-y-2">
-              {[
-                { flag: "🇮🇹", lang: "Italian", style: "Voce di insegnante, ritmo lento, pronuncia chiara." },
-                { flag: "🇪🇸", lang: "Spanish", style: "Voz de profesor, ritmo lento, pronunciación clara." },
-                { flag: "🇫🇷", lang: "French", style: "Voix d'enseignant, rythme lent, prononciation claire." },
-                { flag: "🇩🇪", lang: "German", style: "Lehrerstimme, langsames Tempo, klare Aussprache." },
-                { flag: "🇬🇧", lang: "English", style: "Teacher voice, slow pace, clear pronunciation." },
-              ].map((item) => (
-                <div key={item.lang} className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-lg p-3">
-                  <span className="text-lg flex-shrink-0">{item.flag}</span>
-                  <div>
-                    <div className="font-bold text-gray-800 text-sm">{item.lang}</div>
-                    <div className="text-gray-500 text-xs mt-0.5 italic">{item.style}</div>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
+          <div className="space-y-4">
+            {[
+              { icon: "📐", label: "STEM & Math-Heavy Documents", desc: "Formulas, equations, and tables are recognized and rendered correctly — not garbled into meaningless characters." },
+              { icon: "🖼️", label: "Scanned PDFs", desc: "Even older scanned documents without selectable text are fully processed — the tool reads the page like a human would." },
+              { icon: "📄", label: "Complex Layouts", desc: "Multi-column papers, sidebars, footnotes, and mixed content all come through in the right reading order." },
+              { icon: "📚", label: "Batch Processing", desc: "Need to convert an entire course packet? Submit multiple PDFs at once and get all outputs in one run." },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                <div>
+                  <div className="font-bold text-gray-900 text-sm">{item.label}</div>
+                  <p className="text-gray-500 text-sm mt-0.5">{item.desc}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
-          <div className="flex flex-col gap-4">
-            <div className="bg-gray-900 rounded-xl p-5 text-white flex-1">
-              <div className="text-red-400 text-xs font-bold uppercase tracking-widest mb-4">Key Features</div>
-              {[
-                "Direct Python API — no subprocess overhead",
-                "Smart chunking at sentence boundaries (NLTK)",
-                "GPU-accelerated: CUDA (Linux) + MPS (Apple Silicon)",
-                "Model cache reused across batch documents",
-                "Custom voice style via natural language prompt",
-                "Explicit speaker pinning (--tts-speaker)",
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 py-2 border-b border-gray-700 last:border-0">
-                  <span className="text-red-500 font-bold text-xs flex-shrink-0">✓</span>
-                  <span className="text-gray-200 text-sm">{item}</span>
-                </div>
-              ))}
-            </div>
-            <div className="bg-red-600 text-white rounded-xl p-4">
-              <div className="text-red-200 text-xs font-bold uppercase tracking-widest mb-1">Default Model</div>
-              <div className="font-black text-base">Qwen3-TTS-12Hz-0.6B</div>
-              <div className="text-red-100 text-xs mt-1">~600 MB · auto-downloaded on first run</div>
-            </div>
+          <div className="bg-gray-900 rounded-xl p-6 text-white flex flex-col justify-center">
+            <div className="text-red-400 text-xs font-bold uppercase tracking-widest mb-4">Under the Hood</div>
+            <p className="text-gray-300 text-sm mb-5">
+              The tool uses a combination of AI models working in sequence — reading the PDF, understanding the content, writing descriptions, and generating audio. Faculty don't interact with any of this directly.
+            </p>
+            {[
+              "Reads and understands the full document",
+              "Writes summaries with full context — not paragraph by paragraph",
+              "Describes every image with awareness of the surrounding content",
+              "Generates natural-sounding audio per section",
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-3 py-2 border-b border-gray-700 last:border-0">
+                <span className="text-red-500 text-xs mt-1 flex-shrink-0">✓</span>
+                <span className="text-gray-300 text-sm">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -319,84 +253,60 @@ const slides = [
   },
   {
     id: 6,
-    title: "Accessibility & Output Formats",
-    subtitle: "WCAG 2.1 AA · Themed HTML · Responsive Grids",
+    title: "Languages & Audio",
+    subtitle: "Native-Quality Narration for Your Students",
     content: (
       <div className="p-6 sm:p-10 flex flex-col h-full">
         <div className="mb-6 pb-4 border-b-4 border-red-600">
           <div className="text-xs font-bold tracking-widest text-red-600 uppercase mb-1">
-            Slide 6 · Output
+            Slide 6 · Languages & Audio
           </div>
           <h2 className="text-2xl sm:text-4xl font-black text-gray-900 leading-tight">
-            Accessibility & Output Formats
+            Languages & Audio
           </h2>
+          <p className="text-gray-500 text-base mt-1">Every output includes English. Add any of the languages below.</p>
         </div>
 
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* HTML themes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
           <div>
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">HTML Themes</div>
-            <div className="space-y-3">
+            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Supported Languages</div>
+            <div className="space-y-2">
               {[
-                { tag: "tailwind-bilingual", color: "bg-red-600 text-white", desc: "Side-by-side EN + target language layout; default for language learning" },
-                { tag: "tailwind-high-contrast", color: "bg-gray-800 text-white", desc: "Maximum contrast; optimized for low-vision users" },
-                { tag: "tailwind-notebook", color: "bg-gray-100 text-gray-800 border border-gray-300", desc: "Clean notebook-style reading layout" },
-                { tag: "tailwind-audio", color: "bg-gray-100 text-gray-800 border border-gray-300", desc: "Audio-first layout with prominent player controls" },
+                { flag: "🇮🇹", lang: "Italian", note: "Voce di insegnante — teacher voice, clear pace" },
+                { flag: "🇪🇸", lang: "Spanish", note: "Voz de profesor — teacher voice, clear pace" },
+                { flag: "🇫🇷", lang: "French", note: "Voix d'enseignant — teacher voice, clear pace" },
+                { flag: "🇩🇪", lang: "German", note: "Lehrerstimme — teacher voice, clear pace" },
+                { flag: "🇬🇧", lang: "English", note: "Teacher voice, slow pace, clear pronunciation" },
               ].map((item) => (
-                <div key={item.tag} className="flex items-start gap-3 bg-white border border-gray-200 rounded-lg p-4">
-                  <span className={`text-xs font-black px-2 py-1 rounded flex-shrink-0 ${item.color}`}>{item.tag}</span>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                <div key={item.lang} className="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-lg p-3">
+                  <span className="text-xl flex-shrink-0">{item.flag}</span>
+                  <div>
+                    <div className="font-bold text-gray-800 text-sm">{item.lang}</div>
+                    <div className="text-gray-400 text-xs mt-0.5">{item.note}</div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Accessibility signals */}
           <div className="flex flex-col gap-4">
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-              <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Accessibility Signals</div>
-              <div className="space-y-3">
-                <div>
-                  <div className="flex justify-between text-xs font-bold mb-1">
-                    <span className="text-gray-700">Alt Text Coverage</span>
-                    <span className="text-green-600">AI-generated, 100%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{ width: "100%" }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-xs font-bold mb-1">
-                    <span className="text-gray-700">Audio Narration</span>
-                    <span className="text-green-600">Per-section WAV</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{ width: "100%" }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-xs font-bold mb-1">
-                    <span className="text-gray-700">STEM Math Rendering</span>
-                    <span className="text-yellow-600">MathJax / MathML</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-yellow-400 h-2 rounded-full" style={{ width: "80%" }}></div>
-                  </div>
-                </div>
-              </div>
+            <div className="bg-red-600 text-white rounded-xl p-5">
+              <div className="text-red-200 text-xs font-bold uppercase tracking-widest mb-2">What the Audio Sounds Like</div>
+              <p className="text-sm text-red-50">
+                The narration is paced like a teacher reading aloud — not a robotic voice, not rushed. Students can listen section by section alongside the text.
+              </p>
             </div>
-
-            <div className="bg-gray-900 text-white rounded-xl p-5 flex-1">
-              <div className="text-red-400 text-xs font-bold uppercase tracking-widest mb-3">Responsive Image Grids</div>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 flex-1">
+              <div className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">What Gets Narrated</div>
               {[
-                "1 image → full width",
-                "2–4 images → 2-column grid",
-                "5–6 images → 2→3 column responsive",
-                "7+ images → 2→3→4 column responsive",
+                "Every section and paragraph of the assignment",
+                "Bilingual summary — English, then target language",
+                "Section headings read aloud for navigation",
+                "Math and formulas read in plain language",
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 py-1.5 border-b border-gray-700 last:border-0">
-                  <span className="text-red-500 font-bold text-xs">▸</span>
-                  <span className="text-gray-300 text-sm">{item}</span>
+                <div key={i} className="flex items-start gap-2 py-1.5 border-b border-gray-200 last:border-0">
+                  <span className="text-red-500 text-xs mt-1 flex-shrink-0">▸</span>
+                  <span className="text-gray-700 text-sm">{item}</span>
                 </div>
               ))}
             </div>
@@ -407,8 +317,8 @@ const slides = [
   },
   {
     id: 7,
-    title: "Getting Started",
-    subtitle: "CLI, Streamlit UI & Provider Setup",
+    title: "Try It — No Setup Required",
+    subtitle: "Open the Interface and Go",
     content: (
       <div className="p-6 sm:p-10 flex flex-col h-full">
         <div className="mb-6 pb-4 border-b-4 border-red-600">
@@ -416,54 +326,55 @@ const slides = [
             Slide 7 · Getting Started
           </div>
           <h2 className="text-2xl sm:text-4xl font-black text-gray-900 leading-tight">
-            Getting Started
+            Try It — No Setup Required
           </h2>
         </div>
 
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Streamlit - primary */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
           <div className="flex flex-col gap-4">
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">Faculty Interface — Streamlit</div>
-            <div className="bg-red-600 text-white rounded-xl p-5 flex-1">
-              <div className="text-red-200 text-xs font-bold uppercase tracking-widest mb-2">Streamlit UI · Recommended for Faculty</div>
-              <p className="text-sm text-red-50 mb-3">
-                Guided workflow — upload a PDF, choose a language, and download accessible HTML and audio. No command line needed.
+            <div className="bg-red-600 text-white rounded-xl p-6 flex-1">
+              <div className="text-red-200 text-xs font-bold uppercase tracking-widest mb-3">For Faculty</div>
+              <p className="text-red-50 text-sm mb-4">
+                Open the Streamlit interface in your browser. Upload your PDF, pick a language, and hit go. Your accessible assignment is ready to download and post.
               </p>
-              <div className="flex gap-2 flex-wrap">
-                {["Guided step-by-step", "Faculty mode", "Expert mode", "Single-page runner"].map((tag) => (
-                  <span key={tag} className="text-xs bg-red-700 text-red-100 px-2 py-0.5 rounded font-medium">{tag}</span>
+              <div className="space-y-2">
+                {[
+                  "No installation needed",
+                  "Guided step-by-step workflow",
+                  "Works with any PDF you already have",
+                  "Output ready to post to Canvas",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <span className="text-red-300 font-bold text-xs">✓</span>
+                    <span className="text-red-50 text-sm">{item}</span>
+                  </div>
                 ))}
               </div>
             </div>
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 flex-1">
-              <div className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">CLI · Scripted & Bulk Conversion</div>
-              <p className="text-gray-700 text-sm mb-2">
-                Good to know for automating batch jobs or integrating into workflows. Full control over every parameter.
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+              <div className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">For Scripted & Bulk Conversion</div>
+              <p className="text-gray-600 text-sm">
+                A command-line interface is also available for converting large batches of PDFs at once — useful for converting an entire course's materials in one run.
               </p>
-              {["--skip-audio (markdown only)", "--audio-only (re-generate TTS)", "--images-only (re-describe images)"].map((f, i) => (
-                <div key={i} className="text-gray-500 text-xs font-mono border-t border-gray-200 py-1.5">{f}</div>
-              ))}
             </div>
           </div>
 
-          {/* Quick start */}
-          <div>
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Launch Commands</div>
-            <div className="bg-gray-900 rounded-xl p-5 font-mono text-xs text-gray-300 space-y-3">
-              <div>
-                <div className="text-gray-500 mb-1"># Launch Streamlit UI (faculty)</div>
-                <div className="text-green-400">{"uv run -- streamlit run streamlit_app.py"}</div>
-              </div>
-              <div>
-                <div className="text-gray-500 mb-1"># Bulk convert via CLI</div>
-                <div className="text-green-400">{"assignment-conversion main \\"}</div>
-                <div className="text-green-400 pl-4">{"--pdf lesson.pdf \\"}</div>
-                <div className="text-green-400 pl-4">{"--language Italian"}</div>
-              </div>
-              <div>
-                <div className="text-gray-500 mb-1"># Install dependencies</div>
-                <div className="text-green-400">uv sync</div>
-              </div>
+          <div className="flex flex-col gap-4">
+            <div className="bg-gray-900 rounded-xl p-6 text-white flex-1 flex flex-col justify-center">
+              <div className="text-red-400 text-xs font-bold uppercase tracking-widest mb-4">Questions We're Ready to Answer</div>
+              {[
+                "Can this handle my existing PDFs without changes?",
+                "How do I post the output to Canvas?",
+                "Which languages are supported right now?",
+                "What happens with math or science content?",
+                "Can I run it on a whole course packet at once?",
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3 py-2.5 border-b border-gray-700 last:border-0">
+                  <span className="text-red-500 text-xs mt-1 flex-shrink-0">?</span>
+                  <span className="text-gray-300 text-sm">{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
