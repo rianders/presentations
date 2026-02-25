@@ -42,18 +42,19 @@
                     return response.text();
                 })
                 .then(jsxCode => {
+                    // Transform JSX to plain JS using Babel directly
+                    const output = Babel.transform(jsxCode, {
+                        presets: ['react'],
+                        sourceType: 'script'
+                    });
+
                     // Hide loading indicator
                     document.getElementById('loading').classList.add('hidden');
-                    
-                    // Create a script element with the JSX
+
+                    // Inject the compiled JS as a plain script tag
                     const script = document.createElement('script');
-                    script.type = 'text/babel';
-                    script.setAttribute('data-presets', 'react');
-                    script.textContent = jsxCode;
+                    script.textContent = output.code;
                     document.body.appendChild(script);
-                    
-                    // Trigger Babel to process the new script
-                    Babel.transformScriptTags();
                 })
                 .catch(error => {
                     document.getElementById('loading').innerHTML = `
