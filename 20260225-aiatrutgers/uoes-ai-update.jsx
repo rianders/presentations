@@ -235,7 +235,7 @@ const slides = [
   },
 ];
 
-export default function Presentation() {
+function Presentation() {
   const [current, setCurrent] = useState(0);
 
   const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length);
@@ -301,3 +301,6 @@ export default function Presentation() {
     </div>
   );
 }
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Presentation />);
