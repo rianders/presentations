@@ -215,6 +215,7 @@ const slides = [
               <p className="text-sm text-gray-600">
                 Direct <strong>LLM API management</strong> with built-in usage tracking and cost monitoring — gives us visibility and control across models.
               </p>
+              <a href="https://portkey.ai/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-blue-600 hover:underline mt-1">portkey.ai ↗</a>
             </div>
           </div>
 
@@ -228,6 +229,7 @@ const slides = [
               <p className="text-sm text-gray-600">
                 Official pilot launching for <strong>WebUI capabilities on notebooks</strong> — broadening accessible AI interfaces for faculty and students.
               </p>
+              <a href="https://webui.rutgers.edu/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-blue-600 hover:underline mt-1">webui.rutgers.edu ↗</a>
             </div>
           </div>
         </div>
@@ -237,7 +239,7 @@ const slides = [
           <div>
             <p className="font-bold text-red-700 text-sm">Next AI Faculty Committee Meeting</p>
             <p className="text-sm text-red-600">
-              Tentatively <strong>March 3</strong> <span className="italic text-red-400">(confirm date)</span> — agenda includes syllabus integration and committee recommendation review.
+              <strong>March 3</strong> — agenda includes syllabus integration and committee recommendation review.
             </p>
           </div>
         </div>
