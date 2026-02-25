@@ -1,8 +1,4 @@
-const { useState } = React;
-
 function Agenda() {
-  const [active, setActive] = useState(null);
-
   const items = [
     {
       time: null,
@@ -79,11 +75,7 @@ function Agenda() {
         {/* Agenda items */}
         <div className="divide-y divide-gray-100">
           {items.map((item, i) => (
-            <div
-              key={i}
-              className={`px-8 py-4 cursor-pointer transition-colors ${active === i ? "bg-red-50" : "hover:bg-gray-50"}`}
-              onClick={() => setActive(active === i ? null : i)}
-            >
+            <div key={i} className="px-8 py-4">
               <div className="flex items-start gap-4">
                 <span className="text-red-600 font-black text-sm w-5 flex-shrink-0 mt-0.5">{i + 1}</span>
                 <div className="flex-1">
@@ -96,7 +88,6 @@ function Agenda() {
                       {item.presentation && (
                         <a
                           href={item.presentation}
-                          onClick={(e) => e.stopPropagation()}
                           className="text-xs bg-red-600 text-white px-3 py-1 rounded-full font-bold hover:bg-red-700 transition-colors"
                         >
                           View →
@@ -104,7 +95,7 @@ function Agenda() {
                       )}
                     </div>
                   </div>
-                  {item.sub.length > 0 && active === i && (
+                  {item.sub.length > 0 && (
                     <ul className="mt-2 space-y-1.5">
                       {item.sub.map((s, j) => (
                         <li key={j} className="flex items-start gap-2 text-sm text-gray-600">
@@ -117,9 +108,6 @@ function Agenda() {
                         </li>
                       ))}
                     </ul>
-                  )}
-                  {item.sub.length > 0 && active !== i && (
-                    <p className="text-xs text-gray-400 mt-0.5">{item.sub.length} item{item.sub.length > 1 ? "s" : ""} — click to expand</p>
                   )}
                 </div>
               </div>
