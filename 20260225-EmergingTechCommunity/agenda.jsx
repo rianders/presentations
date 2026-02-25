@@ -29,6 +29,7 @@ function Agenda() {
       time: null,
       label: "Rutgers AI Update",
       presenter: "Rick Anderson",
+      presentation: "shell.html?p=20260225-aiatrutgers/uoes-ai-update",
       sub: [
         { text: "Policies and software availability" },
       ],
@@ -37,6 +38,7 @@ function Agenda() {
       time: null,
       label: "Presentation: AI Projects on Transcribing Scientific Notation",
       presenter: "Rick Anderson",
+      presentation: "shell.html?p=20260225-EmergingTechCommunity/scientific-notation-presentation",
       sub: [],
     },
     {
@@ -87,9 +89,20 @@ function Agenda() {
                 <div className="flex-1">
                   <div className="flex items-center justify-between gap-2">
                     <span className="font-bold text-gray-900 text-sm sm:text-base">{item.label}</span>
-                    {item.presenter && (
-                      <span className="text-xs text-gray-400 font-medium flex-shrink-0">{item.presenter}</span>
-                    )}
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      {item.presenter && (
+                        <span className="text-xs text-gray-400 font-medium">{item.presenter}</span>
+                      )}
+                      {item.presentation && (
+                        <a
+                          href={item.presentation}
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-xs bg-red-600 text-white px-3 py-1 rounded-full font-bold hover:bg-red-700 transition-colors"
+                        >
+                          View →
+                        </a>
+                      )}
+                    </div>
                   </div>
                   {item.sub.length > 0 && active === i && (
                     <ul className="mt-2 space-y-1.5">
