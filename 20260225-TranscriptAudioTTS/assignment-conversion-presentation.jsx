@@ -69,8 +69,8 @@ const slides = [
             {[
               { step: "01", label: "PDF Extraction", desc: "OCR + layout parsing via DeepSeek-OCR-2 or PyMuPDF" },
               { step: "02", label: "Document Analysis", desc: "Detects document type, STEM content, and structure" },
-              { step: "03", label: "Bilingual Summary", desc: "LLM generates EN + target-language summaries" },
-              { step: "04", label: "Image Description", desc: "Vision model writes WCAG-compliant alt text (parallel)" },
+              { step: "03", label: "Bilingual Summary", desc: "Qwen3.5 Plus (1M context) generates EN + target-language summaries — no chunking needed" },
+              { step: "04", label: "Image Description", desc: "Qwen3.5 Plus vision writes WCAG-compliant alt text (parallel) — same model, no extra API call" },
               { step: "05", label: "Audio Narration", desc: "Qwen3-TTS generates chunked WAV audio per section" },
               { step: "06", label: "Final Assembly", desc: "Markdown + themed HTML output with embedded media" },
             ].map((item) => (
@@ -220,7 +220,7 @@ const slides = [
             <div className="text-red-400 text-xs font-bold uppercase tracking-widest mb-4">Supported LLM Providers</div>
             {[
               { name: "HuggingFace Router", model: "Qwen2.5-72B / Qwen2.5-VL-7B", tag: "Default" },
-              { name: "OpenRouter", model: "DeepSeek-V3 / Gemini 2.5 Flash", tag: "400+ models" },
+              { name: "OpenRouter", model: "Qwen3.5 Plus · DeepSeek-V3 · Gemini 2.5 Flash", tag: "Recommended" },
               { name: "Ollama (local)", model: "Any locally hosted model", tag: "Optional" },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3 py-3 border-b border-gray-700 last:border-0">
@@ -229,11 +229,25 @@ const slides = [
                   <div className="text-white font-bold text-sm">{item.name}</div>
                   <div className="text-gray-400 text-xs mt-0.5">{item.model}</div>
                 </div>
-                <span className="text-xs bg-gray-700 text-gray-300 px-2 py-0.5 rounded font-medium flex-shrink-0">
+                <span className={`text-xs px-2 py-0.5 rounded font-medium flex-shrink-0 ${i === 1 ? "bg-red-600 text-white" : "bg-gray-700 text-gray-300"}`}>
                   {item.tag}
                 </span>
               </div>
             ))}
+            <div className="mt-4 bg-gray-800 rounded-lg p-3 border border-gray-600">
+              <div className="text-red-400 text-xs font-bold uppercase tracking-widest mb-2">Why Qwen3.5 Plus via OpenRouter</div>
+              {[
+                "1M token context — entire document in one pass, no chunking",
+                "Text + image + video inputs — one model handles steps 03 & 04",
+                "$0.40/M input tokens — cost-effective for batch processing",
+                "Future: route through PortKey for unified API management",
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-2 py-1 border-b border-gray-700 last:border-0">
+                  <span className="text-red-500 text-xs">▸</span>
+                  <span className="text-gray-300 text-xs">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
