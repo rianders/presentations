@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+const { useState, useEffect } = React;
 
 const RULogo = () => (
   <div className="flex items-center gap-2">
@@ -96,6 +96,17 @@ const slides = [
               <Bullet icon="⏳">Both committees currently <strong>awaiting official feedback</strong> from administration</Bullet>
             </ul>
           </SectionCard>
+        </div>
+
+        <div className="mt-6">
+          <a
+            href="20260225-aiatrutgers/REVISED%20WORKING%20DRAFT_Recommended%20Best%20Practices%20for%20AI%20in%20courses_Nov%202025.docx.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 bg-gray-800 text-white text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-gray-900 transition-colors"
+          >
+            📄 View Draft Recommendations (PDF) ↗
+          </a>
         </div>
       </SlideShell>
     ),
