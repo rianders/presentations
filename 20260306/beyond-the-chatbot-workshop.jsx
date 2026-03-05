@@ -124,7 +124,49 @@ const slides = [
     ),
   },
 
-  /* ─ 2: THE LANDSCAPE ─ */
+  /* ─ 2: THE RULE ─ */
+  {
+    label: "The Rule",
+    content: (
+      <SlideShell tag="Data & Policy" tagColor="bg-gray-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          The Rule for Today
+        </h1>
+        <div className="w-16 h-1 bg-gray-700 rounded mb-6" />
+
+        <div className="bg-red-600 text-white rounded-xl p-6 mb-5">
+          <p className="text-lg font-bold mb-2">If it involves your students or your course content, it stays in a licensed tool.</p>
+          <p className="text-sm text-red-100">Three policies govern this: Academic Integrity (10.2.13), Information Classification (70.1.2), Acceptable Use (70.1.1).</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <SectionCard title="Check the Hub" icon="🔗">
+            <a href="https://it.rutgers.edu/ai" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-red-600 text-sm font-bold hover:underline">
+              it.rutgers.edu/ai ↗
+            </a>
+          </SectionCard>
+          <SectionCard title="Log In Correctly" icon="🔐">
+            <p className="text-sm">Always confirm you are signed in as <strong>@scarletmail.rutgers.edu</strong></p>
+          </SectionCard>
+          <SectionCard title="Data Classification" icon="📊">
+            <p className="text-sm">The data classification chart is your practical guide.</p>
+          </SectionCard>
+        </div>
+
+        <div className="bg-gray-800 text-white rounded-xl p-5 mb-4">
+          <p className="text-sm font-bold text-amber-300 mb-2">Beyond Policy: Your Ethical Choices</p>
+          <p className="text-sm mb-2">Today I'm going to show you a lot of tools. Policy tells you what's <strong>allowed</strong>. It does not tell you what you <strong>should</strong> do.</p>
+          <p className="text-sm">Every tool and feature you see today comes with ethical questions that policy doesn't answer — about labor, about data, about who benefits and who doesn't. I want you to know what's available. I also want you to apply your own ethics and judgment to what you choose to use and how. That's not my decision to make for you. It's yours.</p>
+        </div>
+
+        <DropIn label="Your Secrets">
+          Every time you paste student work into a tool, you're deciding where that data goes. 'Not uploading information' sounds simple — but some tools have a local interface and a remote brain. The question is not 'is this on my computer?' It's 'where is the work actually happening?'
+        </DropIn>
+      </SlideShell>
+    ),
+  },
+
+  /* ─ 3: THE LANDSCAPE ─ */
   {
     label: "Landscape",
     content: (
@@ -210,48 +252,6 @@ const slides = [
           <p className="text-sm font-bold text-indigo-900 mb-1">Your closest on-ramp: Gemini Gems</p>
           <p className="text-sm text-indigo-800">A Gem is a customized Gemini — you write the role, give it context, set its constraints. Available via your ScarletMail account. It is not a full agent, but it is where agent thinking starts: you are no longer a user of the chatbot. You are its designer.</p>
         </div>
-      </SlideShell>
-    ),
-  },
-
-  /* ─ 4: THE RULE ─ */
-  {
-    label: "The Rule",
-    content: (
-      <SlideShell tag="Data & Policy" tagColor="bg-gray-700">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
-          The Rule for Today
-        </h1>
-        <div className="w-16 h-1 bg-gray-700 rounded mb-6" />
-
-        <div className="bg-red-600 text-white rounded-xl p-6 mb-5">
-          <p className="text-lg font-bold mb-2">If it involves your students or your course content, it stays in a licensed tool.</p>
-          <p className="text-sm text-red-100">Three policies govern this: Academic Integrity (10.2.13), Information Classification (70.1.2), Acceptable Use (70.1.1).</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <SectionCard title="Check the Hub" icon="🔗">
-            <a href="https://it.rutgers.edu/ai" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-red-600 text-sm font-bold hover:underline">
-              it.rutgers.edu/ai ↗
-            </a>
-          </SectionCard>
-          <SectionCard title="Log In Correctly" icon="🔐">
-            <p className="text-sm">Always confirm you are signed in as <strong>@scarletmail.rutgers.edu</strong></p>
-          </SectionCard>
-          <SectionCard title="Data Classification" icon="📊">
-            <p className="text-sm">The data classification chart is your practical guide.</p>
-          </SectionCard>
-        </div>
-
-        <div className="bg-gray-800 text-white rounded-xl p-5 mb-4">
-          <p className="text-sm font-bold text-amber-300 mb-2">Beyond Policy: Your Ethical Choices</p>
-          <p className="text-sm mb-2">Today I'm going to show you a lot of tools. Policy tells you what's <strong>allowed</strong>. It does not tell you what you <strong>should</strong> do.</p>
-          <p className="text-sm">Every tool and feature you see today comes with ethical questions that policy doesn't answer — about labor, about data, about who benefits and who doesn't. I want you to know what's available. I also want you to apply your own ethics and judgment to what you choose to use and how. That's not my decision to make for you. It's yours.</p>
-        </div>
-
-        <DropIn label="Your Secrets">
-          Every time you paste student work into a tool, you're deciding where that data goes. 'Not uploading information' sounds simple — but some tools have a local interface and a remote brain. The question is not 'is this on my computer?' It's 'where is the work actually happening?'
-        </DropIn>
       </SlideShell>
     ),
   },
