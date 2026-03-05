@@ -267,32 +267,49 @@ const slides = [
         <div className="w-16 h-1 bg-blue-600 rounded mb-6" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-          <SectionCard title="Microsoft 365 + Copilot" icon="🪟" accent={true}>
-            <ul className="space-y-2 text-sm">
-              <li>• <strong>Copilot Chat</strong> — free via ScarletMail</li>
-              <li>• <strong>Copilot in Apps</strong> — Word/PPT/Excel ($20/mo)</li>
-              <li>• <strong>Agent Mode</strong> — agentic editing in Word, Excel, PowerPoint</li>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xl">🪟</span>
+              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Microsoft 365</h3>
+            </div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">What you have</p>
+            <ul className="space-y-1 text-sm text-gray-700 mb-3">
+              <li>• <strong>Copilot Chat</strong> — via ScarletMail, also available inside M365 apps</li>
+              <li>• <strong>M365 Copilot</strong> — deeper integration across Word, Teams, Outlook <span className="text-xs text-amber-600">(confirm model version)</span></li>
+              <li>• <strong>Designer</strong> — AI image and graphic creation</li>
             </ul>
-          </SectionCard>
-          <SectionCard title="Google Workspace" icon="🔵">
-            <ul className="space-y-2 text-sm">
-              <li>• <strong>Gemini</strong> — free via ScarletMail</li>
-              <li>• <strong>NotebookLM</strong> — free</li>
-              <li>• <strong>Workspace Studio</strong> — no-code agent builder (rolling out March 2026)</li>
-              <li>• <strong>Nano Banana</strong> — image intelligence inside Gemini</li>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Context you can provide</p>
+            <ul className="space-y-1 text-xs text-gray-600">
+              <li>• Local files &nbsp;• Work content &nbsp;• Cloud files</li>
             </ul>
-          </SectionCard>
+          </div>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xl">🔵</span>
+              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Google Workspace</h3>
+            </div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gemini tools</p>
+            <ul className="space-y-1 text-sm text-gray-700 mb-3">
+              <li>• Guided Learning &nbsp;• Create Image &nbsp;• Create Music</li>
+              <li>• Canvas &nbsp;• Deep Research</li>
+            </ul>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Context you can provide</p>
+            <ul className="space-y-1 text-xs text-gray-600 mb-3">
+              <li>• Upload images &amp; files &nbsp;• Google Drive &nbsp;• NotebookLM</li>
+            </ul>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gems</p>
+            <p className="text-xs text-gray-600">Customized Gemini instances — you define the role, context, and constraints. Like an agent, but without autonomy. The closest thing in a licensed tool to designing your own AI.</p>
+          </div>
+
         </div>
 
-        <div className="bg-gray-900 text-white rounded-xl p-5 mb-4">
+        <div className="bg-gray-900 text-white rounded-xl p-5">
           <p className="text-sm font-bold text-red-400 mb-2">⚠ What Is NOT in the License</p>
-          <p className="text-sm mb-2">Personal ChatGPT and Claude accounts have <strong>no institutional data agreement</strong>. Student work entered there is a FERPA exposure.</p>
-          <p className="text-xs text-gray-400">Claude (Anthropic) is excellent for research, writing, and code — and it's what built this presentation. But without a Rutgers license, it's a personal tool. Same rule: if it's about your class or your students, use a licensed tool.</p>
+          <p className="text-sm mb-1">Personal ChatGPT and Claude accounts have <strong>no institutional data agreement</strong>. Student work entered there is a FERPA exposure.</p>
+          <p className="text-xs text-gray-400">Same rule as always: if it's about your class or your students, use a licensed tool.</p>
         </div>
-
-        <DropIn label="Tools vs. Skills">
-          A tool is what the system can do — search, generate, analyze. A skill is how you use that capability well for your specific purpose. The tools will change by next semester. The skills transfer.
-        </DropIn>
       </SlideShell>
     ),
   },
