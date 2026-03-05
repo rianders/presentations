@@ -161,7 +161,60 @@ const slides = [
     ),
   },
 
-  /* ─ 3: THE RULE ─ */
+  /* ─ 3: CHATBOT VS. AGENT ─ */
+  {
+    label: "Chatbot vs. Agent",
+    content: (
+      <SlideShell tag="The Difference" tagColor="bg-indigo-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Chatbot vs. Agent
+        </h1>
+        <div className="w-16 h-1 bg-indigo-600 rounded mb-6" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+          <div className="bg-gray-100 border border-gray-200 rounded-xl p-5">
+            <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500 mb-3">Chatbot</h3>
+            <p className="text-sm text-gray-700 mb-3">Responds to whoever is typing. It does not know if you are a student asking for the answer or an instructor designing the question.</p>
+            <p className="text-sm text-gray-700">The same model. The same behavior. No difference unless <em>you</em> build one in.</p>
+          </div>
+          <div className="bg-indigo-600 text-white rounded-xl p-5">
+            <h3 className="font-bold text-sm uppercase tracking-wide text-indigo-100 mb-3">Agent</h3>
+            <p className="text-sm text-indigo-50 mb-3">Knows who it is talking to — because <strong>you designed it that way</strong>. The instructor's role, intent, and constraints are built in before the first message.</p>
+            <p className="text-sm text-indigo-50">That design is the work. The agent is the result.</p>
+          </div>
+        </div>
+
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-5">
+          <p className="text-sm font-bold text-gray-700 mb-3">When you design an agent, you are specifying:</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+            {[
+              { term: "Role", def: "who it is — evaluator, tutor, guide" },
+              { term: "Context", def: "what it knows going in" },
+              { term: "Goal", def: "what it is trying to accomplish" },
+              { term: "Tasks", def: "the steps it can take" },
+              { term: "Tools", def: "what it can invoke — search, generate, analyze" },
+              { term: "Skills", def: "how it applies tools well for your purpose" },
+              { term: "Memory", def: "what it retains across steps" },
+              { term: "Constraints", def: "what it will not do" },
+              { term: "Output", def: "how results are structured" },
+            ].map(({ term, def }) => (
+              <div key={term} className="bg-white border border-gray-200 rounded-lg px-3 py-2">
+                <p className="text-xs font-bold text-indigo-700">{term}</p>
+                <p className="text-xs text-gray-600 mt-0.5">{def}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4">
+          <p className="text-sm font-bold text-indigo-900 mb-1">Your closest on-ramp: Gemini Gems</p>
+          <p className="text-sm text-indigo-800">A Gem is a customized Gemini — you write the role, give it context, set its constraints. Available via your ScarletMail account. It is not a full agent, but it is where agent thinking starts: you are no longer a user of the chatbot. You are its designer.</p>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  /* ─ 4: THE RULE ─ */
   {
     label: "The Rule",
     content: (
