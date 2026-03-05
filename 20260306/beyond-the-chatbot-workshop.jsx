@@ -275,7 +275,7 @@ const slides = [
             </div>
             <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">What you have</p>
             <ul className="space-y-1 text-sm text-gray-700 mb-3">
-              <li>• <strong>Copilot Chat</strong> — via ScarletMail, also available inside M365 apps</li>
+              <li>• <strong>Copilot Chat</strong> — via ScarletMail, also available inside M365 apps; includes voice-to-text</li>
               <li>• <strong>M365 Copilot</strong> — GPT-5.2 (quick &amp; thinking); GPT-5.3 rolling out</li>
               <li>• <strong>Designer</strong> — AI image and graphic creation</li>
             </ul>
@@ -301,7 +301,7 @@ const slides = [
             </ul>
             <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Context you can provide</p>
             <ul className="space-y-1 text-xs text-gray-600 mb-3">
-              <li>• Upload images &amp; files &nbsp;• Google Drive &nbsp;• NotebookLM</li>
+              <li>• Upload images &amp; files &nbsp;• Google Drive &nbsp;• NotebookLM &nbsp;• Voice-to-text</li>
             </ul>
             <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gems</p>
             <p className="text-xs text-gray-600">Customized Gemini instances — you define the role, context, and constraints. Like an agent, but without autonomy. The closest thing in a licensed tool to designing your own AI.</p>
