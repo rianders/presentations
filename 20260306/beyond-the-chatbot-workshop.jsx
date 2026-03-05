@@ -749,4 +749,5 @@ function Presentation() {
   );
 }
 
-export default Presentation;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Presentation />);
