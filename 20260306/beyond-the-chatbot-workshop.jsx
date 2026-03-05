@@ -276,7 +276,7 @@ const slides = [
             <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">What you have</p>
             <ul className="space-y-1 text-sm text-gray-700 mb-3">
               <li>• <strong>Copilot Chat</strong> — via ScarletMail, also available inside M365 apps</li>
-              <li>• <strong>M365 Copilot</strong> — deeper integration across Word, Teams, Outlook <span className="text-xs text-amber-600">(confirm model version)</span></li>
+              <li>• <strong>M365 Copilot</strong> — GPT-5.2 (quick &amp; thinking); GPT-5.3 rolling out</li>
               <li>• <strong>Designer</strong> — AI image and graphic creation</li>
             </ul>
             <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Context you can provide</p>
