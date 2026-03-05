@@ -86,8 +86,7 @@ const slides = [
         </h1>
         <p className="text-lg sm:text-xl text-gray-500 mb-2">Navigating Alternative AI Models for Teaching</p>
         <div className="w-24 h-1 bg-red-600 rounded my-6" />
-        <p className="text-gray-600 font-medium">90-Minute Faculty Workshop</p>
-        <p className="text-gray-400 text-sm mt-1">Office of University Online Education Services</p>
+<p className="text-gray-400 text-sm mt-1">Office of University Online Education Services</p>
         <p className="text-gray-400 text-sm">March 2026</p>
       </div>
     ),
