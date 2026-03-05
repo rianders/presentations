@@ -290,6 +290,10 @@ const slides = [
               <span className="text-xl">🔵</span>
               <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Google Workspace</h3>
             </div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Models</p>
+            <ul className="space-y-1 text-xs text-gray-600 mb-3">
+              <li>• <strong>Fast</strong> &nbsp;• <strong>Thinking</strong> &nbsp;• <strong>Pro</strong> — Gemini 3.1 Pro</li>
+            </ul>
             <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gemini tools</p>
             <ul className="space-y-1 text-sm text-gray-700 mb-3">
               <li>• Guided Learning &nbsp;• Create Image &nbsp;• Create Music</li>
