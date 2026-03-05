@@ -113,8 +113,8 @@ const slides = [
             <p className="text-sm mb-2">Most major AI vendors are now navigating serious ethical pressure:</p>
             <ul className="space-y-1 text-xs text-red-100">
               <li>→ Banned by the US Military for refusing to work with them</li>
-              <li>→ Others abandoned their own stated principles to win government contracts</li>
-              <li>→ Enormous and growing energy and environmental costs</li>
+              <li>→ OpenAI and Anthropic (Claude) are both in the midst of this drama — companies that built guardrails, then worked around them</li>
+              <li>→ Enormous and growing energy consumption and environmental impact</li>
             </ul>
           </SectionCard>
         </div>
