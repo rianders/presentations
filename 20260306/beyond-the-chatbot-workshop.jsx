@@ -75,6 +75,9 @@ const slides = [
     label: "Title",
     content: (
       <div className="flex flex-col items-center justify-center h-full text-center px-6">
+        <div className="bg-yellow-400 text-yellow-900 text-xs font-black tracking-widest px-4 py-1 rounded mb-4">
+          DRAFT — DO NOT DISTRIBUTE
+        </div>
         <div className="bg-red-600 text-white text-sm font-black tracking-widest px-6 py-2 rounded mb-8">
           RUTGERS UNIVERSITY
         </div>
