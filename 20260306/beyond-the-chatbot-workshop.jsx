@@ -82,9 +82,9 @@ const slides = [
           RUTGERS UNIVERSITY
         </div>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight">
-          Beyond the Chatbot
+          Beyond ChatGPT
         </h1>
-        <p className="text-lg sm:text-xl text-gray-500 mb-2">Navigating Alternative AI Models for Teaching</p>
+        <p className="text-lg sm:text-xl text-gray-500 mb-2">Navigating Alternative Models</p>
         <div className="w-24 h-1 bg-red-600 rounded my-6" />
 <p className="text-gray-400 text-sm mt-1">Office of University Online Education Services</p>
         <p className="text-gray-400 text-sm">March 2026</p>
