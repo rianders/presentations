@@ -392,7 +392,7 @@ DEPLOY    →  Paste into Canvas`}</CodeBlock>
         </div>
 
         <Note>
-          <strong>Honest limitations:</strong> It breaks (re-vibe-code the fix). Not accessible by default — you have to ask. Not connected to Canvas gradebook. Content changes require rebuilding.
+          <strong>Honest limitations:</strong> It breaks — and that's part of the demo, not a failure. Not accessible by default (you have to ask). Not connected to Canvas gradebook. Content changes require rebuilding.
         </Note>
 
         <DropIn label="Bounded Is Better">
@@ -416,24 +416,33 @@ DEPLOY    →  Paste into Canvas`}</CodeBlock>
         </h1>
         <div className="w-16 h-1 bg-violet-600 rounded mb-6" />
 
-        <div className="bg-gray-900 text-white rounded-xl p-6 mb-6">
-          <p className="text-sm text-gray-400 font-bold uppercase tracking-wide mb-3">Suggested Starting Prompt</p>
-          <p className="text-base sm:text-lg font-medium italic leading-relaxed">
-            "Build a ten-question multiple choice quiz on [topic]. Show one question at a time. Give feedback after each answer. Show a score at the end."
+        <div className="bg-gray-900 text-white rounded-xl p-5 mb-5">
+          <p className="text-sm text-gray-400 font-bold uppercase tracking-wide mb-2">Starting Prompt</p>
+          <p className="text-sm font-medium italic leading-relaxed">
+            "Build a ten-question multiple choice quiz on [topic]. Show one question at a time. Give feedback after each answer. Show a score at the end. Output a single self-contained HTML file I can paste into Canvas."
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <SectionCard title="Generate" icon="⚡">
-            <p className="text-sm">Paste the prompt into Gemini (via your ScarletMail account). Watch the HTML appear.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <SectionCard title="1 · Generate" icon="⚡">
+            <p className="text-sm">Paste the prompt into Gemini via your ScarletMail account. Watch the HTML appear.</p>
           </SectionCard>
-          <SectionCard title="Deploy" icon="🚀">
-            <p className="text-sm">Canvas → Pages → HTML Editor → Paste. Students see it immediately.</p>
+          <SectionCard title="2 · Deploy" icon="🚀">
+            <p className="text-sm">Canvas → Pages → HTML Editor → Paste. Preview it. Does it work?</p>
           </SectionCard>
-          <SectionCard title="Iterate" icon="🔄">
-            <p className="text-sm">Don't like the colors? Want a timer? Say so. Re-vibe-code in seconds.</p>
+          <SectionCard title="3 · When It Breaks" icon="🔧" accent={true}>
+            <p className="text-sm mb-2">Go back to Gemini and describe exactly what's wrong:</p>
+            <p className="text-xs italic">"When I paste this into Canvas's HTML editor, [X] doesn't show up. Fix it so it works without any external libraries."</p>
+            <p className="text-xs mt-2">Re-paste. That's the loop — and it's the whole skill.</p>
+          </SectionCard>
+          <SectionCard title="4 · Iterate" icon="🔄">
+            <p className="text-sm">Wrong colors? Want a timer? Need fewer questions? Say so. You never need to touch the code.</p>
           </SectionCard>
         </div>
+
+        <Note>
+          <strong>Plan to show step 3.</strong> If Canvas accepts it perfectly the first time, walk through what you would say if it hadn't. The recovery is the most important thing for faculty to see.
+        </Note>
       </SlideShell>
     ),
   },
