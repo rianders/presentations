@@ -228,9 +228,6 @@ const slides = [
               <li>• <strong>Workspace Studio</strong> — no-code agent builder (rolling out March 2026)</li>
               <li>• <strong>Nano Banana</strong> — image intelligence inside Gemini</li>
             </ul>
-            <p className="text-xs text-gray-500 mt-2 italic">
-              Google AI Studio (aistudio.google.com) is free but is a Labs experiment, <strong>not</strong> part of the Workspace license. Free tier data may be used to train models — use judgment with course content.
-            </p>
           </SectionCard>
         </div>
 
@@ -282,44 +279,35 @@ const slides = [
     ),
   },
 
-  /* ─ 5: NOTEBOOKLM → ANTIGRAVITY ─ */
+  /* ─ 5: NOTEBOOKLM ─ */
   {
     label: "NotebookLM",
     content: (
       <SlideShell tag="Demo Flow" tagColor="bg-emerald-700">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
-          NotebookLM → AI Studio
+          NotebookLM: One Set of Class Notes
         </h1>
         <div className="w-16 h-1 bg-emerald-600 rounded mb-6" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-          <SectionCard title="NotebookLM" icon="📓">
-            <ul className="space-y-2 text-sm">
-              <li>• Upload 2–3 chapters</li>
-              <li>• Generate audio overview</li>
-              <li>• Paste a <strong>YouTube URL</strong> — it summarizes the video and makes it queryable</li>
-              <li>• Student-queryable notebook — <strong>answers only from your source</strong></li>
-            </ul>
-            <p className="text-xs text-gray-500 mt-3 italic">
-              You're not prompting AI every time — you're <strong>installing</strong> your content into an AI environment. Works for teaching <em>and</em> research — upload your own papers and sources for literature synthesis.
-            </p>
-          </SectionCard>
-
-          <SectionCard title="AI Studio · Antigravity" icon="🚀" accent={true}>
-            <p className="text-xs text-red-200 mb-2">⚠ Google Labs experiment — not part of Workspace license. Free tier data may train models.</p>
-            <p className="text-sm mb-2">Same source material, different outputs:</p>
-            <ul className="space-y-2 text-sm">
-              <li>→ Quiz questions → self-grading HTML quiz</li>
-              <li>→ Vocabulary flashcard app</li>
-              <li>→ Choose-your-own-path study guide</li>
-            </ul>
-            <p className="text-xs text-red-100 mt-3">All HTML. All paste into Canvas. No plugin. No IT ticket. No cost.</p>
-            <p className="text-xs text-red-100 mt-2 italic">Upload materials from <strong>two different courses</strong> and ask for connections between them. That's integrative learning scaffolded by AI.</p>
-          </SectionCard>
+        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mb-5">
+          <p className="text-sm text-emerald-900 font-bold mb-1">Today's Source Material</p>
+          <p className="text-sm text-emerald-800">Class notes: <em>Defining Instantaneous Velocity</em>. One document. Watch what NotebookLM does with it.</p>
         </div>
 
+        <SectionCard title="NotebookLM" icon="📓">
+          <ul className="space-y-2 text-sm">
+            <li>• Upload the notes — NotebookLM reads and indexes them</li>
+            <li>• Generate an <strong>audio overview</strong> — two AI hosts discuss the material</li>
+            <li>• Ask questions — <strong>answers only from your source</strong>, with citations</li>
+            <li>• Paste a <strong>YouTube URL</strong> — it summarizes the video and makes it queryable</li>
+          </ul>
+          <p className="text-xs text-gray-500 mt-3 italic">
+            You're not prompting AI every time — you're <strong>installing</strong> your content into an AI environment. Works for teaching <em>and</em> research — upload your own papers and sources for literature synthesis.
+          </p>
+        </SectionCard>
+
         <DropIn label="More From What You Have">
-          We didn't create anything from scratch. We took existing materials and transformed them into three different learning supports. The source stays the same. The forms multiply.
+          We didn't create anything from scratch. We took one set of existing notes and turned them into a queryable knowledge base with an audio companion. The source stays the same. The forms multiply.
         </DropIn>
       </SlideShell>
     ),
@@ -384,7 +372,7 @@ DEPLOY    →  Paste into Canvas`}</CodeBlock>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <SectionCard title="Generate" icon="⚡">
-            <p className="text-sm">Paste the prompt into AI Studio (Antigravity) or Gemini. Watch the HTML appear.</p>
+            <p className="text-sm">Paste the prompt into Gemini (via your ScarletMail account). Watch the HTML appear.</p>
           </SectionCard>
           <SectionCard title="Deploy" icon="🚀">
             <p className="text-sm">Canvas → Pages → HTML Editor → Paste. Students see it immediately.</p>
@@ -505,7 +493,7 @@ meet the rubric.`}</CodeBlock>
         </h1>
         <div className="w-16 h-1 bg-pink-600 rounded mb-6" />
 
-        <p className="text-sm text-gray-600 mb-5">Google's Gemini image intelligence layer — available inside Gemini via your ScarletMail account. Also accessible in Google AI Studio (Labs experiment, not licensed).</p>
+        <p className="text-sm text-gray-600 mb-5">Google's Gemini image intelligence layer — available inside Gemini via your ScarletMail account.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <SectionCard title="Move 1: Infographic" icon="📊">
@@ -618,7 +606,7 @@ meet the rubric.`}</CodeBlock>
           </SectionCard>
           <SectionCard title="Go Further" icon="🟡">
             <p className="text-sm">
-              Open <strong>AI Studio</strong> or <strong>Gemini</strong>. Paste a chapter or learning objectives. Build a ten-question self-check quiz. Paste the HTML into Canvas. Show it to one class.
+              Open <strong>Gemini</strong> via your ScarletMail account. Paste a topic or learning objectives. Build a ten-question self-check quiz. Paste the HTML into Canvas. Show it to one class.
             </p>
           </SectionCard>
           <SectionCard title="Go All the Way" icon="🔴" accent={true}>
@@ -653,7 +641,6 @@ meet the rubric.`}</CodeBlock>
           {[
             { label: "Rutgers AI Hub", url: "https://it.rutgers.edu/ai" },
             { label: "NotebookLM", url: "https://notebooklm.google.com" },
-            { label: "Google AI Studio (Labs — not licensed)", url: "https://aistudio.google.com" },
             { label: "DeepSeek OCR 2 Demo", url: "https://huggingface.co/spaces/merterbak/DeepSeek-OCR-Demo" },
             { label: "DeepSeek OCR 2 Model", url: "https://huggingface.co/deepseek-ai/DeepSeek-OCR-2" },
             { label: "MathJax", url: "https://mathjax.org" },
