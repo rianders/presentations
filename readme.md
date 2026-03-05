@@ -11,6 +11,7 @@ https://rianders.github.io/presentations/
 
 | Date | Title | Audience |
 |------|-------|----------|
+| Mar 6, 2026 | Beyond the Chatbot | UOES Emerging Technology |
 | Feb 25, 2026 | Rutgers AI Policy Update | UOES EmTech |
 | Dec 16, 2025 | AI, Emerging Technology, and Your Teaching | Rutgers Camden Faculty Senate |
 
