@@ -102,19 +102,27 @@ const slides = [
         </h1>
         <div className="w-16 h-1 bg-red-600 rounded mb-6" />
 
-        <div className="bg-gray-900 text-white rounded-xl p-6 mb-6">
-          <p className="text-lg sm:text-xl font-medium italic leading-relaxed">
-            "That didn't happen in ChatGPT. It didn't happen in a chat box at all. And every tool that made it possible is already in your ScarletMail account."
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+          <SectionCard title="Where We Started" icon="💬">
+            <p className="text-sm">ChatGPT was the first chatbot most of us ever used. It set the frame: a box you type into, a response you get back.</p>
+          </SectionCard>
+          <SectionCard title="What Happened Next" icon="📈">
+            <p className="text-sm">Competition ramped up fast. The University evaluated the landscape and selected official licensed tools — tools with data agreements, with institutional accountability.</p>
+          </SectionCard>
+          <SectionCard title="Where We Are Now" icon="⚠️" accent={true}>
+            <p className="text-sm mb-2">Most major AI vendors are now navigating serious ethical pressure:</p>
+            <ul className="space-y-1 text-xs text-red-100">
+              <li>→ Banned by the US Military for refusing to work with them</li>
+              <li>→ Others abandoned their own stated principles to win government contracts</li>
+              <li>→ Enormous and growing energy and environmental costs</li>
+            </ul>
+          </SectionCard>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <SectionCard title="Beyond ChatGPT" icon="🔭">
-            <p className="text-sm">The tool landscape is much larger than one product.</p>
-          </SectionCard>
-          <SectionCard title="Beyond the Chatbot" icon="⚡">
-            <p className="text-sm">The box you type into is the <strong>least interesting</strong> thing AI can do.</p>
-          </SectionCard>
+        <div className="bg-gray-900 text-white rounded-xl p-5 mb-4">
+          <p className="text-sm leading-relaxed">
+            Which brings us to two questions for today. <strong>What tools exist beyond ChatGPT</strong> — including the ones already in your ScarletMail account? And <strong>what can AI do beyond the chat box</strong> — because the box you type into is the least interesting thing it can do.
+          </p>
         </div>
 
         <Note>
