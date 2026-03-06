@@ -362,6 +362,40 @@ const slides = [
     ),
   },
 
+  /* ─ THE COMPETITION ─ */
+  {
+    label: "The Competition",
+    content: (
+      <SlideShell tag="The Map" tagColor="bg-indigo-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-1 leading-tight">
+          This Is What's Competing
+        </h1>
+        <p className="text-sm text-gray-500 mb-4">Weekly token usage across all models — <a href="https://openrouter.ai/rankings" target="_blank" rel="noreferrer" className="text-indigo-600 font-bold hover:underline">openrouter.ai/rankings</a></p>
+
+        <img
+          src="20260306/openrouter-rankings.png"
+          alt="OpenRouter weekly model usage rankings chart showing explosive growth across dozens of competing AI models"
+          className="w-full rounded-xl shadow-md mb-4"
+        />
+
+        <div className="grid grid-cols-3 gap-3">
+          <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-3 text-center">
+            <p className="text-xl font-black text-indigo-700">13.6T</p>
+            <p className="text-xs text-gray-600">tokens in one week</p>
+          </div>
+          <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-3 text-center">
+            <p className="text-xl font-black text-indigo-700">"Others"</p>
+            <p className="text-xs text-gray-600">is the largest category — 6.54T</p>
+          </div>
+          <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-3 text-center">
+            <p className="text-xl font-black text-indigo-700">↑</p>
+            <p className="text-xs text-gray-600">usage nearly tripled since September</p>
+          </div>
+        </div>
+      </SlideShell>
+    ),
+  },
+
   /* ─ 3: CHATBOT VS. AGENT ─ */
   {
     label: "Chatbot vs. Agent",
