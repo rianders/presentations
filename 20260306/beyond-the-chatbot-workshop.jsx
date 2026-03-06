@@ -543,55 +543,59 @@ If the answer is not in my materials, say so.`}</CodeBlock>
         </h1>
         <div className="w-16 h-1 bg-emerald-600 rounded mb-4" />
 
-        <div className="flex flex-wrap items-center gap-2 mb-4">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mr-1">Elements used in this prompt:</p>
+        <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">The prompt from the previous slide — elements it uses:</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+          <div className="md:col-span-2 bg-gray-900 text-green-400 rounded-xl p-4 font-mono text-xs leading-relaxed">
+            <pre className="whitespace-pre-wrap">{`Use ONLY the materials I have provided.
+Do NOT draw from outside sources, other
+textbooks, or general knowledge.
+
+All examples, explanations, and questions
+must come directly from the context I have
+given you.
+
+If the answer is not in my materials, say so.`}</pre>
+          </div>
+          <div className="flex flex-col gap-2 justify-center">
+            <div className="border-l-4 border-emerald-400 bg-emerald-50 rounded-r-lg px-3 py-2">
+              <span className="text-xs font-bold text-emerald-600 uppercase tracking-wide">Context</span>
+              <p className="text-xs text-gray-700 mt-0.5">implied — the materials you paste or upload are the course</p>
+            </div>
+            <div className="border-l-4 border-orange-400 bg-orange-50 rounded-r-lg px-3 py-2">
+              <span className="text-xs font-bold text-orange-600 uppercase tracking-wide">Constraints</span>
+              <p className="text-xs text-gray-700 mt-0.5">use only provided materials · stay in the circle · say so if it's not there</p>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">With a full agent, you could also specify:</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
           {[
-            { label: "Role",        cls: "bg-red-100 text-red-700 border-red-200" },
-            { label: "Context",     cls: "bg-emerald-100 text-emerald-700 border-emerald-200" },
-            { label: "Goal",        cls: "bg-amber-100 text-amber-700 border-amber-200" },
-            { label: "Constraints", cls: "bg-orange-100 text-orange-700 border-orange-200" },
-            { label: "Tasks",       cls: "bg-purple-100 text-purple-700 border-purple-200" },
-            { label: "Output",      cls: "bg-blue-100 text-blue-700 border-blue-200" },
-          ].map(({ label, cls }) => (
-            <span key={label} className={`text-xs font-bold px-2 py-0.5 rounded border ${cls}`}>{label}</span>
+            { term: "Role",    def: "who it is — tutor, evaluator, writing coach", cls: "border-red-300 bg-red-50 text-red-700" },
+            { term: "Goal",    def: "what it's trying to accomplish for the learner", cls: "border-amber-300 bg-amber-50 text-amber-700" },
+            { term: "Tasks",   def: "the steps it can take — outline, draft, review", cls: "border-purple-300 bg-purple-50 text-purple-700" },
+            { term: "Tools",   def: "search, generate, analyze, summarize", cls: "border-blue-300 bg-blue-50 text-blue-700" },
+            { term: "Skills",  def: "how it applies knowledge for your purpose", cls: "border-cyan-300 bg-cyan-50 text-cyan-700" },
+            { term: "Memory",  def: "what it retains across sessions or steps", cls: "border-teal-300 bg-teal-50 text-teal-700" },
+            { term: "Output",  def: "how results are structured and formatted", cls: "border-indigo-300 bg-indigo-50 text-indigo-700" },
+            { term: "Constraints", def: "what it will not do — already your strongest lever", cls: "border-orange-300 bg-orange-50 text-orange-600" },
+          ].map(({ term, def, cls }) => (
+            <div key={term} className={`border rounded-lg px-3 py-2 ${cls}`}>
+              <p className="text-xs font-bold">{term}</p>
+              <p className="text-xs opacity-80 mt-0.5">{def}</p>
+            </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-          <div className="border-l-4 border-red-400 bg-red-50 rounded-r-lg px-3 py-2">
-            <span className="text-xs font-bold text-red-600 uppercase tracking-wide">Role</span>
-            <p className="text-sm text-gray-800 mt-0.5">As the instructor of [COURSE TITLE] in [DISCIPLINE/TOPIC]...</p>
+        <div className="flex items-center justify-between">
+          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl px-4 py-2 flex-1 mr-4">
+            <p className="text-xs text-amber-900"><strong>The tell:</strong> label anything outside course materials as <strong>OUTSIDE COURSE CONTENT</strong> — the AI becomes its own auditor.</p>
           </div>
-          <div className="border-l-4 border-emerald-400 bg-emerald-50 rounded-r-lg px-3 py-2">
-            <span className="text-xs font-bold text-emerald-600 uppercase tracking-wide">Context</span>
-            <p className="text-sm text-gray-800 mt-0.5">I will paste or upload: syllabus &amp; outcomes · specific unit/week · required readings, cases, or datasets</p>
-          </div>
-          <div className="border-l-4 border-amber-400 bg-amber-50 rounded-r-lg px-3 py-2">
-            <span className="text-xs font-bold text-amber-600 uppercase tracking-wide">Goal</span>
-            <p className="text-sm text-gray-800 mt-0.5">Develop a process-based assignment in [writing / research / problem-solving]</p>
-          </div>
-          <div className="border-l-4 border-orange-400 bg-orange-50 rounded-r-lg px-3 py-2">
-            <span className="text-xs font-bold text-orange-600 uppercase tracking-wide">Constraints</span>
-            <p className="text-sm text-gray-800 mt-0.5">Prioritize provided readings · label anything <strong>OUTSIDE COURSE CONTENT</strong> · no fabricated citations</p>
-          </div>
-          <div className="border-l-4 border-purple-400 bg-purple-50 rounded-r-lg px-3 py-2">
-            <span className="text-xs font-bold text-purple-600 uppercase tracking-wide">Tasks</span>
-            <p className="text-sm text-gray-800 mt-0.5">Assignment description · scaffolded steps · per step: materials + student GenAI prompt + instructor engagement check</p>
-          </div>
-          <div className="border-l-4 border-blue-400 bg-blue-50 rounded-r-lg px-3 py-2">
-            <span className="text-xs font-bold text-blue-600 uppercase tracking-wide">Output</span>
-            <p className="text-sm text-gray-800 mt-0.5">3–5 reflection questions asking how students used GenAI and used course materials to judge or revise AI outputs</p>
-          </div>
+          <a href="https://docs.google.com/document/d/1TxwRWoNKdXvt_eXY6SfIUYABG8Wb9fCTTTqx_-k3YTE/edit?usp=sharing" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-emerald-700 font-bold text-sm hover:underline whitespace-nowrap">
+            📄 More examples →
+          </a>
         </div>
-
-        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl px-4 py-3 mb-3">
-          <p className="text-xs font-bold text-amber-800 uppercase tracking-wide mb-1">The Accountability Mechanism</p>
-          <p className="text-sm text-amber-900">The constraint <strong>OUTSIDE COURSE CONTENT</strong> turns the AI into its own auditor. When the AI labels something outside the course, that's the tell — students have to see it, name it, and decide what to do with it.</p>
-        </div>
-
-        <a href="https://docs.google.com/document/d/1TxwRWoNKdXvt_eXY6SfIUYABG8Wb9fCTTTqx_-k3YTE/edit?usp=sharing" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-emerald-700 font-bold text-sm hover:underline">
-          📄 Additional prompt examples →
-        </a>
       </SlideShell>
     ),
   },
