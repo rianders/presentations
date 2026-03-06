@@ -378,7 +378,8 @@ const slides = [
 
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mb-5">
           <p className="text-sm text-emerald-900 font-bold mb-1">Today's Source Material</p>
-          <p className="text-sm text-emerald-800">Class notes: <em>Defining Instantaneous Velocity</em>. One document. Watch what NotebookLM does with it.</p>
+          <p className="text-sm text-emerald-800 mb-2">Class notes: <em>Defining Instantaneous Velocity</em>. One document. Watch what NotebookLM does with it.</p>
+          <a href="https://notebooklm.google.com/notebook/4bc22dbf-89e3-4f84-bac1-87b9724d77a5" target="_blank" rel="noreferrer" className="text-xs font-bold text-emerald-700 underline">→ Open notebook</a>
         </div>
 
         <SectionCard title="NotebookLM" icon="📓">
@@ -696,9 +697,10 @@ meet the rubric.`}</CodeBlock>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
           <SectionCard title="Start Here" icon="🟢">
-            <p className="text-sm">
+            <p className="text-sm mb-2">
               Go to <strong>NotebookLM</strong>. Upload your syllabus and two readings. Generate an audio overview. Listen. Notice what it gets right and what it misses.
             </p>
+            <a href="https://notebooklm.google.com/notebook/7f450fd7-158b-4d9b-87ee-adc1f9879252" target="_blank" rel="noreferrer" className="text-xs font-bold text-emerald-700 underline">→ See example notebook (syllabus + readings)</a>
           </SectionCard>
           <SectionCard title="Go Further" icon="🟡">
             <p className="text-sm">
