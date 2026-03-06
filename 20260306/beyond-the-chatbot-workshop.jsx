@@ -766,23 +766,67 @@ DEPLOY    →  Paste into Canvas`}</CodeBlock>
         </h1>
         <div className="w-16 h-1 bg-amber-600 rounded mb-6" />
 
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-5">
-          <p className="text-sm text-amber-900 font-bold mb-1">The Seat You're Sitting In</p>
-          <p className="text-sm text-amber-800">
-            There is a fundamental difference between a student asking AI to solve a problem and a professor asking AI to evaluate against a rubric. The chatbot doesn't know which seat you're in. You have to tell it.
-          </p>
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+          <p className="text-sm text-amber-900"><strong>The AI doesn't know which seat you're in.</strong> A student and a professor can type the same prompt and get the same answer. Your job is to define the role, the measures, and the limits — so the AI gives back exactly what you designed, not what a chatbot would volunteer.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <SectionCard title="One Sentence" icon="✓">
-            <p className="text-sm">Per rubric criterion: does the work meet it, and where specifically?</p>
-          </SectionCard>
-          <SectionCard title="Concrete Improvements" icon="📝">
-            <p className="text-sm">Short list tied to rubric language. No model answer.</p>
-          </SectionCard>
-          <SectionCard title="Nothing Rewritten" icon="🚫">
-            <p className="text-sm">Nothing solved. Nothing improved. The constraint is the entire pedagogical difference.</p>
-          </SectionCard>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-2">1–5 Rating Scale</p>
+            <p className="text-xs text-gray-500 italic mb-2">Define every step. The AI scores and states why — it can't go further.</p>
+            <div className="space-y-1">
+              {[
+                ["1","No arguable claim present"],
+                ["2","A claim exists but cannot be argued"],
+                ["3","Arguable but vague or too broad"],
+                ["4","Clear and arguable, some specificity"],
+                ["5","Specific, scoped, with clear stakes"],
+              ].map(([n, d]) => (
+                <div key={n} className="flex gap-2">
+                  <span className="text-xs font-black text-amber-600 w-3 flex-shrink-0">{n}</span>
+                  <span className="text-xs text-gray-700">{d}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-2">Checklist</p>
+            <p className="text-xs text-gray-500 italic mb-2">Yes/No against your exact criteria. No elaboration unless you ask for it.</p>
+            <div className="space-y-1.5">
+              {[
+                "Does the introduction identify the research problem?",
+                "Is the methodology described before the findings?",
+                "Are all claims tied to cited evidence?",
+                "Does the conclusion go beyond restating the intro?",
+              ].map(q => (
+                <div key={q} className="flex gap-2">
+                  <span className="text-xs font-bold text-gray-400 flex-shrink-0">□</span>
+                  <span className="text-xs text-gray-700">{q}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-2">Close Reading Prompts</p>
+            <p className="text-xs text-gray-500 italic mb-2">Responses the student must engage with — not answers, not rewrites.</p>
+            <div className="space-y-2">
+              {[
+                "Quote the sentence where the argument is clearest. Explain why.",
+                "Identify the paragraph where the evidence does not match the claim.",
+                "Where does the student's voice disappear? Point to the line.",
+              ].map(q => (
+                <p key={q} className="text-xs text-gray-700 border-l-2 border-amber-300 pl-2">{q}</p>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+        <div className="bg-gray-900 text-white rounded-xl p-4">
+          <p className="text-sm"><span className="text-amber-400 font-bold">The agent advantage:</span> a chatbot left to its own judgment will rewrite the thesis, suggest better evidence, and hand the student a revised paragraph. An agent constrained to your scale can only score it and say why — <strong>the improvement remains the student's work.</strong></p>
         </div>
       </SlideShell>
     ),
