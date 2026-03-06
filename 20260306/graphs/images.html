@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Graph Images</title>
+  <style>
+    body{font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin:2rem; color:#111}
+    h1{font-size:1.4rem}
+    figure{margin:1.5rem 0}
+    img{max-width:100%;height:auto;border:1px solid #ddd;padding:4px;background:#fff}
+    figcaption{font-size:0.95rem;color:#222;margin-top:0.5rem}
+    .meta{font-size:0.85rem;color:#555}
+  </style>
+</head>
+<body>
+  <h1>Graph Images</h1>
+  <p class="meta">Images are referenced relative to this file's location. Click an image or the link to open it.</p>
+
+  <figure>
+    <img src="graph_01_driving.png" alt="Driving graph: position vs time with steady slope changes"/>
+    <figcaption>
+      Driving — position/time graph. <a href="graph_01_driving.png">Open image</a>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="graph_02_limit_continuous.png" alt="Continuous function example with limit equal to function value at a point"/>
+    <figcaption>
+      Limit — continuous. MathML:
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+          <munder>
+            <mo>lim</mo>
+            <mrow><mi>x</mi><mo>&#x2192;</mo><mi>a</mi></mrow>
+          </munder>
+          <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo>
+          <mo>=</mo>
+          <mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo>
+        </mrow>
+      </math>
+      — <a href="graph_02_limit_continuous.png">Open image</a>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="graph_03_limit_hole_value_diff.png" alt="Function with a removable hole where function value differs from the limit"/>
+    <figcaption>
+      Limit — hole / value difference. MathML example:
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+          <munder>
+            <mo>lim</mo>
+            <mrow><mi>x</mi><mo>&#x2192;</mo><mi>a</mi></mrow>
+          </munder>
+          <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo>
+          <mo>=</mo>
+          <mi>L</mi>
+          <mo>,</mo>
+          <mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo><mo>&#x2260;</mo><mi>L</mi>
+        </mrow>
+      </math>
+      — <a href="graph_03_limit_hole_value_diff.png">Open image</a>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="graph_04_limit_hole.png" alt="Graph showing a hole (removable discontinuity) at a point"/>
+    <figcaption>
+      Limit — hole. <a href="graph_04_limit_hole.png">Open image</a>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="graph_05_jump.png" alt="Jump discontinuity where left-hand and right-hand limits differ"/>
+    <figcaption>
+      Jump discontinuity. MathML for differing one-sided limits:
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+          <munder><mo>lim</mo><mrow><mi>x</mi><mo>&#x2192;</mo><mi>a</mi><mo>-</mo></mrow></munder>
+          <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>L</mi>
+          <mo>,</mo>
+          <munder><mo>lim</mo><mrow><mi>x</mi><mo>&#x2192;</mo><mi>a</mi><mo>+</mo></mrow></munder>
+          <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>M</mi>
+          <mo>,</mo>
+          <mi>L</mi><mo>&#x2260;</mo><mi>M</mi>
+        </mrow>
+      </math>
+      — <a href="graph_05_jump.png">Open image</a>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="graph_06_vertical_asymptote.png" alt="Vertical asymptote where function grows without bound near a vertical line"/>
+    <figcaption>
+      Vertical asymptote. MathML example for an infinite limit:
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+          <munder><mo>lim</mo><mrow><mi>x</mi><mo>&#x2192;</mo><mi>a</mi></mrow></munder>
+          <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>&#x221E;</mo>
+        </mrow>
+      </math>
+      — <a href="graph_06_vertical_asymptote.png">Open image</a>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="graph_07_infinite_oscillation.png" alt="Function oscillating infinitely near a point, limit does not exist"/>
+    <figcaption>
+      Infinite oscillation — limit does not exist. <a href="graph_07_infinite_oscillation.png">Open image</a>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="graph_08_linear_with_hole.png" alt="Linear function with a removable hole at one point"/>
+    <figcaption>
+      Linear with hole. <a href="graph_08_linear_with_hole.png">Open image</a>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="graph_09_cube_root_curve.png" alt="Cube-root curve with typical shape passing through origin"/>
+    <figcaption>
+      Cube root curve. MathML for cube root: <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mi>x</mi></msqrt></math> (shown here as square root for demonstration; replace with desired markup if specific form is needed). <a href="graph_09_cube_root_curve.png">Open image</a>
+    </figcaption>
+  </figure>
+
+</body>
+</html>
