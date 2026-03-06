@@ -470,7 +470,7 @@ const slides = [
         <div className="w-16 h-1 bg-emerald-600 rounded mb-6" />
 
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mb-5">
-          <p className="text-sm text-emerald-900">The risk with any AI tool is that it wanders — pulling in outside sources, other textbooks, generic examples that have nothing to do with your course. The fix is explicit constraint in your prompt.</p>
+          <p className="text-sm text-emerald-900">The risk with any AI tool is that it wanders — pulling in outside sources, other textbooks, generic examples that have nothing to do with your course. The fix is explicit constraint in your prompt: <strong>the context is the course.</strong></p>
         </div>
 
         <CodeBlock>{`Use ONLY the materials I have provided.
@@ -482,8 +482,8 @@ come directly from the context I have given you.
 
 If the answer is not in my materials, say so.`}</CodeBlock>
 
-        <DropIn label="Context Is the Course">
-          When you give AI your syllabus, your notes, your readings — and then constrain it to stay there — it stops being a generic chatbot. It becomes something that knows your course the way you know it. That's the shift. Not a better search engine. A thinking partner that works inside the boundaries you set.
+        <DropIn label="The Venn Diagram">
+          When you give AI your syllabus, your notes, your readings — and then constrain it to stay there — everything it produces lives inside the Venn diagram of your materials. The AI doesn't reach outside that circle. The output reflects your course, not the internet.
         </DropIn>
       </SlideShell>
     ),
