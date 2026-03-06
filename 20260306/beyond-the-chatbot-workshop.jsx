@@ -265,50 +265,56 @@ const slides = [
         </h1>
         <div className="w-16 h-1 bg-blue-600 rounded mb-6" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-4">
 
+          {/* Microsoft */}
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-xl">🪟</span>
-              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Microsoft 365</h3>
+              <span className="text-2xl">🪟</span>
+              <h3 className="font-bold text-base text-gray-800">Microsoft 365</h3>
             </div>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">What you have</p>
-            <ul className="space-y-1 text-sm text-gray-700 mb-3">
-              <li>• <strong>Copilot Chat</strong> — via ScarletMail, also available inside M365 apps; includes voice-to-text</li>
-              <li>• <strong>M365 Copilot</strong> — GPT-5.2 (quick &amp; thinking); GPT-5.3 rolling out</li>
-              <li>• <strong>Designer</strong> — AI image and graphic creation</li>
-            </ul>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Context you can provide</p>
-            <ul className="space-y-1 text-xs text-gray-600">
-              <li>• Local files &nbsp;• Work content &nbsp;• Cloud files</li>
-            </ul>
+            <div className="space-y-3">
+              <div>
+                <span className="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded mb-1">Copilot Chat</span>
+                <p className="text-sm text-gray-700">Available in ScarletMail and inside M365 apps. Includes voice-to-text. Powered by GPT-5.2.</p>
+              </div>
+              <div>
+                <span className="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded mb-1">Designer</span>
+                <p className="text-sm text-gray-700">AI image and graphic creation.</p>
+              </div>
+            </div>
+            <p className="text-xs text-gray-400 mt-4 pt-3 border-t border-gray-200">Context: local files · work content · cloud files</p>
           </div>
 
+          {/* Google */}
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-xl">🔵</span>
-              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Google Workspace</h3>
+              <span className="text-2xl">🔵</span>
+              <h3 className="font-bold text-base text-gray-800">Google Workspace — Gemini</h3>
             </div>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Models</p>
-            <ul className="space-y-1 text-xs text-gray-600 mb-3">
-              <li>• <strong>Fast</strong> &nbsp;• <strong>Thinking</strong> &nbsp;• <strong>Pro</strong> — Gemini 3.1 Pro</li>
-            </ul>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gemini tools</p>
-            <ul className="space-y-1 text-sm text-gray-700 mb-3">
-              <li>• Guided Learning &nbsp;• Create Image &nbsp;• Create Music</li>
-              <li>• Canvas &nbsp;• Deep Research</li>
-            </ul>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Context you can provide</p>
-            <ul className="space-y-1 text-xs text-gray-600 mb-3">
-              <li>• Upload images &amp; files &nbsp;• Google Drive &nbsp;• NotebookLM &nbsp;• Voice-to-text</li>
-            </ul>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gems</p>
-            <p className="text-xs text-gray-600 mb-3">Customized Gemini instances — you define the role, context, and constraints. Like an agent, but without autonomy. The closest thing in a licensed tool to designing your own AI.</p>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Also available</p>
-            <ul className="space-y-1 text-xs text-gray-600">
-              <li>• <strong>Gemini CLI</strong> — terminal-based access to Gemini; free but very limited quota</li>
-              <li>• <strong>Google Colab</strong> — cloud-hosted Python notebooks; run AI code without a local install</li>
-            </ul>
+            <div className="space-y-3">
+              <div>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Models</p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-white border border-gray-300 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Flash (fast)</span>
+                  <span className="bg-white border border-gray-300 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Thinking</span>
+                  <span className="bg-white border border-gray-300 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Pro 3.1</span>
+                </div>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Specialized Tools</p>
+                <div className="flex flex-wrap gap-2">
+                  {["Guided Learning","Create Image","Create Music","Canvas","Deep Research","NotebookLM"].map(t => (
+                    <span key={t} className="bg-white border border-gray-300 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">{t}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2">
+                <p className="text-sm font-bold text-blue-800 mb-0.5">Gems</p>
+                <p className="text-sm text-gray-700">Customized Gemini instances — define a role, context, and constraints. The closest thing to your own AI in a licensed tool.</p>
+              </div>
+            </div>
+            <p className="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-200">Context: upload files · Google Drive · voice-to-text</p>
           </div>
 
         </div>
