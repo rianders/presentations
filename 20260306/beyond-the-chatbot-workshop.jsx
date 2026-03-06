@@ -401,7 +401,47 @@ const slides = [
     ),
   },
 
-  /* ─ 6: VIBE CODING ─ */
+  /* ─ 6: GEMS DEMO ─ */
+  {
+    label: "Gems Demo",
+    content: (
+      <SlideShell tag="Demo Flow" tagColor="bg-blue-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Gemini Gems: From Textbook to Interactive Assignment
+        </h1>
+        <div className="w-16 h-1 bg-blue-600 rounded mb-6" />
+
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-5">
+          <p className="text-sm text-blue-900 font-bold mb-1">Today's Source Material</p>
+          <p className="text-sm text-blue-800 mb-2">
+            A chapter from <strong>Dr. Carmela Scala's</strong> open-source Italian 101 textbook — uploaded to a Gemini Gem to generate an interactive assignment.
+          </p>
+          <div className="flex flex-col gap-1">
+            <a href="https://openpub.libraries.rutgers.edu/italian101/" target="_blank" rel="noreferrer" className="text-xs font-bold text-blue-700 underline">→ Italian 101 Open Textbook</a>
+            <a href="capitolo-1-libro-open-source-compressed.pdf" target="_blank" rel="noreferrer" className="text-xs font-bold text-blue-700 underline">→ Source PDF (Capitolo 1)</a>
+          </div>
+        </div>
+
+        <SectionCard title="What a Gem Does" icon="💎">
+          <ul className="space-y-2 text-sm">
+            <li>• You define the role, context, and constraints — once</li>
+            <li>• Upload the PDF chapter — the Gem reads and works within it</li>
+            <li>• Ask it to generate an interactive assignment from the material</li>
+            <li>• The Gem stays in character: it doesn't wander beyond what you gave it</li>
+          </ul>
+          <p className="text-xs text-gray-500 mt-3 italic">
+            You're not prompting from scratch every time. You're designing a reusable AI collaborator for your course.
+          </p>
+        </SectionCard>
+
+        <DropIn label="The Difference from Plain Gemini">
+          A regular Gemini chat starts fresh every time. A Gem carries your instructions, your context, and your constraints into every conversation. Same model — different relationship.
+        </DropIn>
+      </SlideShell>
+    ),
+  },
+
+  /* ─ 7: VIBE CODING ─ */
   {
     label: "Vibe Code",
     content: (
