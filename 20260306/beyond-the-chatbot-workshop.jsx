@@ -174,9 +174,6 @@ const slides = [
           </div>
         </a>
 
-        <Note>
-          <strong>Open with a demo, not a slide.</strong> Click the NotebookLM link above — play the audio overview. Let it land before saying anything.
-        </Note>
       </SlideShell>
     ),
   },
