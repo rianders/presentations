@@ -104,9 +104,11 @@ const slides = [
     label: "About",
     content: (
       <SlideShell tag="Introduction" tagColor="bg-red-700">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-1 leading-tight">
           Who I Am
         </h1>
+        <p className="text-lg font-bold text-gray-700">Rick Anderson</p>
+        <p className="text-sm text-gray-500 mb-2">Director of Emerging Technologies, University Online Education Services</p>
         <div className="w-16 h-1 bg-red-600 rounded mb-6" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
@@ -161,8 +163,19 @@ const slides = [
           </p>
         </div>
 
+        <a href="https://notebooklm.google.com/notebook/8637d705-971b-4140-bdba-43e31b3290a1" target="_blank" rel="noreferrer" className="block bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4 hover:bg-blue-100 transition-colors">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">📓</span>
+            <div>
+              <p className="text-xs font-black uppercase tracking-wide text-blue-700 mb-1">Live Example — NotebookLM Study Guide</p>
+              <p className="text-sm font-bold text-gray-900">CITI Training: Biomedical &amp; Clinical Research Investigators</p>
+              <p className="text-xs text-gray-500 mt-1">AI-generated study guide with audio overview, Q&amp;A, and source citations ↗</p>
+            </div>
+          </div>
+        </a>
+
         <Note>
-          <strong>Open with a demo, not a slide.</strong> NotebookLM audio overview or DeepSeek OCR → LaTeX. Let it land before saying anything.
+          <strong>Open with a demo, not a slide.</strong> Click the NotebookLM link above — play the audio overview. Let it land before saying anything.
         </Note>
       </SlideShell>
     ),
