@@ -533,6 +533,65 @@ If the answer is not in my materials, say so.`}</CodeBlock>
     ),
   },
 
+  /* ─ CONTEXT ENGINEERING ─ */
+  {
+    label: "Context Engineering",
+    content: (
+      <SlideShell tag="Course Design" tagColor="bg-emerald-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Context Engineering Options for Your Course
+        </h1>
+        <div className="w-16 h-1 bg-emerald-600 rounded mb-4" />
+
+        <div className="flex flex-wrap items-center gap-2 mb-4">
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mr-1">Elements used in this prompt:</p>
+          {[
+            { label: "Role",        cls: "bg-red-100 text-red-700 border-red-200" },
+            { label: "Context",     cls: "bg-emerald-100 text-emerald-700 border-emerald-200" },
+            { label: "Goal",        cls: "bg-amber-100 text-amber-700 border-amber-200" },
+            { label: "Constraints", cls: "bg-orange-100 text-orange-700 border-orange-200" },
+            { label: "Tasks",       cls: "bg-purple-100 text-purple-700 border-purple-200" },
+            { label: "Output",      cls: "bg-blue-100 text-blue-700 border-blue-200" },
+          ].map(({ label, cls }) => (
+            <span key={label} className={`text-xs font-bold px-2 py-0.5 rounded border ${cls}`}>{label}</span>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <div className="border-l-4 border-red-400 bg-red-50 rounded-r-lg px-3 py-2">
+            <span className="text-xs font-bold text-red-600 uppercase tracking-wide">Role</span>
+            <p className="text-sm text-gray-800 mt-0.5">As the instructor of [COURSE TITLE] in [DISCIPLINE/TOPIC]...</p>
+          </div>
+          <div className="border-l-4 border-emerald-400 bg-emerald-50 rounded-r-lg px-3 py-2">
+            <span className="text-xs font-bold text-emerald-600 uppercase tracking-wide">Context</span>
+            <p className="text-sm text-gray-800 mt-0.5">I will paste or upload: syllabus &amp; outcomes · specific unit/week · required readings, cases, or datasets</p>
+          </div>
+          <div className="border-l-4 border-amber-400 bg-amber-50 rounded-r-lg px-3 py-2">
+            <span className="text-xs font-bold text-amber-600 uppercase tracking-wide">Goal</span>
+            <p className="text-sm text-gray-800 mt-0.5">Develop a process-based assignment in [writing / research / problem-solving]</p>
+          </div>
+          <div className="border-l-4 border-orange-400 bg-orange-50 rounded-r-lg px-3 py-2">
+            <span className="text-xs font-bold text-orange-600 uppercase tracking-wide">Constraints</span>
+            <p className="text-sm text-gray-800 mt-0.5">Prioritize provided readings · label anything <strong>OUTSIDE COURSE CONTENT</strong> · no fabricated citations</p>
+          </div>
+          <div className="border-l-4 border-purple-400 bg-purple-50 rounded-r-lg px-3 py-2">
+            <span className="text-xs font-bold text-purple-600 uppercase tracking-wide">Tasks</span>
+            <p className="text-sm text-gray-800 mt-0.5">Assignment description · scaffolded steps · per step: materials + student GenAI prompt + instructor engagement check</p>
+          </div>
+          <div className="border-l-4 border-blue-400 bg-blue-50 rounded-r-lg px-3 py-2">
+            <span className="text-xs font-bold text-blue-600 uppercase tracking-wide">Output</span>
+            <p className="text-sm text-gray-800 mt-0.5">3–5 reflection questions asking how students used GenAI and used course materials to judge or revise AI outputs</p>
+          </div>
+        </div>
+
+        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl px-4 py-3">
+          <p className="text-xs font-bold text-amber-800 uppercase tracking-wide mb-1">The Accountability Mechanism</p>
+          <p className="text-sm text-amber-900">The constraint <strong>OUTSIDE COURSE CONTENT</strong> turns the AI into its own auditor. When the AI labels something outside the course, that's the tell — students have to see it, name it, and decide what to do with it.</p>
+        </div>
+      </SlideShell>
+    ),
+  },
+
   /* ─ 5: NOTEBOOKLM ─ */
   {
     label: "NotebookLM",
