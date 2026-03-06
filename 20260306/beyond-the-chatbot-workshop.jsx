@@ -335,29 +335,46 @@ const slides = [
         </h1>
         <div className="w-16 h-1 bg-indigo-600 rounded mb-6" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
-          <SectionCard title="LLMs — Large Language Models" icon="💬">
-            <p className="text-sm mb-2">Text in, text out. The foundation layer. GPT, Gemini, Claude, Llama, DeepSeek.</p>
-            <p className="text-xs text-gray-500 italic">This is the chat box most people know. It's the starting point, not the whole story.</p>
-          </SectionCard>
-          <SectionCard title="Omni Models" icon="🌐">
-            <p className="text-sm mb-2">Text, image, audio, video, speech — in and out, natively. Not bolted on, built in.</p>
-            <p className="text-xs text-gray-500 italic">Gemini, GPT-4o, and Claude now process multiple modes in a single conversation.</p>
-          </SectionCard>
-          <SectionCard title="Local Models" icon="🏠">
-            <p className="text-sm mb-2">Models that run on your machine or your institution's servers. No data leaves the building.</p>
-            <p className="text-xs text-gray-500 italic">DeepSeek OCR, Llama, Whisper. Try <a href="https://handy.computer" target="_blank" rel="noreferrer" className="text-indigo-600 font-bold hover:underline">handy.computer</a> — free local speech-to-text.</p>
-            <p className="text-xs text-amber-600 mt-2">⚠ Rutgers has no system for evaluating free/open source tools. These sit outside the licensed ecosystem.</p>
-          </SectionCard>
-          <SectionCard title="Agents" icon="🤖" accent={true}>
-            <p className="text-sm mb-2">AI that doesn't just answer — it acts, uses tools, chains steps, and operates your software.</p>
-            <p className="text-xs text-red-100 italic">CoWork, Copilot, agentic workflows. This is where everything is heading.</p>
-          </SectionCard>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl">💬</span>
+              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">LLMs</h3>
+            </div>
+            <p className="text-sm text-gray-800 font-semibold mb-1">The Text Foundation</p>
+            <p className="text-sm text-gray-700 mb-3">Text in, text out. This is what chatbots are built on — GPT, Gemini, Claude, Llama, DeepSeek.</p>
+            <p className="text-xs text-gray-500 italic">The chat box is one application of this layer. It's the starting point, not the whole story.</p>
+          </div>
+
+          <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl">🌐</span>
+              <h3 className="font-bold text-sm uppercase tracking-wide text-indigo-500">Omni Models</h3>
+            </div>
+            <p className="text-sm text-indigo-900 font-semibold mb-1">All the Senses</p>
+            <p className="text-sm text-indigo-800 mb-3">The step change. These models see, hear, speak, and create media natively — not bolted on.</p>
+            <div className="flex flex-wrap gap-1.5">
+              {["👁 Sight","👂 Hearing","🗣 Speech","🎵 Audio","🎬 Video","🖼 Images"].map(s => (
+                <span key={s} className="bg-white border border-indigo-200 text-indigo-700 text-xs font-medium px-2 py-0.5 rounded-full">{s}</span>
+              ))}
+            </div>
+            <p className="text-xs text-indigo-500 italic mt-3">Gemini, GPT-4o, Claude. More common now than ever before.</p>
+          </div>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl">🏠</span>
+              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Local Models</h3>
+            </div>
+            <p className="text-sm text-gray-800 font-semibold mb-1">No Data Leaves</p>
+            <p className="text-sm text-gray-700 mb-3">Models that run on your machine or institution's servers. DeepSeek OCR, Llama, Whisper.</p>
+            <p className="text-xs text-amber-600">⚠ These sit outside the licensed ecosystem — Rutgers has no evaluation process for open-source tools.</p>
+          </div>
         </div>
 
-        <Note>
-          <strong>The shift:</strong> LLM → Omni → Agent is not a replacement chain. Each layer adds capability. Today's tools combine all three. The question is which capabilities you need for which problem.
-        </Note>
+        <div className="bg-gray-900 text-white rounded-xl p-4">
+          <p className="text-sm text-center"><span className="text-indigo-300 font-bold">These aren't separate worlds — they're the palette.</span> Agents draw from all of them, combining capabilities to do work no single chatbot exchange can.</p>
+        </div>
       </SlideShell>
     ),
   },
@@ -409,13 +426,13 @@ const slides = [
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
           <div className="bg-gray-100 border border-gray-200 rounded-xl p-5">
             <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500 mb-3">Chatbot</h3>
-            <p className="text-sm text-gray-700 mb-3">Responds to whoever is typing. It does not know if you are a student asking for the answer or an instructor designing the question.</p>
-            <p className="text-sm text-gray-700">The same model. The same behavior. No difference unless <em>you</em> build one in.</p>
+            <p className="text-sm text-gray-700 mb-3">One tool. One exchange at a time. It responds — it doesn't plan, act, or persist.</p>
+            <p className="text-sm text-gray-700">A chatbot is one instrument an agent can pick up, use, and put down. It's a means, not the end.</p>
           </div>
           <div className="bg-indigo-600 text-white rounded-xl p-5">
             <h3 className="font-bold text-sm uppercase tracking-wide text-indigo-100 mb-3">Agent</h3>
-            <p className="text-sm text-indigo-50 mb-3">Knows who it is talking to — because <strong>you designed it that way</strong>. The instructor's role, intent, and constraints are built in before the first message.</p>
-            <p className="text-sm text-indigo-50">That design is the work. The agent is the result.</p>
+            <p className="text-sm text-indigo-50 mb-3">An orchestrator. It spawns tools — chatbots, search, code execution, APIs — and chains them together to <strong>do work, complete tasks, and achieve goals.</strong></p>
+            <p className="text-sm text-indigo-50">You don't prompt an agent. You design it, then set it in motion.</p>
           </div>
         </div>
 
