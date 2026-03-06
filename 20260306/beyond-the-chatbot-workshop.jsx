@@ -423,44 +423,40 @@ const slides = [
         </h1>
         <div className="w-16 h-1 bg-indigo-600 rounded mb-6" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-4">
           <div className="bg-gray-100 border border-gray-200 rounded-xl p-5">
-            <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500 mb-3">Chatbot</h3>
-            <p className="text-sm text-gray-700 mb-3">One tool. One exchange at a time. It responds — it doesn't plan, act, or persist.</p>
-            <p className="text-sm text-gray-700">A chatbot is one instrument an agent can pick up, use, and put down. It's a means, not the end.</p>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-lg">💬</span>
+              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Chatbot — e.g. ChatGPT</h3>
+            </div>
+            <p className="text-sm text-gray-700 mb-2">One exchange at a time. You type, it responds. It doesn't plan, act across steps, or persist between sessions.</p>
+            <p className="text-sm text-gray-700">Everything you know from ChatGPT fits here. It's the foundation — and one tool among many that agents can call.</p>
           </div>
           <div className="bg-indigo-600 text-white rounded-xl p-5">
-            <h3 className="font-bold text-sm uppercase tracking-wide text-indigo-100 mb-3">Agent</h3>
-            <p className="text-sm text-indigo-50 mb-3">An orchestrator. It spawns tools — chatbots, search, code execution, APIs — and chains them together to <strong>do work, complete tasks, and achieve goals.</strong></p>
-            <p className="text-sm text-indigo-50">You don't prompt an agent. You design it, then set it in motion.</p>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-lg">🤖</span>
+              <h3 className="font-bold text-sm uppercase tracking-wide text-indigo-100">Agent — Orchestrator</h3>
+            </div>
+            <p className="text-sm text-indigo-50 mb-2">Spawns tools — chatbots, search, code execution, APIs — chains them together, and works autonomously to <strong>complete tasks and achieve goals.</strong></p>
+            <p className="text-sm text-indigo-50">You don't prompt it. You give it a goal and access to your tools, and it figures out the steps.</p>
           </div>
         </div>
 
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-5">
-          <p className="text-sm font-bold text-gray-700 mb-3">When you design an agent, you are specifying:</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-            {[
-              { term: "Role", def: "who it is — evaluator, tutor, guide" },
-              { term: "Context", def: "what it knows going in" },
-              { term: "Goal", def: "what it is trying to accomplish" },
-              { term: "Tasks", def: "the steps it can take" },
-              { term: "Tools", def: "what it can invoke — search, generate, analyze" },
-              { term: "Skills", def: "how it applies tools well for your purpose" },
-              { term: "Memory", def: "what it retains across steps" },
-              { term: "Constraints", def: "what it will not do" },
-              { term: "Output", def: "how results are structured" },
-            ].map(({ term, def }) => (
-              <div key={term} className="bg-white border border-gray-200 rounded-lg px-3 py-2">
-                <p className="text-xs font-bold text-indigo-700">{term}</p>
-                <p className="text-xs text-gray-600 mt-0.5">{def}</p>
-              </div>
-            ))}
+        <div className="bg-red-950 border border-red-700 rounded-xl p-5 mb-4">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl mt-0.5">⚠️</span>
+            <div>
+              <p className="text-red-300 font-black text-sm uppercase tracking-wide mb-1">New Milestone — and a Warning: OpenClaw</p>
+              <p className="text-red-100 text-sm mb-2">OpenClaw is a self-hosted open-source agent that went viral in early 2026. You give it your credentials — email, calendar, messaging apps, terminals — and it autonomously completes tasks using as many sub-agents as it needs, then reports back.</p>
+              <p className="text-red-200 text-sm mb-2">A January 2026 security audit found <strong className="text-white">512 vulnerabilities, 8 critical.</strong> This is where the technology is heading — and it's not ready for unsupervised use with institutional data.</p>
+              <p className="text-red-300 text-xs italic">This is not a recommendation. It's a signal of what autonomous agents now look like in the wild.</p>
+            </div>
           </div>
         </div>
 
         <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4">
-          <p className="text-sm font-bold text-indigo-900 mb-1">Your closest on-ramp: Gemini Gems</p>
-          <p className="text-sm text-indigo-800">A Gem is a customized Gemini — you write the role, give it context, set its constraints. Available via your ScarletMail account. It is not a full agent, but it is where agent thinking starts: you are no longer a user of the chatbot. You are its designer.</p>
+          <p className="text-sm font-bold text-indigo-900 mb-1">Your safe on-ramp: Gemini Gems</p>
+          <p className="text-sm text-indigo-800">A Gem is a customized Gemini — you define the role, give it context, set constraints. Available in your ScarletMail account. Not a full agent, but where agent thinking starts.</p>
         </div>
       </SlideShell>
     ),
