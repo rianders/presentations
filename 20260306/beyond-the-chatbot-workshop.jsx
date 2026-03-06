@@ -740,7 +740,8 @@ meet the rubric.`}</CodeBlock>
           </SectionCard>
           <SectionCard title="Move 2: Clean Diagram" icon="✏️">
             <p className="text-sm mb-1">Rough sketch → clean rendered version</p>
-            <p className="text-xs text-gray-500 italic">Connects to the STEM thread. Same concept, consistent style.</p>
+            <p className="text-xs text-gray-500 italic mb-2">Connects to the STEM thread. Same concept, consistent style.</p>
+            <a href="https://gemini.google.com/app/a1a44410b43b9642" target="_blank" rel="noreferrer" className="text-xs font-bold text-indigo-600 underline">→ See example</a>
           </SectionCard>
           <SectionCard title="Move 3: 3D View" icon="🏛️" accent={true}>
             <p className="text-sm mb-1">2D photo → 3D spatial model</p>
