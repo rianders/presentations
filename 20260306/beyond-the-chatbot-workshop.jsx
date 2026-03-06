@@ -404,25 +404,61 @@ const slides = [
 
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mb-5">
           <p className="text-sm text-emerald-900">
-            Canvas <strong>delivers</strong> your course. It does not <strong>think</strong> about it. Your syllabus, readings, lecture notes, rubrics, and assessments are related to each other — but no system treats them that way.
+            Students learn from <strong>you</strong> — how you organize a course, the connections you draw, the sequence you choose. Canvas delivers that structure. But it is not a deep authoring tool. If you want interactivity and engagement, you need something that can <strong>think with your materials</strong>.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-4">
-          <SectionCard title="Open Source = Permission to Transform" icon="📖">
-            <p className="text-sm">
-              A proprietary textbook can't be fed to AI tools or redistributed as derivatives. With open source, <strong>derivatives are the point</strong>.
-            </p>
-            <p className="text-xs text-gray-500 mt-2 italic">
-              Cite the source. Note when AI was used. Model the practice you want students to follow.
-            </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+          <SectionCard title="Canvas Organizes" icon="📋">
+            <p className="text-sm">Canvas is where your course lives. It is not where your course thinks. Your syllabus, readings, notes, and rubrics are related — but Canvas doesn't treat them that way.</p>
           </SectionCard>
-          <SectionCard title="Ownership" icon="🔑">
-            <p className="text-sm">
-              Materials in Canvas belong to the Canvas workflow. Materials in <strong>a folder you own</strong>, fed into AI tools, belong to you. When you change institutions or tools, you have the source.
-            </p>
+          <SectionCard title="AI Works in Context" icon="🤖" accent={true}>
+            <p className="text-sm">Feed AI your materials and it can generate interactive assignments, quizzes, summaries, and discussion prompts — all grounded in your course, not someone else's.</p>
+          </SectionCard>
+          <SectionCard title="NotebookLM Is the Entry Point" icon="📓">
+            <p className="text-sm">Upload your notes, readings, or syllabus. NotebookLM indexes them and lets you — and your students — interact with your course as a knowledge base.</p>
           </SectionCard>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <SectionCard title="Open Source = Permission to Transform" icon="📖">
+            <p className="text-sm">A proprietary textbook can't be fed to AI tools or redistributed as derivatives. With open source, <strong>derivatives are the point</strong>.</p>
+            <p className="text-xs text-gray-500 mt-2 italic">Cite the source. Note when AI was used. Model the practice you want students to follow.</p>
+          </SectionCard>
+          <SectionCard title="Ownership" icon="🔑">
+            <p className="text-sm">Materials in Canvas belong to the Canvas workflow. Materials in <strong>a folder you own</strong>, fed into AI tools, belong to you.</p>
+          </SectionCard>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  /* ─ CONTEXT PROMPT ─ */
+  {
+    label: "Context Prompt",
+    content: (
+      <SlideShell tag="The Key Constraint" tagColor="bg-emerald-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Keeping AI in Your Course
+        </h1>
+        <div className="w-16 h-1 bg-emerald-600 rounded mb-6" />
+
+        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mb-5">
+          <p className="text-sm text-emerald-900">The risk with any AI tool is that it wanders — pulling in outside sources, other textbooks, generic examples that have nothing to do with your course. The fix is explicit constraint in your prompt.</p>
+        </div>
+
+        <CodeBlock>{`Use ONLY the materials I have provided.
+Do NOT draw from outside sources, other textbooks,
+or general knowledge.
+
+All examples, explanations, and questions must
+come directly from the context I have given you.
+
+If the answer is not in my materials, say so.`}</CodeBlock>
+
+        <DropIn label="Context Is the Course">
+          When you give AI your syllabus, your notes, your readings — and then constrain it to stay there — it stops being a generic chatbot. It becomes something that knows your course the way you know it. That's the shift. Not a better search engine. A thinking partner that works inside the boundaries you set.
+        </DropIn>
       </SlideShell>
     ),
   },
