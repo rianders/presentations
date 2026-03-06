@@ -584,10 +584,14 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </div>
         </div>
 
-        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl px-4 py-3">
+        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl px-4 py-3 mb-3">
           <p className="text-xs font-bold text-amber-800 uppercase tracking-wide mb-1">The Accountability Mechanism</p>
           <p className="text-sm text-amber-900">The constraint <strong>OUTSIDE COURSE CONTENT</strong> turns the AI into its own auditor. When the AI labels something outside the course, that's the tell — students have to see it, name it, and decide what to do with it.</p>
         </div>
+
+        <a href="https://docs.google.com/document/d/1TxwRWoNKdXvt_eXY6SfIUYABG8Wb9fCTTTqx_-k3YTE/edit?usp=sharing" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-emerald-700 font-bold text-sm hover:underline">
+          📄 Additional prompt examples →
+        </a>
       </SlideShell>
     ),
   },
