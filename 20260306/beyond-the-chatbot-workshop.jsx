@@ -744,7 +744,9 @@ meet the rubric.`}</CodeBlock>
           </SectionCard>
           <SectionCard title="Move 3: 3D View" icon="🏛️" accent={true}>
             <p className="text-sm mb-1">2D photo → 3D spatial model</p>
-            <p className="text-xs text-red-100 italic">Architecture, urban planning, art history, archaeology, biology.</p>
+            <p className="text-xs text-red-100 italic mb-2">Architecture, urban planning, art history, archaeology, biology.</p>
+            <p className="text-xs text-red-100 font-bold mb-1">Bonus:</p>
+            <a href="https://www.meshy.ai/workspace" target="_blank" rel="noreferrer" className="text-xs font-bold text-white underline">→ Meshy — image to 3D model</a>
           </SectionCard>
         </div>
       </SlideShell>
