@@ -75,10 +75,7 @@ const slides = [
     label: "Title",
     content: (
       <div className="flex flex-col items-center justify-center h-full text-center px-6">
-        <div className="bg-yellow-400 text-yellow-900 text-xs font-black tracking-widest px-4 py-1 rounded mb-4">
-          DRAFT — DO NOT DISTRIBUTE
-        </div>
-        <div className="bg-red-600 text-white text-sm font-black tracking-widest px-6 py-2 rounded mb-8">
+<div className="bg-red-600 text-white text-sm font-black tracking-widest px-6 py-2 rounded mb-8">
           RUTGERS UNIVERSITY
         </div>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight">
@@ -88,6 +85,16 @@ const slides = [
         <div className="w-24 h-1 bg-red-600 rounded my-6" />
 <p className="text-gray-400 text-sm mt-1">Office of University Online Education Services</p>
         <p className="text-gray-400 text-sm">March 2026</p>
+        <div className="mt-6 flex flex-col items-center gap-2">
+          <img
+            src="20260306/qr-beyond-chatbot.png"
+            alt="QR code for this presentation"
+            className="rounded-lg shadow"
+            width="120"
+            height="120"
+          />
+          <p className="text-gray-400 text-xs">Scan to follow along</p>
+        </div>
       </div>
     ),
   },
