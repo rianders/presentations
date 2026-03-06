@@ -123,11 +123,11 @@ const slides = [
 
   /* ─ 2: THE PROVOCATION ─ */
   {
-    label: "Provocation",
+    label: "The Challenge of Now",
     content: (
       <SlideShell tag="Segment 1 · 10 min" tagColor="bg-red-700">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
-          The Provocation
+          The Challenge of Now
         </h1>
         <div className="w-16 h-1 bg-red-600 rounded mb-6" />
 
@@ -203,7 +203,106 @@ const slides = [
     ),
   },
 
-  /* ─ 3: THE LANDSCAPE ─ */
+  /* ─ ACCESSIBILITY PRINCIPLE ─ */
+  {
+    label: "Accessibility",
+    content: (
+      <SlideShell tag="Guiding Principle" tagColor="bg-teal-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Accessibility Is Not Optional
+        </h1>
+        <div className="w-16 h-1 bg-teal-600 rounded mb-6" />
+
+        <div className="bg-red-600 text-white rounded-xl p-5 mb-5">
+          <p className="text-lg font-bold mb-1">Deadline: April 24, 2026</p>
+          <p className="text-sm text-red-100">Federal digital accessibility requirements take effect. Course materials must meet <strong>WCAG 2.1</strong> standards. This is not a recommendation — it is a compliance requirement.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+          <SectionCard title="The University Position" icon="🏛️">
+            <p className="text-sm mb-2">Rutgers is committed to ensuring all digital content is accessible to everyone, including people with disabilities.</p>
+            <a href="https://academicaffairs.rutgers.edu/digital-accessibility" target="_blank" rel="noreferrer" className="text-xs font-bold text-teal-700 underline">→ academicaffairs.rutgers.edu/digital-accessibility</a>
+          </SectionCard>
+          <SectionCard title="Where AI Comes In" icon="🤖" accent={true}>
+            <p className="text-sm">For materials that are difficult or impossible to make accessible by hand — scanned PDFs, figures, charts, handwritten documents — AI tools can do in minutes what would take hours.</p>
+          </SectionCard>
+        </div>
+
+        <div className="bg-teal-50 border border-teal-200 rounded-xl p-4">
+          <p className="text-sm text-teal-900"><strong>This thread runs through the whole workshop.</strong> Every demo today has an accessibility dimension. We will return to this with a concrete pipeline — AI vision describing figures, generating alt text, producing narrated audio — before we are done.</p>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  /* ─ WHAT YOU HAVE ─ */
+  {
+    label: "Your Tools",
+    content: (
+      <SlideShell tag="Segment 2 · 10 min" tagColor="bg-blue-600">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          What You Actually Have
+        </h1>
+        <div className="w-16 h-1 bg-blue-600 rounded mb-6" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xl">🪟</span>
+              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Microsoft 365</h3>
+            </div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">What you have</p>
+            <ul className="space-y-1 text-sm text-gray-700 mb-3">
+              <li>• <strong>Copilot Chat</strong> — via ScarletMail, also available inside M365 apps; includes voice-to-text</li>
+              <li>• <strong>M365 Copilot</strong> — GPT-5.2 (quick &amp; thinking); GPT-5.3 rolling out</li>
+              <li>• <strong>Designer</strong> — AI image and graphic creation</li>
+            </ul>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Context you can provide</p>
+            <ul className="space-y-1 text-xs text-gray-600">
+              <li>• Local files &nbsp;• Work content &nbsp;• Cloud files</li>
+            </ul>
+          </div>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xl">🔵</span>
+              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Google Workspace</h3>
+            </div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Models</p>
+            <ul className="space-y-1 text-xs text-gray-600 mb-3">
+              <li>• <strong>Fast</strong> &nbsp;• <strong>Thinking</strong> &nbsp;• <strong>Pro</strong> — Gemini 3.1 Pro</li>
+            </ul>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gemini tools</p>
+            <ul className="space-y-1 text-sm text-gray-700 mb-3">
+              <li>• Guided Learning &nbsp;• Create Image &nbsp;• Create Music</li>
+              <li>• Canvas &nbsp;• Deep Research</li>
+            </ul>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Context you can provide</p>
+            <ul className="space-y-1 text-xs text-gray-600 mb-3">
+              <li>• Upload images &amp; files &nbsp;• Google Drive &nbsp;• NotebookLM &nbsp;• Voice-to-text</li>
+            </ul>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gems</p>
+            <p className="text-xs text-gray-600 mb-3">Customized Gemini instances — you define the role, context, and constraints. Like an agent, but without autonomy. The closest thing in a licensed tool to designing your own AI.</p>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Also available</p>
+            <ul className="space-y-1 text-xs text-gray-600">
+              <li>• <strong>Gemini CLI</strong> — terminal-based access to Gemini; free but very limited quota</li>
+              <li>• <strong>Google Colab</strong> — cloud-hosted Python notebooks; run AI code without a local install</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div className="bg-gray-900 text-white rounded-xl p-5">
+          <p className="text-sm font-bold text-red-400 mb-2">⚠ What Is NOT in the License</p>
+          <p className="text-sm mb-1">Personal ChatGPT and Claude accounts have <strong>no institutional data agreement</strong>. Student work entered there is a FERPA exposure.</p>
+          <p className="text-xs text-gray-400">Same rule as always: if it's about your class or your students, use a licensed tool.</p>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  /* ─ THE LANDSCAPE ─ */
   {
     label: "Landscape",
     content: (
@@ -288,73 +387,6 @@ const slides = [
         <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4">
           <p className="text-sm font-bold text-indigo-900 mb-1">Your closest on-ramp: Gemini Gems</p>
           <p className="text-sm text-indigo-800">A Gem is a customized Gemini — you write the role, give it context, set its constraints. Available via your ScarletMail account. It is not a full agent, but it is where agent thinking starts: you are no longer a user of the chatbot. You are its designer.</p>
-        </div>
-      </SlideShell>
-    ),
-  },
-
-  /* ─ 3: WHAT YOU HAVE ─ */
-  {
-    label: "Your Tools",
-    content: (
-      <SlideShell tag="Segment 2 · 10 min" tagColor="bg-blue-600">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
-          What You Actually Have
-        </h1>
-        <div className="w-16 h-1 bg-blue-600 rounded mb-6" />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-xl">🪟</span>
-              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Microsoft 365</h3>
-            </div>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">What you have</p>
-            <ul className="space-y-1 text-sm text-gray-700 mb-3">
-              <li>• <strong>Copilot Chat</strong> — via ScarletMail, also available inside M365 apps; includes voice-to-text</li>
-              <li>• <strong>M365 Copilot</strong> — GPT-5.2 (quick &amp; thinking); GPT-5.3 rolling out</li>
-              <li>• <strong>Designer</strong> — AI image and graphic creation</li>
-            </ul>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Context you can provide</p>
-            <ul className="space-y-1 text-xs text-gray-600">
-              <li>• Local files &nbsp;• Work content &nbsp;• Cloud files</li>
-            </ul>
-          </div>
-
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-xl">🔵</span>
-              <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500">Google Workspace</h3>
-            </div>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Models</p>
-            <ul className="space-y-1 text-xs text-gray-600 mb-3">
-              <li>• <strong>Fast</strong> &nbsp;• <strong>Thinking</strong> &nbsp;• <strong>Pro</strong> — Gemini 3.1 Pro</li>
-            </ul>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gemini tools</p>
-            <ul className="space-y-1 text-sm text-gray-700 mb-3">
-              <li>• Guided Learning &nbsp;• Create Image &nbsp;• Create Music</li>
-              <li>• Canvas &nbsp;• Deep Research</li>
-            </ul>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Context you can provide</p>
-            <ul className="space-y-1 text-xs text-gray-600 mb-3">
-              <li>• Upload images &amp; files &nbsp;• Google Drive &nbsp;• NotebookLM &nbsp;• Voice-to-text</li>
-            </ul>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gems</p>
-            <p className="text-xs text-gray-600 mb-3">Customized Gemini instances — you define the role, context, and constraints. Like an agent, but without autonomy. The closest thing in a licensed tool to designing your own AI.</p>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Also available</p>
-            <ul className="space-y-1 text-xs text-gray-600">
-              <li>• <strong>Gemini CLI</strong> — terminal-based access to Gemini; free but very limited quota</li>
-              <li>• <strong>Google Colab</strong> — cloud-hosted Python notebooks; run AI code without a local install</li>
-            </ul>
-          </div>
-
-        </div>
-
-        <div className="bg-gray-900 text-white rounded-xl p-5">
-          <p className="text-sm font-bold text-red-400 mb-2">⚠ What Is NOT in the License</p>
-          <p className="text-sm mb-1">Personal ChatGPT and Claude accounts have <strong>no institutional data agreement</strong>. Student work entered there is a FERPA exposure.</p>
-          <p className="text-xs text-gray-400">Same rule as always: if it's about your class or your students, use a licensed tool.</p>
         </div>
       </SlideShell>
     ),
@@ -681,11 +713,11 @@ meet the rubric.`}</CodeBlock>
 
   /* ─ 12: ACCESSIBILITY ─ */
   {
-    label: "Accessibility",
+    label: "Making It Accessible",
     content: (
       <SlideShell tag="AI Vision" tagColor="bg-pink-700">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
-          Accessibility at Scale
+          Making It Accessible
         </h1>
         <div className="w-16 h-1 bg-pink-600 rounded mb-6" />
 
