@@ -654,24 +654,18 @@ meet the rubric.`}</CodeBlock>
         </h1>
         <div className="w-16 h-1 bg-amber-600 rounded mb-6" />
 
-        <p className="text-sm text-gray-600 mb-5">A student submits a photo of handwritten math. A default chatbot sees the math and <strong>solves it</strong>. That's the opposite of what the professor needs.</p>
+        <p className="text-sm text-gray-600 mb-5">Handwritten STEM notation in course materials — equations, diagrams, derivations — is inaccessible by default. A regular chatbot sees the math and <strong>solves it</strong>. That's not what you need. You need it digitized and rendered so it works in Canvas.</p>
 
         <div className="space-y-4 mb-5">
           <PipelineStep num="1" title="DeepSeek OCR 2">
-            Open source, 3B parameters. Feed it handwritten math → structured markdown with LaTeX. Demo at huggingface.co/spaces — no setup required.
+            Open source, 3B parameters. Feed it handwritten math → structured markdown with LaTeX. <a href="https://huggingface.co/spaces/ricklon/DeepSeek-OCR-2-Math" target="_blank" rel="noreferrer" className="font-bold text-amber-700 underline">→ Try the demo on Hugging Face</a> — no setup required.
           </PipelineStep>
           <PipelineStep num="2" title="MathJax Rendering">
             One script tag closes the gap. MathJax tolerates imperfect OCR LaTeX gracefully — and it's what Canvas uses internally.
           </PipelineStep>
           <PipelineStep num="3" title="Vibe-Code the Assembler">
-            Small Python script in Colab anchors figures, wraps in HTML with MathJax header. Output: single HTML file → paste into Canvas.
+            Small Python script in Colab wraps the LaTeX in an HTML file with a MathJax header. Output: a single accessible file ready to paste into Canvas.
           </PipelineStep>
-        </div>
-
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-4">
-          <p className="text-sm text-emerald-800">
-            <strong>Why open source:</strong> Student handwritten exams are FERPA-protected. DeepSeek OCR 2 in Colab keeps data inside the institution. For this use case, open source is the better choice on <em>both</em> capability and compliance grounds.
-          </p>
         </div>
 
         <DropIn label="The Pipeline Is the Agent">
@@ -727,8 +721,12 @@ meet the rubric.`}</CodeBlock>
           </p>
         </div>
 
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
+          <p className="text-sm text-blue-900"><strong>Easier path for course materials:</strong> M365 Copilot can extract graphs and figures directly from your documents — it even writes and runs the code to do it. If your materials are already in Microsoft 365, start there.</p>
+        </div>
+
         <div className="space-y-3 mb-5">
-          <PipelineStep num="1" title="Extract Figures">Vibe-coded script in Colab pulls figures from PDF.</PipelineStep>
+          <PipelineStep num="1" title="Extract Figures">Vibe-coded script in Colab pulls figures from PDF — or use M365 Copilot to extract them directly.</PipelineStep>
           <PipelineStep num="2" title="Gemini Vision Describes">Prompt: "Describe this graph for a student who cannot see it — type, axes, trend, key data, and what conclusion a reader should draw."</PipelineStep>
           <PipelineStep num="3" title="QA With Your Knowledge">AI gets structure right, sometimes misses the <em>so what</em>. You add the domain judgment.</PipelineStep>
           <PipelineStep num="4" title="Assemble & Deploy">Image + embedded alt text + visible caption → HTML → Canvas.</PipelineStep>
@@ -840,7 +838,7 @@ meet the rubric.`}</CodeBlock>
           {[
             { label: "Rutgers AI Hub", url: "https://it.rutgers.edu/ai" },
             { label: "NotebookLM", url: "https://notebooklm.google.com" },
-            { label: "DeepSeek OCR 2 Demo", url: "https://huggingface.co/spaces/merterbak/DeepSeek-OCR-Demo" },
+            { label: "DeepSeek OCR 2 Math (Hugging Face Space)", url: "https://huggingface.co/spaces/ricklon/DeepSeek-OCR-2-Math" },
             { label: "DeepSeek OCR 2 Model", url: "https://huggingface.co/deepseek-ai/DeepSeek-OCR-2" },
             { label: "MathJax", url: "https://mathjax.org" },
             { label: "Handy — Local Speech-to-Text", url: "https://handy.computer" },
