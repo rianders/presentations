@@ -186,7 +186,7 @@ const slides = [
             <p className="text-sm">Access Google products with your <strong>@scarletmail.rutgers.edu</strong> account to stay within the licensed ecosystem.</p>
           </SectionCard>
           <SectionCard title="Data Classification" icon="📊">
-            <p className="text-sm">The data classification chart is your practical guide.</p>
+            <p className="text-sm">Know what data is sensitive — student records, personal information, institutional data — before choosing a tool.</p>
           </SectionCard>
         </div>
 
@@ -398,7 +398,7 @@ const slides = [
     content: (
       <SlideShell tag="Segment 3 · 20 min" tagColor="bg-emerald-700">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
-          Your Course Materials as Raw Ingredients
+          Your Course Materials as Context
         </h1>
         <div className="w-16 h-1 bg-emerald-600 rounded mb-6" />
 
