@@ -163,11 +163,11 @@ const slides = [
 
   /* ─ 2: THE RULE ─ */
   {
-    label: "The Rule",
+    label: "AI Initiative",
     content: (
       <SlideShell tag="Data & Policy" tagColor="bg-gray-700">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
-          The Rule for Today
+          Artificial Intelligence Initiative at Rutgers
         </h1>
         <div className="w-16 h-1 bg-gray-700 rounded mb-6" />
 
@@ -182,8 +182,8 @@ const slides = [
               it.rutgers.edu/ai ↗
             </a>
           </SectionCard>
-          <SectionCard title="Log In Correctly" icon="🔐">
-            <p className="text-sm">Always confirm you are signed in as <strong>@scarletmail.rutgers.edu</strong></p>
+          <SectionCard title="Access Google Products" icon="🔐">
+            <p className="text-sm">Access Google products with your <strong>@scarletmail.rutgers.edu</strong> account to stay within the licensed ecosystem.</p>
           </SectionCard>
           <SectionCard title="Data Classification" icon="📊">
             <p className="text-sm">The data classification chart is your practical guide.</p>
@@ -197,7 +197,7 @@ const slides = [
         </div>
 
         <DropIn label="Your Secrets">
-          Every time you paste student work into a tool, you're deciding where that data goes. 'Not uploading information' sounds simple — but some tools have a local interface and a remote brain. The question is not 'is this on my computer?' It's 'where is the work actually happening?'
+          The concern isn't only student work and FERPA. When AI tools have access to your files, email, or cloud storage, it becomes easy to accidentally expose things you didn't intend to share — API keys, passwords, personal data, confidential communications. A prompt that pulls context from your documents might surface something sensitive without you realizing it. The question is not just 'is this about a student?' It's 'what else might this tool be seeing — and where is that going?'
         </DropIn>
       </SlideShell>
     ),
