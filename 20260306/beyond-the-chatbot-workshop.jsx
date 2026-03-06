@@ -799,6 +799,53 @@ meet the rubric.`}</CodeBlock>
     ),
   },
 
+  /* ─ VOICE ─ */
+  {
+    label: "Voice",
+    content: (
+      <SlideShell tag="Both Directions" tagColor="bg-teal-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Voice In, Voice Out
+        </h1>
+        <div className="w-16 h-1 bg-teal-600 rounded mb-6" />
+
+        <div className="bg-teal-50 border border-teal-200 rounded-xl p-4 mb-5">
+          <p className="text-sm text-teal-900">Voice is an accessibility tool, a productivity tool, and an authoring tool. Both directions — speech to text and text to speech — now run locally in your browser or on your machine. No audio sent to the cloud.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+          <div className="bg-white border-2 border-teal-300 rounded-xl p-5">
+            <h3 className="font-black text-gray-900 text-base mb-1">Speech → Text</h3>
+            <p className="text-xs text-teal-700 font-bold uppercase tracking-wide mb-3">Dictate anything, anywhere</p>
+            <p className="text-sm text-gray-700 mb-4">Handy runs Whisper entirely on your machine. Press a shortcut, speak, release — text appears wherever your cursor is. Works in any app. Nothing leaves your computer.</p>
+            <ul className="text-xs text-gray-600 space-y-1 mb-4">
+              <li>• Dictate into Canvas, email, documents</li>
+              <li>• Great for faculty with accessibility needs</li>
+              <li>• Review output — struggles with STEM terms and accented speech</li>
+            </ul>
+            <a href="https://handy.computer" target="_blank" rel="noreferrer" className="inline-block bg-teal-600 text-white text-xs font-bold px-4 py-2 rounded hover:bg-teal-700 transition-colors">→ handy.computer</a>
+          </div>
+
+          <div className="bg-white border-2 border-teal-300 rounded-xl p-5">
+            <h3 className="font-black text-gray-900 text-base mb-1">Text → Speech</h3>
+            <p className="text-xs text-teal-700 font-bold uppercase tracking-wide mb-3">Narrate your content in the browser</p>
+            <p className="text-sm text-gray-700 mb-4">A 25MB text-to-speech model that runs entirely in the browser. Paste any text — a graph description, a passage, an assignment — and hear it read aloud. No account, no upload, no server.</p>
+            <ul className="text-xs text-gray-600 space-y-1 mb-4">
+              <li>• Narrate alt text and figure descriptions</li>
+              <li>• Preview how your content sounds to students using assistive technology</li>
+              <li>• Runs offline once loaded</li>
+            </ul>
+            <a href="https://rianders.github.io/kittenttsinweb/" target="_blank" rel="noreferrer" className="inline-block bg-teal-600 text-white text-xs font-bold px-4 py-2 rounded hover:bg-teal-700 transition-colors">→ Try TTS in browser</a>
+          </div>
+        </div>
+
+        <div className="bg-gray-900 text-white rounded-xl p-4">
+          <p className="text-sm"><strong className="text-teal-400">Why this matters for accessibility:</strong> Audio is not an accommodation — it is a mode of learning. These tools let you generate narrated content from anything you write, without a recording studio or a specialist.</p>
+        </div>
+      </SlideShell>
+    ),
+  },
+
   /* ─ 13: AGENTS ─ */
   {
     label: "Agents",
@@ -888,6 +935,7 @@ meet the rubric.`}</CodeBlock>
             { label: "DeepSeek OCR 2 Model", url: "https://huggingface.co/deepseek-ai/DeepSeek-OCR-2" },
             { label: "MathJax", url: "https://mathjax.org" },
             { label: "Handy — Local Speech-to-Text", url: "https://handy.computer" },
+            { label: "Text-to-Speech in the Browser", url: "https://rianders.github.io/kittenttsinweb/" },
           ].map((r, i) => (
             <a
               key={i}
