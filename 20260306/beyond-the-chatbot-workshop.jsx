@@ -92,7 +92,36 @@ const slides = [
     ),
   },
 
-  /* ─ 1: THE PROVOCATION ─ */
+  /* ─ 1: WHO I AM ─ */
+  {
+    label: "About",
+    content: (
+      <SlideShell tag="Introduction" tagColor="bg-red-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Who I Am
+        </h1>
+        <div className="w-16 h-1 bg-red-600 rounded mb-6" />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+          <SectionCard title="Early 1990s" icon="🖥️">
+            <p className="text-sm">Built some of the University's first websites — New Brunswick Summer Session, University College, and more. At the <strong>Center for Electronic Texts in the Humanities</strong>, worked with experts worldwide on text markup and analysis at a critical moment for the field.</p>
+          </SectionCard>
+          <SectionCard title="Decades Since" icon="🔧">
+            <p className="text-sm">Built critical infrastructure for the University. Developed virtual worlds. Always working to connect <strong>emerging technologies, research, and instructional design</strong>.</p>
+          </SectionCard>
+          <SectionCard title="Today" icon="🎯" accent={true}>
+            <p className="text-sm">Director of Emerging Technology, UOES. That early work on electronic texts now informs how I understand <strong>AI's impact on knowledge and research</strong>.</p>
+          </SectionCard>
+        </div>
+
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+          <p className="text-sm text-gray-700">This history at Rutgers has given me a <strong className="text-red-600">unique perspective on technology adoption</strong> and integration into the knowledge ecosystem of higher education.</p>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  /* ─ 2: THE PROVOCATION ─ */
   {
     label: "Provocation",
     content: (
@@ -805,6 +834,34 @@ meet the rubric.`}</CodeBlock>
           <p className="text-xs text-gray-400 mt-1">Compiled March 2026 — UOES Emerging Technology</p>
         </div>
       </SlideShell>
+    ),
+  },
+  /* ─ CONTACT ─ */
+  {
+    label: "Contact",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full text-center px-6">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-8 leading-tight">
+          Let's Talk
+        </h1>
+        <div className="bg-red-50 border border-red-200 rounded-xl p-8 w-full max-w-sm">
+          <div className="bg-red-600 rounded-full w-20 h-20 mx-auto flex items-center justify-center mb-4">
+            <span className="text-4xl text-white">👤</span>
+          </div>
+          <h2 className="font-black text-2xl text-gray-900">Rick Anderson</h2>
+          <p className="text-sm text-gray-600 mt-1">Director of Emerging Technology</p>
+          <p className="text-xs text-gray-500">University Online Education Services</p>
+          <div className="mt-6">
+            <p className="text-blue-600 font-semibold text-sm">rick.anderson@rutgers.edu</p>
+          </div>
+        </div>
+        <div className="mt-8">
+          <div className="bg-red-600 text-white text-xs font-black tracking-widest px-6 py-2 rounded inline-block mb-2">
+            RUTGERS UNIVERSITY
+          </div>
+          <p className="text-gray-500 text-sm">Office of University Online Education Services</p>
+        </div>
+      </div>
     ),
   },
 ];
