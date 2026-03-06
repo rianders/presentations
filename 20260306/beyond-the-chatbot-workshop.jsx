@@ -684,29 +684,39 @@ meet the rubric.`}</CodeBlock>
   {
     label: "STEM OCR",
     content: (
-      <SlideShell tag="The Pipeline" tagColor="bg-amber-700">
+      <SlideShell tag="Hard Cases" tagColor="bg-amber-700">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
-          The STEM Handwriting Pipeline
+          Handwritten &amp; Damaged PDFs → Accessible Canvas Pages
         </h1>
         <div className="w-16 h-1 bg-amber-600 rounded mb-6" />
 
-        <p className="text-sm text-gray-600 mb-5">Handwritten STEM notation in course materials — equations, diagrams, derivations — is inaccessible by default. A regular chatbot sees the math and <strong>solves it</strong>. That's not what you need. You need it digitized and rendered so it works in Canvas.</p>
-
-        <div className="space-y-4 mb-5">
-          <PipelineStep num="1" title="DeepSeek OCR 2">
-            Open source, 3B parameters. Feed it handwritten math → structured markdown with LaTeX. <a href="https://huggingface.co/spaces/ricklon/DeepSeek-OCR-2-Math" target="_blank" rel="noreferrer" className="font-bold text-amber-700 underline">→ Try the demo on Hugging Face</a> — no setup required.
-          </PipelineStep>
-          <PipelineStep num="2" title="MathJax Rendering">
-            One script tag closes the gap. MathJax tolerates imperfect OCR LaTeX gracefully — and it's what Canvas uses internally.
-          </PipelineStep>
-          <PipelineStep num="3" title="Vibe-Code the Assembler">
-            Small Python script in Colab wraps the LaTeX in an HTML file with a MathJax header. Output: a single accessible file ready to paste into Canvas.
-          </PipelineStep>
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-5">
+          <p className="text-sm text-amber-900"><strong>The problem:</strong> Handwritten notes, older scanned documents, and damaged PDFs contain STEM notation that is invisible to screen readers and inaccessible by default. Traditional remediation methods work — but on the hard cases, they struggle.</p>
+          <p className="text-xs text-amber-700 mt-2 italic">This pipeline is not a replacement for standard accessibility workflows. It is a tool to reach the materials that other approaches can't.</p>
         </div>
 
-        <DropIn label="The Pipeline Is the Agent">
-          Three tools chained together with a goal. No single tool does the whole job. The intelligence is in the sequence and the decisions between steps. That's what an agentic workflow looks like in practice.
-        </DropIn>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+          <div className="bg-white border-2 border-amber-300 rounded-xl p-4">
+            <div className="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center font-black text-sm mb-3">1</div>
+            <p className="font-bold text-gray-800 text-sm mb-1">DeepSeek OCR 2</p>
+            <p className="text-xs text-gray-600 mb-2">Open source model. Reads handwritten math and damaged PDFs → outputs structured LaTeX.</p>
+            <a href="https://huggingface.co/spaces/ricklon/DeepSeek-OCR-2-Math" target="_blank" rel="noreferrer" className="text-xs font-bold text-amber-700 underline">→ Try on Hugging Face</a>
+          </div>
+          <div className="bg-white border-2 border-amber-300 rounded-xl p-4">
+            <div className="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center font-black text-sm mb-3">2</div>
+            <p className="font-bold text-gray-800 text-sm mb-1">MathJax Rendering</p>
+            <p className="text-xs text-gray-600">Converts LaTeX into rendered math notation in the browser. Already used internally by Canvas — no plugins needed.</p>
+          </div>
+          <div className="bg-white border-2 border-amber-300 rounded-xl p-4">
+            <div className="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center font-black text-sm mb-3">3</div>
+            <p className="font-bold text-gray-800 text-sm mb-1">Colab Assembler</p>
+            <p className="text-xs text-gray-600">Python script in Google Colab wraps the LaTeX in an HTML file with a MathJax header. Paste the output directly into a Canvas page.</p>
+          </div>
+        </div>
+
+        <div className="bg-gray-900 text-white rounded-xl p-4">
+          <p className="text-sm"><strong className="text-amber-400">The result:</strong> Handwritten equations and notation become screen-reader-compatible, properly rendered math in Canvas — accessible to all students.</p>
+        </div>
       </SlideShell>
     ),
   },
