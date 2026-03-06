@@ -1112,30 +1112,86 @@ meet the rubric.`}</CodeBlock>
         </h1>
         <div className="w-16 h-1 bg-gray-700 rounded mb-6" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {[
-            { label: "Rutgers AI Hub", url: "https://it.rutgers.edu/ai" },
-            { label: "NotebookLM", url: "https://notebooklm.google.com" },
-            { label: "DeepSeek OCR 2 Math (Hugging Face Space)", url: "https://huggingface.co/spaces/ricklon/DeepSeek-OCR-2-Math" },
-            { label: "DeepSeek OCR 2 Model", url: "https://huggingface.co/deepseek-ai/DeepSeek-OCR-2" },
-            { label: "MathJax", url: "https://mathjax.org" },
-            { label: "Handy — Local Speech-to-Text", url: "https://handy.computer" },
-            { label: "Text-to-Speech in the Browser", url: "https://rianders.github.io/kittenttsinweb/" },
-          ].map((r, i) => (
-            <a
-              key={i}
-              href={r.url}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 hover:bg-gray-100 hover:border-gray-300 transition-colors group"
-            >
-              <span className="text-sm font-medium text-gray-800">{r.label}</span>
-              <span className="text-xs text-gray-400 group-hover:text-red-600 transition-colors">↗</span>
-            </a>
-          ))}
-        </div>
+        {[
+          {
+            category: "Rutgers & Policy",
+            color: "text-red-700",
+            links: [
+              { label: "Rutgers AI Hub", url: "https://it.rutgers.edu/ai" },
+              { label: "Digital Accessibility Guidelines", url: "https://academicaffairs.rutgers.edu/digital-accessibility" },
+            ],
+          },
+          {
+            category: "NotebookLM Examples",
+            color: "text-blue-700",
+            links: [
+              { label: "NotebookLM", url: "https://notebooklm.google.com" },
+              { label: "CITI Training Study Guide", url: "https://notebooklm.google.com/notebook/8637d705-971b-4140-bdba-43e31b3290a1" },
+              { label: "Instantaneous Velocity Notes", url: "https://notebooklm.google.com/notebook/4bc22dbf-89e3-4f84-bac1-87b9724d77a5" },
+              { label: "Agents Example Notebook", url: "https://notebooklm.google.com/notebook/7f450fd7-158b-4d9b-87ee-adc1f9879252" },
+            ],
+          },
+          {
+            category: "Course Design",
+            color: "text-emerald-700",
+            links: [
+              { label: "Context Engineering Prompt Examples", url: "https://docs.google.com/document/d/1TxwRWoNKdXvt_eXY6SfIUYABG8Wb9fCTTTqx_-k3YTE/edit?usp=sharing" },
+              { label: "Italian 101 Open Textbook", url: "https://openpub.libraries.rutgers.edu/italian101/" },
+            ],
+          },
+          {
+            category: "AI Landscape",
+            color: "text-indigo-700",
+            links: [
+              { label: "OpenRouter Model Rankings", url: "https://openrouter.ai/rankings" },
+            ],
+          },
+          {
+            category: "STEM & Math",
+            color: "text-amber-700",
+            links: [
+              { label: "DeepSeek OCR 2 Math — Hugging Face Space", url: "https://huggingface.co/spaces/ricklon/DeepSeek-OCR-2-Math" },
+              { label: "DeepSeek OCR 2 Model", url: "https://huggingface.co/deepseek-ai/DeepSeek-OCR-2" },
+              { label: "MathJax", url: "https://mathjax.org" },
+            ],
+          },
+          {
+            category: "Voice & Speech",
+            color: "text-teal-700",
+            links: [
+              { label: "Handy — Local Speech-to-Text", url: "https://handy.computer" },
+              { label: "Text-to-Speech in the Browser", url: "https://rianders.github.io/kittenttsinweb/" },
+            ],
+          },
+          {
+            category: "Creative",
+            color: "text-purple-700",
+            links: [
+              { label: "Gemini — Nano Banana Example", url: "https://gemini.google.com/app/a1a44410b43b9642" },
+              { label: "Meshy — Image to 3D Model", url: "https://www.meshy.ai/workspace" },
+            ],
+          },
+        ].map(({ category, color, links }) => (
+          <div key={category} className="mb-4">
+            <p className={`text-xs font-black uppercase tracking-wide mb-2 ${color}`}>{category}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {links.map((r) => (
+                <a
+                  key={r.url}
+                  href={r.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 hover:bg-gray-100 hover:border-gray-300 transition-colors group"
+                >
+                  <span className="text-sm font-medium text-gray-800">{r.label}</span>
+                  <span className="text-xs text-gray-400 group-hover:text-red-600 transition-colors">↗</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
 
-        <div className="mt-6 text-center">
+        <div className="mt-4 text-center">
           <div className="bg-red-600 text-white text-xs font-black tracking-widest px-4 py-1.5 rounded inline-block mb-2">
             RUTGERS UNIVERSITY
           </div>
