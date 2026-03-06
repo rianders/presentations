@@ -312,7 +312,12 @@ const slides = [
               <li>• Upload images &amp; files &nbsp;• Google Drive &nbsp;• NotebookLM &nbsp;• Voice-to-text</li>
             </ul>
             <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Gems</p>
-            <p className="text-xs text-gray-600">Customized Gemini instances — you define the role, context, and constraints. Like an agent, but without autonomy. The closest thing in a licensed tool to designing your own AI.</p>
+            <p className="text-xs text-gray-600 mb-3">Customized Gemini instances — you define the role, context, and constraints. Like an agent, but without autonomy. The closest thing in a licensed tool to designing your own AI.</p>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Also available</p>
+            <ul className="space-y-1 text-xs text-gray-600">
+              <li>• <strong>Gemini CLI</strong> — terminal-based access to Gemini; free but very limited quota</li>
+              <li>• <strong>Google Colab</strong> — cloud-hosted Python notebooks; run AI code without a local install</li>
+            </ul>
           </div>
 
         </div>
