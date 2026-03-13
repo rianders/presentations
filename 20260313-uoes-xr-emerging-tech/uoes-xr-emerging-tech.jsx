@@ -302,7 +302,7 @@ const slides = [
             </p>
             <ul className="space-y-1.5">
               <Bullet icon="→">Capture with a phone or camera</Bullet>
-              <Bullet icon="→">Process with Luma AI or Polycam</Bullet>
+              <Bullet icon="→">Process with <a href="https://poly.cam/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">Polycam</a> or <a href="https://www.kiriengine.app/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">Kiri Engine</a></Bullet>
               <Bullet icon="→">Edit &amp; publish via SuperSplat</Bullet>
               <Bullet icon="→">Embed in PlayCanvas or share as URL</Bullet>
             </ul>
@@ -328,7 +328,7 @@ const slides = [
             </p>
             <ul className="space-y-2">
               <Bullet icon="▹"><strong><a href="https://www.meshy.ai/discover" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-green-700">Meshy</a></strong> — text/image → 3D mesh</Bullet>
-              <Bullet icon="▹"><strong>Luma Genie</strong> — AI 3D object generation</Bullet>
+              <Bullet icon="▹"><strong>Kiri Engine</strong> — photogrammetry &amp; splat capture</Bullet>
               <Bullet icon="▹"><strong>CSM</strong> — image to 3D</Bullet>
               <Bullet icon="▹"><strong>Rodin</strong> — high-fidelity AI avatars &amp; objects</Bullet>
             </ul>
@@ -373,8 +373,8 @@ const slides = [
             <ul className="space-y-2">
               <Bullet icon="→"><strong>PlayCanvas</strong> — playcanvas.com</Bullet>
               <Bullet icon="→"><strong>SuperSplat</strong> — superspl.at</Bullet>
-              <Bullet icon="→"><strong>Luma AI</strong> — lumalabs.ai</Bullet>
-              <Bullet icon="→"><strong>Polycam</strong> — poly.cam</Bullet>
+              <Bullet icon="→"><a href="https://poly.cam/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">Polycam</a> — poly.cam</Bullet>
+              <Bullet icon="→"><a href="https://www.kiriengine.app/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">Kiri Engine</a> — kiriengine.app</Bullet>
               <Bullet icon="→"><a href="https://www.meshy.ai/discover" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">Meshy</a> — meshy.ai/discover</Bullet>
             </ul>
           </SectionCard>
