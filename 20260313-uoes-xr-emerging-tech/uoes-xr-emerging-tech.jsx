@@ -346,7 +346,7 @@ const slides = [
                 <a href="https://superspl.at/scene/5a6bbd3c" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">View scene ↗</a>
               </span>
               <span>Luma Labs captures —{" "}
-                <a href="https://lumalabs.ai/capture/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">lumalabs.ai/capture ↗</a>
+                <a href="https://lumalabs.ai/dashboard" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">lumalabs.ai/dashboard ↗</a>
               </span>
             </div>
           </div>
