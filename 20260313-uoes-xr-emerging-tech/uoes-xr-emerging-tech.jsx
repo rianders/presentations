@@ -327,7 +327,7 @@ const slides = [
               Generate 3D assets from text or images — no modeling expertise required.
             </p>
             <ul className="space-y-2">
-              <Bullet icon="▹"><strong>Meshy</strong> — text/image → 3D mesh</Bullet>
+              <Bullet icon="▹"><strong><a href="https://www.meshy.ai/discover" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-green-700">Meshy</a></strong> — text/image → 3D mesh</Bullet>
               <Bullet icon="▹"><strong>Luma Genie</strong> — AI 3D object generation</Bullet>
               <Bullet icon="▹"><strong>CSM</strong> — image to 3D</Bullet>
               <Bullet icon="▹"><strong>Rodin</strong> — high-fidelity AI avatars &amp; objects</Bullet>
@@ -375,7 +375,7 @@ const slides = [
               <Bullet icon="→"><strong>SuperSplat</strong> — superspl.at</Bullet>
               <Bullet icon="→"><strong>Luma AI</strong> — lumalabs.ai</Bullet>
               <Bullet icon="→"><strong>Polycam</strong> — poly.cam</Bullet>
-              <Bullet icon="→"><strong>Meshy</strong> — meshy.ai</Bullet>
+              <Bullet icon="→"><a href="https://www.meshy.ai/discover" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">Meshy</a> — meshy.ai/discover</Bullet>
             </ul>
           </SectionCard>
         </div>
