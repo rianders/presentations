@@ -340,11 +340,15 @@ const slides = [
         <div className="bg-green-50 border border-green-200 rounded-xl px-5 py-4 flex items-start gap-3">
           <span className="text-xl flex-shrink-0">📍</span>
           <div>
-            <p className="font-bold text-green-800 text-sm">Live Example: Tokyo Drisk — GSCRL Event</p>
-            <p className="text-sm text-green-700">
-              A Gaussian splat capture of a real event in Tokyo, edited in SuperSplat and published to the web.{" "}
-              <a href="https://superspl.at/scene/5a6bbd3c" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">View scene ↗</a>
-            </p>
+            <p className="font-bold text-green-800 text-sm mb-1">Live Splat Demos</p>
+            <div className="flex flex-wrap gap-4 text-sm text-green-700">
+              <span>Tokyo Drisk (SuperSplat) —{" "}
+                <a href="https://superspl.at/scene/5a6bbd3c" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">View scene ↗</a>
+              </span>
+              <span>Luma Labs captures —{" "}
+                <a href="https://lumalabs.ai/capture/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">lumalabs.ai/capture ↗</a>
+              </span>
+            </div>
           </div>
         </div>
       </SlideShell>
