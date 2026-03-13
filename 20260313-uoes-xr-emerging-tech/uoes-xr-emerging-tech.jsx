@@ -202,7 +202,7 @@ const slides = [
               <Bullet icon="→">Visual scene editor in the browser</Bullet>
               <Bullet icon="→">First-class WebXR &amp; VR support</Bullet>
               <Bullet icon="→">Gaussian splat rendering built-in</Bullet>
-              <Bullet icon="→">Publish instantly as a URL</Bullet>
+              <Bullet icon="→"><a href="https://playcanvas.com/user/rianders" target="_blank" rel="noreferrer" className="underline underline-offset-2">View splat demo ↗</a></Bullet>
             </ul>
           </SectionCard>
 
@@ -298,13 +298,13 @@ const slides = [
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <SectionCard title="Gaussian Splatting" icon="💠" accent={true}>
             <p className="mb-3">
-              Photorealistic 3D capture from video — rendered as millions of volumetric "splats" in real time. Far more lifelike than traditional photogrammetry.
+              Photorealistic 3D capture from video or images — rendered as millions of volumetric "splats" in real time. Far more lifelike than traditional photogrammetry.
             </p>
             <ul className="space-y-1.5">
-              <Bullet icon="→">Capture with a phone or camera</Bullet>
-              <Bullet icon="→">Process with <a href="https://poly.cam/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">Polycam</a> or <a href="https://www.kiriengine.app/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">Kiri Engine</a></Bullet>
-              <Bullet icon="→">Edit &amp; publish via SuperSplat</Bullet>
-              <Bullet icon="→">Embed in PlayCanvas or share as URL</Bullet>
+              <Bullet icon="→">Images &amp; video (incl. nano banana captures)</Bullet>
+              <Bullet icon="→"><a href="https://www.kiriengine.app/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">Kiri Engine</a> — mobile splat capture</Bullet>
+              <Bullet icon="→"><a href="https://poly.cam/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">Polycam</a> — photogrammetry &amp; splat scans</Bullet>
+              <Bullet icon="→">Edit in SuperSplat → embed in PlayCanvas</Bullet>
             </ul>
           </SectionCard>
 
@@ -324,13 +324,15 @@ const slides = [
 
           <SectionCard title="AI to 3D" icon="🤖">
             <p className="mb-3 text-gray-600">
-              Generate 3D assets from text or images — no modeling expertise required.
+              Generate 3D assets from images — no modeling expertise required.
             </p>
             <ul className="space-y-2">
-              <Bullet icon="▹"><strong><a href="https://www.meshy.ai/discover" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-green-700">Meshy</a></strong> — text/image → 3D mesh</Bullet>
-              <Bullet icon="▹"><strong>Kiri Engine</strong> — photogrammetry &amp; splat capture</Bullet>
-              <Bullet icon="▹"><strong>CSM</strong> — image to 3D</Bullet>
-              <Bullet icon="▹"><strong>Rodin</strong> — high-fidelity AI avatars &amp; objects</Bullet>
+              <Bullet icon="▹">
+                <strong><a href="https://huggingface.co/spaces/microsoft/TRELLIS" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-green-700">Trellis</a></strong> — Microsoft open-source image → 3D
+              </Bullet>
+              <Bullet icon="▹">
+                <strong><a href="https://www.meshy.ai/discover" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-green-700">Meshy</a></strong> — commercial image/text → 3D mesh
+              </Bullet>
             </ul>
           </SectionCard>
         </div>
@@ -371,11 +373,12 @@ const slides = [
 
           <SectionCard title="Resources &amp; Tools" icon="🔗">
             <ul className="space-y-2">
-              <Bullet icon="→"><strong>PlayCanvas</strong> — playcanvas.com</Bullet>
-              <Bullet icon="→"><strong>SuperSplat</strong> — superspl.at</Bullet>
+              <Bullet icon="→"><a href="https://playcanvas.com/user/rianders" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">PlayCanvas</a> — playcanvas.com</Bullet>
+              <Bullet icon="→"><a href="https://superspl.at" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">SuperSplat</a> — superspl.at</Bullet>
               <Bullet icon="→"><a href="https://poly.cam/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">Polycam</a> — poly.cam</Bullet>
               <Bullet icon="→"><a href="https://www.kiriengine.app/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">Kiri Engine</a> — kiriengine.app</Bullet>
-              <Bullet icon="→"><a href="https://www.meshy.ai/discover" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">Meshy</a> — meshy.ai/discover</Bullet>
+              <Bullet icon="→"><a href="https://huggingface.co/spaces/microsoft/TRELLIS" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">Trellis</a> — image → 3D (open source)</Bullet>
+              <Bullet icon="→"><a href="https://www.meshy.ai/discover" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2 hover:text-red-700">Meshy</a> — image → 3D (commercial)</Bullet>
             </ul>
           </SectionCard>
         </div>
