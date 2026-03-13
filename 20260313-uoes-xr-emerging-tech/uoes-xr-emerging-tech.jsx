@@ -297,32 +297,30 @@ const slides = [
         <div className="w-16 h-1 bg-indigo-600 rounded mb-5" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <SectionCard title="The Course" icon="🏙️" accent={true}>
-            <p className="mb-3">Students use AR and VR tools to address real community challenges in New Brunswick — navigation barriers, access to social services, and cultural visibility.</p>
-            <ul className="space-y-1.5">
-              <Bullet icon="→">Project-based, group work</Bullet>
+          <SectionCard title="The Approach" icon="🏙️" accent={true}>
+            <ul className="space-y-2">
+              <Bullet icon="→">XR &amp; community development</Bullet>
               <Bullet icon="→">3D modeling &amp; game design</Bullet>
-              <Bullet icon="→">XR prototype development</Bullet>
-              <Bullet icon="→">Final community presentations</Bullet>
+              <Bullet icon="→">Group XR prototype development</Bullet>
+              <Bullet icon="→">Final immersive community assets</Bullet>
             </ul>
           </SectionCard>
 
-          <SectionCard title="Student Projects" icon="🎨">
+          <SectionCard title="New Brunswick" icon="🎨">
             <ul className="space-y-2">
-              <Bullet icon="▹">Interactive digital layers over physical spaces</Bullet>
-              <Bullet icon="▹">French Street murals — cultural history in AR</Bullet>
-              <Bullet icon="▹">Navigation aids for underserved communities</Bullet>
-              <Bullet icon="▹">Public access maps to social services</Bullet>
-              <Bullet icon="▹">Community advocacy through immersive media</Bullet>
+              <Bullet icon="▹">Address navigation hurdles</Bullet>
+              <Bullet icon="▹">Highlight cultural histories</Bullet>
+              <Bullet icon="▹">French Street murals in AR</Bullet>
+              <Bullet icon="▹">Interactive digital layers over physical space</Bullet>
             </ul>
           </SectionCard>
 
-          <SectionCard title="Why It Matters" icon="⚖️">
+          <SectionCard title="Spatial Justice" icon="⚖️">
             <ul className="space-y-2">
-              <Bullet icon="✓">XR as a tool for equity, not just entertainment</Bullet>
-              <Bullet icon="✓">Students as producers of community knowledge</Bullet>
-              <Bullet icon="✓">Place-based learning rooted in real neighborhoods</Bullet>
-              <Bullet icon="✓">Connects technical skills to civic purpose</Bullet>
+              <Bullet icon="✓">Improve public access to social services</Bullet>
+              <Bullet icon="✓">Advocate for spatial justice</Bullet>
+              <Bullet icon="✓">Students as community designers</Bullet>
+              <Bullet icon="✓">Immersive assets for the public good</Bullet>
             </ul>
           </SectionCard>
         </div>
@@ -331,7 +329,7 @@ const slides = [
           <span className="text-xl flex-shrink-0">💡</span>
           <div className="flex-1">
             <p className="text-sm text-indigo-800 mb-2">
-              <strong>The model:</strong> Students learn spatial computing not as spectators but as designers of public experience — building XR assets that serve their neighbors and advocate for spatial justice in their own communities.
+              Students create <strong>interactive digital layers for the physical environment</strong> — culminating in final presentations of immersive community assets.
             </p>
             <a
               href="https://miro.com/app/board/uXjVN482_Q4=/"
