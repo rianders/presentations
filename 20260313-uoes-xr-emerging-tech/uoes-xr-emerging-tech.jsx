@@ -329,7 +329,7 @@ const slides = [
           <span className="text-xl flex-shrink-0">💡</span>
           <div className="flex-1">
             <p className="text-sm text-indigo-800 mb-2">
-              Students create <strong>interactive digital layers for the physical environment</strong> — culminating in final presentations of immersive community assets.
+              Students learn spatial computing not as spectators but as <strong>designers of public experience</strong> — building XR assets that serve their neighbors and advocate for spatial justice in their own communities.
             </p>
             <a
               href="https://miro.com/app/board/uXjVN482_Q4=/"
