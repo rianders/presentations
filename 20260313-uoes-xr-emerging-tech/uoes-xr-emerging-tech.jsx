@@ -293,7 +293,7 @@ const slides = [
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
           Spatial Justice &amp; Student-Created XR
         </h1>
-        <p className="text-gray-500 text-sm mb-2 font-medium uppercase tracking-wide">Social Engagement in XR — Rutgers Seminar</p>
+        <p className="text-gray-500 text-sm mb-2 font-medium uppercase tracking-wide">Byrne Seminar — Social Engagement in XR · Rutgers 2024</p>
         <div className="w-16 h-1 bg-indigo-600 rounded mb-5" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -329,9 +329,19 @@ const slides = [
 
         <div className="bg-indigo-50 border border-indigo-200 rounded-xl px-5 py-4 flex items-start gap-3">
           <span className="text-xl flex-shrink-0">💡</span>
-          <p className="text-sm text-indigo-800">
-            <strong>The model:</strong> Students learn spatial computing not as spectators but as designers of public experience — building XR assets that serve their neighbors and advocate for spatial justice in their own communities.
-          </p>
+          <div className="flex-1">
+            <p className="text-sm text-indigo-800 mb-2">
+              <strong>The model:</strong> Students learn spatial computing not as spectators but as designers of public experience — building XR assets that serve their neighbors and advocate for spatial justice in their own communities.
+            </p>
+            <a
+              href="https://miro.com/app/board/uXjVN482_Q4=/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-indigo-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+            >
+              View Class Miro Board (2024) ↗
+            </a>
+          </div>
         </div>
       </SlideShell>
     ),
