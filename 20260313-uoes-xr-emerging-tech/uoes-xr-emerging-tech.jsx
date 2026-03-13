@@ -42,12 +42,12 @@ const Note = ({ children }) => (
 );
 
 const SectionCard = ({ title, icon, children, accent = false }) => (
-  <div className={`rounded-xl p-5 ${accent ? "bg-red-600 text-white" : "bg-gray-50 border border-gray-200"}`}>
+  <div className={`rounded-xl p-5 ${accent ? "bg-red-50 border-l-4 border-red-500" : "bg-gray-50 border border-gray-200"}`}>
     <div className="flex items-center gap-2 mb-3">
       <span className="text-xl">{icon}</span>
-      <h3 className={`font-bold text-sm uppercase tracking-wide ${accent ? "text-red-100" : "text-gray-500"}`}>{title}</h3>
+      <h3 className={`font-bold text-sm uppercase tracking-wide ${accent ? "text-red-700" : "text-gray-500"}`}>{title}</h3>
     </div>
-    <div className={accent ? "text-red-50 text-sm" : "text-gray-700 text-sm"}>
+    <div className={accent ? "text-gray-800 text-sm" : "text-gray-700 text-sm"}>
       {children}
     </div>
   </div>
