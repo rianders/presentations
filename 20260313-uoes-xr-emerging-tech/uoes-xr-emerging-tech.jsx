@@ -227,65 +227,7 @@ const slides = [
     ),
   },
 
-  // SLIDE 5 — Flowing Together
-  {
-    label: "Flowing Together",
-    content: (
-      <SlideShell tag="XR Experience" tagColor="bg-blue-600">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
-          Flowing Together
-        </h1>
-        <p className="text-gray-500 text-sm mb-2 font-medium uppercase tracking-wide">A WebXR Immersive Experience</p>
-        <div className="w-16 h-1 bg-blue-600 rounded mb-6" />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <SectionCard title="About the Experience" icon="🌊" accent={true}>
-            <p className="mb-3">
-              <em>Flowing Together</em> is a browser-based WebXR experience designed to explore immersive, participatory presence — accessible from any device, no headset required.
-            </p>
-            <ul className="space-y-1.5">
-              <Bullet icon="→">Built with A-Frame &amp; WebXR APIs</Bullet>
-              <Bullet icon="→">Multi-user presence &amp; shared space</Bullet>
-              <Bullet icon="→">Ambient, flowing 3D environment</Bullet>
-            </ul>
-          </SectionCard>
-
-          <SectionCard title="What It Demonstrates" icon="🎯">
-            <ul className="space-y-2">
-              <Bullet>Low-barrier entry — mobile, desktop, or headset</Bullet>
-              <Bullet>Shared spatial experience without a native app</Bullet>
-              <Bullet>Emotional &amp; experiential dimensions of XR</Bullet>
-              <Bullet>A model for immersive course components</Bullet>
-            </ul>
-          </SectionCard>
-
-          <SectionCard title="Pedagogy Connection" icon="💡">
-            <ul className="space-y-2">
-              <Bullet icon="✓">Social presence in online learning</Bullet>
-              <Bullet icon="✓">Place-based &amp; experiential learning theory</Bullet>
-              <Bullet icon="✓">Engagement beyond passive video</Bullet>
-            </ul>
-          </SectionCard>
-
-          <SectionCard title="Try It" icon="🔗">
-            <p className="text-sm text-gray-600 mb-3">
-              Visit the experience from any modern browser. Works best on mobile for full 360° interaction.
-            </p>
-            <a
-              href="https://flowingtogether.lambertvillenj.org/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              flowingtogether.lambertvillenj.org ↗
-            </a>
-          </SectionCard>
-        </div>
-      </SlideShell>
-    ),
-  },
-
-  // SLIDE 6 — Spatial Justice
+  // SLIDE 5 — Spatial Justice
   {
     label: "Spatial Justice",
     content: (
@@ -340,6 +282,64 @@ const slides = [
               View Class Miro Board (2024) ↗
             </a>
           </div>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // SLIDE 6 — Flowing Together
+  {
+    label: "Flowing Together",
+    content: (
+      <SlideShell tag="XR Experience" tagColor="bg-blue-600">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Flowing Together
+        </h1>
+        <p className="text-gray-500 text-sm mb-2 font-medium uppercase tracking-wide">A WebXR Immersive Experience</p>
+        <div className="w-16 h-1 bg-blue-600 rounded mb-6" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <SectionCard title="About the Experience" icon="🌊" accent={true}>
+            <p className="mb-3">
+              <em>Flowing Together</em> is a browser-based WebXR experience designed to explore immersive, participatory presence — accessible from any device, no headset required.
+            </p>
+            <ul className="space-y-1.5">
+              <Bullet icon="→">Built with A-Frame &amp; WebXR APIs</Bullet>
+              <Bullet icon="→">Multi-user presence &amp; shared space</Bullet>
+              <Bullet icon="→">Ambient, flowing 3D environment</Bullet>
+            </ul>
+          </SectionCard>
+
+          <SectionCard title="What It Demonstrates" icon="🎯">
+            <ul className="space-y-2">
+              <Bullet>Low-barrier entry — mobile, desktop, or headset</Bullet>
+              <Bullet>Shared spatial experience without a native app</Bullet>
+              <Bullet>Emotional &amp; experiential dimensions of XR</Bullet>
+              <Bullet>A model for immersive course components</Bullet>
+            </ul>
+          </SectionCard>
+
+          <SectionCard title="Pedagogy Connection" icon="💡">
+            <ul className="space-y-2">
+              <Bullet icon="✓">Social presence in online learning</Bullet>
+              <Bullet icon="✓">Place-based &amp; experiential learning theory</Bullet>
+              <Bullet icon="✓">Engagement beyond passive video</Bullet>
+            </ul>
+          </SectionCard>
+
+          <SectionCard title="Try It" icon="🔗">
+            <p className="text-sm text-gray-600 mb-3">
+              Visit the experience from any modern browser. Works best on mobile for full 360° interaction.
+            </p>
+            <a
+              href="https://flowingtogether.lambertvillenj.org/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              flowingtogether.lambertvillenj.org ↗
+            </a>
+          </SectionCard>
         </div>
       </SlideShell>
     ),
