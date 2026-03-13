@@ -493,7 +493,7 @@ function Presentation() {
       <div className="sticky bottom-0 bg-white border-t border-gray-200 shadow-lg px-4 py-3 flex items-center justify-center gap-2">
         <button
           onClick={first}
-          className="px-3 py-2 bg-gray-200 text-gray-700 text-xs font-bold rounded-lg hover:bg-gray-300 active:scale-95 transition-all"
+          className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all"
         >
           ⏮ Begin
         </button>
@@ -527,7 +527,7 @@ function Presentation() {
         </button>
         <button
           onClick={last}
-          className="px-3 py-2 bg-gray-200 text-gray-700 text-xs font-bold rounded-lg hover:bg-gray-300 active:scale-95 transition-all"
+          className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all"
         >
           End ⏭
         </button>
