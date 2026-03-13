@@ -285,7 +285,59 @@ const slides = [
     ),
   },
 
-  // SLIDE 6 — Gaussian Splats + AI to 3D
+  // SLIDE 6 — Spatial Justice
+  {
+    label: "Spatial Justice",
+    content: (
+      <SlideShell tag="Social Engagement in XR" tagColor="bg-indigo-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Spatial Justice &amp; Student-Created XR
+        </h1>
+        <p className="text-gray-500 text-sm mb-2 font-medium uppercase tracking-wide">Social Engagement in XR — Rutgers Seminar</p>
+        <div className="w-16 h-1 bg-indigo-600 rounded mb-5" />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <SectionCard title="The Course" icon="🏙️" accent={true}>
+            <p className="mb-3">Students use AR and VR tools to address real community challenges in New Brunswick — navigation barriers, access to social services, and cultural visibility.</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="→">Project-based, group work</Bullet>
+              <Bullet icon="→">3D modeling &amp; game design</Bullet>
+              <Bullet icon="→">XR prototype development</Bullet>
+              <Bullet icon="→">Final community presentations</Bullet>
+            </ul>
+          </SectionCard>
+
+          <SectionCard title="Student Projects" icon="🎨">
+            <ul className="space-y-2">
+              <Bullet icon="▹">Interactive digital layers over physical spaces</Bullet>
+              <Bullet icon="▹">French Street murals — cultural history in AR</Bullet>
+              <Bullet icon="▹">Navigation aids for underserved communities</Bullet>
+              <Bullet icon="▹">Public access maps to social services</Bullet>
+              <Bullet icon="▹">Community advocacy through immersive media</Bullet>
+            </ul>
+          </SectionCard>
+
+          <SectionCard title="Why It Matters" icon="⚖️">
+            <ul className="space-y-2">
+              <Bullet icon="✓">XR as a tool for equity, not just entertainment</Bullet>
+              <Bullet icon="✓">Students as producers of community knowledge</Bullet>
+              <Bullet icon="✓">Place-based learning rooted in real neighborhoods</Bullet>
+              <Bullet icon="✓">Connects technical skills to civic purpose</Bullet>
+            </ul>
+          </SectionCard>
+        </div>
+
+        <div className="bg-indigo-50 border border-indigo-200 rounded-xl px-5 py-4 flex items-start gap-3">
+          <span className="text-xl flex-shrink-0">💡</span>
+          <p className="text-sm text-indigo-800">
+            <strong>The model:</strong> Students learn spatial computing not as spectators but as designers of public experience — building XR assets that serve their neighbors and advocate for spatial justice in their own communities.
+          </p>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // SLIDE 7 — Gaussian Splats + AI to 3D
   {
     label: "3D Workflows",
     content: (
