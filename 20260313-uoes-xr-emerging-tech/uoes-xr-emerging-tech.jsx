@@ -301,7 +301,7 @@ const slides = [
               Photorealistic 3D capture from video or images — rendered as millions of volumetric "splats" in real time. Far more lifelike than traditional photogrammetry.
             </p>
             <ul className="space-y-1.5">
-              <Bullet icon="→">Images &amp; video (incl. nano banana captures)</Bullet>
+              <Bullet icon="→"><a href="https://gemini.google.com/app" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">Gemini</a> Nano Banana — extract multi-angle object views → 3D</Bullet>
               <Bullet icon="→"><a href="https://www.kiriengine.app/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">Kiri Engine</a> — mobile splat capture</Bullet>
               <Bullet icon="→"><a href="https://poly.cam/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-2">Polycam</a> — photogrammetry &amp; splat scans</Bullet>
               <Bullet icon="→">Edit in SuperSplat → embed in PlayCanvas</Bullet>
