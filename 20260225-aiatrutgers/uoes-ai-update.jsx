@@ -135,6 +135,7 @@ const slides = [
             <div>
               <p className="font-bold text-gray-800">Google Gemini</p>
               <p className="text-sm text-gray-600">Gemini availability through Rutgers Google Workspace — confirm current access tier via IT portal.</p>
+              <a href="https://gemini.google.com/app" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-blue-600 hover:underline mt-1">gemini.google.com/app ↗</a>
             </div>
           </li>
           <li className="flex items-start gap-4 bg-gray-50 border border-gray-200 rounded-xl p-4">
