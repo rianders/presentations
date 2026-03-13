@@ -271,9 +271,14 @@ const slides = [
             <p className="text-sm text-gray-600 mb-3">
               Visit the experience from any modern browser. Works best on mobile for full 360° interaction.
             </p>
-            <span className="inline-flex items-center gap-2 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg">
-              WebXR · Browser-Based ↗
-            </span>
+            <a
+              href="https://flowingtogether.lambertvillenj.org/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              flowingtogether.lambertvillenj.org ↗
+            </a>
           </SectionCard>
         </div>
       </SlideShell>
