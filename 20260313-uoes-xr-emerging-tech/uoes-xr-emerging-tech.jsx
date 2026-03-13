@@ -467,6 +467,8 @@ function Presentation() {
 
   const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length);
   const next = () => setCurrent((c) => (c + 1) % slides.length);
+  const first = () => setCurrent(0);
+  const last = () => setCurrent(slides.length - 1);
 
   useEffect(() => {
     const handler = (e) => {
@@ -488,7 +490,13 @@ function Presentation() {
         </div>
       </div>
 
-      <div className="sticky bottom-0 bg-white border-t border-gray-200 shadow-lg px-4 py-3 flex items-center justify-center gap-4">
+      <div className="sticky bottom-0 bg-white border-t border-gray-200 shadow-lg px-4 py-3 flex items-center justify-center gap-2">
+        <button
+          onClick={first}
+          className="px-3 py-2 bg-gray-200 text-gray-700 text-xs font-bold rounded-lg hover:bg-gray-300 active:scale-95 transition-all"
+        >
+          ⏮ Begin
+        </button>
         <button
           onClick={prev}
           className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all flex items-center gap-2"
@@ -516,6 +524,12 @@ function Presentation() {
           className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all flex items-center gap-2"
         >
           Next →
+        </button>
+        <button
+          onClick={last}
+          className="px-3 py-2 bg-gray-200 text-gray-700 text-xs font-bold rounded-lg hover:bg-gray-300 active:scale-95 transition-all"
+        >
+          End ⏭
         </button>
       </div>
 
