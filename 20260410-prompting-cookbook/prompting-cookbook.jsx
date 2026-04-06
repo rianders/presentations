@@ -63,6 +63,13 @@ const Tag = ({ color = "bg-blue-100 text-blue-700", children }) => (
   <span className={`inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full ${color}`}>{children}</span>
 );
 
+const Placeholder = ({ label, children }) => (
+  <div className="border-2 border-dashed border-amber-400 rounded-xl p-4 my-4 bg-amber-50">
+    <p className="text-xs font-black uppercase tracking-widest text-amber-600 mb-2">📝 Prompt Placeholder · {label}</p>
+    <p className="text-xs text-amber-800 italic">{children}</p>
+  </div>
+);
+
 const slides = [
 
   // ── TITLE ──
@@ -147,6 +154,9 @@ const slides = [
             <p>The goal is designing the <strong>complete environment</strong> around the AI, not just crafting the perfect sentence.</p>
           </SectionCard>
         </div>
+        <Placeholder label="Prompt vs Context Demo">
+          Show a bare prompt ("Write a quiz") side-by-side with a context-rich version that includes course name, learning objective, student level, and format requirements — illustrating how context shapes the output.
+        </Placeholder>
       </SlideShell>
     ),
   },
@@ -174,6 +184,9 @@ const slides = [
             <p>Without context, the model guesses. Supply your materials — course scope, student level, learning goals — to constrain and ground the output.</p>
           </SectionCard>
         </div>
+        <Placeholder label="Zero-Shot vs Grounded Prompt">
+          Show a zero-shot request ("Summarize this topic") versus a grounded request that attaches the actual course reading and asks for a summary constrained to that document's content only.
+        </Placeholder>
       </SlideShell>
     ),
   },
@@ -202,6 +215,9 @@ const slides = [
             Diagram conversion (e.g., flowcharts → <strong>structured formats</strong>)
           </Bullet>
         </ul>
+        <Placeholder label="Alt-Text Generation Prompt">
+          Prompt for uploading an image/figure and requesting a screen-reader-compatible alt-text description: type of visual, key data or labels, trend or conclusion a reader should draw — without solving or interpreting beyond what is shown.
+        </Placeholder>
       </SlideShell>
     ),
   },
@@ -227,6 +243,9 @@ const slides = [
             Generating <strong>completion artifacts</strong> (printable submission pages)
           </Bullet>
         </ul>
+        <Placeholder label="Static → Interactive Assignment Prompt">
+          Prompt for converting a traditional written assignment into an interactive step-by-step activity: specify subject, student level, desired output format (self-contained HTML), and scaffolding approach (hints, progressive disclosure, etc.).
+        </Placeholder>
       </SlideShell>
     ),
   },
@@ -252,6 +271,9 @@ const slides = [
             Improve the syllabus via <strong>structured critique prompts</strong>
           </Bullet>
         </ul>
+        <Placeholder label="Syllabus as Context Engine Prompt">
+          Prompt that pastes the full syllabus as context, then asks the AI to generate module-level learning objectives aligned to the stated course goals — constrained strictly to the scope described in the syllabus.
+        </Placeholder>
       </SlideShell>
     ),
   },
@@ -277,6 +299,9 @@ const slides = [
             Support <strong>differentiated learning paths</strong>
           </Bullet>
         </ul>
+        <Placeholder label="Rubric Generation Prompt">
+          Prompt for generating a rubric aligned to a specific learning objective: include the assignment description, desired performance levels (e.g., Excellent / Proficient / Developing / Beginning), and criteria drawn from the course goals.
+        </Placeholder>
       </SlideShell>
     ),
   },
@@ -302,6 +327,9 @@ const slides = [
             <strong>Academic integrity</strong> expectations
           </Bullet>
         </ul>
+        <Placeholder label="Institutional Constraints Prompt">
+          Prompt that embeds department requirements directly: e.g., "The following syllabus elements are required by my department: [list]. Review my draft syllabus and identify any missing elements. Do not suggest changes beyond this checklist."
+        </Placeholder>
       </SlideShell>
     ),
   },
@@ -327,6 +355,9 @@ const slides = [
             Add <strong>validation steps</strong> into prompts
           </Bullet>
         </ul>
+        <Placeholder label="Policy-Aware Prompt">
+          Prompt that explicitly states tool and data constraints before the task: "Use only Gemini via my ScarletMail account. Do not include any student names, IDs, or identifiable information. After generating, flag anything that may require human review for accuracy."
+        </Placeholder>
       </SlideShell>
     ),
   },
@@ -352,6 +383,9 @@ const slides = [
             <strong>Pedagogical best practices</strong>
           </Bullet>
         </ul>
+        <Placeholder label="UDL-Aware Prompt">
+          Prompt that embeds UDL principles as constraints: "Design this activity with multiple means of engagement. Provide options for how students can represent their understanding. Ensure instructions are plain language and do not assume prior familiarity with the tools."
+        </Placeholder>
       </SlideShell>
     ),
   },
@@ -409,6 +443,9 @@ const slides = [
             <p>Generate <strong>completion/summary pages</strong> for student submission.</p>
           </SectionCard>
         </div>
+        <Placeholder label="Hosted Activity Generation Prompt">
+          Prompt for generating a self-contained HTML activity: "Output a single HTML file with no external dependencies. The activity should work when pasted into a Canvas page or uploaded to Google Drive and opened in a browser."
+        </Placeholder>
       </SlideShell>
     ),
   },
