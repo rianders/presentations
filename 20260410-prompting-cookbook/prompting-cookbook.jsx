@@ -27,8 +27,17 @@ const SlideShell = ({ tag, tagColor = "bg-red-600", children }) => (
   </div>
 );
 
-const SectionCard = ({ title, icon, children, accent = false }) => (
-  <div className={`rounded-xl p-5 ${accent ? "bg-red-50 border-l-4 border-red-500" : "bg-gray-50 border border-gray-200"}`}>
+const SectionCard = ({ title, icon, children, accent = false, isActive = false, isDimmed = false, onClick }) => (
+  <div
+    onClick={onClick}
+    className={[
+      "rounded-xl p-5 transition-all duration-200",
+      accent ? "bg-red-50 border-l-4 border-red-500" : "bg-gray-50 border border-gray-200",
+      isActive ? "ring-2 ring-red-500 shadow-xl scale-[1.02] relative z-10" : "",
+      isDimmed ? "opacity-25 scale-[0.98]" : "",
+      onClick ? "cursor-pointer select-none" : "",
+    ].join(" ")}
+  >
     <div className="flex items-center gap-2 mb-3">
       <span className="text-xl">{icon}</span>
       <h3 className={`font-bold text-sm uppercase tracking-wide ${accent ? "text-red-700" : "text-gray-500"}`}>{title}</h3>
@@ -38,6 +47,22 @@ const SectionCard = ({ title, icon, children, accent = false }) => (
     </div>
   </div>
 );
+
+const CardGrid = ({ cols = 2, className = "", children }) => {
+  const [active, setActive] = useState(null);
+  const items = React.Children.toArray(children);
+  return (
+    <div className={`grid grid-cols-1 md:grid-cols-${cols} gap-4 ${className}`}>
+      {items.map((child, i) =>
+        React.cloneElement(child, {
+          isActive: active === i,
+          isDimmed: active !== null && active !== i,
+          onClick: () => setActive(active === i ? null : i),
+        })
+      )}
+    </div>
+  );
+};
 
 const Bullet = ({ icon = "▸", children }) => (
   <li className="flex items-start gap-3 text-gray-700 text-sm sm:text-base leading-relaxed">
@@ -63,7 +88,7 @@ const Tag = ({ color = "bg-blue-100 text-blue-700", children }) => (
   <span className={`inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full ${color}`}>{children}</span>
 );
 
-const PromptRecipe = ({ title, href, children }) => {
+const PromptRecipe = ({ title, href, large = false, children }) => {
   const [copied, setCopied] = useState(false);
   const handleCopy = () => {
     navigator.clipboard.writeText(children);
@@ -95,7 +120,7 @@ const PromptRecipe = ({ title, href, children }) => {
           </button>
         </div>
       </div>
-      <div className="bg-gray-950 text-green-300 px-4 py-3 font-mono text-xs leading-relaxed overflow-x-auto max-h-52 overflow-y-auto">
+      <div className={`bg-gray-950 text-green-300 px-4 py-3 font-mono text-xs leading-relaxed overflow-x-auto overflow-y-auto ${large ? "max-h-[34rem]" : "max-h-52"}`}>
         <pre className="whitespace-pre-wrap">{children}</pre>
       </div>
     </div>
@@ -195,7 +220,8 @@ const slides = [
           Foundations: Context Engineering
         </h1>
         <div className="w-16 h-1 bg-red-600 rounded mb-6" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p className="text-xs text-gray-400 mb-3 italic">Click any card to spotlight it.</p>
+        <CardGrid cols={2}>
           <SectionCard title="Prompt vs Context" icon="💬">
             <p>The prompt is only <strong>one component</strong> of the full AI interaction — context surrounds and shapes it.</p>
           </SectionCard>
@@ -208,6 +234,20 @@ const slides = [
           <SectionCard title="Full Interaction Environment" icon="🏗️" accent={true}>
             <p>The goal is designing the <strong>complete environment</strong> around the AI, not just crafting the perfect sentence.</p>
           </SectionCard>
+        </CardGrid>
+      </SlideShell>
+    ),
+  },
+
+  // ── 2b: CONTEXT ENGINEERING — RECIPE ──
+  {
+    label: "↳ Bare vs Rich",
+    content: (
+      <SlideShell tag="Section 2 · Recipe" tagColor="bg-red-700">
+        <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-widest">
+          <span className="text-gray-400">Context Engineering</span>
+          <span className="text-gray-300">›</span>
+          <span className="font-black text-red-600">Bare vs Context-Rich</span>
         </div>
         <PromptComparison
           leftLabel="Bare prompt"
@@ -241,7 +281,8 @@ Constraints:
           Model Capabilities Overview
         </h1>
         <div className="w-16 h-1 bg-indigo-600 rounded mb-6" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p className="text-xs text-gray-400 mb-3 italic">Click any card to spotlight it.</p>
+        <CardGrid cols={2}>
           <SectionCard title="Text Generation & Transformation" icon="✍️">
             <p>Draft, rewrite, summarize, expand — the model transforms text in any direction you specify.</p>
           </SectionCard>
@@ -254,6 +295,20 @@ Constraints:
           <SectionCard title="Limitations of Zero-Shot Knowledge" icon="⚠️" accent={true}>
             <p>Without context, the model guesses. Supply your materials — course scope, student level, learning goals — to constrain and ground the output.</p>
           </SectionCard>
+        </CardGrid>
+      </SlideShell>
+    ),
+  },
+
+  // ── 3b: MODEL CAPABILITIES — RECIPE ──
+  {
+    label: "↳ Zero-Shot vs Grounded",
+    content: (
+      <SlideShell tag="Section 3 · Recipe" tagColor="bg-indigo-700">
+        <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-widest">
+          <span className="text-gray-400">Model Capabilities</span>
+          <span className="text-gray-300">›</span>
+          <span className="font-black text-indigo-600">Zero-Shot vs Grounded</span>
         </div>
         <PromptComparison
           leftLabel="Zero-shot"
@@ -302,7 +357,21 @@ Constraints:
             Diagram conversion (e.g., flowcharts → <strong>structured formats</strong>)
           </Bullet>
         </ul>
-        <PromptRecipe title="Alt-Text Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/alt-text-generation/">{`You are helping me draft alt text for course materials.
+      </SlideShell>
+    ),
+  },
+
+  // ── 4.1b: ACCESSIBILITY RECIPE ──
+  {
+    label: "↳ Alt-Text Recipe",
+    content: (
+      <SlideShell tag="Section 4.1 · Recipe" tagColor="bg-emerald-700">
+        <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-widest">
+          <span className="text-gray-400">Accessibility</span>
+          <span className="text-gray-300">›</span>
+          <span className="font-black text-emerald-700">Alt-Text Generation</span>
+        </div>
+        <PromptRecipe large title="Alt-Text Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/alt-text-generation/">{`You are helping me draft alt text for course materials.
 
 Use the attached materials as the primary source of truth:
 - the image or figure
@@ -349,7 +418,21 @@ Return:
             Generating <strong>completion artifacts</strong> (printable submission pages)
           </Bullet>
         </ul>
-        <PromptRecipe title="Static → Interactive Assignment" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/static-to-interactive-assignment/">{`You are helping me redesign a traditional assignment into a
+      </SlideShell>
+    ),
+  },
+
+  // ── 4.2b: ASSIGNMENTS RECIPE ──
+  {
+    label: "↳ Assignment Recipe",
+    content: (
+      <SlideShell tag="Section 4.2 · Recipe" tagColor="bg-emerald-700">
+        <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-widest">
+          <span className="text-gray-400">Assignments</span>
+          <span className="text-gray-300">›</span>
+          <span className="font-black text-emerald-700">Static → Interactive Assignment</span>
+        </div>
+        <PromptRecipe large title="Static → Interactive Assignment" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/static-to-interactive-assignment/">{`You are helping me redesign a traditional assignment into a
 more interactive learning activity.
 
 Use the attached materials as the primary source of truth:
@@ -399,7 +482,21 @@ Return:
             Improve the syllabus via <strong>structured critique prompts</strong>
           </Bullet>
         </ul>
-        <PromptRecipe title="Syllabus → Module Objectives" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/syllabus-to-module-objectives/">{`You are an instructional design assistant.
+      </SlideShell>
+    ),
+  },
+
+  // ── 4.3b: SYLLABUS RECIPE ──
+  {
+    label: "↳ Syllabus Recipe",
+    content: (
+      <SlideShell tag="Section 4.3 · Recipe" tagColor="bg-emerald-700">
+        <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-widest">
+          <span className="text-gray-400">Syllabus as Context</span>
+          <span className="text-gray-300">›</span>
+          <span className="font-black text-emerald-700">Syllabus → Module Objectives</span>
+        </div>
+        <PromptRecipe large title="Syllabus → Module Objectives" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/syllabus-to-module-objectives/">{`You are an instructional design assistant.
 
 Use the attached syllabus and course materials as the
 primary source of truth.
@@ -446,7 +543,21 @@ Selected week or unit:
             Support <strong>differentiated learning paths</strong>
           </Bullet>
         </ul>
-        <PromptRecipe title="Rubric Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/rubric-generation/">{`You are an instructional design assistant helping me
+      </SlideShell>
+    ),
+  },
+
+  // ── 4.4b: RUBRIC RECIPE ──
+  {
+    label: "↳ Rubric Recipe",
+    content: (
+      <SlideShell tag="Section 4.4 · Recipe" tagColor="bg-emerald-700">
+        <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-widest">
+          <span className="text-gray-400">Rubrics & Feedback</span>
+          <span className="text-gray-300">›</span>
+          <span className="font-black text-emerald-700">Rubric Generation</span>
+        </div>
+        <PromptRecipe large title="Rubric Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/rubric-generation/">{`You are an instructional design assistant helping me
 create a rubric.
 
 Use the attached materials as the primary source of truth:
@@ -494,7 +605,21 @@ Return:
             <strong>Academic integrity</strong> expectations
           </Bullet>
         </ul>
-        <PromptRecipe title="Policy-Aware Syllabus Revision" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/policy-aware-syllabus-revision/">{`You are helping me revise my course syllabus.
+      </SlideShell>
+    ),
+  },
+
+  // ── 5.1b: INSTITUTIONAL RECIPE ──
+  {
+    label: "↳ Syllabus Revision Recipe",
+    content: (
+      <SlideShell tag="Section 5.1 · Recipe" tagColor="bg-amber-700">
+        <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-widest">
+          <span className="text-gray-400">Institutional Requirements</span>
+          <span className="text-gray-300">›</span>
+          <span className="font-black text-amber-700">Policy-Aware Syllabus Revision</span>
+        </div>
+        <PromptRecipe large title="Policy-Aware Syllabus Revision" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/policy-aware-syllabus-revision/">{`You are helping me revise my course syllabus.
 
 Use the attached materials as the primary source of truth:
 - my current syllabus draft
@@ -543,7 +668,21 @@ Return:
             Add <strong>validation steps</strong> into prompts
           </Bullet>
         </ul>
-        <PromptRecipe title="Policy-Safe Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/policy-safe-generation/">{`You are helping me complete a teaching task while staying
+      </SlideShell>
+    ),
+  },
+
+  // ── 5.2b: POLICY-SAFE RECIPE ──
+  {
+    label: "↳ Policy-Safe Recipe",
+    content: (
+      <SlideShell tag="Section 5.2 · Recipe" tagColor="bg-amber-700">
+        <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-widest">
+          <span className="text-gray-400">Policy-Aware Prompting</span>
+          <span className="text-gray-300">›</span>
+          <span className="font-black text-amber-700">Policy-Safe Generation</span>
+        </div>
+        <PromptRecipe large title="Policy-Safe Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/policy-safe-generation/">{`You are helping me complete a teaching task while staying
 within my institution's privacy and approved-tool constraints.
 
 Use the attached materials as the primary source of truth:
@@ -589,7 +728,21 @@ Return:
             <strong>Pedagogical best practices</strong>
           </Bullet>
         </ul>
-        <PromptRecipe title="UDL-Aware Activity Design" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/udl-aware-activity-design/">{`You are an instructional design assistant reviewing my
+      </SlideShell>
+    ),
+  },
+
+  // ── 5.3b: UDL RECIPE ──
+  {
+    label: "↳ UDL Recipe",
+    content: (
+      <SlideShell tag="Section 5.3 · Recipe" tagColor="bg-amber-700">
+        <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-widest">
+          <span className="text-gray-400">Best Practices</span>
+          <span className="text-gray-300">›</span>
+          <span className="font-black text-amber-700">UDL-Aware Activity Design</span>
+        </div>
+        <PromptRecipe large title="UDL-Aware Activity Design" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/udl-aware-activity-design/">{`You are an instructional design assistant reviewing my
 activity design.
 
 Use the attached materials as the primary source of truth:
@@ -626,7 +779,7 @@ Return:
           Tooling: Rutgers Environment
         </h1>
         <div className="w-16 h-1 bg-blue-600 rounded mb-6" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+        <CardGrid cols={2} className="mb-5">
           <SectionCard title="Primary Tools" icon="🛠️" accent={true}>
             <ul className="space-y-2">
               <li className="text-sm"><strong>Google Gemini</strong> (Google Cloud / ScarletMail)</li>
@@ -641,7 +794,7 @@ Return:
               <li>"Agent-like" tools that are <strong>not true agents</strong></li>
             </ul>
           </SectionCard>
-        </div>
+        </CardGrid>
       </SlideShell>
     ),
   },
@@ -655,7 +808,8 @@ Return:
           Infrastructure Reality
         </h1>
         <div className="w-16 h-1 bg-gray-600 rounded mb-6" />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <p className="text-xs text-gray-400 mb-3 italic">Click any card to spotlight it.</p>
+        <CardGrid cols={3}>
           <SectionCard title="Key Constraint" icon="🔑" accent={true}>
             <p>Interactive activities must be <strong>hosted</strong> — they cannot live as local files.</p>
           </SectionCard>
@@ -669,8 +823,22 @@ Return:
           <SectionCard title="Submission Strategy" icon="📤">
             <p>Generate <strong>completion/summary pages</strong> for student submission.</p>
           </SectionCard>
+        </CardGrid>
+      </SlideShell>
+    ),
+  },
+
+  // ── 7b: HOSTED ACTIVITY RECIPE ──
+  {
+    label: "↳ HTML Activity Recipe",
+    content: (
+      <SlideShell tag="Section 7 · Recipe" tagColor="bg-gray-700">
+        <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-widest">
+          <span className="text-gray-400">Infrastructure</span>
+          <span className="text-gray-300">›</span>
+          <span className="font-black text-gray-600">Hosted Activity Generation</span>
         </div>
-        <PromptRecipe title="Hosted Activity Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/hosted-activity-generation/">{`You are both an instructional designer and a front-end
+        <PromptRecipe large title="Hosted Activity Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/hosted-activity-generation/">{`You are both an instructional designer and a front-end
 learning activity developer.
 
 Use the attached module materials as the primary source:
@@ -708,7 +876,8 @@ Return:
         <div className="bg-purple-50 border border-purple-200 rounded-xl p-5 mb-5">
           <p className="text-sm text-purple-900 font-semibold">Use local tools (e.g., <strong>LM Studio</strong>) to run AI models entirely on your own machine.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <p className="text-xs text-gray-400 mb-3 italic">Click any card to spotlight it.</p>
+        <CardGrid cols={3}>
           <SectionCard title="No Data Privacy Concerns" icon="🔒">
             <p className="text-sm">Nothing leaves your device — safe for sensitive course materials and student data.</p>
           </SectionCard>
@@ -718,7 +887,7 @@ Return:
           <SectionCard title="Safe Prompt Testing" icon="✅" accent={true}>
             <p className="text-sm">Develop and refine prompt recipes in a <strong>fully contained environment</strong> before using institutional tools.</p>
           </SectionCard>
-        </div>
+        </CardGrid>
       </SlideShell>
     ),
   },
