@@ -22,7 +22,10 @@ const SlideShell = ({ tag, tagColor = "bg-red-600", children }) => (
     </div>
     <div className="px-6 py-2 border-t border-gray-100 flex justify-between items-center">
       <span className="text-xs text-gray-400">Rutgers UOES / GRID · FUBAR Labs · CHI-261589</span>
-      <span className="text-xs text-gray-400">Chameleon User Meeting · April 2026</span>
+      <span className="flex items-center gap-2 text-xs text-gray-400">
+        <span className="bg-amber-400 text-amber-900 font-black uppercase tracking-widest px-2 py-0.5 rounded text-xs">DRAFT</span>
+        Chameleon User Meeting · April 2026
+      </span>
     </div>
   </div>
 );
@@ -168,7 +171,7 @@ const slides = [
   {
     label: "Title",
     content: (
-      <SlideShell tag="Chameleon User Meeting 2026" tagColor="bg-gray-700">
+      <SlideShell tag="DRAFT · Chameleon User Meeting 2026" tagColor="bg-amber-500">
         <div className="flex flex-col items-start justify-center h-full min-h-[380px]">
           <p className="text-xs font-bold uppercase tracking-widest text-red-500 mb-3">Rutgers University · FUBAR Labs · CHI-261589</p>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight mb-1">
