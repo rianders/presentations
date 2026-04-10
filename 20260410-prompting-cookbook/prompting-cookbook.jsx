@@ -878,8 +878,8 @@ Return:
         </div>
         <p className="text-xs text-gray-400 mb-3 italic">Click any card to spotlight it.</p>
         <CardGrid cols={3}>
-          <SectionCard title="No Data Privacy Concerns" icon="🔒">
-            <p className="text-sm">Nothing leaves your device — safe for sensitive course materials and student data.</p>
+          <SectionCard title="No Cloud Transmission" icon="🔒">
+            <p className="text-sm">No data is sent to a third party or cloud service. The same data-handling responsibilities faculty already have for files on their computers still apply — local AI doesn't change that, it just removes the third party.</p>
           </SectionCard>
           <SectionCard title="Full Experimentation Freedom" icon="🧪">
             <p className="text-sm">Try any model without institutional restrictions or account requirements.</p>
