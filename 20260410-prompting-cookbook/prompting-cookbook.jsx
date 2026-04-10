@@ -63,10 +63,65 @@ const Tag = ({ color = "bg-blue-100 text-blue-700", children }) => (
   <span className={`inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full ${color}`}>{children}</span>
 );
 
-const Placeholder = ({ label, children }) => (
-  <div className="border-2 border-dashed border-amber-400 rounded-xl p-4 my-4 bg-amber-50">
-    <p className="text-xs font-black uppercase tracking-widest text-amber-600 mb-2">📝 Prompt Placeholder · {label}</p>
-    <p className="text-xs text-amber-800 italic">{children}</p>
+const PromptRecipe = ({ title, href, children }) => {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(children);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
+  return (
+    <div className="my-4 rounded-xl overflow-hidden border border-gray-700 shadow-lg">
+      <div className="flex items-center justify-between bg-gray-800 px-4 py-2">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-red-500 flex-shrink-0" />
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400 flex-shrink-0" />
+          <span className="w-2.5 h-2.5 rounded-full bg-green-400 flex-shrink-0" />
+          <span className="text-xs font-bold text-gray-300 ml-2 uppercase tracking-widest">{title}</span>
+        </div>
+        <div className="flex items-center gap-3">
+          {href && (
+            <a href={href} target="_blank" rel="noreferrer" className="text-xs text-gray-400 hover:text-blue-300 transition-colors font-medium">
+              Full recipe ↗
+            </a>
+          )}
+          <button
+            onClick={handleCopy}
+            className={`text-xs font-bold px-3 py-1 rounded transition-all ${
+              copied ? "bg-green-700 text-green-100" : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+            }`}
+          >
+            {copied ? "✓ copied" : "copy"}
+          </button>
+        </div>
+      </div>
+      <div className="bg-gray-950 text-green-300 px-4 py-3 font-mono text-xs leading-relaxed overflow-x-auto max-h-52 overflow-y-auto">
+        <pre className="whitespace-pre-wrap">{children}</pre>
+      </div>
+    </div>
+  );
+};
+
+const PromptComparison = ({ leftLabel, rightLabel, leftPrompt, rightPrompt, leftHref, rightHref }) => (
+  <div className="my-4 grid grid-cols-2 gap-3">
+    <div className="rounded-xl overflow-hidden border border-gray-300 shadow">
+      <div className="bg-gray-200 px-3 py-2">
+        <span className="text-xs font-black uppercase tracking-widest text-gray-500">{leftLabel}</span>
+        {leftHref && <a href={leftHref} target="_blank" rel="noreferrer" className="float-right text-xs text-gray-400 hover:text-gray-600">see example ↗</a>}
+      </div>
+      <div className="bg-gray-100 text-gray-500 px-3 py-3 font-mono text-xs leading-relaxed max-h-48 overflow-y-auto">
+        <pre className="whitespace-pre-wrap">{leftPrompt}</pre>
+      </div>
+    </div>
+    <div className="rounded-xl overflow-hidden border border-emerald-400 shadow">
+      <div className="bg-emerald-800 px-3 py-2 flex items-center justify-between">
+        <span className="text-xs font-black uppercase tracking-widest text-emerald-100">{rightLabel}</span>
+        {rightHref && <a href={rightHref} target="_blank" rel="noreferrer" className="text-xs text-emerald-300 hover:text-white">see example ↗</a>}
+      </div>
+      <div className="bg-gray-950 text-green-300 px-3 py-3 font-mono text-xs leading-relaxed max-h-48 overflow-y-auto">
+        <pre className="whitespace-pre-wrap">{rightPrompt}</pre>
+      </div>
+    </div>
   </div>
 );
 
@@ -154,9 +209,25 @@ const slides = [
             <p>The goal is designing the <strong>complete environment</strong> around the AI, not just crafting the perfect sentence.</p>
           </SectionCard>
         </div>
-        <Placeholder label="Prompt vs Context Demo">
-          Show a bare prompt ("Write a quiz") side-by-side with a context-rich version that includes course name, learning objective, student level, and format requirements — illustrating how context shapes the output.
-        </Placeholder>
+        <PromptComparison
+          leftLabel="Bare prompt"
+          rightLabel="Context-rich prompt"
+          leftPrompt={`Write a quiz about photosynthesis.`}
+          rightPrompt={`You are an instructional designer.
+
+Course: Biology 101 · Module 3
+Objective: Students will identify inputs and
+outputs of the light-dependent reactions.
+Materials: [attached course reading]
+
+Write a 5-question multiple-choice quiz
+aligned to this objective.
+
+Constraints:
+- Use only the supplied reading.
+- If a question cannot be answered from
+  the materials, mark it [NEEDS REVIEW].`}
+        />
       </SlideShell>
     ),
   },
@@ -184,9 +255,25 @@ const slides = [
             <p>Without context, the model guesses. Supply your materials — course scope, student level, learning goals — to constrain and ground the output.</p>
           </SectionCard>
         </div>
-        <Placeholder label="Zero-Shot vs Grounded Prompt">
-          Show a zero-shot request ("Summarize this topic") versus a grounded request that attaches the actual course reading and asks for a summary constrained to that document's content only.
-        </Placeholder>
+        <PromptComparison
+          leftLabel="Zero-shot"
+          rightLabel="Grounded"
+          leftPrompt={`Summarize this topic for my students.`}
+          rightPrompt={`You are creating a student-facing summary.
+
+Source: [attached course reading]
+Level: Undergraduate, second year
+Length: ~150 words
+
+Task:
+Summarize this reading for students at
+this level.
+
+Constraints:
+- Draw only from the attached reading.
+- Do not add outside examples.
+- Mark anything unclear as [UNCERTAIN].`}
+        />
       </SlideShell>
     ),
   },
@@ -215,9 +302,28 @@ const slides = [
             Diagram conversion (e.g., flowcharts → <strong>structured formats</strong>)
           </Bullet>
         </ul>
-        <Placeholder label="Alt-Text Generation Prompt">
-          Prompt for uploading an image/figure and requesting a screen-reader-compatible alt-text description: type of visual, key data or labels, trend or conclusion a reader should draw — without solving or interpreting beyond what is shown.
-        </Placeholder>
+        <PromptRecipe title="Alt-Text Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/alt-text-generation/">{`You are helping me draft alt text for course materials.
+
+Use the attached materials as the primary source of truth:
+- the image or figure
+- the surrounding page, slide, caption, or assignment context
+- any course vocabulary or instructor notes I provide
+
+Task:
+Write draft alt text that helps a student understand the
+instructional purpose of this image.
+
+Important constraints:
+- Base the description on what is actually visible and on
+  the supplied course context.
+- Prioritize educationally relevant content over decorative detail.
+- Mark unreadable labels or axes as [UNCERTAIN].
+
+Return:
+1. concise alt text draft
+2. longer-description draft if the figure is complex
+3. note explaining which course context shaped the description
+4. any [UNCERTAIN] details needing human review`}</PromptRecipe>
       </SlideShell>
     ),
   },
@@ -243,9 +349,31 @@ const slides = [
             Generating <strong>completion artifacts</strong> (printable submission pages)
           </Bullet>
         </ul>
-        <Placeholder label="Static → Interactive Assignment Prompt">
-          Prompt for converting a traditional written assignment into an interactive step-by-step activity: specify subject, student level, desired output format (self-contained HTML), and scaffolding approach (hints, progressive disclosure, etc.).
-        </Placeholder>
+        <PromptRecipe title="Static → Interactive Assignment" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/static-to-interactive-assignment/">{`You are helping me redesign a traditional assignment into a
+more interactive learning activity.
+
+Use the attached materials as the primary source of truth:
+- the current assignment prompt
+- learning objectives
+- rubric or grading criteria, if available
+- any student-level, accessibility, or Canvas constraints
+
+Task:
+Redesign this assignment so students get more structure,
+interaction, and feedback opportunities while still meeting
+the original course goals.
+
+Important constraints:
+- Preserve the core learning objective of the original.
+- Do not add tools or technical requirements beyond the
+  supplied constraints.
+- Mark implementation questions as [NEEDS REVIEW].
+
+Return:
+1. summary of the original assignment purpose
+2. redesigned interactive version
+3. step-by-step student flow
+4. note explaining how the redesign preserves original goals`}</PromptRecipe>
       </SlideShell>
     ),
   },
@@ -271,9 +399,28 @@ const slides = [
             Improve the syllabus via <strong>structured critique prompts</strong>
           </Bullet>
         </ul>
-        <Placeholder label="Syllabus as Context Engine Prompt">
-          Prompt that pastes the full syllabus as context, then asks the AI to generate module-level learning objectives aligned to the stated course goals — constrained strictly to the scope described in the syllabus.
-        </Placeholder>
+        <PromptRecipe title="Syllabus → Module Objectives" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/syllabus-to-module-objectives/">{`You are an instructional design assistant.
+
+Use the attached syllabus and course materials as the
+primary source of truth.
+
+Task:
+Generate module-level learning objectives for the
+selected week or unit.
+
+Important constraints:
+- Stay within the scope of the course materials.
+- Do not invent course goals not supported by the syllabus.
+- Mark anything uncertain as [NEEDS REVIEW].
+
+Return:
+1. module title
+2. short module purpose
+3. 3 to 5 learning objectives
+4. one note connecting objectives to the syllabus
+
+Selected week or unit:
+[PASTE WEEK OR UNIT HERE]`}</PromptRecipe>
       </SlideShell>
     ),
   },
@@ -299,9 +446,29 @@ const slides = [
             Support <strong>differentiated learning paths</strong>
           </Bullet>
         </ul>
-        <Placeholder label="Rubric Generation Prompt">
-          Prompt for generating a rubric aligned to a specific learning objective: include the assignment description, desired performance levels (e.g., Excellent / Proficient / Developing / Beginning), and criteria drawn from the course goals.
-        </Placeholder>
+        <PromptRecipe title="Rubric Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/rubric-generation/">{`You are an instructional design assistant helping me
+create a rubric.
+
+Use the attached materials as the primary source of truth:
+- assignment description
+- learning objective
+- course goals or values
+- any instructor notes I provide
+
+Task:
+Create a rubric aligned to the learning objective and the
+purpose of the assignment.
+
+Requirements:
+- Use these performance levels:
+  Excellent / Proficient / Developing / Beginning
+- Build criteria from the course goals and assignment
+
+Return:
+1. rubric title
+2. 4 to 6 criteria
+3. performance descriptors for each level
+4. note explaining alignment to the learning objective`}</PromptRecipe>
       </SlideShell>
     ),
   },
@@ -327,9 +494,30 @@ const slides = [
             <strong>Academic integrity</strong> expectations
           </Bullet>
         </ul>
-        <Placeholder label="Institutional Constraints Prompt">
-          Prompt that embeds department requirements directly: e.g., "The following syllabus elements are required by my department: [list]. Review my draft syllabus and identify any missing elements. Do not suggest changes beyond this checklist."
-        </Placeholder>
+        <PromptRecipe title="Policy-Aware Syllabus Revision" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/policy-aware-syllabus-revision/">{`You are helping me revise my course syllabus.
+
+Use the attached materials as the primary source of truth:
+- my current syllabus draft
+- institutional syllabus template
+- required accessibility statements
+- academic integrity guidance
+- department or campus-specific required statements
+
+Task:
+Revise or expand my syllabus so it reflects required and
+recommended guidance while remaining faithful to my course goals.
+
+Important constraints:
+- Preserve my course-specific content where possible.
+- Do not invent university or department policies not present
+  in the materials.
+- Identify missing required elements clearly.
+
+Return:
+1. revised syllabus draft
+2. list of added or revised policy-related sections
+3. checklist of missing or uncertain required elements
+4. note explaining which supplied sources shaped the revision`}</PromptRecipe>
       </SlideShell>
     ),
   },
@@ -355,9 +543,27 @@ const slides = [
             Add <strong>validation steps</strong> into prompts
           </Bullet>
         </ul>
-        <Placeholder label="Policy-Aware Prompt">
-          Prompt that explicitly states tool and data constraints before the task: "Use only Gemini via my ScarletMail account. Do not include any student names, IDs, or identifiable information. After generating, flag anything that may require human review for accuracy."
-        </Placeholder>
+        <PromptRecipe title="Policy-Safe Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/policy-safe-generation/">{`You are helping me complete a teaching task while staying
+within my institution's privacy and approved-tool constraints.
+
+Use the attached materials as the primary source of truth:
+- the task description
+- the course materials needed for the task
+- any local policy notes or approved-tool guidance I provide
+- any redacted or anonymized examples I provide
+
+Important constraints:
+- Do not request student-identifying information unless I
+  explicitly confirm it is permitted.
+- If the task would require restricted data or a non-approved
+  workflow, stop and propose a safer alternative.
+- Clearly mark any point where human review is needed.
+
+Return:
+1. recommended safe workflow for this task
+2. the draft output, if it can be produced safely
+3. short list of policy or privacy risks to avoid
+4. any required human-review or approved-tool handoff points`}</PromptRecipe>
       </SlideShell>
     ),
   },
@@ -383,9 +589,30 @@ const slides = [
             <strong>Pedagogical best practices</strong>
           </Bullet>
         </ul>
-        <Placeholder label="UDL-Aware Prompt">
-          Prompt that embeds UDL principles as constraints: "Design this activity with multiple means of engagement. Provide options for how students can represent their understanding. Ensure instructions are plain language and do not assume prior familiarity with the tools."
-        </Placeholder>
+        <PromptRecipe title="UDL-Aware Activity Design" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/udl-aware-activity-design/">{`You are an instructional design assistant reviewing my
+activity design.
+
+Use the attached materials as the primary source of truth:
+- activity description
+- learning objective
+- course notes or values
+- any accessibility priorities I provide
+
+Task:
+Revise or critique this activity using UDL-aware principles.
+
+Focus on:
+1. multiple means of engagement
+2. multiple ways students can show understanding
+3. plain language and clarity
+4. assumptions about prior knowledge, tools, or access
+5. alignment between the activity and stated course values
+
+Return:
+1. strengths
+2. possible mismatches or gaps
+3. specific suggestions for improvement
+4. a short revised version of the activity if appropriate`}</PromptRecipe>
       </SlideShell>
     ),
   },
@@ -443,9 +670,28 @@ const slides = [
             <p>Generate <strong>completion/summary pages</strong> for student submission.</p>
           </SectionCard>
         </div>
-        <Placeholder label="Hosted Activity Generation Prompt">
-          Prompt for generating a self-contained HTML activity: "Output a single HTML file with no external dependencies. The activity should work when pasted into a Canvas page or uploaded to Google Drive and opened in a browser."
-        </Placeholder>
+        <PromptRecipe title="Hosted Activity Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/hosted-activity-generation/">{`You are both an instructional designer and a front-end
+learning activity developer.
+
+Use the attached module materials as the primary source:
+- module overview and learning objectives
+- reading or vocabulary list
+- instructor notes and course design constraints
+
+Task:
+Create a small interactive learning activity that helps
+students practice and confirm understanding before moving on.
+
+Technical requirements:
+- output a single self-contained HTML file
+- include HTML, CSS, and JavaScript in one file
+- do not use external dependencies
+- include a completion section students can submit
+
+Return:
+1. short description of the activity
+2. the complete self-contained HTML file
+3. note describing how it supports the module objective`}</PromptRecipe>
       </SlideShell>
     ),
   },
