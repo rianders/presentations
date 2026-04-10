@@ -781,9 +781,9 @@ const slides = [
                 <span className="font-bold">Coachable CLI</span>
               </div>
               <div className="bg-purple-100 border border-purple-300 rounded-lg px-2 py-1.5 text-xs text-purple-900">
-                <span className="font-bold">Edge agent?</span><br/>
-                <span className="text-purple-700">Phi-3 / Gemma 1B<br/>on-device planning</span><br/>
-                <span className="italic text-purple-500">open question</span>
+                <span className="font-bold">Talkbot</span><br/>
+                <span className="text-purple-700">qwen3.5-0.8b<br/>voice + tools</span><br/>
+                <span className="italic text-purple-500">→ Chameleon fallback</span>
               </div>
             </div>
           </div>
@@ -983,7 +983,7 @@ const slides = [
               <span className="font-bold">Spatial AI</span> — detection, depth estimation, scene understanding
             </div>
             <div className="bg-purple-50 border border-purple-300 rounded-lg px-2 py-1.5 text-xs text-gray-700">
-              <span className="font-bold text-purple-800">Small agent?</span> — LLM for task reasoning, co-located with inference
+              <span className="font-bold text-purple-800">Talkbot</span> — voice + tools on Pi; Chameleon as LLM fallback
             </div>
           </div>
         </div>
@@ -1001,6 +1001,87 @@ const slides = [
             <p className="text-xs font-black text-blue-700 mb-1">Chameleon Fit</p>
             <p className="text-xs text-gray-700">CHI@Edge device enrollment for the MCU? Or dedicated inference endpoint on a reserved node the MCU always calls?</p>
           </div>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // ── TALKBOT ──
+  {
+    label: "Talkbot",
+    content: (
+      <SlideShell tag="Edge Agent" tagColor="bg-purple-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">
+          Talkbot: Pi-Level Edge Agent
+        </h1>
+        <div className="w-16 h-1 bg-purple-600 rounded mb-4" />
+        <p className="text-sm text-gray-600 mb-4">
+          The answer to the "edge agent?" question in the architecture. Not tasked with driving or manipulation —
+          a <strong>voice-first conversational agent embedded in the robot itself</strong>, like Reachy or Coglet.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-purple-700 mb-2">Runs on Pi 5</p>
+            <p className="text-sm font-bold text-gray-800 mb-1">qwen3.5-0.8b-Q8</p>
+            <ul className="space-y-1 text-xs text-gray-700">
+              <li>· 775 MB GGUF model</li>
+              <li>· 21 tokens/sec on CPU</li>
+              <li>· 90% benchmark success</li>
+              <li>· llama-server backend</li>
+            </ul>
+          </div>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Voice Pipeline</p>
+            <ul className="space-y-1 text-xs text-gray-700">
+              <li>· faster-whisper STT</li>
+              <li>· Silero VAD (gated input)</li>
+              <li>· KittenTTS (local neural)</li>
+              <li>· Edge TTS (322 voices)</li>
+              <li>· 21 built-in tools</li>
+            </ul>
+          </div>
+          <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">Chameleon Path</p>
+            <p className="text-xs text-gray-700">Default: <strong>local llama-server</strong> on Pi 5.</p>
+            <p className="text-xs text-gray-700 mt-1">Fallback: currently OpenRouter — <strong>replace with Chameleon-hosted LLM</strong> for heavier tasks or when Pi is busy with teleop/recording.</p>
+          </div>
+        </div>
+
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">The Vision: Embodied Conversational Robots</p>
+          <div className="flex items-center gap-4 flex-wrap text-sm text-gray-700">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🤖</span>
+              <div>
+                <p className="font-bold">Reachy / Coglet pattern</p>
+                <p className="text-xs text-gray-500">humanoid or companion robot with voice, memory, tools</p>
+              </div>
+            </div>
+            <span className="text-gray-300 text-xl hidden md:block">|</span>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🦾</span>
+              <div>
+                <p className="font-bold">SO-ARM101 + Talkbot</p>
+                <p className="text-xs text-gray-500">arm that can <em>talk about</em> what it's doing, take voice instructions</p>
+              </div>
+            </div>
+            <span className="text-gray-300 text-xl hidden md:block">|</span>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🚗</span>
+              <div>
+                <p className="font-bold">FooCars v2 + Talkbot</p>
+                <p className="text-xs text-gray-500">vehicle that narrates, takes commands, reports sensor state</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex gap-2 flex-wrap">
+          <span className="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-0.5 rounded-full">github.com/ricklon/talkbot</span>
+          <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">local-first · cloud fallback</span>
+          <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">OpenRouter → swap Chameleon inference</span>
+          <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">Pi 5 resource budget TBD with teleop running</span>
         </div>
       </SlideShell>
     ),
@@ -1115,7 +1196,7 @@ const slides = [
               <GapBullet>WebRTC port exposure through Chameleon reservation network — confirmed working?</GapBullet>
               <GapBullet>gRPC latency benchmarks: Pi → MI100 round-trip for streaming inference</GapBullet>
               <GapBullet>MCU → Chameleon direct inference: CHI@Edge enrollment path for microcontrollers?</GapBullet>
-              <GapBullet>Small edge agent: which models (Phi-3, Gemma 1B) run on Pi 5 alongside recording?</GapBullet>
+              <GapBullet>Talkbot on Pi 5: resource budget when teleop + recording also running? qwen3.5-0.8b @ 21 tok/s CPU is the baseline.</GapBullet>
             </ul>
           </div>
         </div>
