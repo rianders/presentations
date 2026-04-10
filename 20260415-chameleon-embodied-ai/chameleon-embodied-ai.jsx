@@ -487,7 +487,7 @@ const slides = [
             fix="Use --privileged with explicit --device flags. Containers persist until manually removed with balena rm." />
           <LessonRow status="fixed"
             problem="No mesh VPN between Pi on lab network and Chameleon training node"
-            fix="Tailscale: Pi gets BalenaOS block, Chameleon node installs via curl. All devices join 100.x.x.x mesh — no floating IPs or tunnels." />
+            fix="Desired fix: Tailscale (BalenaOS block on Pi, curl install on Chameleon node). Permission not yet requested — and performance overhead TBD. Asking Chameleon: is there a native networking solution?" />
           <LessonRow status="warn"
             problem="Reservation model friction: per-session re-provisioning breaks class flow; GPU needed across sim + training + inference"
             fix="Need persistent pre-provisioned environments. Reconnect cell pattern added to notebooks as workaround." />
@@ -678,8 +678,8 @@ const slides = [
               <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
                 <span className="font-bold">Coachable CLI</span><br/>preview · collect · run
               </div>
-              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
-                <span className="font-bold">Tailscale</span><br/>mesh connectivity
+              <div className="bg-amber-50 border border-amber-300 rounded-lg px-2 py-1.5 text-xs text-amber-900">
+                <span className="font-bold">Tailscale?</span><br/>desired — permission<br/>+ perf TBD
               </div>
             </div>
           </div>
@@ -753,7 +753,7 @@ const slides = [
 
         <div className="mt-3 flex gap-2 flex-wrap">
           <span className="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded-full">HF Hub = external dependency for data</span>
-          <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">Tailscale bridges Pi ↔ cloud (no native Chameleon mesh)</span>
+          <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">No native Pi ↔ cloud mesh — Tailscale desired (permission + perf TBD)</span>
         </div>
       </SlideShell>
     ),
@@ -793,9 +793,11 @@ const slides = [
             {/* Native network question */}
             <div className="border-2 border-dashed border-purple-400 rounded-xl bg-purple-50 px-3 py-2 text-center w-full">
               <div className="text-xs font-black text-purple-700 mb-1">Private Network</div>
-              <div className="text-xs text-gray-600">Tailscale (now)</div>
-              <div className="text-xs text-purple-700 font-semibold mt-1">Chameleon native VPN?</div>
-              <div className="text-xs text-gray-400 italic">asking the community</div>
+              <div className="text-xs text-purple-600 font-semibold">Tailscale — desired</div>
+              <div className="text-xs text-gray-500 italic">permission not yet requested</div>
+              <div className="text-xs text-gray-500 italic">performance overhead TBD</div>
+              <div className="text-xs text-purple-700 font-semibold mt-2">Native Chameleon option?</div>
+              <div className="text-xs text-gray-400 italic">preferred if it exists</div>
             </div>
 
             <div className="flex flex-col items-center gap-1 w-full text-xs text-gray-500">
@@ -838,7 +840,7 @@ const slides = [
         <div className="mt-3 flex gap-2 flex-wrap">
           <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">Object Store keeps training data inside Chameleon</span>
           <span className="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-0.5 rounded-full">RTX unlocks Flash Attn 2 + Diffusion Policy + WebRTC sim streaming</span>
-          <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">? native VPN eliminates Tailscale workaround</span>
+          <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">? native Chameleon VPN preferred over Tailscale (permission + perf concerns)</span>
           <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">gRPC replaces HTTP for real-time Pi ↔ inference loop</span>
           <span className="bg-gray-200 text-gray-700 text-xs font-bold px-2 py-0.5 rounded-full">variant: MCU direct → Chameleon inference (no Pi)</span>
         </div>
