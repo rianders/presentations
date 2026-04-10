@@ -187,6 +187,44 @@ const slides = [
     ),
   },
 
+  // ── FOLLOW ALONG ──
+  {
+    label: "Follow Along",
+    content: (
+      <SlideShell tag="Get Set Up" tagColor="bg-red-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Follow Along
+        </h1>
+        <div className="w-16 h-1 bg-red-600 rounded mb-6" />
+
+        <div className="bg-red-600 text-white rounded-xl p-5 mb-5 flex items-center justify-between gap-6">
+          <div>
+            <p className="text-sm font-bold text-red-100 uppercase tracking-widest mb-1">Rutgers AI Tools Hub</p>
+            <p className="text-2xl font-black">it.rutgers.edu/ai</p>
+            <p className="text-sm text-red-100 mt-1">Access Copilot and Gemini — links, login instructions, and policy guidance all in one place.</p>
+          </div>
+          <a href="https://it.rutgers.edu/ai" target="_blank" rel="noreferrer"
+             className="flex-shrink-0 bg-white text-red-600 text-sm font-black px-5 py-3 rounded-lg hover:bg-red-50 transition-colors">
+            Open ↗
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">Microsoft 365 Copilot</p>
+            <p className="text-sm text-gray-700 mb-2">Sign in with your <strong>@scarletmail.rutgers.edu</strong> account at microsoft365.com or open any M365 app.</p>
+            <p className="text-xs text-gray-500">Copilot Chat is available in the sidebar across Word, Outlook, Teams, and the web.</p>
+          </div>
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">Google Gemini</p>
+            <p className="text-sm text-gray-700 mb-2">Sign in with your <strong>@scarletmail.rutgers.edu</strong> account at gemini.google.com.</p>
+            <p className="text-xs text-gray-500">Make sure you are signed in with ScarletMail — not a personal Google account — to stay within the licensed environment.</p>
+          </div>
+        </div>
+      </SlideShell>
+    ),
+  },
+
   // ── 1: WORKSHOP GOAL ──
   {
     label: "Workshop Goal",
