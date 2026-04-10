@@ -119,7 +119,7 @@ const Tag = ({ color = "bg-blue-100 text-blue-700", children }) => (
   <span className={`inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full ${color}`}>{children}</span>
 );
 
-const PromptRecipe = ({ title, href, large = false, children }) => {
+const PromptRecipe = ({ title, href, exampleHref, large = false, children }) => {
   const [copied, setCopied] = useState(false);
   const handleCopy = () => {
     navigator.clipboard.writeText(children);
@@ -136,6 +136,11 @@ const PromptRecipe = ({ title, href, large = false, children }) => {
           <span className="text-xs font-bold text-gray-300 ml-2 uppercase tracking-widest">{title}</span>
         </div>
         <div className="flex items-center gap-3">
+          {exampleHref && (
+            <a href={exampleHref} target="_blank" rel="noreferrer" className="text-xs text-emerald-400 hover:text-emerald-200 transition-colors font-medium">
+              Example ↗
+            </a>
+          )}
           {href && (
             <a href={href} target="_blank" rel="noreferrer" className="text-xs text-gray-400 hover:text-blue-300 transition-colors font-medium">
               Full recipe ↗
@@ -316,6 +321,7 @@ const slides = [
           <span className="text-gray-400">Context Engineering</span>
           <span className="text-gray-300">›</span>
           <span className="font-black text-red-600">Bare vs Context-Rich</span>
+          <a href="https://rianders.github.io/prompting-cookbook/60-examples/bare-vs-context-rich-prompt/" target="_blank" rel="noreferrer" className="ml-auto text-emerald-600 hover:text-emerald-800 normal-case font-semibold">Example ↗</a>
         </div>
         <PromptComparison
           leftLabel="Bare prompt"
@@ -376,6 +382,7 @@ Constraints:
           <span className="text-gray-400">Model Capabilities</span>
           <span className="text-gray-300">›</span>
           <span className="font-black text-indigo-600">Zero-Shot vs Grounded</span>
+          <a href="https://rianders.github.io/prompting-cookbook/60-examples/zero-shot-vs-grounded-summary/" target="_blank" rel="noreferrer" className="ml-auto text-emerald-600 hover:text-emerald-800 normal-case font-semibold">Example ↗</a>
         </div>
         <PromptComparison
           leftLabel="Zero-shot"
@@ -438,7 +445,7 @@ Constraints:
           <span className="text-gray-300">›</span>
           <span className="font-black text-emerald-700">Alt-Text Generation</span>
         </div>
-        <PromptRecipe large title="Alt-Text Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/alt-text-generation/">{`You are helping me draft alt text for course materials.
+        <PromptRecipe large title="Alt-Text Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/alt-text-generation/" exampleHref="https://rianders.github.io/prompting-cookbook/60-examples/alt-text-generation-example/">{`You are helping me draft alt text for course materials.
 
 Use the attached materials as the primary source of truth:
 - the image or figure
@@ -499,7 +506,7 @@ Return:
           <span className="text-gray-300">›</span>
           <span className="font-black text-emerald-700">Static → Interactive Assignment</span>
         </div>
-        <PromptRecipe large title="Static → Interactive Assignment" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/static-to-interactive-assignment/">{`You are helping me redesign a traditional assignment into a
+        <PromptRecipe large title="Static → Interactive Assignment" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/static-to-interactive-assignment/" exampleHref="https://rianders.github.io/prompting-cookbook/60-examples/static-to-interactive-assignment-example/">{`You are helping me redesign a traditional assignment into a
 more interactive learning activity.
 
 Use the attached materials as the primary source of truth:
@@ -624,7 +631,7 @@ Selected week or unit:
           <span className="text-gray-300">›</span>
           <span className="font-black text-emerald-700">Rubric Generation</span>
         </div>
-        <PromptRecipe large title="Rubric Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/rubric-generation/">{`You are an instructional design assistant helping me
+        <PromptRecipe large title="Rubric Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/rubric-generation/" exampleHref="https://rianders.github.io/prompting-cookbook/60-examples/rubric-generation-example/">{`You are an instructional design assistant helping me
 create a rubric.
 
 Use the attached materials as the primary source of truth:
@@ -686,7 +693,7 @@ Return:
           <span className="text-gray-300">›</span>
           <span className="font-black text-amber-700">Policy-Aware Syllabus Revision</span>
         </div>
-        <PromptRecipe large title="Policy-Aware Syllabus Revision" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/policy-aware-syllabus-revision/">{`You are helping me revise my course syllabus.
+        <PromptRecipe large title="Policy-Aware Syllabus Revision" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/policy-aware-syllabus-revision/" exampleHref="https://rianders.github.io/prompting-cookbook/60-examples/policy-aware-syllabus-revision-example/">{`You are helping me revise my course syllabus.
 
 Use the attached materials as the primary source of truth:
 - my current syllabus draft
@@ -749,7 +756,7 @@ Return:
           <span className="text-gray-300">›</span>
           <span className="font-black text-amber-700">Policy-Safe Generation</span>
         </div>
-        <PromptRecipe large title="Policy-Safe Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/policy-safe-generation/">{`You are helping me complete a teaching task while staying
+        <PromptRecipe large title="Policy-Safe Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/policy-safe-generation/" exampleHref="https://rianders.github.io/prompting-cookbook/60-examples/policy-safe-generation-example/">{`You are helping me complete a teaching task while staying
 within my institution's privacy and approved-tool constraints.
 
 Use the attached materials as the primary source of truth:
@@ -809,7 +816,7 @@ Return:
           <span className="text-gray-300">›</span>
           <span className="font-black text-amber-700">UDL-Aware Activity Design</span>
         </div>
-        <PromptRecipe large title="UDL-Aware Activity Design" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/udl-aware-activity-design/">{`You are an instructional design assistant reviewing my
+        <PromptRecipe large title="UDL-Aware Activity Design" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/udl-aware-activity-design/" exampleHref="https://rianders.github.io/prompting-cookbook/60-examples/udl-aware-activity-design-example/">{`You are an instructional design assistant reviewing my
 activity design.
 
 Use the attached materials as the primary source of truth:
@@ -904,7 +911,7 @@ Return:
           <span className="text-gray-300">›</span>
           <span className="font-black text-gray-600">Hosted Activity Generation</span>
         </div>
-        <PromptRecipe large title="Hosted Activity Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/hosted-activity-generation/">{`You are both an instructional designer and a front-end
+        <PromptRecipe large title="Hosted Activity Generation" href="https://rianders.github.io/prompting-cookbook/50-prompt-recipes/hosted-activity-generation/" exampleHref="https://rianders.github.io/prompting-cookbook/60-examples/hosted-activity-generation-example/">{`You are both an instructional designer and a front-end
 learning activity developer.
 
 Use the attached module materials as the primary source:
