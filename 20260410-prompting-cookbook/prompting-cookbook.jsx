@@ -50,13 +50,24 @@ const SectionCard = ({ title, icon, children, accent = false, isActive = false, 
 
 const CardGrid = ({ cols = 2, className = "", children }) => {
   const [active, setActive] = useState(null);
+  const activeRef = React.useRef(null);
   const items = React.Children.toArray(children);
   const count = items.length;
+
+  useEffect(() => { activeRef.current = active; }, [active]);
 
   useEffect(() => {
     const handler = (e) => {
       const key = e.key.toLowerCase();
       if (key === 'escape') { setActive(null); return; }
+      if (e.key === ' ') {
+        if (activeRef.current !== null) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          setActive(prev => prev < count - 1 ? prev + 1 : null);
+        }
+        return;
+      }
       if (!['w', 'a', 's', 'd'].includes(key)) return;
       setActive(prev => {
         const cur = prev === null ? 0 : prev;
@@ -69,8 +80,8 @@ const CardGrid = ({ cols = 2, className = "", children }) => {
         return cur;
       });
     };
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
+    window.addEventListener('keydown', handler, true);
+    return () => window.removeEventListener('keydown', handler, true);
   }, [cols, count]);
 
   const Kbd = ({ children }) => (
@@ -80,7 +91,7 @@ const CardGrid = ({ cols = 2, className = "", children }) => {
   return (
     <div>
       <p className="text-xs text-gray-400 mb-3 italic">
-        Click or use <Kbd>W</Kbd><Kbd>A</Kbd><Kbd>S</Kbd><Kbd>D</Kbd> to spotlight a card · <Kbd>Esc</Kbd> to clear
+        Click · <Kbd>W</Kbd><Kbd>A</Kbd><Kbd>S</Kbd><Kbd>D</Kbd> to spotlight · <Kbd>Space</Kbd> to step through · <Kbd>Esc</Kbd> to clear
       </p>
       <div className={`grid grid-cols-1 md:grid-cols-${cols} gap-4 ${className}`}>
         {items.map((child, i) =>
@@ -248,13 +259,13 @@ const slides = [
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
             <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">Microsoft 365 Copilot</p>
-            <p className="text-sm text-gray-700 mb-2">Sign in with your <strong>@scarletmail.rutgers.edu</strong> account at microsoft365.com or open any M365 app.</p>
+            <p className="text-sm text-gray-700 mb-2">Sign in with your <strong>university Outlook account</strong> (netid@<wbr/>rutgers.edu) at microsoft365.com or in any M365 app.</p>
             <p className="text-xs text-gray-500">Copilot Chat is available in the sidebar across Word, Outlook, Teams, and the web.</p>
           </div>
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
             <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">Google Gemini</p>
-            <p className="text-sm text-gray-700 mb-2">Sign in with your <strong>@scarletmail.rutgers.edu</strong> account at gemini.google.com.</p>
-            <p className="text-xs text-gray-500">Make sure you are signed in with ScarletMail — not a personal Google account — to stay within the licensed environment.</p>
+            <p className="text-sm text-gray-700 mb-2">Gemini is part of the <strong>ScarletMail</strong> Google Workspace. Activate your ScarletMail account, then sign in at gemini.google.com.</p>
+            <p className="text-xs text-gray-500">Note: ScarletMail is separate from your university Outlook. Students may email you there unless you forward ScarletMail to Outlook.</p>
           </div>
         </div>
       </SlideShell>
