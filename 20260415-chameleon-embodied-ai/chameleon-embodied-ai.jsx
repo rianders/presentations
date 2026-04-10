@@ -837,8 +837,168 @@ const slides = [
 
         <div className="mt-3 flex gap-2 flex-wrap">
           <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">Object Store keeps training data inside Chameleon</span>
-          <span className="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-0.5 rounded-full">RTX unlocks Flash Attn 2 + Diffusion Policy</span>
+          <span className="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-0.5 rounded-full">RTX unlocks Flash Attn 2 + Diffusion Policy + WebRTC sim streaming</span>
           <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">? native VPN eliminates Tailscale workaround</span>
+          <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">gRPC replaces HTTP for real-time Pi ↔ inference loop</span>
+          <span className="bg-gray-200 text-gray-700 text-xs font-bold px-2 py-0.5 rounded-full">variant: MCU direct → Chameleon inference (no Pi)</span>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // ── WEBRTC + gRPC ──
+  {
+    label: "WebRTC + gRPC",
+    content: (
+      <SlideShell tag="Protocols" tagColor="bg-gray-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Protocol Choices for the Pipeline</h1>
+        <div className="w-16 h-1 bg-red-600 rounded mb-5" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+          {/* WebRTC */}
+          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xl">📡</span>
+              <p className="text-sm font-black uppercase tracking-wide text-blue-700">WebRTC — Simulation Access</p>
+              <span className="text-xs bg-amber-200 text-amber-800 font-bold px-2 py-0.5 rounded-full ml-auto">Testing</span>
+            </div>
+            <div className="space-y-2 text-sm text-gray-700">
+              <p><strong>Problem:</strong> Students need to see Isaac Sim / MuJoCo running on a Chameleon GPU node. X11 forwarding and VNC are fragile and slow.</p>
+              <p><strong>WebRTC solution:</strong> GPU node streams rendered frames directly to a browser tab — no software install, no latency from double-encoding.</p>
+            </div>
+            <div className="mt-3 space-y-1 text-xs text-gray-600">
+              <p>· Isaac Sim: Omniverse WebRTC streaming built in</p>
+              <p>· MuJoCo: needs a streaming wrapper (evaluating options)</p>
+              <p>· Students open a URL — simulation is live in the browser</p>
+            </div>
+            <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+              <p className="text-xs text-amber-800 italic">Still testing on Chameleon GPU nodes — need to confirm WebRTC port exposure through the reservation network.</p>
+            </div>
+          </div>
+
+          {/* gRPC */}
+          <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xl">⚡</span>
+              <p className="text-sm font-black uppercase tracking-wide text-purple-700">gRPC — Real-Time Control</p>
+              <span className="text-xs bg-blue-200 text-blue-800 font-bold px-2 py-0.5 rounded-full ml-auto">Evaluating</span>
+            </div>
+            <div className="space-y-2 text-sm text-gray-700">
+              <p><strong>Where it helps:</strong> The Pi → Chameleon inference loop. Current HTTP polling adds unnecessary overhead for a real-time control cycle.</p>
+            </div>
+            <div className="mt-2 space-y-1 text-xs text-gray-600">
+              <p>· <strong>Bidirectional streaming:</strong> Pi streams joint states + frames; Chameleon streams action predictions back continuously</p>
+              <p>· <strong>Typed protobufs:</strong> enforced schema for sensor data and action outputs across Pi ↔ cloud boundary</p>
+              <p>· <strong>Backpressure:</strong> cloud signals when it's ready, Pi doesn't flood the pipe</p>
+              <p>· <strong>Multi-arm fleet:</strong> one gRPC channel per arm, multiplexed on same connection</p>
+            </div>
+            <div className="mt-3 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2">
+              <p className="text-xs text-gray-600"><strong>REST stays for:</strong> dataset push/pull, checkpoint download, job management — no need to change these.</p>
+            </div>
+          </div>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // ── FOOCARS V2 + COMBAT ROBOTICS ──
+  {
+    label: "FooCars v2",
+    content: (
+      <SlideShell tag="FooCars v2" tagColor="bg-red-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">FooCars v2: LeRobot Pattern → RC Cars</h1>
+        <div className="w-16 h-1 bg-red-600 rounded mb-4" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-4">
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">New Design Input</p>
+            <p className="text-sm font-bold text-gray-800 mb-2">Garden State Combat Robotics League</p>
+            <ul className="space-y-1 text-sm text-gray-700">
+              <li>· Combat robotics = survive real impacts</li>
+              <li>· Reliable electronics under vibration and stress</li>
+              <li>· Mechanically robust chassis and motor mounts</li>
+              <li>· These design patterns apply directly to field-deployable RC cars</li>
+            </ul>
+          </div>
+          <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">What Changes with LeRobot</p>
+            <ul className="space-y-1 text-sm text-gray-800">
+              <li>· <strong>Data format:</strong> HDF5 episodes (vs. flat image+steering CSV)</li>
+              <li>· <strong>Policy:</strong> ACT / Diffusion Policy (vs. end-to-end CNN steering)</li>
+              <li>· <strong>Collection:</strong> Xbox controller / leader-follower teleop on car</li>
+              <li>· <strong>Inference:</strong> Chameleon cloud or thin edge (see next slide)</li>
+              <li>· <strong>Same training loop:</strong> CHI@Edge collect → MI100 train → deploy</li>
+            </ul>
+          </div>
+        </div>
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">Why Now</p>
+          <p className="text-sm text-gray-700">
+            LeRobot establishes a standard, reproducible pipeline. FooCars had a custom stack.
+            Unifying on LeRobot means <strong>curriculum, tooling, and community transfer directly</strong> between the arm and car programs.
+            Combat robotics durability lessons mean the hardware survives student workshops.
+          </p>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // ── THIN EDGE: MICROCONTROLLER → INFERENCE ──
+  {
+    label: "Thin Edge",
+    content: (
+      <SlideShell tag="Thin Edge" tagColor="bg-gray-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Thin Edge: Microcontroller → Cloud Inference</h1>
+        <div className="w-16 h-1 bg-red-600 rounded mb-4" />
+        <p className="text-sm text-gray-600 mb-4">The most minimal possible edge: no Pi, no Linux. A microcontroller handles sensors and actuators — all intelligence lives in Chameleon.</p>
+
+        <div className="flex items-stretch gap-3 mb-4">
+          {/* MCU box */}
+          <div className="w-44 flex-shrink-0 border-2 border-blue-400 rounded-xl bg-blue-50 p-3 flex flex-col gap-2">
+            <p className="text-xs font-black text-blue-800 text-center">Microcontroller</p>
+            <p className="text-xs text-center text-gray-600">ESP32 / RP2040 / STM32</p>
+            <div className="bg-white border border-blue-200 rounded-lg px-2 py-1 text-xs text-gray-700">Camera (OV2640)</div>
+            <div className="bg-white border border-blue-200 rounded-lg px-2 py-1 text-xs text-gray-700">IMU + encoders</div>
+            <div className="bg-white border border-blue-200 rounded-lg px-2 py-1 text-xs text-gray-700">PWM motor control</div>
+            <div className="bg-white border border-blue-200 rounded-lg px-2 py-1 text-xs text-gray-700">WiFi / LTE</div>
+          </div>
+
+          {/* Arrow */}
+          <div className="flex flex-col items-center justify-center gap-1 w-16 flex-shrink-0">
+            <p className="text-xs text-gray-500 italic text-center">sensor data</p>
+            <div className="text-gray-500 font-bold text-xl">→</div>
+            <div className="text-gray-400 font-bold text-xl">←</div>
+            <p className="text-xs text-gray-500 italic text-center">action output</p>
+            <p className="text-xs text-purple-600 font-bold text-center">gRPC</p>
+          </div>
+
+          {/* Chameleon inference */}
+          <div className="flex-1 border-2 border-red-400 rounded-xl bg-red-50 p-3 flex flex-col gap-2">
+            <p className="text-xs font-black text-red-800 text-center">CHI@Edge / Chameleon Inference</p>
+            <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+              <span className="font-bold">Policy execution</span> — ACT, Diffusion Policy, or navigation model
+            </div>
+            <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+              <span className="font-bold">Spatial AI</span> — detection, depth estimation, scene understanding
+            </div>
+            <div className="bg-purple-50 border border-purple-300 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+              <span className="font-bold text-purple-800">Small agent?</span> — LLM for task reasoning, co-located with inference
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3">
+            <p className="text-xs font-black text-emerald-700 mb-1">Advantages</p>
+            <p className="text-xs text-gray-700">Cheaper, lighter, more robust hardware. No OS to maintain. Survives crashes that would kill a Pi.</p>
+          </div>
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
+            <p className="text-xs font-black text-amber-700 mb-1">Latency Constraint</p>
+            <p className="text-xs text-gray-700">RC cars need ~20–50ms control cycles. gRPC streaming + Chameleon proximity to the device matters. Measuring now.</p>
+          </div>
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-3">
+            <p className="text-xs font-black text-blue-700 mb-1">Chameleon Fit</p>
+            <p className="text-xs text-gray-700">CHI@Edge device enrollment for the MCU? Or dedicated inference endpoint on a reserved node the MCU always calls?</p>
+          </div>
         </div>
       </SlideShell>
     ),
@@ -948,11 +1108,12 @@ const slides = [
             </ul>
           </div>
           <div className="bg-purple-50 border-l-4 border-purple-400 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-purple-700 mb-2">Edge Agent Research</p>
+            <p className="text-xs font-black uppercase tracking-widest text-purple-700 mb-2">Open Technical Questions</p>
             <ul className="space-y-2">
-              <GapBullet>Which small models actually run on Pi 5 with acceptable latency while recording?</GapBullet>
-              <GapBullet>What tasks make sense for on-device agent vs. cloud agent?</GapBullet>
-              <GapBullet>Has anyone at Chameleon done similar edge LLM work?</GapBullet>
+              <GapBullet>WebRTC port exposure through Chameleon reservation network — confirmed working?</GapBullet>
+              <GapBullet>gRPC latency benchmarks: Pi → MI100 round-trip for streaming inference</GapBullet>
+              <GapBullet>MCU → Chameleon direct inference: CHI@Edge enrollment path for microcontrollers?</GapBullet>
+              <GapBullet>Small edge agent: which models (Phi-3, Gemma 1B) run on Pi 5 alongside recording?</GapBullet>
             </ul>
           </div>
         </div>
