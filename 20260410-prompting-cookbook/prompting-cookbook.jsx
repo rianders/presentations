@@ -51,15 +51,46 @@ const SectionCard = ({ title, icon, children, accent = false, isActive = false, 
 const CardGrid = ({ cols = 2, className = "", children }) => {
   const [active, setActive] = useState(null);
   const items = React.Children.toArray(children);
+  const count = items.length;
+
+  useEffect(() => {
+    const handler = (e) => {
+      const key = e.key.toLowerCase();
+      if (key === 'escape') { setActive(null); return; }
+      if (!['w', 'a', 's', 'd'].includes(key)) return;
+      setActive(prev => {
+        const cur = prev === null ? 0 : prev;
+        const row = Math.floor(cur / cols);
+        const col = cur % cols;
+        if (key === 'a') return Math.max(0, cur - 1);
+        if (key === 'd') return Math.min(count - 1, cur + 1);
+        if (key === 'w') { const n = (row - 1) * cols + col; return n >= 0 ? n : cur; }
+        if (key === 's') { const n = (row + 1) * cols + col; return n < count ? n : cur; }
+        return cur;
+      });
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [cols, count]);
+
+  const Kbd = ({ children }) => (
+    <kbd className="bg-gray-100 border border-gray-300 rounded px-1.5 py-0.5 font-mono text-gray-600 text-xs mx-0.5">{children}</kbd>
+  );
+
   return (
-    <div className={`grid grid-cols-1 md:grid-cols-${cols} gap-4 ${className}`}>
-      {items.map((child, i) =>
-        React.cloneElement(child, {
-          isActive: active === i,
-          isDimmed: active !== null && active !== i,
-          onClick: () => setActive(active === i ? null : i),
-        })
-      )}
+    <div>
+      <p className="text-xs text-gray-400 mb-3 italic">
+        Click or use <Kbd>W</Kbd><Kbd>A</Kbd><Kbd>S</Kbd><Kbd>D</Kbd> to spotlight a card · <Kbd>Esc</Kbd> to clear
+      </p>
+      <div className={`grid grid-cols-1 md:grid-cols-${cols} gap-4 ${className}`}>
+        {items.map((child, i) =>
+          React.cloneElement(child, {
+            isActive: active === i,
+            isDimmed: active !== null && active !== i,
+            onClick: () => setActive(active === i ? null : i),
+          })
+        )}
+      </div>
     </div>
   );
 };
@@ -258,7 +289,6 @@ const slides = [
           Foundations: Context Engineering
         </h1>
         <div className="w-16 h-1 bg-red-600 rounded mb-6" />
-        <p className="text-xs text-gray-400 mb-3 italic">Click any card to spotlight it.</p>
         <CardGrid cols={2}>
           <SectionCard title="Prompt vs Context" icon="💬">
             <p>The prompt is only <strong>one component</strong> of the full AI interaction — context surrounds and shapes it.</p>
@@ -319,7 +349,6 @@ Constraints:
           Model Capabilities Overview
         </h1>
         <div className="w-16 h-1 bg-indigo-600 rounded mb-6" />
-        <p className="text-xs text-gray-400 mb-3 italic">Click any card to spotlight it.</p>
         <CardGrid cols={2}>
           <SectionCard title="Text Generation & Transformation" icon="✍️">
             <p>Draft, rewrite, summarize, expand — the model transforms text in any direction you specify.</p>
@@ -846,7 +875,6 @@ Return:
           Infrastructure Reality
         </h1>
         <div className="w-16 h-1 bg-gray-600 rounded mb-6" />
-        <p className="text-xs text-gray-400 mb-3 italic">Click any card to spotlight it.</p>
         <CardGrid cols={3}>
           <SectionCard title="Key Constraint" icon="🔑" accent={true}>
             <p>Interactive activities must be <strong>hosted</strong> — they cannot live as local files.</p>
@@ -914,7 +942,6 @@ Return:
         <div className="bg-purple-50 border border-purple-200 rounded-xl p-5 mb-5">
           <p className="text-sm text-purple-900 font-semibold">Use local tools (e.g., <strong>LM Studio</strong>) to run AI models entirely on your own machine.</p>
         </div>
-        <p className="text-xs text-gray-400 mb-3 italic">Click any card to spotlight it.</p>
         <CardGrid cols={3}>
           <SectionCard title="Does Not Send to the Cloud" icon="🔒">
             <p className="text-sm">No data is sent to a third party or cloud service. The same data-handling responsibilities faculty already have for files on their computers still apply — local AI doesn't change that, it just removes the third party.</p>
