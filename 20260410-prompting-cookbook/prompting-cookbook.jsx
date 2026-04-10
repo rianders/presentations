@@ -729,20 +729,39 @@ Return:
     content: (
       <SlideShell tag="Section 9 · Workshop" tagColor="bg-red-700">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
-          Hands-On Activities
+          Your Turn
         </h1>
-        <div className="w-16 h-1 bg-red-600 rounded mb-6" />
-        <ul className="space-y-5">
-          <Bullet icon="▸">
-            Guided prompt exercises using <strong>real course materials</strong>
-          </Bullet>
-          <Bullet icon="▸">
-            Breakout groups <strong>(Zoom)</strong>
-          </Bullet>
-          <Bullet icon="▸">
-            <strong>Prompt recipe development</strong>
-          </Bullet>
-        </ul>
+        <div className="w-16 h-1 bg-red-600 rounded mb-5" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-red-50 border-l-4 border-red-500 rounded-r-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-2">If there's time · ~20 min</p>
+            <ol className="space-y-2 text-sm text-gray-800 list-none">
+              <li><span className="font-bold text-red-600">1.</span> Pick one recipe from the cookbook that fits a real course you teach.</li>
+              <li><span className="font-bold text-red-600">2.</span> Gather what you have — a syllabus, an assignment, a figure, a rubric.</li>
+              <li><span className="font-bold text-red-600">3.</span> Open Gemini via ScarletMail. Paste the recipe and your materials.</li>
+              <li><span className="font-bold text-red-600">4.</span> Note what the output gets right — and what it misses.</li>
+            </ol>
+          </div>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Take it home</p>
+            <p className="text-sm text-gray-700 mb-3">No time today? The cookbook is designed for exactly this — a reference you return to when you're sitting with real materials in front of you.</p>
+            <a href="https://rianders.github.io/prompting-cookbook/" target="_blank" rel="noreferrer"
+               className="inline-block bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
+              Open the Prompting Cookbook ↗
+            </a>
+          </div>
+        </div>
+
+        <div className="bg-gray-900 text-white rounded-xl p-4">
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Good starting recipes</p>
+          <div className="flex flex-wrap gap-2">
+            {["Alt-Text Generation","Syllabus → Module Objectives","Rubric Generation","Static → Interactive Assignment","UDL-Aware Activity Design"].map(r => (
+              <span key={r} className="bg-gray-700 text-green-300 text-xs font-mono px-3 py-1 rounded-full">{r}</span>
+            ))}
+          </div>
+        </div>
       </SlideShell>
     ),
   },
@@ -767,6 +786,59 @@ Return:
         </ul>
         <div className="bg-teal-50 border-l-4 border-teal-500 rounded-r-xl px-5 py-4">
           <p className="text-sm text-teal-900 font-semibold">Discussion of <strong>discipline-specific applications</strong></p>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // ── RESOURCES ──
+  {
+    label: "Resources",
+    content: (
+      <SlideShell tag="Take It Home" tagColor="bg-gray-700">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">
+          Resources
+        </h1>
+        <div className="w-16 h-1 bg-gray-700 rounded mb-5" />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+          <div className="md:col-span-2 space-y-3">
+            <div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-4">
+              <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-1">Companion Site</p>
+              <a href="https://rianders.github.io/prompting-cookbook/" target="_blank" rel="noreferrer"
+                 className="text-sm font-bold text-gray-900 hover:text-red-600 transition-colors">
+                rianders.github.io/prompting-cookbook ↗
+              </a>
+              <p className="text-xs text-gray-500 mt-1">All recipes, examples, watchouts, and revision moves — designed to use with real course materials.</p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+              <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Related Presentations</p>
+              <div className="space-y-2">
+                {[
+                  { label: "Beyond ChatGPT: Navigating Alternative Models", url: "https://rianders.github.io/presentations/shell.html?p=20260306/beyond-the-chatbot-workshop" },
+                  { label: "Emerging Technology for XR", url: "https://rianders.github.io/presentations/shell.html?p=20260313-uoes-xr-emerging-tech/uoes-xr-emerging-tech" },
+                  { label: "All Presentations", url: "https://rianders.github.io/presentations/" },
+                ].map(r => (
+                  <a key={r.url} href={r.url} target="_blank" rel="noreferrer"
+                     className="flex items-center justify-between bg-white border border-gray-200 rounded-lg px-3 py-2 hover:border-red-300 hover:bg-red-50 transition-colors group">
+                    <span className="text-sm text-gray-800">{r.label}</span>
+                    <span className="text-gray-400 group-hover:text-red-600 transition-colors text-xs">↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center justify-start bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-3">Scan for the Cookbook</p>
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADD0lEQVR4nO1bi27jMAwTjf7/L3PQy04XHHDpGQd5k7uuWSIMBsPSEuWA8mCMJ8HS0ffRmPxfTF4i8CMK7Ef0THz4+RXRd2cD3hLggoYzKIRCDtE39RYk/I33fXyACaAMVmRhL6EhrECHvHtE472F33Pg26dJyXVBbX7fx+eYkCrgwWwTE6iYJPqN9y5+0w4NV4Iq3EIVkBCYGdH8/me8JRXaNPtPrwxtPbmPZ5hgybNKNTwx9MzE/7pENL93rZdYqyN8jbRc3CH3E4p783uPnpD2qR/ivzIn9FU0Qxrv+3iMCQ1YKKIpJJqmWBoepLfMpfVkD78ZdF6ZNr3UmST3rwCb31vWS6RFQq/okaWm0d6vxWHryZb8BJmVBNCL6pF856XG+z6eYwKDVCvLUGutdrTcCWmxSx/+778f4/f4sXTFiIqSkReaaucVl/c68x7nRlP5rGaJ5SSI/NBJH4W9eynF5n1kNHxhzD6DBKON5++CrmF15j1Oj8ZMwWlUjjZDCIxn5RXnfV40p4zM6p0mMJkMuiHb9fy2u8MQjSx04LIya6DwUorx5MhomGZcuzgIsFd2ogEuLXXmPQ6OpsJrmu0i7ibWbPToGc9Sis37bH9Q0hfk7DCEhWKmob3rzHscGv3Kcj0UWlJbVECc2VnRt55s4jfD/3MPUJLxc7H0w/a/d/V3oOC6M8hrcW8j/UHW+l6O0/1YXutLRA44fdrIz+vMexxez4vb30zbW6+ldOd2ic4HN94d2i+otoQP6zkhzMqKRLwOT8a50TSUbb/m3PsQreKsg1LPS8377Ghm/Q4repTTswJKrak478Oi4VmJr5J8L/KjaTm3gVea9/gB+6toRgpmEb/22aebVWfe4wc836CDab7aOvlWe3Z/Z5dfpSNgxVRwy1GsBbGoXocn4+T9g8gnRgzuFO/ZcFhpeJ15j/Ofb6DzW1a3IbQkmmvtV+3FW7J5xjzORdT9lVI8GSdHM7bAIg58z09Ii9+E1u+N/qCsgZUN2raUEO7oZhbjyYHR6Oe5C9+d0dG38QyTLxIctVar6CrDAAAAAElFTkSuQmCC"
+              alt="QR code linking to the Prompting Cookbook companion site"
+              className="w-36 h-36 rounded"
+            />
+            <p className="text-xs text-gray-400 mt-3 text-center">rianders.github.io/<br/>prompting-cookbook</p>
+          </div>
         </div>
       </SlideShell>
     ),
@@ -825,10 +897,6 @@ function Presentation() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col">
-      <div className="bg-amber-400 text-amber-900 text-xs font-black uppercase tracking-widest text-center py-1.5 px-4">
-        ⚠ DRAFT — Work in progress · Not for distribution
-      </div>
-
       <div className="flex-1 flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-auto">
         <div className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden relative">
           {slides[current].content}
