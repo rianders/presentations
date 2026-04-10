@@ -653,6 +653,197 @@ const slides = [
     ),
   },
 
+  // ── ARCHITECTURE: CURRENT ──
+  {
+    label: "Architecture: Current",
+    content: (
+      <SlideShell tag="Architecture · Now" tagColor="bg-gray-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Architecture: Current</h1>
+        <div className="w-16 h-1 bg-red-600 rounded mb-4" />
+
+        {/* Three-zone layout */}
+        <div className="flex items-stretch gap-0">
+
+          {/* ZONE 1: Edge */}
+          <div className="flex flex-col w-48 flex-shrink-0">
+            <div className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2 text-center">Edge</div>
+            <div className="flex-1 border-2 border-blue-400 rounded-xl p-3 bg-blue-50 flex flex-col gap-2">
+              <div className="text-xs font-black text-blue-800 text-center mb-1">Raspberry Pi 5</div>
+              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">SO-ARM101</span><br/>leader + follower arms
+              </div>
+              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">2× USB cameras</span><br/>C920 + gripper cam
+              </div>
+              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">Coachable CLI</span><br/>preview · collect · run
+              </div>
+              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">Tailscale</span><br/>mesh connectivity
+              </div>
+            </div>
+          </div>
+
+          {/* ARROWS + HF HUB middle column */}
+          <div className="flex flex-col items-center justify-center flex-1 px-2 gap-3">
+            {/* Top arrow: dataset push */}
+            <div className="flex flex-col items-center w-full">
+              <div className="text-xs text-gray-500 italic mb-0.5">episodes (HDF5)</div>
+              <div className="flex items-center w-full gap-1">
+                <div className="flex-1 border-t-2 border-dashed border-gray-400" />
+                <span className="text-gray-500 font-bold text-sm">→</span>
+                <div className="border-2 border-orange-400 rounded-xl bg-orange-50 px-3 py-2 text-center mx-1">
+                  <div className="text-xs font-black text-orange-700">HF Hub</div>
+                  <div className="text-xs text-gray-600">datasets</div>
+                  <div className="text-xs text-gray-600">checkpoints</div>
+                </div>
+                <span className="text-gray-500 font-bold text-sm">→</span>
+                <div className="flex-1 border-t-2 border-dashed border-gray-400" />
+              </div>
+              <div className="text-xs text-gray-500 italic mt-0.5">checkpoint pull</div>
+            </div>
+
+            {/* Bottom arrow: inference */}
+            <div className="flex flex-col items-center w-full">
+              <div className="text-xs text-gray-500 italic mb-0.5">sensor data</div>
+              <div className="flex items-center w-full">
+                <div className="flex-1 border-t-2 border-dashed border-red-300" />
+                <span className="text-red-400 font-bold text-sm">→</span>
+                <span className="text-xs text-red-500 italic px-1">inference req</span>
+                <span className="text-red-400 font-bold text-sm">→</span>
+                <div className="flex-1 border-t-2 border-dashed border-red-300" />
+              </div>
+              <div className="flex items-center w-full flex-row-reverse">
+                <div className="flex-1 border-t-2 border-dashed border-emerald-300" />
+                <span className="text-emerald-500 font-bold text-sm">←</span>
+                <span className="text-xs text-emerald-600 italic px-1">action output</span>
+                <span className="text-emerald-500 font-bold text-sm">←</span>
+                <div className="flex-1 border-t-2 border-dashed border-emerald-300" />
+              </div>
+            </div>
+
+            {/* CHI@Edge management */}
+            <div className="flex items-center w-full gap-1 mt-1">
+              <div className="flex-1 border-t-2 border-dashed border-gray-300" />
+              <span className="text-gray-400 font-bold text-sm">↔</span>
+              <span className="text-xs text-gray-400 italic px-1">device mgmt</span>
+              <span className="text-gray-400 font-bold text-sm">↔</span>
+              <div className="flex-1 border-t-2 border-dashed border-gray-300" />
+            </div>
+          </div>
+
+          {/* ZONE 2: Chameleon Cloud */}
+          <div className="flex flex-col w-52 flex-shrink-0">
+            <div className="text-xs font-black uppercase tracking-widest text-red-700 mb-2 text-center">Chameleon Cloud</div>
+            <div className="flex-1 border-2 border-red-400 rounded-xl p-3 bg-red-50 flex flex-col gap-2">
+              <div className="text-xs font-black text-red-800 text-center mb-1">CHI-261589</div>
+              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">MI100 bare metal</span><br/>ROCm 6.3 · PyTorch 2.7<br/>ACT policy training
+              </div>
+              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">Inference endpoint</span><br/>spatial AI · depth est.<br/>policy execution
+              </div>
+              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">CHI@Edge</span><br/>device enroll<br/>container mgmt
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="mt-3 flex gap-2 flex-wrap">
+          <span className="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded-full">HF Hub = external dependency for data</span>
+          <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">Tailscale bridges Pi ↔ cloud (no native Chameleon mesh)</span>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // ── ARCHITECTURE: FUTURE ──
+  {
+    label: "Architecture: Future",
+    content: (
+      <SlideShell tag="Architecture · Future" tagColor="bg-purple-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Architecture: Future State</h1>
+        <div className="w-16 h-1 bg-purple-600 rounded mb-4" />
+
+        <div className="flex items-stretch gap-0">
+
+          {/* ZONE 1: Edge (future) */}
+          <div className="flex flex-col w-48 flex-shrink-0">
+            <div className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2 text-center">Edge</div>
+            <div className="flex-1 border-2 border-blue-400 rounded-xl p-3 bg-blue-50 flex flex-col gap-2">
+              <div className="text-xs font-black text-blue-800 text-center mb-1">Raspberry Pi 5</div>
+              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">SO-ARM101</span><br/>multi-arm fleet
+              </div>
+              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">Coachable CLI</span>
+              </div>
+              <div className="bg-purple-100 border border-purple-300 rounded-lg px-2 py-1.5 text-xs text-purple-900">
+                <span className="font-bold">Edge agent?</span><br/>
+                <span className="text-purple-700">Phi-3 / Gemma 1B<br/>on-device planning</span><br/>
+                <span className="italic text-purple-500">open question</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Middle: network layer */}
+          <div className="flex flex-col items-center justify-center flex-1 px-2 gap-3">
+            {/* Native network question */}
+            <div className="border-2 border-dashed border-purple-400 rounded-xl bg-purple-50 px-3 py-2 text-center w-full">
+              <div className="text-xs font-black text-purple-700 mb-1">Private Network</div>
+              <div className="text-xs text-gray-600">Tailscale (now)</div>
+              <div className="text-xs text-purple-700 font-semibold mt-1">Chameleon native VPN?</div>
+              <div className="text-xs text-gray-400 italic">asking the community</div>
+            </div>
+
+            <div className="flex flex-col items-center gap-1 w-full text-xs text-gray-500">
+              <div className="flex items-center gap-1 w-full">
+                <div className="flex-1 border-t-2 border-dashed border-gray-300"/>
+                <span className="font-bold text-gray-400">↔</span>
+                <div className="flex-1 border-t-2 border-dashed border-gray-300"/>
+              </div>
+              <span className="italic">dataset · checkpoint · inference</span>
+              <span className="italic text-purple-500">all within Chameleon network</span>
+            </div>
+          </div>
+
+          {/* ZONE 2: Chameleon (future) */}
+          <div className="flex flex-col w-52 flex-shrink-0">
+            <div className="text-xs font-black uppercase tracking-widest text-red-700 mb-2 text-center">Chameleon Cloud</div>
+            <div className="flex-1 border-2 border-red-400 rounded-xl p-3 bg-red-50 flex flex-col gap-2">
+              <div className="text-xs font-black text-red-800 text-center mb-1">CHI-261589</div>
+              <div className="bg-emerald-50 border border-emerald-400 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold text-emerald-800">Chameleon Object Store</span><br/>
+                episodes + checkpoints<br/>
+                <span className="text-emerald-700 font-semibold">replaces HF Hub</span>
+              </div>
+              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">MI100 training</span><br/>ACT / Diffusion Policy
+              </div>
+              <div className="bg-purple-50 border border-purple-300 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold text-purple-800">RTX node — inference</span><br/>
+                Flash Attn 2 · larger models<br/>
+                <span className="text-purple-600 italic">pending availability</span>
+              </div>
+              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">CHI@Edge + Isaac Sim</span><br/>sim-to-real, domain rand.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="mt-3 flex gap-2 flex-wrap">
+          <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">Object Store keeps training data inside Chameleon</span>
+          <span className="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-0.5 rounded-full">RTX unlocks Flash Attn 2 + Diffusion Policy</span>
+          <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">? native VPN eliminates Tailscale workaround</span>
+        </div>
+      </SlideShell>
+    ),
+  },
+
   // ── CHALLENGES ──
   {
     label: "Challenges",
