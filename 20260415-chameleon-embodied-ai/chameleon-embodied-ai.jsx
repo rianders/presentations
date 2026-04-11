@@ -21,7 +21,7 @@ const SlideShell = ({ tag, tagColor = "bg-red-600", children }) => (
       {children}
     </div>
     <div className="px-6 py-2 border-t border-gray-100 flex justify-between items-center">
-      <span className="text-xs text-gray-400">Rutgers UOES / GRID · FUBAR Labs · CHI-261589</span>
+      <span className="text-xs text-gray-400">Rutgers UOES · FUBAR Labs · CHI-261589</span>
       <span className="flex items-center gap-2 text-xs text-gray-400">
         <span className="bg-amber-400 text-amber-900 font-black uppercase tracking-widest px-2 py-0.5 rounded text-xs">DRAFT</span>
         Chameleon User Meeting · April 2026
@@ -200,7 +200,7 @@ const slides = [
           <div className="flex items-center gap-4 mt-auto">
             <div>
               <p className="text-sm font-bold text-gray-800">Rick Anderson</p>
-              <p className="text-xs text-gray-500">Rutgers UOES / GRID · FUBAR Labs</p>
+              <p className="text-xs text-gray-500">Rutgers UOES · FUBAR Labs</p>
               <p className="text-xs text-gray-400">April 15, 2026 · Chameleon User Meeting</p>
             </div>
           </div>
@@ -219,7 +219,7 @@ const slides = [
         </h1>
         <div className="w-16 h-1 bg-red-600 rounded mb-6" />
         <div className="space-y-3">
-          <PhaseBar phase="01" label="Who We Are — Rutgers UOES/GRID + FUBAR Labs" color="border-gray-400">
+          <PhaseBar phase="01" label="Who We Are — Rutgers UOES + FUBAR Labs" color="border-gray-400">
             AI Study Group, Robot Build Night, community learners, Bergen Tech HS, Maker Faires
           </PhaseBar>
           <PhaseBar phase="02" label="Phase 1: FooCars — RC Cars on CHI@Edge (2021–2023)" color="border-blue-400">
@@ -251,7 +251,7 @@ const slides = [
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div className="bg-red-50 border-l-4 border-red-600 rounded-xl p-4">
             <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">Rutgers University</p>
-            <p className="text-sm font-bold text-gray-800 mb-1">UOES / GRID</p>
+            <p className="text-sm font-bold text-gray-800 mb-1">UOES</p>
             <p className="text-sm text-gray-700">Office of University Online Education Services + Game Research &amp; Immersive Design. Focus: hands-on, open curriculum for adult learners and undergrads.</p>
           </div>
           <div className="bg-gray-50 border-l-4 border-gray-400 rounded-xl p-4">
@@ -296,7 +296,7 @@ const slides = [
         <div className="w-16 h-1 bg-blue-600 rounded mb-5" />
         <CardGrid cols={2}>
           <SectionCard title="The Platform" icon="🚗">
-            <p>Low-cost RC cars running <strong>supervised vision-based navigation</strong> on CHI@Edge. Custom Rutgers/GRID circuit boards adapted RC cars for Raspberry Pi control.</p>
+            <p>Low-cost RC cars running <strong>supervised vision-based navigation</strong> on CHI@Edge. Custom Rutgers/UOES circuit boards adapted RC cars for Raspberry Pi control.</p>
           </SectionCard>
           <SectionCard title="CHI@Edge Role" icon="☁️">
             <p>Fleet management across multiple vehicles. <strong>Edge-to-bare-metal training loop:</strong> data collected on-car → trained on Chameleon GPU → weights returned to edge Pi.</p>
@@ -1229,7 +1229,7 @@ const slides = [
               RUTGERS UNIVERSITY
             </div>
             <p className="text-sm text-gray-700 font-semibold">Rick Anderson</p>
-            <p className="text-xs text-gray-500">Rutgers UOES / GRID · FUBAR Labs</p>
+            <p className="text-xs text-gray-500">Rutgers UOES · FUBAR Labs</p>
             <p className="text-blue-600 text-sm mt-2 font-semibold">rick.anderson@rutgers.edu</p>
           </div>
         </div>
