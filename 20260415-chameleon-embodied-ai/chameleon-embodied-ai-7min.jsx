@@ -335,54 +335,71 @@ const slides = [
     content: (
       <SlideShell tag="Future + Asks" tagColor="bg-purple-700">
         <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">What's Next</h1>
-        <div className="w-16 h-1 bg-purple-600 rounded mb-5" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="w-16 h-1 bg-purple-600 rounded mb-4" />
+
+        {/* Concept diagram — target pipeline */}
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Target Pipeline</p>
+          <div className="flex items-center justify-between gap-1 text-center text-xs">
+            <div className="flex-1 bg-blue-100 rounded-lg p-2">
+              <p className="font-black text-blue-800 text-sm">Pi + Arm</p>
+              <p className="text-blue-600 leading-tight">collect · teleop</p>
+              <p className="text-blue-500 mt-1 font-semibold">Talkbot agent</p>
+            </div>
+            <div className="text-gray-400 font-bold flex flex-col items-center">
+              <span>gRPC</span>
+              <span>→</span>
+            </div>
+            <div className="flex-1 bg-purple-100 rounded-lg p-2">
+              <p className="font-black text-purple-800 text-sm">Chameleon</p>
+              <p className="text-purple-600 leading-tight">inference endpoint</p>
+              <p className="text-purple-500 mt-1 font-semibold">~10 Hz round-trip</p>
+            </div>
+            <div className="text-gray-400 font-bold flex flex-col items-center">
+              <span>↕</span>
+            </div>
+            <div className="flex-1 bg-red-100 rounded-lg p-2">
+              <p className="font-black text-red-800 text-sm">H100</p>
+              <p className="text-red-600 leading-tight">training · Flash Attn 2</p>
+              <p className="text-red-500 mt-1 font-semibold">all policies</p>
+            </div>
+            <div className="text-gray-400 font-bold flex flex-col items-center">
+              <span>↕</span>
+            </div>
+            <div className="flex-1 bg-green-100 rounded-lg p-2">
+              <p className="font-black text-green-800 text-sm">Object Store</p>
+              <p className="text-green-600 leading-tight">episodes · checkpoints</p>
+              <p className="text-green-500 mt-1 font-semibold">stays in project</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
           <div>
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-3">On the Roadmap</p>
-            <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-3 mb-3">
-              <p className="text-xs font-black text-red-700 mb-1">Benchmarking Every Stage</p>
-              <p className="text-xs text-gray-700">
-                Talkbot's approach applied here: <strong>every pipeline stage measured and published</strong> —
-                collect · transfer · train · inference latency · policy execution.
-                Key number: Pi → Chameleon round-trip at ~10 Hz control frequency.
-                Compare HTTP vs. gRPC, on-device vs. cloud, single vs. multi-arm.
-              </p>
-              <p className="text-xs text-gray-400 mt-1">bench/benchmark_inference.py · results published in bench/results/</p>
-            </div>
-            <ul className="space-y-2">
-              <Bullet icon="→">
-                <span><strong>Chameleon Object Store</strong> replaces HF Hub — data stays inside the project</span>
-              </Bullet>
-              <Bullet icon="→">
-                <span><strong>RTX node</strong> for Isaac Sim via WebRTC + Flash Attention 2 inference</span>
-              </Bullet>
-              <Bullet icon="→">
-                <span><strong>gRPC</strong> for real-time Pi → Chameleon inference loop</span>
-              </Bullet>
-              <Bullet icon="→">
-                <span><strong>Talkbot as robot agent</strong> — adapt tools to arm control (move_joint, gripper, run_policy); Chameleon LLM fallback for concurrent load</span>
-              </Bullet>
-              <Bullet icon="→">
-                <span><strong>H100 bare metal</strong> for training (Flash Attn 2, all policies) · <strong>KVM@TACC H100</strong> for inference at scale across classroom robot fleets</span>
-              </Bullet>
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Next Steps</p>
+            <ul className="space-y-2 text-sm text-gray-700">
+              <Bullet icon="→"><strong>Benchmark every stage</strong> — collect · transfer · train · inference · execution</Bullet>
+              <Bullet icon="→"><strong>gRPC</strong> streaming for real-time Pi → Chameleon inference loop</Bullet>
+              <Bullet icon="→"><strong>Talkbot as robot agent</strong> — move_joint, gripper, run_policy tools on Pi</Bullet>
+              <Bullet icon="→"><strong>FooCars v2</strong> + thin-edge MCUs on the same LeRobot backbone</Bullet>
             </ul>
           </div>
 
           <div>
-            <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-3">Three Asks for Chameleon</p>
-            <div className="space-y-3">
-              <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-4">
-                <p className="text-sm font-bold text-gray-900 mb-1">1. Persistent environments for education</p>
-                <p className="text-xs text-gray-600">GPU is now needed across simulation, training, and inference — not just at training time. Per-session re-provisioning breaks class flow. Pre-provisioned persistent environments would change this significantly.</p>
+            <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-2">Three Asks</p>
+            <div className="space-y-2">
+              <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-3">
+                <p className="text-sm font-bold text-gray-900">1. Persistent GPU environments</p>
+                <p className="text-xs text-gray-500">GPU needed for sim + training + inference — not just at training time</p>
               </div>
-              <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-4">
-                <p className="text-sm font-bold text-gray-900 mb-1">2. RTX node availability on current hardware?</p>
-                <p className="text-xs text-gray-600">Isaac Sim requires RTX-class GPU. Availability on older generations was inconsistent. What's the current state at CHI@UC and CHI@TACC?</p>
+              <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-3">
+                <p className="text-sm font-bold text-gray-900">2. RTX node availability?</p>
+                <p className="text-xs text-gray-500">Isaac Sim requires RTX-class — what's current at CHI@UC and CHI@TACC?</p>
               </div>
-              <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-4">
-                <p className="text-sm font-bold text-gray-900 mb-1">3. Native networking: Pi lab ↔ Chameleon nodes</p>
-                <p className="text-xs text-gray-600">Tailscale would solve this but we haven't sought permission and performance overhead is unknown. Does Chameleon offer a native path — or what's the recommended approach?</p>
+              <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-3">
+                <p className="text-sm font-bold text-gray-900">3. Native Pi ↔ Chameleon networking</p>
+                <p className="text-xs text-gray-500">Tailscale desired but not approved — is there a native Chameleon path?</p>
               </div>
             </div>
           </div>
