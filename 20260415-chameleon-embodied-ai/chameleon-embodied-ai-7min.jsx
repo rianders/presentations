@@ -117,10 +117,10 @@ const slides = [
           <div className="bg-red-50 border-l-4 border-red-600 rounded-xl p-5">
             <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-1">Phase 2 · Now</p>
             <p className="text-base font-black text-gray-900 mb-1">Coachable Robots</p>
-            <p className="text-xs text-red-700 font-semibold mb-3">Imitation learning → cloud inference → manipulation</p>
+            <p className="text-xs text-red-700 font-semibold mb-3">A platform, not a robot — heterogeneous embodiment on a shared backbone</p>
             <ul className="space-y-1.5 text-sm text-gray-700">
-              <li>· Coach the robot by demonstration — no labeled dataset, no manual annotation</li>
-              <li>· LeRobot: ACT / Diffusion Policy trained on Chameleon MI100</li>
+              <li>· LeRobot: universal coaching interface — same pipeline for any body</li>
+              <li>· SO-ARM101 first; FooCars v2, Talkbot, thin-edge MCU all joining</li>
               <li>· <strong>Chameleon now hosts inference</strong>, not just training — Pi is a thin client</li>
               <li>· AI Study Group + Robot Build Night at FUBAR Labs</li>
               <li>· <strong>Arms operational on CHI-261589</strong> — benchmarking now</li>
@@ -362,7 +362,7 @@ const slides = [
                 <span><strong>Thin edge</strong> — ESP32/RP2040 microcontroller direct to Chameleon inference; no Pi needed</span>
               </Bullet>
               <Bullet icon="→">
-                <span><strong>FooCars v2</strong> — combat robotics durability + LeRobot pipeline applied back to RC cars</span>
+                <span><strong>FooCars v2</strong> — combat-durable RC cars joining the platform; same LeRobot pipeline, same Chameleon backbone, different body</span>
               </Bullet>
             </ul>
           </div>

@@ -350,7 +350,7 @@ const slides = [
           Phase 2: Coachable Robots
         </h1>
         <div className="w-16 h-1 bg-red-600 rounded mb-4" />
-        <p className="text-sm text-gray-600 mb-4">Students <strong>coach</strong> a robot arm by demonstrating tasks with an Xbox controller. No programming required to collect training data.</p>
+        <p className="text-sm text-gray-600 mb-4">Students <strong>coach</strong> a robot by demonstrating tasks — no programming required to collect training data. The arm is the first embodiment; the platform is designed for many more.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
             <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Hardware</p>
@@ -904,41 +904,107 @@ const slides = [
     ),
   },
 
+  // ── HETEROGENEOUS EMBODIMENT ──
+  {
+    label: "Heterogeneous Embodiment",
+    content: (
+      <SlideShell tag="Platform Vision" tagColor="bg-red-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Coachable Robots: A Platform, Not a Robot</h1>
+        <div className="w-16 h-1 bg-red-600 rounded mb-4" />
+        <p className="text-sm text-gray-600 mb-5">
+          LeRobot provides the universal coaching interface. Chameleon is the shared backbone.
+          <strong> The body is interchangeable.</strong> RC cars, arms, voice agents, microcontrollers —
+          all instances of the same pipeline. The distributed components of embodiment.
+        </p>
+
+        {/* Central backbone */}
+        <div className="flex flex-col items-center mb-4">
+          <div className="bg-red-600 text-white rounded-xl px-6 py-3 text-center w-full max-w-lg">
+            <p className="text-xs font-black uppercase tracking-widest text-red-200 mb-1">Chameleon · CHI-261589</p>
+            <p className="text-sm font-bold">Object Store · MI100 Training · Inference · CHI@Edge</p>
+            <p className="text-xs text-red-200 mt-1">LeRobot HDF5 episodes · ACT / Diffusion Policy · HuggingFace Hub</p>
+          </div>
+          <div className="flex gap-8 mt-1 text-gray-300 text-xl">
+            <span>↑</span><span>↑</span><span>↑</span><span>↑</span><span>↑</span>
+          </div>
+        </div>
+
+        {/* Robot types */}
+        <div className="grid grid-cols-5 gap-2 text-center">
+          <div className="bg-blue-50 border-2 border-blue-400 rounded-xl p-3">
+            <p className="text-2xl mb-1">🚗</p>
+            <p className="text-xs font-black text-blue-700">FooCars v2</p>
+            <p className="text-xs text-gray-600 mt-1">RC cars<br/>combat-durable<br/>LeRobot-compatible</p>
+            <span className="text-xs bg-blue-100 text-blue-700 font-bold px-1.5 py-0.5 rounded-full mt-1 inline-block">updating</span>
+          </div>
+          <div className="bg-red-50 border-2 border-red-500 rounded-xl p-3">
+            <p className="text-2xl mb-1">🦾</p>
+            <p className="text-xs font-black text-red-700">SO-ARM101</p>
+            <p className="text-xs text-gray-600 mt-1">6-DOF arm<br/>Xbox coaching<br/>ACT policy</p>
+            <span className="text-xs bg-emerald-100 text-emerald-700 font-bold px-1.5 py-0.5 rounded-full mt-1 inline-block">live</span>
+          </div>
+          <div className="bg-purple-50 border-2 border-purple-400 rounded-xl p-3">
+            <p className="text-2xl mb-1">🤖</p>
+            <p className="text-xs font-black text-purple-700">Talkbot</p>
+            <p className="text-xs text-gray-600 mt-1">voice agent<br/>Pi 5<br/>Chameleon LLM</p>
+            <span className="text-xs bg-amber-100 text-amber-700 font-bold px-1.5 py-0.5 rounded-full mt-1 inline-block">prototyping</span>
+          </div>
+          <div className="bg-gray-50 border-2 border-gray-400 rounded-xl p-3">
+            <p className="text-2xl mb-1">⚡</p>
+            <p className="text-xs font-black text-gray-600">Thin Edge</p>
+            <p className="text-xs text-gray-600 mt-1">ESP32 / RP2040<br/>no Linux<br/>MCU → inference</p>
+            <span className="text-xs bg-amber-100 text-amber-700 font-bold px-1.5 py-0.5 rounded-full mt-1 inline-block">exploring</span>
+          </div>
+          <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-3">
+            <p className="text-2xl mb-1">＋</p>
+            <p className="text-xs font-black text-gray-400">Next?</p>
+            <p className="text-xs text-gray-400 mt-1">humanoid<br/>mobile base<br/>any body</p>
+            <span className="text-xs bg-gray-100 text-gray-500 font-bold px-1.5 py-0.5 rounded-full mt-1 inline-block">open</span>
+          </div>
+        </div>
+
+        <p className="text-xs text-gray-400 italic text-center mt-4">
+          Same episode format · same training pipeline · same Chameleon backbone · different bodies
+        </p>
+      </SlideShell>
+    ),
+  },
+
   // ── FOOCARS V2 + COMBAT ROBOTICS ──
   {
     label: "FooCars v2",
     content: (
       <SlideShell tag="FooCars v2" tagColor="bg-red-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">FooCars v2: LeRobot Pattern → RC Cars</h1>
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">FooCars v2: Joining the Platform</h1>
         <div className="w-16 h-1 bg-red-600 rounded mb-4" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-4">
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">New Design Input</p>
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Durability: Combat Robotics Input</p>
             <p className="text-sm font-bold text-gray-800 mb-2">Garden State Combat Robotics League</p>
             <ul className="space-y-1 text-sm text-gray-700">
-              <li>· Combat robotics = survive real impacts</li>
+              <li>· Combat robots survive real impacts</li>
               <li>· Reliable electronics under vibration and stress</li>
-              <li>· Mechanically robust chassis and motor mounts</li>
-              <li>· These design patterns apply directly to field-deployable RC cars</li>
+              <li>· Robust chassis and motor mounts</li>
+              <li>· Design patterns apply directly to field-deployable cars</li>
             </ul>
           </div>
           <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">What Changes with LeRobot</p>
+            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">Phase 1 → Coachable Platform</p>
             <ul className="space-y-1 text-sm text-gray-800">
-              <li>· <strong>Data format:</strong> HDF5 episodes (vs. flat image+steering CSV)</li>
-              <li>· <strong>Policy:</strong> ACT / Diffusion Policy (vs. end-to-end CNN steering)</li>
-              <li>· <strong>Collection:</strong> Xbox controller / leader-follower teleop on car</li>
-              <li>· <strong>Inference:</strong> Chameleon cloud or thin edge (see next slide)</li>
-              <li>· <strong>Same training loop:</strong> CHI@Edge collect → MI100 train → deploy</li>
+              <li>· <strong>Data format:</strong> HDF5 episodes (replaces flat image+steering CSV)</li>
+              <li>· <strong>Policy:</strong> ACT / Diffusion Policy (replaces end-to-end CNN)</li>
+              <li>· <strong>Collection:</strong> leader-follower or controller coaching</li>
+              <li>· <strong>Inference:</strong> Chameleon cloud or thin-edge MCU</li>
+              <li>· <strong>Same backbone:</strong> same CHI@Edge → MI100 → deploy loop</li>
             </ul>
           </div>
         </div>
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-          <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">Why Now</p>
+          <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">The Point</p>
           <p className="text-sm text-gray-700">
-            LeRobot establishes a standard, reproducible pipeline. FooCars had a custom stack.
-            Unifying on LeRobot means <strong>curriculum, tooling, and community transfer directly</strong> between the arm and car programs.
-            Combat robotics durability lessons mean the hardware survives student workshops.
+            FooCars v2 doesn't leave the platform — it <strong>joins</strong> it. The same Chameleon backbone,
+            the same LeRobot episode format, the same training pipeline. Curriculum and tooling
+            built for arms transfer directly to cars. The body changes; the coaching loop doesn't.
           </p>
         </div>
       </SlideShell>
