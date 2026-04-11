@@ -95,12 +95,12 @@ const slides = [
     label: "Two Phases",
     content: (
       <SlideShell tag="The Work" tagColor="bg-gray-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">Two Phases, One Community</h1>
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">Two Approaches, One Backbone</h1>
         <div className="w-16 h-1 bg-red-600 rounded mb-5" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
 
           <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-5">
-            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">Phase 1 · 2021–2023</p>
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">Phase 1</p>
             <p className="text-base font-black text-gray-900 mb-1">ChiaRacers</p>
             <p className="text-xs text-blue-700 font-semibold mb-3">Traditional ML → edge devices → autonomous driving</p>
             <ul className="space-y-1.5 text-sm text-gray-700">
@@ -128,19 +128,6 @@ const slides = [
             <p className="text-xs text-gray-400 mt-3">github.com/ricklon/coachable-robots</p>
           </div>
 
-        </div>
-        <div className="grid grid-cols-4 gap-3 text-center">
-          {[
-            ["15", "Bergen Tech HS students"],
-            ["1,000+", "Maker Faire attendees"],
-            ["2", "CHI@Edge internships"],
-            ["May 5", "CMSCE teacher training"],
-          ].map(([n, l]) => (
-            <div key={l} className="bg-gray-50 border border-gray-200 rounded-xl py-3">
-              <p className="text-xl font-black text-red-600">{n}</p>
-              <p className="text-xs text-gray-500 mt-0.5">{l}</p>
-            </div>
-          ))}
         </div>
       </SlideShell>
     ),

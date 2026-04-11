@@ -289,7 +289,7 @@ const slides = [
   {
     label: "Phase 1: ChiaRacers",
     content: (
-      <SlideShell tag="Phase 1 · 2021–2023" tagColor="bg-blue-700">
+      <SlideShell tag="Phase 1" tagColor="bg-blue-700">
         <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">
           Phase 1: ChiaRacers
         </h1>
