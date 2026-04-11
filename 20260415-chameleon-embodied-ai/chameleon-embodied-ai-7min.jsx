@@ -329,50 +329,83 @@ const slides = [
     ),
   },
 
-  // ── 6: WHAT'S NEXT + THREE ASKS ──
+  // ── 6: TARGET PIPELINE ──
+  {
+    label: "Target Pipeline",
+    content: (
+      <SlideShell tag="Architecture" tagColor="bg-blue-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1">Target Pipeline</h1>
+        <div className="w-16 h-1 bg-blue-600 rounded mb-4" />
+
+        {/* Edge row */}
+        <div className="mb-2">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Edge — Pi 5</p>
+          <div className="grid grid-cols-3 gap-3">
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center">
+              <p className="font-black text-blue-900 text-sm">User</p>
+              <p className="text-xs text-blue-600 mt-1">voice · text</p>
+            </div>
+            <div className="bg-purple-50 border-2 border-purple-400 rounded-xl p-3 text-center">
+              <p className="font-black text-purple-900 text-sm">Talkbot Agent</p>
+              <p className="text-xs text-purple-700 mt-1">LLM orchestrator</p>
+              <div className="mt-2 flex flex-wrap justify-center gap-1">
+                <span className="bg-purple-200 text-purple-800 text-xs px-2 py-0.5 rounded font-semibold">SmolVLA</span>
+                <span className="bg-purple-200 text-purple-800 text-xs px-2 py-0.5 rounded font-semibold">ACT</span>
+                <span className="bg-purple-200 text-purple-800 text-xs px-2 py-0.5 rounded font-semibold">camera</span>
+                <span className="bg-purple-200 text-purple-800 text-xs px-2 py-0.5 rounded font-semibold">LLMs</span>
+              </div>
+              <p className="text-xs text-purple-500 mt-1 italic">models are the tools</p>
+            </div>
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center">
+              <p className="font-black text-blue-900 text-sm">Arm + Camera</p>
+              <p className="text-xs text-blue-600 mt-1">SO-ARM101 · teleop · collect</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Arrow row */}
+        <div className="flex justify-center items-center gap-3 my-1 text-xs text-gray-500 font-bold">
+          <span className="flex-1 border-t-2 border-dashed border-gray-300" />
+          <span className="bg-gray-100 px-3 py-1 rounded-full">gRPC · ~10 Hz</span>
+          <span className="flex-1 border-t-2 border-dashed border-gray-300" />
+        </div>
+
+        {/* Cloud row */}
+        <div>
+          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Chameleon Cloud</p>
+          <div className="grid grid-cols-3 gap-3">
+            <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center">
+              <p className="font-black text-red-900 text-sm">Inference Endpoint</p>
+              <p className="text-xs text-red-600 mt-1">ACT · SmolVLA · spatial AI</p>
+              <p className="text-xs text-red-400 mt-1">MI100 → H100 path</p>
+            </div>
+            <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center">
+              <p className="font-black text-red-900 text-sm">H100 Training</p>
+              <p className="text-xs text-red-600 mt-1">Flash Attn 2 · all policies</p>
+              <p className="text-xs text-red-400 mt-1">KVM@TACC for fleet scale</p>
+            </div>
+            <div className="bg-green-50 border border-green-200 rounded-xl p-3 text-center">
+              <p className="font-black text-green-900 text-sm">Object Store</p>
+              <p className="text-xs text-green-600 mt-1">episodes · checkpoints</p>
+              <p className="text-xs text-green-400 mt-1">stays inside project</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg px-4 py-2 text-xs text-amber-800">
+          <strong>Open question:</strong> Pi 5 resource budget — teleop + recording + Talkbot agent all running concurrently. Benchmarking this as part of the pipeline suite.
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // ── 7: WHAT'S NEXT + THREE ASKS ──
   {
     label: "What's Next",
     content: (
       <SlideShell tag="Future + Asks" tagColor="bg-purple-700">
         <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">What's Next</h1>
         <div className="w-16 h-1 bg-purple-600 rounded mb-4" />
-
-        {/* Concept diagram — target pipeline */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Target Pipeline</p>
-          <div className="flex items-center justify-between gap-1 text-center text-xs">
-            <div className="flex-1 bg-blue-100 rounded-lg p-2">
-              <p className="font-black text-blue-800 text-sm">Pi + Arm</p>
-              <p className="text-blue-600 leading-tight">collect · teleop</p>
-              <p className="text-blue-500 mt-1 font-semibold">Talkbot agent</p>
-            </div>
-            <div className="text-gray-400 font-bold flex flex-col items-center">
-              <span>gRPC</span>
-              <span>→</span>
-            </div>
-            <div className="flex-1 bg-purple-100 rounded-lg p-2">
-              <p className="font-black text-purple-800 text-sm">Chameleon</p>
-              <p className="text-purple-600 leading-tight">inference endpoint</p>
-              <p className="text-purple-500 mt-1 font-semibold">~10 Hz round-trip</p>
-            </div>
-            <div className="text-gray-400 font-bold flex flex-col items-center">
-              <span>↕</span>
-            </div>
-            <div className="flex-1 bg-red-100 rounded-lg p-2">
-              <p className="font-black text-red-800 text-sm">H100</p>
-              <p className="text-red-600 leading-tight">training · Flash Attn 2</p>
-              <p className="text-red-500 mt-1 font-semibold">all policies</p>
-            </div>
-            <div className="text-gray-400 font-bold flex flex-col items-center">
-              <span>↕</span>
-            </div>
-            <div className="flex-1 bg-green-100 rounded-lg p-2">
-              <p className="font-black text-green-800 text-sm">Object Store</p>
-              <p className="text-green-600 leading-tight">episodes · checkpoints</p>
-              <p className="text-green-500 mt-1 font-semibold">stays in project</p>
-            </div>
-          </div>
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
@@ -381,7 +414,7 @@ const slides = [
             <ul className="space-y-2 text-sm text-gray-700">
               <Bullet icon="→"><strong>Benchmark every stage</strong> — collect · transfer · train · inference · execution</Bullet>
               <Bullet icon="→"><strong>gRPC</strong> streaming for real-time Pi → Chameleon inference loop</Bullet>
-              <Bullet icon="→"><strong>Talkbot as robot agent</strong> — move_joint, gripper, run_policy tools on Pi</Bullet>
+              <Bullet icon="→"><strong>Talkbot as robot agent</strong> — LLM orchestrator on Pi; invokes SmolVLA, ACT, camera, and other models as tools; user ↔ robot interface</Bullet>
               <Bullet icon="→"><strong>FooCars v2</strong> + thin-edge MCUs on the same LeRobot backbone</Bullet>
             </ul>
           </div>
@@ -485,7 +518,7 @@ function Presentation() {
       </div>
 
       <div className="text-center text-xs text-gray-400 py-2">
-        Use ← → arrow keys to navigate · ~1 min per slide · 7 slides · 7 minutes
+        Use ← → arrow keys to navigate · ~1 min per slide · 8 slides · ~8 minutes
       </div>
     </div>
   );
