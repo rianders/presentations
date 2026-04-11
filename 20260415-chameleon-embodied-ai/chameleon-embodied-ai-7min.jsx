@@ -332,24 +332,28 @@ const slides = [
 
           <div>
             <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-3">On the Roadmap</p>
-            <ul className="space-y-2.5">
+            <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-3 mb-3">
+              <p className="text-xs font-black text-red-700 mb-1">Benchmarking Every Stage</p>
+              <p className="text-xs text-gray-700">
+                Talkbot's approach applied here: <strong>every pipeline stage measured and published</strong> —
+                collect · transfer · train · inference latency · policy execution.
+                Key number: Pi → Chameleon round-trip at ~10 Hz control frequency.
+                Compare HTTP vs. gRPC, on-device vs. cloud, single vs. multi-arm.
+              </p>
+              <p className="text-xs text-gray-400 mt-1">bench/benchmark_inference.py · results published in bench/results/</p>
+            </div>
+            <ul className="space-y-2">
               <Bullet icon="→">
-                <span><strong>Chameleon Object Store</strong> replaces HF Hub — datasets and checkpoints stay inside the project</span>
+                <span><strong>Chameleon Object Store</strong> replaces HF Hub — data stays inside the project</span>
               </Bullet>
               <Bullet icon="→">
-                <span><strong>RTX node</strong> for Isaac Sim (WebRTC streaming to browser) + Flash Attention 2 inference</span>
+                <span><strong>RTX node</strong> for Isaac Sim via WebRTC + Flash Attention 2 inference</span>
               </Bullet>
               <Bullet icon="→">
-                <span><strong>gRPC</strong> for Pi → Chameleon inference loop — bidirectional streaming, typed protos, lower latency than HTTP</span>
+                <span><strong>gRPC</strong> for real-time Pi → Chameleon inference loop</span>
               </Bullet>
               <Bullet icon="→">
-                <span><strong>Talkbot</strong> on Pi 5 — qwen3.5-0.8b (775 MB, 21 tok/s CPU), voice + tools, Chameleon LLM fallback</span>
-              </Bullet>
-              <Bullet icon="→">
-                <span><strong>Thin edge</strong> — ESP32/RP2040 microcontroller direct to Chameleon inference; no Pi needed</span>
-              </Bullet>
-              <Bullet icon="→">
-                <span><strong>FooCars v2</strong> — combat-durable RC cars joining the platform; same LeRobot pipeline, same Chameleon backbone, different body</span>
+                <span><strong>Talkbot + FooCars v2 + thin-edge MCU</strong> — heterogeneous embodiment on one backbone</span>
               </Bullet>
             </ul>
           </div>

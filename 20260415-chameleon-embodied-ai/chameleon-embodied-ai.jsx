@@ -421,6 +421,81 @@ const slides = [
     ),
   },
 
+  // ── BENCHMARKING ──
+  {
+    label: "Benchmarking",
+    content: (
+      <SlideShell tag="Benchmarking" tagColor="bg-gray-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Benchmarking Every Stage</h1>
+        <div className="w-16 h-1 bg-red-600 rounded mb-3" />
+        <p className="text-sm text-gray-600 mb-4">
+          Talkbot established a rigorous benchmarking methodology for edge AI systems.
+          Applying the same approach here: <strong>every end-to-end stage measured, compared across configurations, and published</strong> in <code className="bg-gray-100 px-1 rounded text-xs">bench/results/</code>.
+        </p>
+
+        {/* Pipeline stages */}
+        <div className="space-y-2 mb-4">
+          {[
+            {
+              stage: "01 · Collect",
+              what: "Camera frame rate · joint state capture frequency · episode recording latency",
+              compare: "Pi 5 alone vs. Pi 5 + Talkbot running concurrently",
+              status: "pending",
+            },
+            {
+              stage: "02 · Transfer",
+              what: "Episode push time: Pi → HF Hub vs. Pi → Chameleon Object Store (future)",
+              compare: "Dataset size vs. upload time; network path (direct vs. Tailscale mesh)",
+              status: "pending",
+            },
+            {
+              stage: "03 · Train",
+              what: "Training time per N episodes on MI100 · loss convergence · checkpoint size",
+              compare: "ACT vs. Diffusion Policy vs. Pi0 3B on gfx908; batch size sensitivity",
+              status: "pending",
+            },
+            {
+              stage: "04 · Inference",
+              what: "Round-trip latency: Pi → inference endpoint → action output",
+              compare: "Pi 5 on-device / CHI@Edge container / MI100 / RTX (future) · HTTP vs. gRPC",
+              status: "active",
+            },
+            {
+              stage: "05 · Execute",
+              what: "Policy execution: action frequency · task success rate · recovery behavior",
+              compare: "Across model architectures; single arm vs. multi-arm fleet",
+              status: "pending",
+            },
+          ].map(({ stage, what, compare, status }) => (
+            <div key={stage} className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+              <div className="flex-shrink-0 w-20">
+                <p className="text-xs font-black text-gray-500">{stage}</p>
+                <span className={`text-xs font-bold px-1.5 py-0.5 rounded-full ${status === "active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-200 text-gray-500"}`}>
+                  {status === "active" ? "active" : "pending"}
+                </span>
+              </div>
+              <div className="flex-1">
+                <p className="text-xs font-bold text-gray-800">{what}</p>
+                <p className="text-xs text-gray-500 mt-0.5">Compare: {compare}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-3">
+            <p className="text-xs font-black text-blue-700 mb-1">Talkbot Precedent</p>
+            <p className="text-xs text-gray-700">qwen3.5-0.8b achieves 21 tok/s on CPU with 90% benchmark success — a concrete, reproducible number. Same standard applies here: every claim backed by a result in <code className="bg-gray-100 px-1 rounded">bench/results/</code>.</p>
+          </div>
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
+            <p className="text-xs font-black text-amber-700 mb-1">Key Open Number</p>
+            <p className="text-xs text-gray-700">Pi → Chameleon inference round-trip latency at real manipulation frequency (~10 Hz). This determines whether cloud inference is viable for real-time control — or whether on-device fallback is required.</p>
+          </div>
+        </div>
+      </SlideShell>
+    ),
+  },
+
   // ── THE KEY SHIFT ──
   {
     label: "↳ Cloud Inference",
@@ -1242,11 +1317,12 @@ const slides = [
             </ul>
           </div>
           <div className="bg-amber-50 border-l-4 border-amber-400 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-2">Numbers Still Pending</p>
+            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-2">Benchmark Results Pending</p>
             <ul className="space-y-2">
-              <GapBullet>Actual inference latency benchmarks (Pi → MI100 round-trip ms)</GapBullet>
-              <GapBullet>Training time per episode count on MI100 vs. estimated alternatives</GapBullet>
-              <GapBullet>Session-level learning objectives for 6-session program</GapBullet>
+              <GapBullet>Pi → Chameleon inference round-trip at ~10 Hz — is cloud inference viable for real-time control?</GapBullet>
+              <GapBullet>Training time per N episodes on MI100 — ACT vs. Diffusion Policy on gfx908</GapBullet>
+              <GapBullet>HTTP vs. gRPC latency comparison for the inference loop</GapBullet>
+              <GapBullet>Pi 5 resource budget: teleop + recording + Talkbot concurrently</GapBullet>
             </ul>
           </div>
           <div className="bg-amber-50 border-l-4 border-amber-400 rounded-xl p-4">
