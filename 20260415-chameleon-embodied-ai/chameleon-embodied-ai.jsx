@@ -1162,88 +1162,127 @@ const slides = [
     ),
   },
 
-  // ── TALKBOT ──
+  // ── TALKBOT: CONCEPT ──
   {
-    label: "Talkbot",
+    label: "Talkbot: Concept",
     content: (
       <SlideShell tag="Edge Agent" tagColor="bg-purple-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">
-          Talkbot: Robot Agent Framework
-        </h1>
-        <div className="w-16 h-1 bg-purple-600 rounded mb-4" />
-        <p className="text-sm text-gray-600 mb-4">
-          Talkbot is <strong>LLM + tools</strong>. The tools today are timers, web search, reminders.
-          Adapt the tool set to the robot — arm joints, gripper, camera, policy trigger —
-          and it becomes the <strong>on-device agent that controls the arm</strong>.
-          Same framework, different tools, embodied in the robot.
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Talkbot as Robot Agent</h1>
+        <div className="w-16 h-1 bg-purple-600 rounded mb-5" />
+
+        {/* Core concept: LLM + Tools */}
+        <div className="flex flex-col items-center gap-3 mb-5">
+
+          {/* Input row */}
+          <div className="flex gap-4 items-center">
+            <div className="bg-gray-100 border border-gray-300 rounded-lg px-4 py-2 text-sm font-semibold text-gray-600">voice / text command</div>
+          </div>
+          <div className="text-gray-400 text-xl">↓</div>
+
+          {/* LLM core */}
+          <div className="bg-purple-600 text-white rounded-2xl px-10 py-4 text-center shadow-lg">
+            <p className="text-xs font-black uppercase tracking-widest text-purple-200 mb-1">LLM Core · Pi 5</p>
+            <p className="text-base font-black">qwen3.5-0.8b</p>
+            <p className="text-xs text-purple-200">local · 21 tok/s · Chameleon fallback</p>
+          </div>
+          <div className="text-gray-400 text-xl">↓</div>
+
+          {/* Tool dispatch */}
+          <div className="bg-gray-50 border-2 border-gray-300 rounded-xl px-6 py-2 text-xs font-black uppercase tracking-widest text-gray-500">
+            tool dispatcher
+          </div>
+          <div className="text-gray-400 text-xl">↓</div>
+
+          {/* Two columns: today vs robot */}
+          <div className="grid grid-cols-2 gap-4 w-full max-w-xl">
+            <div className="bg-gray-100 border border-gray-200 rounded-xl p-4">
+              <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-3 text-center">Today</p>
+              <div className="space-y-1.5 text-xs text-gray-500 text-center">
+                <div className="bg-white rounded px-2 py-1">timer · reminder</div>
+                <div className="bg-white rounded px-2 py-1">web search</div>
+                <div className="bg-white rounded px-2 py-1">shopping list</div>
+                <div className="bg-white rounded px-2 py-1">user memory</div>
+              </div>
+              <p className="text-center mt-3 text-gray-400 text-xl">🖥️</p>
+            </div>
+            <div className="bg-purple-50 border-2 border-purple-400 rounded-xl p-4">
+              <p className="text-xs font-black uppercase tracking-widest text-purple-600 mb-3 text-center">Robot Tools</p>
+              <div className="space-y-1.5 text-xs text-center">
+                <div className="bg-purple-100 text-purple-800 font-semibold rounded px-2 py-1">move_joint</div>
+                <div className="bg-purple-100 text-purple-800 font-semibold rounded px-2 py-1">gripper_open / close</div>
+                <div className="bg-purple-100 text-purple-800 font-semibold rounded px-2 py-1">camera_query</div>
+                <div className="bg-purple-100 text-purple-800 font-semibold rounded px-2 py-1">run_policy</div>
+              </div>
+              <p className="text-center mt-3 text-2xl">🦾</p>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-xs text-center text-gray-500 italic">
+          Same framework · same LLM · different tools → the robot becomes the interface
         </p>
+      </SlideShell>
+    ),
+  },
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-purple-700 mb-2">Runs on Pi 5</p>
-            <p className="text-sm font-bold text-gray-800 mb-1">qwen3.5-0.8b-Q8</p>
-            <ul className="space-y-1 text-xs text-gray-700">
-              <li>· 775 MB GGUF model</li>
-              <li>· 21 tokens/sec on CPU</li>
-              <li>· 90% benchmark success</li>
-              <li>· llama-server backend</li>
-            </ul>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Today's Tools → Robot Tools</p>
-            <div className="grid grid-cols-2 gap-1 text-xs">
-              <div className="bg-gray-100 rounded px-1.5 py-1 text-gray-500 line-through">timer</div>
-              <div className="bg-purple-100 rounded px-1.5 py-1 text-purple-800 font-semibold">move_joint</div>
-              <div className="bg-gray-100 rounded px-1.5 py-1 text-gray-500 line-through">web search</div>
-              <div className="bg-purple-100 rounded px-1.5 py-1 text-purple-800 font-semibold">gripper</div>
-              <div className="bg-gray-100 rounded px-1.5 py-1 text-gray-500 line-through">reminder</div>
-              <div className="bg-purple-100 rounded px-1.5 py-1 text-purple-800 font-semibold">camera_query</div>
-              <div className="bg-gray-100 rounded px-1.5 py-1 text-gray-500 line-through">shopping list</div>
-              <div className="bg-purple-100 rounded px-1.5 py-1 text-purple-800 font-semibold">run_policy</div>
+  // ── TALKBOT: DETAILS ──
+  {
+    label: "↳ Talkbot Details",
+    content: (
+      <SlideShell tag="Edge Agent · Detail" tagColor="bg-purple-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Talkbot: Platform &amp; Scale</h1>
+        <div className="w-16 h-1 bg-purple-600 rounded mb-5" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+          <div className="space-y-3">
+            <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4">
+              <p className="text-xs font-black uppercase tracking-widest text-purple-700 mb-2">Edge — Pi 5</p>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>· qwen3.5-0.8b-Q8 · 775 MB · 21 tok/s</li>
+                <li>· faster-whisper STT · Silero VAD</li>
+                <li>· KittenTTS local neural voice</li>
+                <li>· Benchmarked: 90% task success</li>
+              </ul>
+            </div>
+            <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-4">
+              <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">Cloud — Chameleon Fallback</p>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>· Pi busy with teleop + recording → offload LLM</li>
+                <li>· Heavier reasoning tasks → larger model</li>
+                <li>· KVM@TACC H100 for <strong>classroom fleet scale</strong> — many robots, many concurrent sessions</li>
+              </ul>
             </div>
           </div>
-          <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">Chameleon Fallback</p>
-            <p className="text-xs text-gray-700">Default: <strong>local llama-server</strong> on Pi 5.</p>
-            <p className="text-xs text-gray-700 mt-1">Fallback: <strong>Chameleon-hosted LLM</strong> when Pi is busy with teleop + recording, or for heavier reasoning tasks.</p>
-            <p className="text-xs text-gray-700 mt-1">KVM@TACC H100 as inference option for <strong>many concurrent robot sessions</strong>.</p>
+
+          <div className="space-y-3">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Embodied in Any Robot</p>
+            <div className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3">
+              <span className="text-2xl flex-shrink-0">🦾</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">SO-ARM101</p>
+                <p className="text-xs text-gray-500">Voice-controlled arm. Narrates actions, accepts task instructions, triggers trained policies.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3">
+              <span className="text-2xl flex-shrink-0">🚗</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">FooCars v2</p>
+                <p className="text-xs text-gray-500">Vehicle that takes voice commands, reports sensor state, narrates what it sees.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3">
+              <span className="text-2xl flex-shrink-0">🤖</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">Reachy / Coglet pattern</p>
+                <p className="text-xs text-gray-500">Humanoid or companion robot with voice, memory, and embodied tool access.</p>
+              </div>
+            </div>
+            <p className="text-xs text-gray-400 italic mt-1">github.com/ricklon/talkbot</p>
           </div>
         </div>
 
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Embodied Agent Pattern</p>
-          <div className="flex items-center gap-4 flex-wrap text-sm text-gray-700">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🤖</span>
-              <div>
-                <p className="font-bold">Reachy / Coglet</p>
-                <p className="text-xs text-gray-500">humanoid with voice, memory, robot tools</p>
-              </div>
-            </div>
-            <span className="text-gray-300 text-xl hidden md:block">|</span>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🦾</span>
-              <div>
-                <p className="font-bold">SO-ARM101 + Talkbot</p>
-                <p className="text-xs text-gray-500">voice-controlled arm; narrates its own actions</p>
-              </div>
-            </div>
-            <span className="text-gray-300 text-xl hidden md:block">|</span>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🚗</span>
-              <div>
-                <p className="font-bold">FooCars v2 + Talkbot</p>
-                <p className="text-xs text-gray-500">vehicle that takes commands, reports sensor state</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex gap-2 flex-wrap">
-          <span className="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-0.5 rounded-full">github.com/ricklon/talkbot</span>
-          <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">local-first · cloud fallback</span>
-          <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">OpenRouter → swap Chameleon inference</span>
-          <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">Pi 5 resource budget TBD with teleop running</span>
+        <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-2">
+          <p className="text-xs text-amber-800 italic">Open question: Pi 5 resource budget with teleop + recording + Talkbot all running — benchmarking this as part of the pipeline benchmarks.</p>
         </div>
       </SlideShell>
     ),
