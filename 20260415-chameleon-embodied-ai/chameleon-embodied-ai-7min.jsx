@@ -335,10 +335,10 @@ const slides = [
     content: (
       <SlideShell tag="Architecture" tagColor="bg-blue-700">
         <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1">Target Pipeline</h1>
-        <div className="w-16 h-1 bg-blue-600 rounded mb-4" />
+        <div className="w-16 h-1 bg-blue-600 rounded mb-3" />
 
         {/* Edge row */}
-        <div className="mb-2">
+        <div className="mb-1">
           <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Edge — Pi 5</p>
           <div className="grid grid-cols-3 gap-3">
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center">
@@ -363,11 +363,23 @@ const slides = [
           </div>
         </div>
 
-        {/* Arrow row */}
-        <div className="flex justify-center items-center gap-3 my-1 text-xs text-gray-500 font-bold">
-          <span className="flex-1 border-t-2 border-dashed border-gray-300" />
-          <span className="bg-gray-100 px-3 py-1 rounded-full">gRPC · ~10 Hz</span>
-          <span className="flex-1 border-t-2 border-dashed border-gray-300" />
+        {/* Inference path comparison */}
+        <div className="grid grid-cols-2 gap-2 my-2">
+          <div className="bg-green-50 border border-green-300 rounded-lg px-3 py-2 text-center">
+            <p className="text-xs font-black text-green-700 uppercase tracking-widest mb-0.5">Path A — Onboard</p>
+            <p className="text-xs text-green-800">model runs on Pi 5 · no network hop</p>
+            <p className="text-xs text-green-600 italic">lower latency? limited model size</p>
+          </div>
+          <div className="bg-orange-50 border border-orange-300 rounded-lg px-3 py-2 text-center">
+            <p className="text-xs font-black text-orange-700 uppercase tracking-widest mb-0.5">Path B — Remote</p>
+            <p className="text-xs text-orange-800">gRPC → Chameleon inference · ~10 Hz</p>
+            <p className="text-xs text-orange-600 italic">larger models · network overhead</p>
+          </div>
+        </div>
+        <div className="flex justify-center mb-2">
+          <span className="bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs font-bold px-4 py-1 rounded-full">
+            Research question: what's the optimal split? benchmarking both paths per task type
+          </span>
         </div>
 
         {/* Cloud row */}
@@ -390,10 +402,6 @@ const slides = [
               <p className="text-xs text-green-400 mt-1">stays inside project</p>
             </div>
           </div>
-        </div>
-
-        <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg px-4 py-2 text-xs text-amber-800">
-          <strong>Open question:</strong> Pi 5 resource budget — teleop + recording + Talkbot agent all running concurrently. Benchmarking this as part of the pipeline suite.
         </div>
       </SlideShell>
     ),
