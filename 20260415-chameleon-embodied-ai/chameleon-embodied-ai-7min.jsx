@@ -92,43 +92,51 @@ const slides = [
 
   // ── 2: TWO PHASES, ONE COMMUNITY ──
   {
-    label: "Two Phases",
+    label: "Two Approaches",
     content: (
       <SlideShell tag="The Work" tagColor="bg-gray-700">
         <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">Two Approaches, One Backbone</h1>
-        <div className="w-16 h-1 bg-red-600 rounded mb-5" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div className="w-16 h-1 bg-red-600 rounded mb-4" />
 
-          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-5">
-            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">Phase 1</p>
-            <p className="text-base font-black text-gray-900 mb-1">ChiaRacers</p>
-            <p className="text-xs text-blue-700 font-semibold mb-3">Traditional ML → edge devices → autonomous driving</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+
+          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-600 mb-1">Original Approach</p>
+            <p className="text-lg font-black text-gray-900 mb-0.5">ChiaRacers</p>
+            <p className="text-xs text-blue-700 font-semibold mb-3">Traditional supervised ML → edge autonomous driving</p>
             <ul className="space-y-1.5 text-sm text-gray-700">
-              <li>· Supervised CNN: camera frame → steering angle, trained on Chameleon GPU</li>
-              <li>· Edge stack: Raspberry Pi + Teensy microcontroller + custom carrier PCB</li>
-              <li>· CHI@Edge managed the fleet and provided the training loop</li>
-              <li>· Starting artifact: <strong>Request_Chia_Racer.ipynb</strong></li>
-              <li>· CMSCE: middle school → college → adult professional</li>
-              <li>· Bergen Tech HS · Maker Faire · CHI@Edge internships</li>
+              <li>· Supervised CNN: camera frame → steering angle</li>
+              <li>· Pi + Teensy microcontroller + custom carrier PCB</li>
+              <li>· Chameleon GPU for training; fleet managed via CHI@Edge</li>
+              <li>· Origin artifact: <strong>Request_Chia_Racer.ipynb</strong></li>
             </ul>
-            <p className="text-xs text-gray-400 mt-3">github.com/rianders/chiaracers · github.com/fubarlabs/foocars</p>
           </div>
 
-          <div className="bg-red-50 border-l-4 border-red-600 rounded-xl p-5">
-            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-1">Phase 2 · Now</p>
-            <p className="text-base font-black text-gray-900 mb-1">Coachable Robots</p>
+          <div className="bg-red-50 border-l-4 border-red-600 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-1">Current Approach</p>
+            <p className="text-lg font-black text-gray-900 mb-0.5">Coachable Robots</p>
             <p className="text-xs text-red-700 font-semibold mb-3">A platform, not a robot — heterogeneous embodiment on a shared backbone</p>
             <ul className="space-y-1.5 text-sm text-gray-700">
-              <li>· LeRobot: universal coaching interface — same pipeline for any body</li>
-              <li>· SO-ARM101 first; FooCars v2, Talkbot, thin-edge MCU all joining</li>
-              <li>· <strong>Chameleon now hosts inference</strong>, not just training — Pi is a thin client</li>
-              <li>· AI Study Group + Robot Build Night at FUBAR Labs</li>
-              <li>· <strong>Arms operational on CHI-261589</strong> — benchmarking now</li>
+              <li>· LeRobot: same pipeline for any body</li>
+              <li>· SO-ARM101 operational; FooCars v2, Talkbot, MCUs joining</li>
+              <li>· <strong>Chameleon hosts inference</strong> — Pi is a thin client</li>
+              <li>· Arms live on CHI-261589 — benchmarking now</li>
             </ul>
-            <p className="text-xs text-gray-400 mt-3">github.com/ricklon/coachable-robots</p>
           </div>
 
         </div>
+
+        <div className="bg-gray-100 rounded-xl px-5 py-3">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Who's Learning With This</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-700">
+            <span>· Bergen Tech HS students</span>
+            <span>· CMSCE teacher training</span>
+            <span>· AI Study Group + Robot Build Night @ FUBAR Labs</span>
+            <span>· Maker Faire attendees</span>
+            <span>· CHI@Edge interns</span>
+          </div>
+        </div>
+
       </SlideShell>
     ),
   },
