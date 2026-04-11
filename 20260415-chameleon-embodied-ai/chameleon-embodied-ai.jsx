@@ -285,27 +285,28 @@ const slides = [
     ),
   },
 
-  // ── PHASE 1: FOOCARS ──
+  // ── PHASE 1: CHIARACERS ──
   {
-    label: "Phase 1: FooCars",
+    label: "Phase 1: ChiaRacers",
     content: (
       <SlideShell tag="Phase 1 · 2021–2023" tagColor="bg-blue-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 leading-tight">
-          Phase 1: ChiaRacers / FooCars
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">
+          Phase 1: ChiaRacers
         </h1>
+        <p className="text-sm font-semibold text-blue-700 mb-4">Traditional ML → edge devices → autonomous driving</p>
         <div className="w-16 h-1 bg-blue-600 rounded mb-5" />
         <CardGrid cols={2}>
-          <SectionCard title="The Platform" icon="🚗">
-            <p>Low-cost RC cars running <strong>supervised vision-based navigation</strong> on CHI@Edge. Custom Rutgers/UOES circuit boards adapted RC cars for Raspberry Pi control.</p>
+          <SectionCard title="The Approach" icon="🧠">
+            <p><strong>Supervised CNN:</strong> camera frame in, steering angle out. Labeled by human demonstration drives. Trained on Chameleon GPU, weights returned to the Pi for on-device inference.</p>
+          </SectionCard>
+          <SectionCard title="Edge Hardware Stack" icon="🚗">
+            <p>Raspberry Pi (camera + inference) + <strong>Teensy microcontroller</strong> on custom carrier PCB (reads RC receiver, sends autonomous drive commands). Starting artifact: <strong>Request_Chia_Racer.ipynb</strong>.</p>
           </SectionCard>
           <SectionCard title="CHI@Edge Role" icon="☁️">
-            <p>Fleet management across multiple vehicles. <strong>Edge-to-bare-metal training loop:</strong> data collected on-car → trained on Chameleon GPU → weights returned to edge Pi.</p>
+            <p>Fleet management across vehicles. <strong>Edge-to-bare-metal training loop:</strong> data collected on-car → trained on Chameleon GPU → weights returned to edge Pi. JupyterHub for TF, PyTorch, ONNX, GPIO, serial.</p>
           </SectionCard>
-          <SectionCard title="Tools Built" icon="🛠️">
-            <p>Custom data curation tool, Streamlit/Gradio dashboards, JupyterHub notebooks for TensorFlow, PyTorch, ONNX, PiCamera, GPIO, serial devices.</p>
-          </SectionCard>
-          <SectionCard title="Community & Open Source" icon="🏫" accent={true}>
-            <p>Bergen Tech HS (2021, 2023) · CHI@Edge Internships (2021, 2022) · Maker Faire nationwide · <strong>github.com/fubarlabs/foocars</strong> · 1,237 commits · 15 contributors</p>
+          <SectionCard title="Community Reach" icon="🏫" accent={true}>
+            <p>CMSCE: middle school → college → adult professional. Bergen Tech HS (2021, 2023) · CHI@Edge Internships (2021, 2022) · Maker Faire nationwide · <strong>github.com/rianders/chiaracers</strong> · github.com/fubarlabs/foocars (1,237 commits · 15 contributors)</p>
           </SectionCard>
         </CardGrid>
       </SlideShell>
