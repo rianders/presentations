@@ -353,7 +353,10 @@ const slides = [
                 <span><strong>gRPC</strong> for real-time Pi → Chameleon inference loop</span>
               </Bullet>
               <Bullet icon="→">
-                <span><strong>Talkbot + FooCars v2 + thin-edge MCU</strong> — heterogeneous embodiment on one backbone</span>
+                <span><strong>Talkbot as robot agent</strong> — adapt tools to arm control (move_joint, gripper, run_policy); Chameleon LLM fallback for concurrent load</span>
+              </Bullet>
+              <Bullet icon="→">
+                <span><strong>H100 bare metal</strong> for training (Flash Attn 2, all policies) · <strong>KVM@TACC H100</strong> for inference at scale across classroom robot fleets</span>
               </Bullet>
             </ul>
           </div>

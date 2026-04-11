@@ -576,28 +576,40 @@ const slides = [
   {
     label: "↳ MI100 Notes",
     content: (
-      <SlideShell tag="Training · MI100" tagColor="bg-gray-700">
+      <SlideShell tag="Training · Compute" tagColor="bg-gray-700">
         <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 leading-tight">
-          Training on the AMD MI100
+          Training &amp; Inference Compute
         </h1>
-        <div className="w-16 h-1 bg-red-600 rounded mb-5" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div className="w-16 h-1 bg-red-600 rounded mb-4" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-3">Hardware Profile</p>
-            <ul className="space-y-2 text-sm text-gray-700">
-              <li><strong>AMD Instinct MI100</strong> — gfx908 architecture</li>
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Now · MI100 Bare Metal</p>
+            <ul className="space-y-1.5 text-sm text-gray-700">
+              <li><strong>AMD Instinct MI100</strong> — gfx908</li>
               <li>32 GB HBM2 · ROCm 6.3 · PyTorch 2.7</li>
-              <li>Ansible-provisioned — setup playbook in repo</li>
-              <li>Use <code className="bg-gray-100 px-1 rounded text-xs">rocm-smi</code>, not <code className="bg-gray-100 px-1 rounded text-xs">nvidia-smi</code></li>
+              <li>ACT policy works well</li>
+              <li className="text-amber-700">No Flash Attn 2 · no hipBLASLt</li>
+              <li className="text-amber-700">Diffusion Policy / Pi0 need tuning</li>
             </ul>
           </div>
-          <div className="bg-amber-50 border-l-4 border-amber-400 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-3">gfx908 Constraints</p>
-            <ul className="space-y-2 text-sm text-amber-900">
-              <li>No Flash Attention 2 (requires gfx90a+)</li>
-              <li>No hipBLASLt</li>
-              <li><strong>Use ACT as default policy</strong> — not Diffusion Policy or Pi0 without tuning</li>
-              <li>Pi0 3B works: <code className="bg-amber-100 px-1 rounded text-xs">--gradient_checkpointing=true --dtype=bfloat16 --batch_size=8</code></li>
+          <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-2">Future · H100 Bare Metal</p>
+            <ul className="space-y-1.5 text-sm text-gray-800">
+              <li><strong>NVIDIA H100</strong> on Chameleon</li>
+              <li>Full CUDA · Flash Attention 2</li>
+              <li>All policy architectures available</li>
+              <li>Diffusion Policy · Pi0 · larger models</li>
+              <li className="text-emerald-700 font-semibold">Removes gfx908 constraints entirely</li>
+            </ul>
+          </div>
+          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">Future · KVM@TACC H100</p>
+            <ul className="space-y-1.5 text-sm text-gray-800">
+              <li><strong>H100 via KVM@TACC</strong></li>
+              <li>VM-based (not bare metal)</li>
+              <li>Suited for <strong>inference at scale</strong></li>
+              <li>Many concurrent robot sessions</li>
+              <li className="text-blue-700 font-semibold">Talkbot + policy inference for classroom fleets</li>
             </ul>
           </div>
         </div>
@@ -671,26 +683,28 @@ const slides = [
               <li>Reduces manual notebook steps; enables less-technical users to drive pipeline</li>
             </ul>
           </div>
-          <div className="bg-amber-50 border-l-4 border-amber-400 rounded-xl p-5">
-            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-2">Edge Device — Open Question</p>
-            <ul className="space-y-2 text-sm text-amber-900">
-              <li>Can the Raspberry Pi 5 run a local agent?</li>
-              <li>Small models (Phi-3 mini, Llama 3.2 1B, Gemma 3 1B) now run on Pi-class hardware</li>
-              <li>Use case: on-device task planning, natural language coaching instructions, local sensor reasoning</li>
-              <li><strong>Resource constraint:</strong> Pi 5 doing teleop + recording + inference — headroom for LLM TBD</li>
+          <div className="bg-purple-50 border-l-4 border-purple-400 rounded-xl p-5">
+            <p className="text-xs font-black uppercase tracking-widest text-purple-700 mb-2">Edge Agent — Talkbot + Robot Tools</p>
+            <ul className="space-y-2 text-sm text-gray-800">
+              <li>Talkbot is <strong>LLM + tools</strong> — already working for voice and utility tasks</li>
+              <li>Adapt the tool set to the robot: arm position, gripper open/close, camera query, policy trigger</li>
+              <li>Becomes the <strong>on-device agent that controls the arm</strong> via natural language or agentic loop</li>
+              <li>Falls back to Chameleon-hosted LLM when Pi compute is saturated</li>
             </ul>
           </div>
         </div>
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">The Bigger Vision: AI All the Way Down</p>
-          <div className="flex items-center gap-3 text-sm text-gray-700">
-            <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded font-bold text-xs">LLM agent</span>
-            <span className="text-gray-400">→ configures →</span>
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">AI All the Way Down</p>
+          <div className="flex items-center gap-2 flex-wrap text-sm text-gray-700">
+            <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded font-bold text-xs">Cloud agent</span>
+            <span className="text-gray-400 text-xs">→ provisions →</span>
             <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded font-bold text-xs">Chameleon infra</span>
-            <span className="text-gray-400">→ trains →</span>
-            <span className="bg-red-100 text-red-700 px-2 py-1 rounded font-bold text-xs">manipulation policy</span>
-            <span className="text-gray-400">→ runs on →</span>
-            <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold text-xs">Pi agent</span>
+            <span className="text-gray-400 text-xs">→ trains →</span>
+            <span className="bg-red-100 text-red-700 px-2 py-1 rounded font-bold text-xs">policy</span>
+            <span className="text-gray-400 text-xs">→ deployed to →</span>
+            <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold text-xs">Talkbot edge agent</span>
+            <span className="text-gray-400 text-xs">→ controls →</span>
+            <span className="bg-orange-100 text-orange-700 px-2 py-1 rounded font-bold text-xs">robot body</span>
           </div>
         </div>
       </SlideShell>
@@ -897,13 +911,13 @@ const slides = [
                 episodes + checkpoints<br/>
                 <span className="text-emerald-700 font-semibold">replaces HF Hub</span>
               </div>
-              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
-                <span className="font-bold">MI100 training</span><br/>ACT / Diffusion Policy
+              <div className="bg-emerald-50 border border-emerald-300 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold text-emerald-800">H100 bare metal</span><br/>all policies · Flash Attn 2
               </div>
-              <div className="bg-purple-50 border border-purple-300 rounded-lg px-2 py-1.5 text-xs text-gray-700">
-                <span className="font-bold text-purple-800">RTX node — inference</span><br/>
-                Flash Attn 2 · larger models<br/>
-                <span className="text-purple-600 italic">pending availability</span>
+              <div className="bg-blue-50 border border-blue-300 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold text-blue-800">KVM@TACC H100</span><br/>
+                inference at scale<br/>
+                <span className="text-blue-600">many concurrent robots</span>
               </div>
               <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
                 <span className="font-bold">CHI@Edge + Isaac Sim</span><br/>sim-to-real, domain rand.
@@ -1154,12 +1168,14 @@ const slides = [
     content: (
       <SlideShell tag="Edge Agent" tagColor="bg-purple-700">
         <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">
-          Talkbot: Pi-Level Edge Agent
+          Talkbot: Robot Agent Framework
         </h1>
         <div className="w-16 h-1 bg-purple-600 rounded mb-4" />
         <p className="text-sm text-gray-600 mb-4">
-          The answer to the "edge agent?" question in the architecture. Not tasked with driving or manipulation —
-          a <strong>voice-first conversational agent embedded in the robot itself</strong>, like Reachy or Coglet.
+          Talkbot is <strong>LLM + tools</strong>. The tools today are timers, web search, reminders.
+          Adapt the tool set to the robot — arm joints, gripper, camera, policy trigger —
+          and it becomes the <strong>on-device agent that controls the arm</strong>.
+          Same framework, different tools, embodied in the robot.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -1174,30 +1190,34 @@ const slides = [
             </ul>
           </div>
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Voice Pipeline</p>
-            <ul className="space-y-1 text-xs text-gray-700">
-              <li>· faster-whisper STT</li>
-              <li>· Silero VAD (gated input)</li>
-              <li>· KittenTTS (local neural)</li>
-              <li>· Edge TTS (322 voices)</li>
-              <li>· 21 built-in tools</li>
-            </ul>
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Today's Tools → Robot Tools</p>
+            <div className="grid grid-cols-2 gap-1 text-xs">
+              <div className="bg-gray-100 rounded px-1.5 py-1 text-gray-500 line-through">timer</div>
+              <div className="bg-purple-100 rounded px-1.5 py-1 text-purple-800 font-semibold">move_joint</div>
+              <div className="bg-gray-100 rounded px-1.5 py-1 text-gray-500 line-through">web search</div>
+              <div className="bg-purple-100 rounded px-1.5 py-1 text-purple-800 font-semibold">gripper</div>
+              <div className="bg-gray-100 rounded px-1.5 py-1 text-gray-500 line-through">reminder</div>
+              <div className="bg-purple-100 rounded px-1.5 py-1 text-purple-800 font-semibold">camera_query</div>
+              <div className="bg-gray-100 rounded px-1.5 py-1 text-gray-500 line-through">shopping list</div>
+              <div className="bg-purple-100 rounded px-1.5 py-1 text-purple-800 font-semibold">run_policy</div>
+            </div>
           </div>
           <div className="bg-red-50 border-l-4 border-red-500 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">Chameleon Path</p>
+            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">Chameleon Fallback</p>
             <p className="text-xs text-gray-700">Default: <strong>local llama-server</strong> on Pi 5.</p>
-            <p className="text-xs text-gray-700 mt-1">Fallback: currently OpenRouter — <strong>replace with Chameleon-hosted LLM</strong> for heavier tasks or when Pi is busy with teleop/recording.</p>
+            <p className="text-xs text-gray-700 mt-1">Fallback: <strong>Chameleon-hosted LLM</strong> when Pi is busy with teleop + recording, or for heavier reasoning tasks.</p>
+            <p className="text-xs text-gray-700 mt-1">KVM@TACC H100 as inference option for <strong>many concurrent robot sessions</strong>.</p>
           </div>
         </div>
 
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">The Vision: Embodied Conversational Robots</p>
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Embodied Agent Pattern</p>
           <div className="flex items-center gap-4 flex-wrap text-sm text-gray-700">
             <div className="flex items-center gap-2">
               <span className="text-2xl">🤖</span>
               <div>
-                <p className="font-bold">Reachy / Coglet pattern</p>
-                <p className="text-xs text-gray-500">humanoid or companion robot with voice, memory, tools</p>
+                <p className="font-bold">Reachy / Coglet</p>
+                <p className="text-xs text-gray-500">humanoid with voice, memory, robot tools</p>
               </div>
             </div>
             <span className="text-gray-300 text-xl hidden md:block">|</span>
@@ -1205,7 +1225,7 @@ const slides = [
               <span className="text-2xl">🦾</span>
               <div>
                 <p className="font-bold">SO-ARM101 + Talkbot</p>
-                <p className="text-xs text-gray-500">arm that can <em>talk about</em> what it's doing, take voice instructions</p>
+                <p className="text-xs text-gray-500">voice-controlled arm; narrates its own actions</p>
               </div>
             </div>
             <span className="text-gray-300 text-xl hidden md:block">|</span>
@@ -1213,7 +1233,7 @@ const slides = [
               <span className="text-2xl">🚗</span>
               <div>
                 <p className="font-bold">FooCars v2 + Talkbot</p>
-                <p className="text-xs text-gray-500">vehicle that narrates, takes commands, reports sensor state</p>
+                <p className="text-xs text-gray-500">vehicle that takes commands, reports sensor state</p>
               </div>
             </div>
           </div>
