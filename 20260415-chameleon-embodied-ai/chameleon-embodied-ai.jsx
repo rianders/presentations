@@ -463,7 +463,7 @@ const slides = [
             {
               stage: "04 · Inference",
               what: "Round-trip latency: Pi → inference endpoint → action output",
-              compare: "Pi 5 on-device / CHI@Edge container / MI100 / RTX (future) · HTTP vs. gRPC",
+              compare: "On-device (Pi 5) vs. cloud-delegated (CHI@Edge / MI100 / RTX) · HTTP vs. gRPC",
               status: "active",
             },
             {
@@ -495,7 +495,7 @@ const slides = [
           </div>
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
             <p className="text-xs font-black text-amber-700 mb-1">Key Open Number</p>
-            <p className="text-xs text-gray-700">Pi → Chameleon inference round-trip latency at real manipulation frequency (~10 Hz). This determines whether cloud inference is viable for real-time control — or whether on-device fallback is required.</p>
+            <p className="text-xs text-gray-700">Pi → Chameleon inference round-trip latency at real manipulation frequency (~10 Hz). This determines whether cloud-delegated inference is viable for real-time control — or whether on-device is required.</p>
           </div>
           <div className="bg-red-50 border border-red-200 rounded-xl p-3 md:col-span-2">
             <p className="text-xs font-black text-red-700 mb-1">Model Scaling Finding</p>

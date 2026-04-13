@@ -375,13 +375,13 @@ const slides = [
         {/* Inference path comparison */}
         <div className="grid grid-cols-2 gap-3 mb-4">
           <div className="bg-green-50 border-2 border-green-400 rounded-xl px-4 py-4 text-center">
-            <p className="text-xs font-black text-green-700 uppercase tracking-widest mb-2">Path A — Onboard</p>
+            <p className="text-xs font-black text-green-700 uppercase tracking-widest mb-2">On-device</p>
             <p className="text-sm font-bold text-green-900">Model runs on Pi 5</p>
             <p className="text-xs text-green-700 mt-1">No network hop</p>
             <p className="text-xs text-green-600 italic mt-1">Lower latency · limited model size</p>
           </div>
           <div className="bg-orange-50 border-2 border-orange-400 rounded-xl px-4 py-4 text-center">
-            <p className="text-xs font-black text-orange-700 uppercase tracking-widest mb-2">Path B — Remote</p>
+            <p className="text-xs font-black text-orange-700 uppercase tracking-widest mb-2">Cloud-delegated</p>
             <p className="text-sm font-bold text-orange-900">gRPC → Chameleon</p>
             <p className="text-xs text-orange-700 mt-1">~10 Hz inference loop</p>
             <p className="text-xs text-orange-600 italic mt-1">Larger models · network overhead</p>
@@ -429,7 +429,7 @@ const slides = [
           <div className="space-y-2 text-sm text-gray-700">
             <div className="flex items-start gap-3">
               <span className="text-orange-500 font-bold flex-shrink-0">→</span>
-              <p><strong>Path B inference:</strong> Pi streams sensor data via gRPC; cloud returns action at ~10 Hz</p>
+              <p><strong>Cloud-delegated inference:</strong> Pi streams sensor data via gRPC; cloud returns action at ~10 Hz</p>
             </div>
             <div className="flex items-start gap-3">
               <span className="text-blue-500 font-bold flex-shrink-0">→</span>
