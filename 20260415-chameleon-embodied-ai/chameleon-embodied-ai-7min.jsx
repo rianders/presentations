@@ -329,77 +329,115 @@ const slides = [
     ),
   },
 
-  // ── 6: TARGET PIPELINE ──
+  // ── 6a: TARGET PIPELINE — EDGE ──
   {
-    label: "Target Pipeline",
+    label: "Pipeline: Edge",
     content: (
-      <SlideShell tag="Architecture" tagColor="bg-blue-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1">Target Pipeline</h1>
-        <div className="w-16 h-1 bg-blue-600 rounded mb-3" />
+      <SlideShell tag="Architecture · Pi 5" tagColor="bg-blue-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1">Pipeline: Edge</h1>
+        <div className="w-16 h-1 bg-blue-600 rounded mb-5" />
 
-        {/* Edge row */}
-        <div className="mb-1">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Edge — Pi 5</p>
-          <div className="grid grid-cols-3 gap-3">
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center">
-              <p className="font-black text-blue-900 text-sm">User</p>
-              <p className="text-xs text-blue-600 mt-1">voice · text</p>
-            </div>
-            <div className="bg-purple-50 border-2 border-purple-400 rounded-xl p-3 text-center">
-              <p className="font-black text-purple-900 text-sm">Talkbot Agent</p>
-              <p className="text-xs text-purple-700 mt-1">LLM orchestrator</p>
-              <div className="mt-2 flex flex-wrap justify-center gap-1">
-                <span className="bg-purple-200 text-purple-800 text-xs px-2 py-0.5 rounded font-semibold">SmolVLA</span>
-                <span className="bg-purple-200 text-purple-800 text-xs px-2 py-0.5 rounded font-semibold">ACT</span>
-                <span className="bg-purple-200 text-purple-800 text-xs px-2 py-0.5 rounded font-semibold">camera</span>
-                <span className="bg-purple-200 text-purple-800 text-xs px-2 py-0.5 rounded font-semibold">LLMs</span>
+        {/* User → Container → Robot flow */}
+        <div className="flex items-center justify-between gap-2 mb-5">
+          <div className="bg-blue-50 border border-blue-200 rounded-xl px-5 py-4 text-center flex-1">
+            <p className="font-black text-blue-900 text-sm">User</p>
+            <p className="text-xs text-blue-600 mt-1">voice · text</p>
+          </div>
+          <div className="text-gray-400 font-bold text-xl flex-shrink-0">→</div>
+          {/* Swappable container block */}
+          <div className="bg-gray-900 border-2 border-gray-600 rounded-xl px-4 py-3 text-center flex-1">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Multi-stage Docker</p>
+            <div className="flex items-stretch gap-2">
+              <div className="bg-purple-900 border border-purple-500 rounded-lg px-3 py-2 flex-1 text-center">
+                <p className="font-black text-purple-200 text-xs">Talkbot</p>
+                <p className="text-xs text-purple-400 mt-0.5">qwen3.5-0.8b<br/>voice + tools</p>
               </div>
-              <p className="text-xs text-purple-500 mt-1 italic">models are the tools</p>
+              <div className="flex flex-col items-center justify-center gap-0.5 text-gray-500 text-xs">
+                <span>swap</span>
+                <span>or</span>
+                <span>both</span>
+              </div>
+              <div className="bg-blue-900 border border-blue-500 rounded-lg px-3 py-2 flex-1 text-center">
+                <p className="font-black text-blue-200 text-xs">LeRobot</p>
+                <p className="text-xs text-blue-400 mt-0.5">collect · train<br/>run policy</p>
+              </div>
             </div>
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center">
-              <p className="font-black text-blue-900 text-sm">Arm + Camera</p>
-              <p className="text-xs text-blue-600 mt-1">SO-ARM101 · teleop · collect</p>
-            </div>
+            <p className="text-xs text-gray-500 italic mt-2">models are the tools</p>
+          </div>
+          <div className="text-gray-400 font-bold text-xl flex-shrink-0">→</div>
+          <div className="bg-blue-50 border border-blue-200 rounded-xl px-5 py-4 text-center flex-1">
+            <p className="font-black text-blue-900 text-sm">Arm + Camera</p>
+            <p className="text-xs text-blue-600 mt-1">SO-ARM101</p>
+            <p className="text-xs text-blue-500 mt-0.5">teleop · collect</p>
           </div>
         </div>
 
         {/* Inference path comparison */}
-        <div className="grid grid-cols-2 gap-2 my-2">
-          <div className="bg-green-50 border border-green-300 rounded-lg px-3 py-2 text-center">
-            <p className="text-xs font-black text-green-700 uppercase tracking-widest mb-0.5">Path A — Onboard</p>
-            <p className="text-xs text-green-800">model runs on Pi 5 · no network hop</p>
-            <p className="text-xs text-green-600 italic">lower latency? limited model size</p>
+        <div className="grid grid-cols-2 gap-3 mb-4">
+          <div className="bg-green-50 border-2 border-green-400 rounded-xl px-4 py-4 text-center">
+            <p className="text-xs font-black text-green-700 uppercase tracking-widest mb-2">Path A — Onboard</p>
+            <p className="text-sm font-bold text-green-900">Model runs on Pi 5</p>
+            <p className="text-xs text-green-700 mt-1">No network hop</p>
+            <p className="text-xs text-green-600 italic mt-1">Lower latency · limited model size</p>
           </div>
-          <div className="bg-orange-50 border border-orange-300 rounded-lg px-3 py-2 text-center">
-            <p className="text-xs font-black text-orange-700 uppercase tracking-widest mb-0.5">Path B — Remote</p>
-            <p className="text-xs text-orange-800">gRPC → Chameleon inference · ~10 Hz</p>
-            <p className="text-xs text-orange-600 italic">larger models · network overhead</p>
+          <div className="bg-orange-50 border-2 border-orange-400 rounded-xl px-4 py-4 text-center">
+            <p className="text-xs font-black text-orange-700 uppercase tracking-widest mb-2">Path B — Remote</p>
+            <p className="text-sm font-bold text-orange-900">gRPC → Chameleon</p>
+            <p className="text-xs text-orange-700 mt-1">~10 Hz inference loop</p>
+            <p className="text-xs text-orange-600 italic mt-1">Larger models · network overhead</p>
           </div>
-        </div>
-        <div className="flex justify-center mb-2">
-          <span className="bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs font-bold px-4 py-1 rounded-full">
-            Research question: what's the optimal split? benchmarking both paths per task type
-          </span>
         </div>
 
-        {/* Cloud row */}
-        <div>
-          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Chameleon Cloud</p>
-          <div className="grid grid-cols-3 gap-3">
-            <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center">
-              <p className="font-black text-red-900 text-sm">Inference Endpoint</p>
-              <p className="text-xs text-red-600 mt-1">ACT · SmolVLA · spatial AI</p>
-              <p className="text-xs text-red-400 mt-1">MI100 → H100 path</p>
+        <div className="flex justify-center">
+          <span className="bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs font-bold px-4 py-1.5 rounded-full">
+            Research question: what's the optimal split? — benchmarking both paths per task type
+          </span>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // ── 6b: TARGET PIPELINE — CLOUD ──
+  {
+    label: "Pipeline: Cloud",
+    content: (
+      <SlideShell tag="Architecture · Chameleon" tagColor="bg-red-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1">Pipeline: Cloud</h1>
+        <div className="w-16 h-1 bg-red-600 rounded mb-5" />
+
+        <div className="grid grid-cols-3 gap-4 mb-5">
+          <div className="bg-red-50 border-2 border-red-400 rounded-xl p-5 text-center flex flex-col gap-1">
+            <p className="font-black text-red-900 text-base">Inference Endpoint</p>
+            <p className="text-xs text-red-700 mt-1">ACT · SmolVLA · spatial AI</p>
+            <p className="text-xs text-red-500 mt-1">MI100 → H100 path</p>
+          </div>
+          <div className="bg-red-50 border-2 border-red-400 rounded-xl p-5 text-center flex flex-col gap-1">
+            <p className="font-black text-red-900 text-base">H100 Training</p>
+            <p className="text-xs text-red-700 mt-1">Flash Attn 2 · all policies</p>
+            <p className="text-xs text-red-500 mt-1">KVM@TACC for fleet scale</p>
+          </div>
+          <div className="bg-green-50 border-2 border-green-400 rounded-xl p-5 text-center flex flex-col gap-1">
+            <p className="font-black text-green-900 text-base">Object Store</p>
+            <p className="text-xs text-green-700 mt-1">episodes · checkpoints</p>
+            <p className="text-xs text-green-500 mt-1">stays inside project</p>
+          </div>
+        </div>
+
+        {/* How cloud serves edge */}
+        <div className="bg-gray-50 border border-gray-200 rounded-xl px-5 py-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-3">How edge uses cloud</p>
+          <div className="space-y-2 text-sm text-gray-700">
+            <div className="flex items-start gap-3">
+              <span className="text-orange-500 font-bold flex-shrink-0">→</span>
+              <p><strong>Path B inference:</strong> Pi streams sensor data via gRPC; cloud returns action at ~10 Hz</p>
             </div>
-            <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center">
-              <p className="font-black text-red-900 text-sm">H100 Training</p>
-              <p className="text-xs text-red-600 mt-1">Flash Attn 2 · all policies</p>
-              <p className="text-xs text-red-400 mt-1">KVM@TACC for fleet scale</p>
+            <div className="flex items-start gap-3">
+              <span className="text-blue-500 font-bold flex-shrink-0">→</span>
+              <p><strong>Training:</strong> Episodes pushed from edge; checkpoint pulled back for on-device or remote execution</p>
             </div>
-            <div className="bg-green-50 border border-green-200 rounded-xl p-3 text-center">
-              <p className="font-black text-green-900 text-sm">Object Store</p>
-              <p className="text-xs text-green-600 mt-1">episodes · checkpoints</p>
-              <p className="text-xs text-green-400 mt-1">stays inside project</p>
+            <div className="flex items-start gap-3">
+              <span className="text-green-500 font-bold flex-shrink-0">→</span>
+              <p><strong>Storage:</strong> All data stays within Chameleon project — no external dependency</p>
             </div>
           </div>
         </div>

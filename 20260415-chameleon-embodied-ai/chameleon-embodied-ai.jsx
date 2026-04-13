@@ -437,15 +437,21 @@ const slides = [
         <div className="space-y-2 mb-4">
           {[
             {
+              stage: "00 · Talkbot",
+              what: "Speech pipeline: STT latency · LLM tok/s · TTS latency · tool call success rate",
+              compare: "Control node vs. CHI@Edge arm vs. inference node; small model vs. large model tool reliability",
+              status: "active",
+            },
+            {
               stage: "01 · Collect",
               what: "Camera frame rate · joint state capture frequency · episode recording latency",
-              compare: "Pi 5 alone vs. Pi 5 + Talkbot running concurrently",
-              status: "pending",
+              compare: "LeRobot alone vs. LeRobot + Talkbot concurrent (no camera/serial needed for Talkbot bench)",
+              status: "active",
             },
             {
               stage: "02 · Transfer",
               what: "Episode push time: Pi → HF Hub vs. Pi → Chameleon Object Store (future)",
-              compare: "Dataset size vs. upload time; network path (direct vs. Tailscale mesh)",
+              compare: "Dataset size vs. upload time; Tailscale mesh now live — direct path benchmarkable",
               status: "pending",
             },
             {
@@ -490,6 +496,10 @@ const slides = [
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
             <p className="text-xs font-black text-amber-700 mb-1">Key Open Number</p>
             <p className="text-xs text-gray-700">Pi → Chameleon inference round-trip latency at real manipulation frequency (~10 Hz). This determines whether cloud inference is viable for real-time control — or whether on-device fallback is required.</p>
+          </div>
+          <div className="bg-red-50 border border-red-200 rounded-xl p-3 md:col-span-2">
+            <p className="text-xs font-black text-red-700 mb-1">Model Scaling Finding</p>
+            <p className="text-xs text-gray-700">Large models perform well. Small models don't reliably improve tool use or instruction following — their <strong>small context windows create back-pressure</strong> on the entire pipeline, causing other components to degrade. Benchmarking across model sizes to quantify this effect.</p>
           </div>
         </div>
       </SlideShell>
@@ -768,8 +778,21 @@ const slides = [
               <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
                 <span className="font-bold">Coachable CLI</span><br/>preview · collect · run
               </div>
-              <div className="bg-amber-50 border border-amber-300 rounded-lg px-2 py-1.5 text-xs text-amber-900">
-                <span className="font-bold">Tailscale?</span><br/>desired — permission<br/>+ perf TBD
+              {/* Swappable container row */}
+              <div className="bg-gray-900 border border-gray-700 rounded-lg px-2 py-1.5 text-xs">
+                <span className="text-gray-400 font-bold text-xs uppercase tracking-widest">Multi-stage Docker</span>
+                <div className="mt-1 flex flex-col gap-1">
+                  <div className="bg-purple-900 border border-purple-600 rounded px-1.5 py-1 text-purple-200">
+                    <span className="font-bold">Talkbot</span><br/>qwen3.5-0.8b · voice + tools
+                  </div>
+                  <div className="text-gray-500 text-center text-xs italic">swap or combine ↕</div>
+                  <div className="bg-blue-900 border border-blue-600 rounded px-1.5 py-1 text-blue-200">
+                    <span className="font-bold">LeRobot</span><br/>collect · train · run
+                  </div>
+                </div>
+              </div>
+              <div className="bg-emerald-50 border border-emerald-400 rounded-lg px-2 py-1.5 text-xs text-emerald-900">
+                <span className="font-bold">Tailscale ✓</span><br/>6 nodes live<br/>training/inference TBD
               </div>
             </div>
           </div>
@@ -843,7 +866,7 @@ const slides = [
 
         <div className="mt-3 flex gap-2 flex-wrap">
           <span className="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded-full">HF Hub = external dependency for data</span>
-          <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">No native Pi ↔ cloud mesh — Tailscale desired (permission + perf TBD)</span>
+          <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">Tailscale live — 6 nodes (arms + control + soarm101 + Mac); training/inference not yet enrolled</span>
         </div>
       </SlideShell>
     ),
@@ -883,11 +906,11 @@ const slides = [
             {/* Native network question */}
             <div className="border-2 border-dashed border-purple-400 rounded-xl bg-purple-50 px-3 py-2 text-center w-full">
               <div className="text-xs font-black text-purple-700 mb-1">Private Network</div>
-              <div className="text-xs text-purple-600 font-semibold">Tailscale — desired</div>
-              <div className="text-xs text-gray-500 italic">permission not yet requested</div>
-              <div className="text-xs text-gray-500 italic">performance overhead TBD</div>
-              <div className="text-xs text-purple-700 font-semibold mt-2">Native Chameleon option?</div>
-              <div className="text-xs text-gray-400 italic">preferred if it exists</div>
+              <div className="text-xs text-emerald-700 font-semibold">Tailscale ✓ — 6 nodes live</div>
+              <div className="text-xs text-gray-500 italic">arm-01/1/2, soarm101,</div>
+              <div className="text-xs text-gray-500 italic">control + Mac enrolled</div>
+              <div className="text-xs text-purple-700 font-semibold mt-2">Next: training + inference nodes</div>
+              <div className="text-xs text-gray-400 italic">+ native Chameleon mesh?</div>
             </div>
 
             <div className="flex flex-col items-center gap-1 w-full text-xs text-gray-500">
@@ -1221,6 +1244,10 @@ const slides = [
         <p className="text-xs text-center text-gray-500 italic">
           Same framework · same LLM · different tools → the robot becomes the interface
         </p>
+        <div className="mt-3 flex justify-center gap-2 flex-wrap">
+          <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">Active testing — control · inference · CHI@Edge SO-ARM</span>
+          <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">Swap or combine with LeRobot</span>
+        </div>
       </SlideShell>
     ),
   },
@@ -1281,8 +1308,32 @@ const slides = [
           </div>
         </div>
 
-        <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-2">
-          <p className="text-xs text-amber-800 italic">Open question: Pi 5 resource budget with teleop + recording + Talkbot all running — benchmarking this as part of the pipeline benchmarks.</p>
+        <div className="space-y-2">
+          <div className="bg-emerald-50 border border-emerald-300 rounded-xl px-4 py-3">
+            <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">Now Active — Three Test Targets</p>
+            <div className="grid grid-cols-3 gap-2 mt-1">
+              <div className="bg-white border border-emerald-200 rounded-lg px-2 py-1.5 text-xs text-gray-700 text-center">
+                <p className="font-bold text-emerald-800">Control node</p>
+                <p className="text-gray-500">coachable-robots-control</p>
+              </div>
+              <div className="bg-white border border-emerald-200 rounded-lg px-2 py-1.5 text-xs text-gray-700 text-center">
+                <p className="font-bold text-emerald-800">Inference node</p>
+                <p className="text-gray-500">CHI@Edge / MI100</p>
+              </div>
+              <div className="bg-white border border-emerald-200 rounded-lg px-2 py-1.5 text-xs text-gray-700 text-center">
+                <p className="font-bold text-emerald-800">SO-ARM systems</p>
+                <p className="text-gray-500">arm-01 / soarm101</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-2">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">Swap or Combine</p>
+            <p className="text-xs text-gray-700">LeRobot, Talkbot, or both together — the same infrastructure under all three. Talkbot stress-tests the full pipeline <strong>without requiring cameras or USB serial</strong>: no hardware lock-in, clean benchmark baselines across every configuration.</p>
+          </div>
+          <div className="bg-red-50 border border-red-300 rounded-xl px-4 py-2">
+            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-1">Scaling Problem: Small Models Don't Improve</p>
+            <p className="text-xs text-gray-700">Larger models work well. Smaller models don't reliably use tools or follow instructions better — and their <strong>small context windows put pressure on the whole stack</strong>, causing other tools and pipeline stages to fail. Scaling small → large is not smooth.</p>
+          </div>
         </div>
       </SlideShell>
     ),
