@@ -41,18 +41,6 @@ const Tag = ({ color = "bg-blue-100 text-blue-700", children }) => (
   <span className={`inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full ${color}`}>{children}</span>
 );
 
-const LessonRow = ({ status, problem, fix }) => (
-  <div className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
-    <span className={`text-xs font-black mt-0.5 flex-shrink-0 ${status === "fixed" ? "text-emerald-600" : "text-amber-600"}`}>
-      {status === "fixed" ? "✓" : "▲"}
-    </span>
-    <div>
-      <p className="text-xs font-bold text-gray-800">{problem}</p>
-      <p className="text-xs text-gray-500 mt-0.5">{fix}</p>
-    </div>
-  </div>
-);
-
 // ── SLIDES ─────────────────────────────────────────────────
 
 const slides = [
@@ -71,7 +59,7 @@ const slides = [
           <p className="text-sm text-gray-600 max-w-xl leading-relaxed mb-5">
             An open-source curriculum growing from autonomous RC cars to robotic arm manipulation —
             using CHI@Edge, MI100 bare-metal GPU, and Chameleon-hosted inference.
-            Now adding voice agents at the edge.
+            Now adding voice coaching and remote inference, with the Pi acting as the robot interface rather than the model host.
           </p>
           <div className="flex flex-wrap gap-2 mb-6">
             <Tag color="bg-red-100 text-red-700">Embodied AI</Tag>
@@ -90,7 +78,7 @@ const slides = [
     ),
   },
 
-  // ── 2: TWO PHASES, ONE COMMUNITY ──
+  // ── 2: TWO APPROACHES ──
   {
     label: "Two Approaches",
     content: (
@@ -115,12 +103,12 @@ const slides = [
           <div className="bg-red-50 border-l-4 border-red-600 rounded-xl p-4">
             <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-1">Current Approach</p>
             <p className="text-lg font-black text-gray-900 mb-0.5">Coachable Robots</p>
-            <p className="text-xs text-red-700 font-semibold mb-3">A platform, not a robot — heterogeneous embodiment on a shared backbone</p>
+            <p className="text-xs text-red-700 font-semibold mb-3">A fleet architecture for demonstration collection, training, inference, and classroom operation</p>
             <ul className="space-y-1.5 text-sm text-gray-700">
               <li>· LeRobot: same pipeline for any body</li>
-              <li>· SO-ARM101 operational; FooCars v2, Talkbot, MCUs joining</li>
-              <li>· <strong>Chameleon hosts inference</strong> — Pi is a thin client</li>
-              <li>· Arms live on CHI-261589 — benchmarking now</li>
+              <li>· SO-ARM101 operational; Talkbot, FooCars v2, MCUs joining</li>
+              <li>· <strong>Chameleon hosts inference</strong> — Pi is the robot interface</li>
+              <li>· Coachable is the umbrella: fleet, workflows, edge-to-cloud ops</li>
             </ul>
           </div>
 
@@ -141,61 +129,74 @@ const slides = [
     ),
   },
 
-  // ── 3: THE CHAMELEON STACK ──
+  // ── 3: WHAT WORKS NOW ──
   {
-    label: "Chameleon Stack",
+    label: "What Works Now",
     content: (
-      <SlideShell tag="Infrastructure" tagColor="bg-red-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">The Chameleon Stack</h1>
-        <div className="w-16 h-1 bg-red-600 rounded mb-5" />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">CHI@Edge</p>
-            <ul className="space-y-1 text-sm text-gray-700">
-              <li>· Raspberry Pi 5 device enrollment</li>
-              <li>· Serial + camera device profiles</li>
-              <li>· Container management via python-chi</li>
-              <li>· SO-ARM101 fleet (soarm101-1)</li>
-            </ul>
-          </div>
-          <div className="bg-red-50 border-l-4 border-red-600 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">MI100 Bare Metal</p>
-            <ul className="space-y-1 text-sm text-gray-700">
-              <li>· gfx908 · 32 GB HBM2</li>
-              <li>· ROCm 6.3 · PyTorch 2.7</li>
-              <li>· ACT policy training</li>
-              <li>· Ansible-provisioned</li>
-            </ul>
-          </div>
-          <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-purple-700 mb-2">Inference Endpoint</p>
-            <ul className="space-y-1 text-sm text-gray-700">
-              <li>· Spatial AI (detection, depth)</li>
-              <li>· ACT policy execution</li>
-              <li>· LLM agentic control</li>
-              <li>· Pi calls over network</li>
-            </ul>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex items-center gap-4 bg-gray-100 rounded-xl p-4">
-            <div className="text-center flex-1">
-              <p className="text-xs font-black text-gray-500 uppercase mb-1">Phase 1</p>
-              <p className="text-sm font-bold text-gray-700">Chameleon = training only</p>
-              <p className="text-xs text-gray-500">inference ran on Pi</p>
+      <SlideShell tag="Current Status" tagColor="bg-emerald-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">What Works Now</h1>
+        <div className="w-16 h-1 bg-emerald-600 rounded mb-3" />
+        <p className="text-xs text-gray-400 italic mb-4">What is real and verified today — not overclaiming the full autonomous loop</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="space-y-2">
+            <div className="bg-emerald-50 border border-emerald-300 rounded-lg px-4 py-3 flex items-start gap-3">
+              <span className="text-emerald-600 font-black text-sm flex-shrink-0">✓</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">Pi enrolled on CHI@Edge</p>
+                <p className="text-xs text-gray-500">Device: soarm101-1 · container management via python-chi</p>
+              </div>
             </div>
-            <span className="text-2xl text-red-400 font-black">→</span>
-            <div className="text-center flex-1">
-              <p className="text-xs font-black text-red-700 uppercase mb-1">Phase 2</p>
-              <p className="text-sm font-bold text-gray-900">training + inference</p>
-              <p className="text-xs text-gray-500">Pi is a thin client</p>
+            <div className="bg-emerald-50 border border-emerald-300 rounded-lg px-4 py-3 flex items-start gap-3">
+              <span className="text-emerald-600 font-black text-sm flex-shrink-0">✓</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">SO-ARM101 leader + follower calibrated</p>
+                <p className="text-xs text-gray-500">Serial profiles resolved · ttyacm0 + ttyacm1</p>
+              </div>
+            </div>
+            <div className="bg-emerald-50 border border-emerald-300 rounded-lg px-4 py-3 flex items-start gap-3">
+              <span className="text-emerald-600 font-black text-sm flex-shrink-0">✓</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">Dual USB cameras operational</p>
+                <p className="text-xs text-gray-500">video0 / video2 profiles · UVC, not CSI</p>
+              </div>
+            </div>
+            <div className="bg-emerald-50 border border-emerald-300 rounded-lg px-4 py-3 flex items-start gap-3">
+              <span className="text-emerald-600 font-black text-sm flex-shrink-0">✓</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">Teleoperation working</p>
+                <p className="text-xs text-gray-500">Xbox · keyboard · Joy-Con · MuJoCo sim</p>
+              </div>
             </div>
           </div>
-          <div className="bg-emerald-50 border border-emerald-300 rounded-xl p-4 flex items-center gap-3">
-            <span className="text-emerald-600 font-black text-lg">✓</span>
-            <div>
-              <p className="text-sm font-bold text-gray-800">Arms operational on CHI-261589</p>
-              <p className="text-xs text-gray-500">Calibration and fleet mgmt working. Now: first episode collection + latency benchmarking.</p>
+          <div className="space-y-2">
+            <div className="bg-emerald-50 border border-emerald-300 rounded-lg px-4 py-3 flex items-start gap-3">
+              <span className="text-emerald-600 font-black text-sm flex-shrink-0">✓</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">Collect → replay → push pipeline</p>
+                <p className="text-xs text-gray-500">Calibration dataset pushed to Hugging Face Hub</p>
+              </div>
+            </div>
+            <div className="bg-emerald-50 border border-emerald-300 rounded-lg px-4 py-3 flex items-start gap-3">
+              <span className="text-emerald-600 font-black text-sm flex-shrink-0">✓</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">Coachable CLI + student notebooks</p>
+                <p className="text-xs text-gray-500">preview · collect · run · Papermill acceptance tests</p>
+              </div>
+            </div>
+            <div className="bg-emerald-50 border border-emerald-300 rounded-lg px-4 py-3 flex items-start gap-3">
+              <span className="text-emerald-600 font-black text-sm flex-shrink-0">✓</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">Operator automation mature</p>
+                <p className="text-xs text-gray-500">justfile CLI · fleet.example.yaml · Tailscale access layer live</p>
+              </div>
+            </div>
+            <div className="bg-amber-50 border border-amber-300 rounded-lg px-4 py-3 flex items-start gap-3">
+              <span className="text-amber-600 font-black text-sm flex-shrink-0">→</span>
+              <div>
+                <p className="text-sm font-bold text-gray-800">Next: MI100 policy training + autonomous execution</p>
+                <p className="text-xs text-gray-500">Demonstration collection in progress · benchmarking underway</p>
+              </div>
             </div>
           </div>
         </div>
@@ -203,18 +204,18 @@ const slides = [
     ),
   },
 
-  // ── 4: ARCHITECTURE (current diagram) ──
+  // ── 4: ARCHITECTURE ──
   {
     label: "Architecture",
     content: (
-      <SlideShell tag="Architecture · Now" tagColor="bg-gray-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Architecture: Current</h1>
+      <SlideShell tag="Architecture · Fleet" tagColor="bg-gray-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Architecture: Distributed Embodied AI Fleet</h1>
         <div className="w-16 h-1 bg-red-600 rounded mb-4" />
 
         <div className="flex items-stretch gap-0">
           {/* ZONE 1: Edge */}
-          <div className="flex flex-col w-48 flex-shrink-0">
-            <div className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2 text-center">Edge</div>
+          <div className="flex flex-col w-44 flex-shrink-0">
+            <div className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2 text-center">CHI@Edge · Arm Node</div>
             <div className="flex-1 border-2 border-blue-400 rounded-xl p-3 bg-blue-50 flex flex-col gap-2">
               <div className="text-xs font-black text-blue-800 text-center mb-1">Raspberry Pi 5</div>
               <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
@@ -226,15 +227,19 @@ const slides = [
               <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
                 <span className="font-bold">Coachable CLI</span><br/>preview · collect · run
               </div>
-              <div className="bg-amber-50 border border-amber-300 rounded-lg px-2 py-1.5 text-xs text-amber-900">
-                <span className="font-bold">Talkbot?</span><br/>qwen3.5-0.8b<br/>voice + tools
+              <div className="bg-purple-50 border border-purple-300 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">Talkbot</span><br/>UI + remote inference
               </div>
             </div>
           </div>
 
-          {/* Middle */}
+          {/* Middle: Tailscale + HF Hub + data flows */}
           <div className="flex flex-col items-center justify-center flex-1 px-2 gap-3">
-            <div className="flex flex-col items-center w-full">
+            <div className="bg-emerald-50 border-2 border-emerald-400 rounded-xl px-3 py-2 text-center w-full">
+              <p className="text-xs font-black text-emerald-700 uppercase tracking-widest">Tailscale · Live</p>
+              <p className="text-xs text-emerald-600 mt-0.5">arm · control · training · inference nodes</p>
+            </div>
+            <div className="flex flex-col items-center w-full gap-1">
               <div className="text-xs text-gray-500 italic mb-0.5">episodes (HDF5)</div>
               <div className="flex items-center w-full gap-1">
                 <div className="flex-1 border-t-2 border-dashed border-gray-400" />
@@ -250,28 +255,16 @@ const slides = [
               <div className="text-xs text-gray-500 italic mt-0.5">checkpoint pull</div>
             </div>
             <div className="flex flex-col items-center w-full">
-              <div className="text-xs text-gray-500 italic mb-0.5">sensor data</div>
               <div className="flex items-center w-full">
                 <div className="flex-1 border-t-2 border-dashed border-red-300" />
-                <span className="text-red-400 font-bold">→</span>
-                <span className="text-xs text-red-500 italic px-1">inference req</span>
-                <span className="text-red-400 font-bold">→</span>
+                <span className="text-xs text-red-500 italic px-1">inference req →</span>
                 <div className="flex-1 border-t-2 border-dashed border-red-300" />
               </div>
-              <div className="flex items-center w-full flex-row-reverse">
+              <div className="flex items-center w-full">
                 <div className="flex-1 border-t-2 border-dashed border-emerald-300" />
-                <span className="text-emerald-500 font-bold">←</span>
-                <span className="text-xs text-emerald-600 italic px-1">action output</span>
-                <span className="text-emerald-500 font-bold">←</span>
+                <span className="text-xs text-emerald-600 italic px-1">← action</span>
                 <div className="flex-1 border-t-2 border-dashed border-emerald-300" />
               </div>
-            </div>
-            <div className="flex items-center w-full gap-1">
-              <div className="flex-1 border-t-2 border-dashed border-gray-300" />
-              <span className="text-gray-400 font-bold">↔</span>
-              <span className="text-xs text-gray-400 italic px-1">device mgmt</span>
-              <span className="text-gray-400 font-bold">↔</span>
-              <div className="flex-1 border-t-2 border-dashed border-gray-300" />
             </div>
           </div>
 
@@ -280,21 +273,25 @@ const slides = [
             <div className="text-xs font-black uppercase tracking-widest text-red-700 mb-2 text-center">Chameleon · CHI-261589</div>
             <div className="flex-1 border-2 border-red-400 rounded-xl p-3 bg-red-50 flex flex-col gap-2">
               <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+                <span className="font-bold">Control node</span><br/>operator CLI · fleet mgmt
+              </div>
+              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
                 <span className="font-bold">MI100 bare metal</span><br/>ROCm 6.3 · ACT training
               </div>
               <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
-                <span className="font-bold">Inference endpoint</span><br/>spatial AI · policy exec
-              </div>
-              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
                 <span className="font-bold">CHI@Edge</span><br/>device enroll · containers
+              </div>
+              <div className="bg-amber-50 border border-amber-300 rounded-lg px-2 py-1.5 text-xs text-amber-900">
+                <span className="font-bold">Jetson Orin</span><br/>inference node<br/>⚠ egress blocked
               </div>
             </div>
           </div>
         </div>
 
         <div className="mt-3 flex gap-2 flex-wrap">
-          <span className="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded-full">HF Hub = external data dependency today</span>
-          <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">No native Pi ↔ cloud mesh — Tailscale desired, permission TBD</span>
+          <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">Tailscale live — stable hostnames across fleet nodes</span>
+          <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">Jetson pod: GPU works, outbound internet blocked</span>
+          <span className="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded-full">HF Hub = external data transfer layer today</span>
         </div>
       </SlideShell>
     ),
@@ -306,181 +303,154 @@ const slides = [
     content: (
       <SlideShell tag="Lessons Learned" tagColor="bg-gray-700">
         <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">Lessons from CHI@Edge</h1>
-        <div className="w-16 h-1 bg-red-600 rounded mb-3" />
-        <p className="text-xs text-gray-400 italic mb-4">Running notes — github.com/ricklon/coachable-robots/LESSONS_LEARNED.md</p>
-        <div className="space-y-2">
-          <LessonRow status="fixed"
-            problem="USB cameras on Pi 5: pi_camera and pi_libcamera target CSI hardware only — neither works for USB"
-            fix="video0/video1/video2/video3 profiles added after helpdesk ticket. Use device_profiles=['ttyacm0','ttyacm1','video0','video2']" />
-          <LessonRow status="fixed"
-            problem="chi.set('project_name') silently breaks application credentials — keystoneauth demands project_domain_id"
-            fix="Omit chi.set('project_name') entirely with app creds. Container network must be 'caliconet', not 'containernet1'." />
-          <LessonRow status="fixed"
-            problem="Containers stuck Unschedulable after hardware maintenance — stale coordinator lock never released"
-            fix="balena restart coordinator_{uuid} breaks the lock. Also restart k3s + chi-edge device sync. Takes ~5 min." />
-          <LessonRow status="warn"
-            problem="No native mesh between Pi on lab network and Chameleon nodes — SSH tunnels are fragile"
-            fix="Tailscale is the desired fix (BalenaOS block + curl install). Permission not yet requested; performance overhead TBD. Does Chameleon have a native option?" />
-          <LessonRow status="fixed"
-            problem="MI100 is gfx908: no Flash Attention 2, no hipBLASLt — Diffusion Policy degrades; lerobot v0.5.0 has breaking API changes"
-            fix="Use ACT as default policy on MI100. Rename LEROBOT_HOME → HF_LEROBOT_HOME. Removed aloha type — use pusht for dry-runs." />
+        <div className="w-16 h-1 bg-red-600 rounded mb-2" />
+        <p className="text-xs text-gray-400 italic mb-4">The gap between a container that starts and a container that can operate real embodied hardware</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">Device Profiles</p>
+            <ul className="space-y-1.5 text-xs text-gray-700">
+              <li>· USB cameras need <code className="bg-blue-100 px-1 rounded">video0–video3</code>, not <code className="bg-blue-100 px-1 rounded">pi_camera</code> (CSI-only)</li>
+              <li>· Serial profiles for leader + follower resolved (<code className="bg-blue-100 px-1 rounded">ttyacm0</code>, <code className="bg-blue-100 px-1 rounded">ttyacm1</code>)</li>
+              <li>· Device binding has startup timing delays — camera open retries required</li>
+            </ul>
+          </div>
+          <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-orange-700 mb-2">Networking</p>
+            <ul className="space-y-1.5 text-xs text-gray-700">
+              <li>· Floating IP = inbound routing only — no outbound NAT for pod egress</li>
+              <li>· Tailscale gives stable access across arm, training, and control nodes</li>
+              <li>· Jetson Orin pod: GPU works, but outbound internet blocked — Tailscale and HF Hub fail</li>
+            </ul>
+          </div>
+          <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-purple-700 mb-2">Container Lifecycle</p>
+            <ul className="space-y-1.5 text-xs text-gray-700">
+              <li>· Image caching requires dated tags — same-tag rebuilds may not pull fresh content</li>
+              <li>· Zun container startup differs from Docker — use entrypoint patterns carefully</li>
+              <li>· Stale coordinator locks block scheduling after hardware maintenance</li>
+            </ul>
+          </div>
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">GPU / Runtime</p>
+            <ul className="space-y-1.5 text-xs text-gray-700">
+              <li>· MI100 (gfx908): no Flash Attention 2, no hipBLASLt — use ACT, not Diffusion Policy</li>
+              <li>· Jetson Orin: requires <code className="bg-red-100 px-1 rounded">runtime="nvidia"</code> and correct L4T/JetPack base image</li>
+              <li>· Large model assets must be baked into image until Jetson pod egress is resolved</li>
+            </ul>
+          </div>
         </div>
       </SlideShell>
     ),
   },
 
-  // ── 6a: TARGET PIPELINE — EDGE ──
+  // ── 6: TALKBOT + INFERENCE SPLIT ──
   {
-    label: "Pipeline: Edge",
+    label: "Talkbot",
     content: (
-      <SlideShell tag="Architecture · Pi 5" tagColor="bg-blue-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1">Pipeline: Edge</h1>
-        <div className="w-16 h-1 bg-blue-600 rounded mb-5" />
+      <SlideShell tag="New Work" tagColor="bg-purple-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1">Talkbot and the Inference Split</h1>
+        <div className="w-16 h-1 bg-purple-600 rounded mb-4" />
 
-        {/* User → Container → Robot flow */}
-        <div className="flex items-center justify-between gap-2 mb-5">
-          <div className="bg-blue-50 border border-blue-200 rounded-xl px-5 py-4 text-center flex-1">
-            <p className="font-black text-blue-900 text-sm">User</p>
-            <p className="text-xs text-blue-600 mt-1">voice · text</p>
-          </div>
-          <div className="text-gray-400 font-bold text-xl flex-shrink-0">→</div>
-          {/* Swappable container block */}
-          <div className="bg-gray-900 border-2 border-gray-600 rounded-xl px-4 py-3 text-center flex-1">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Multi-stage Docker</p>
-            <div className="flex items-stretch gap-2">
-              <div className="bg-purple-900 border border-purple-500 rounded-lg px-3 py-2 flex-1 text-center">
-                <p className="font-black text-purple-200 text-xs">Talkbot</p>
-                <p className="text-xs text-purple-400 mt-0.5">qwen3.5-0.8b<br/>voice + tools</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">What Talkbot Does</p>
+            <div className="space-y-2">
+              <div className="bg-purple-50 border border-purple-200 rounded-lg px-4 py-3">
+                <p className="text-sm font-bold text-gray-800">Conversational tool user</p>
+                <p className="text-xs text-gray-500 mt-0.5">STT → LLM → tool call → TTS</p>
+                <p className="text-xs text-gray-500 mt-0.5">Robots are one class of tool it can call</p>
               </div>
-              <div className="flex flex-col items-center justify-center gap-0.5 text-gray-500 text-xs">
-                <span>swap</span>
-                <span>or</span>
-                <span>both</span>
+              <div className="bg-purple-50 border border-purple-200 rounded-lg px-4 py-3">
+                <p className="text-sm font-bold text-gray-800">No vision currently</p>
+                <p className="text-xs text-gray-500 mt-0.5">Voice + tool calling only — camera is a separate pipeline</p>
               </div>
-              <div className="bg-blue-900 border border-blue-500 rounded-lg px-3 py-2 flex-1 text-center">
-                <p className="font-black text-blue-200 text-xs">LeRobot</p>
-                <p className="text-xs text-blue-400 mt-0.5">collect · train<br/>run policy</p>
+              <div className="bg-emerald-50 border border-emerald-200 rounded-lg px-4 py-3">
+                <p className="text-sm font-bold text-gray-800">Build time: 90 min → 5 min</p>
+                <p className="text-xs text-gray-500 mt-0.5">Removed llama.cpp from Pi — Pi calls remote inference instead</p>
               </div>
             </div>
-            <p className="text-xs text-gray-500 italic mt-2">models are the tools</p>
           </div>
-          <div className="text-gray-400 font-bold text-xl flex-shrink-0">→</div>
-          <div className="bg-blue-50 border border-blue-200 rounded-xl px-5 py-4 text-center flex-1">
-            <p className="font-black text-blue-900 text-sm">Arm + Camera</p>
-            <p className="text-xs text-blue-600 mt-1">SO-ARM101</p>
-            <p className="text-xs text-blue-500 mt-0.5">teleop · collect</p>
+
+          <div>
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">The Split</p>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-3">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-blue-100 border border-blue-300 rounded-lg px-3 py-3 text-center flex-1">
+                  <p className="text-xs font-black text-blue-800">Pi 5</p>
+                  <p className="text-xs text-blue-700 mt-0.5">robot control</p>
+                  <p className="text-xs text-blue-600">cameras · UI · API calls</p>
+                </div>
+                <span className="text-gray-400 font-bold text-lg flex-shrink-0">→</span>
+                <div className="bg-red-100 border border-red-300 rounded-lg px-3 py-3 text-center flex-1">
+                  <p className="text-xs font-black text-red-800">Remote Inference</p>
+                  <p className="text-xs text-red-700 mt-0.5">OpenRouter</p>
+                  <p className="text-xs text-red-600">MI100 · Jetson · tailnet host</p>
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 text-center italic">Inference target is swappable — student interaction unchanged</p>
+            </div>
+            <div className="bg-gray-900 rounded-xl px-4 py-3">
+              <p className="text-sm font-semibold text-white leading-snug">
+                "Models become tools the robot can call; the hard question is where each tool should run."
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Inference path comparison */}
-        <div className="grid grid-cols-2 gap-3 mb-4">
-          <div className="bg-green-50 border-2 border-green-400 rounded-xl px-4 py-4 text-center">
-            <p className="text-xs font-black text-green-700 uppercase tracking-widest mb-2">On-device</p>
-            <p className="text-sm font-bold text-green-900">Model runs on Pi 5</p>
-            <p className="text-xs text-green-700 mt-1">No network hop</p>
-            <p className="text-xs text-green-600 italic mt-1">Lower latency · limited model size</p>
-          </div>
-          <div className="bg-orange-50 border-2 border-orange-400 rounded-xl px-4 py-4 text-center">
-            <p className="text-xs font-black text-orange-700 uppercase tracking-widest mb-2">Cloud-delegated</p>
-            <p className="text-sm font-bold text-orange-900">gRPC → Chameleon</p>
-            <p className="text-xs text-orange-700 mt-1">~10 Hz inference loop</p>
-            <p className="text-xs text-orange-600 italic mt-1">Larger models · network overhead</p>
-          </div>
-        </div>
-
-        <div className="flex justify-center">
-          <span className="bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs font-bold px-4 py-1.5 rounded-full">
-            Research question: what's the optimal split? — benchmarking both paths per task type
-          </span>
+        <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-3">
+          <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">Why This Matters for Chameleon</p>
+          <p className="text-sm text-gray-700">Pi-class devices handle robot control, cameras, UI, and API calls — not language inference at useful latency. Useful LLM inference needs OpenRouter, MI100, Jetson Orin, or another tailnet host. Chameleon is a natural inference target once networking is solved.</p>
         </div>
       </SlideShell>
     ),
   },
 
-  // ── 6b: TARGET PIPELINE — CLOUD ──
-  {
-    label: "Pipeline: Cloud",
-    content: (
-      <SlideShell tag="Architecture · Chameleon" tagColor="bg-red-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1">Pipeline: Cloud</h1>
-        <div className="w-16 h-1 bg-red-600 rounded mb-5" />
-
-        <div className="grid grid-cols-3 gap-4 mb-5">
-          <div className="bg-red-50 border-2 border-red-400 rounded-xl p-5 text-center flex flex-col gap-1">
-            <p className="font-black text-red-900 text-base">Inference Endpoint</p>
-            <p className="text-xs text-red-700 mt-1">ACT · SmolVLA · spatial AI</p>
-            <p className="text-xs text-red-500 mt-1">MI100 → H100 path</p>
-          </div>
-          <div className="bg-red-50 border-2 border-red-400 rounded-xl p-5 text-center flex flex-col gap-1">
-            <p className="font-black text-red-900 text-base">H100 Training</p>
-            <p className="text-xs text-red-700 mt-1">Flash Attn 2 · all policies</p>
-            <p className="text-xs text-red-500 mt-1">KVM@TACC for fleet scale</p>
-          </div>
-          <div className="bg-green-50 border-2 border-green-400 rounded-xl p-5 text-center flex flex-col gap-1">
-            <p className="font-black text-green-900 text-base">Object Store</p>
-            <p className="text-xs text-green-700 mt-1">episodes · checkpoints</p>
-            <p className="text-xs text-green-500 mt-1">stays inside project</p>
-          </div>
-        </div>
-
-        {/* How cloud serves edge */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl px-5 py-4">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-3">How edge uses cloud</p>
-          <div className="space-y-2 text-sm text-gray-700">
-            <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-bold flex-shrink-0">→</span>
-              <p><strong>Cloud-delegated inference:</strong> Pi streams sensor data via gRPC; cloud returns action at ~10 Hz</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-blue-500 font-bold flex-shrink-0">→</span>
-              <p><strong>Training:</strong> Episodes pushed from edge; checkpoint pulled back for on-device or remote execution</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-green-500 font-bold flex-shrink-0">→</span>
-              <p><strong>Storage:</strong> All data stays within Chameleon project — no external dependency</p>
-            </div>
-          </div>
-        </div>
-      </SlideShell>
-    ),
-  },
-
-  // ── 7: WHAT'S NEXT + THREE ASKS ──
+  // ── 7: ASKS FOR CHAMELEON ──
   {
     label: "What's Next",
     content: (
-      <SlideShell tag="Future + Asks" tagColor="bg-purple-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">What's Next</h1>
+      <SlideShell tag="Asks + Next Steps" tagColor="bg-purple-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">Asks for Chameleon</h1>
         <div className="w-16 h-1 bg-purple-600 rounded mb-4" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
           <div>
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Next Steps</p>
-            <ul className="space-y-2 text-sm text-gray-700">
-              <Bullet icon="→"><strong>Benchmark every stage</strong> — collect · transfer · train · inference · execution</Bullet>
-              <Bullet icon="→"><strong>gRPC</strong> streaming for real-time Pi → Chameleon inference loop</Bullet>
-              <Bullet icon="→"><strong>Talkbot as robot agent</strong> — LLM orchestrator on Pi; invokes SmolVLA, ACT, camera, and other models as tools; user ↔ robot interface</Bullet>
-              <Bullet icon="→"><strong>FooCars v2</strong> + thin-edge MCUs on the same LeRobot backbone</Bullet>
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-2">Three Asks</p>
+            <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-2">Five Asks</p>
             <div className="space-y-2">
               <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-3">
-                <p className="text-sm font-bold text-gray-900">1. Persistent GPU environments</p>
+                <p className="text-sm font-bold text-gray-900">1. Edge-to-cloud networking guidance</p>
+                <p className="text-xs text-gray-500">Native or documented path for user-enrolled edge devices; Tailscale is the current workaround</p>
+              </div>
+              <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-3">
+                <p className="text-sm font-bold text-gray-900">2. Clarify floating IP behavior</p>
+                <p className="text-xs text-gray-500">Inbound routing vs outbound NAT — CHI@Edge pods needing internet egress</p>
+              </div>
+              <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-3">
+                <p className="text-sm font-bold text-gray-900">3. Jetson Orin pod outbound internet</p>
+                <p className="text-xs text-gray-500">GPU access works; egress blocked — Tailscale, HF Hub, and model downloads fail</p>
+              </div>
+              <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-3">
+                <p className="text-sm font-bold text-gray-900">4. Persistent GPU environments</p>
                 <p className="text-xs text-gray-500">GPU needed for sim + training + inference — not just at training time</p>
               </div>
               <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-3">
-                <p className="text-sm font-bold text-gray-900">2. RTX node availability?</p>
-                <p className="text-xs text-gray-500">Isaac Sim requires RTX-class — what's current at CHI@UC and CHI@TACC?</p>
-              </div>
-              <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-3">
-                <p className="text-sm font-bold text-gray-900">3. Native Pi ↔ Chameleon networking</p>
-                <p className="text-xs text-gray-500">Tailscale desired but not approved — is there a native Chameleon path?</p>
+                <p className="text-sm font-bold text-gray-900">5. RTX / H100 availability + device profile docs</p>
+                <p className="text-xs text-gray-500">Isaac Sim requires RTX-class; USB serial and UVC camera profile patterns</p>
               </div>
             </div>
+          </div>
+
+          <div>
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Next Steps</p>
+            <ul className="space-y-2 text-sm text-gray-700">
+              <Bullet icon="→"><strong>Benchmark every stage</strong> — collect · transfer · train · inference · execution</Bullet>
+              <Bullet icon="→"><strong>MI100 policy training</strong> — first full ACT training run on demonstration data</Bullet>
+              <Bullet icon="→"><strong>Autonomous policy execution</strong> — close the full collect → train → run loop</Bullet>
+              <Bullet icon="→"><strong>Talkbot as robot agent</strong> — swap inference targets without changing student interaction</Bullet>
+              <Bullet icon="→"><strong>FooCars v2 + MCUs</strong> — same Coachable backbone, lower-power embodiments</Bullet>
+              <Bullet icon="→"><strong>Embodied AI curriculum</strong> — student notebooks + CMSCE teacher training (May 5)</Bullet>
+            </ul>
           </div>
 
         </div>
@@ -488,7 +458,7 @@ const slides = [
     ),
   },
 
-  // ── 7: Q&A ──
+  // ── 8: Q&A ──
   {
     label: "Q&A",
     content: (
@@ -500,7 +470,7 @@ const slides = [
           <ul className="space-y-2 mb-8">
             <Bullet icon="→">github.com/ricklon/coachable-robots — CLI, notebooks, Ansible, LESSONS_LEARNED.md</Bullet>
             <Bullet icon="→">github.com/fubarlabs/foocars — Phase 1 RC car curriculum</Bullet>
-            <Bullet icon="→">github.com/ricklon/talkbot — Pi-level voice agent</Bullet>
+            <Bullet icon="→">github.com/ricklon/talkbot — voice coaching interface</Bullet>
             <Bullet icon="→">chameleoncloud.org/user/projects/1589 — CHI-261589</Bullet>
           </ul>
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
