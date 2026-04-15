@@ -209,88 +209,103 @@ const slides = [
     content: (
       <SlideShell tag="Architecture · Fleet" tagColor="bg-gray-700">
         <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Architecture: Distributed Embodied AI Fleet</h1>
-        <div className="w-16 h-1 bg-red-600 rounded mb-4" />
+        <div className="w-16 h-1 bg-red-600 rounded mb-3" />
 
-        <div className="flex items-stretch gap-0">
-          {/* ZONE 1: Edge */}
-          <div className="flex flex-col w-44 flex-shrink-0">
-            <div className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2 text-center">CHI@Edge · Arm Node</div>
-            <div className="flex-1 border-2 border-blue-400 rounded-xl p-3 bg-blue-50 flex flex-col gap-2">
-              <div className="text-xs font-black text-blue-800 text-center mb-1">Raspberry Pi 5</div>
-              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+        <div className="flex items-stretch gap-1">
+          {/* ZONE 1: Pi — edge robot interface */}
+          <div className="flex flex-col w-36 flex-shrink-0">
+            <div className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1.5 text-center">CHI@Edge · Pi Node</div>
+            <div className="flex-1 border-2 border-blue-400 rounded-xl p-2.5 bg-blue-50 flex flex-col gap-1.5">
+              <div className="text-xs font-black text-blue-800 text-center mb-0.5">Raspberry Pi 5</div>
+              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1 text-xs text-gray-700">
                 <span className="font-bold">SO-ARM101</span><br/>leader + follower
               </div>
-              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1 text-xs text-gray-700">
                 <span className="font-bold">2× USB cameras</span>
               </div>
-              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+              <div className="bg-white border border-blue-200 rounded-lg px-2 py-1 text-xs text-gray-700">
                 <span className="font-bold">Coachable CLI</span><br/>preview · collect · run
               </div>
-              <div className="bg-purple-50 border border-purple-300 rounded-lg px-2 py-1.5 text-xs text-gray-700">
-                <span className="font-bold">Talkbot</span><br/>UI + remote inference
+              <div className="bg-purple-50 border border-purple-300 rounded-lg px-2 py-1 text-xs text-gray-700">
+                <span className="font-bold">Talkbot</span><br/>UI + remote call
               </div>
+              <div className="mt-auto pt-1 border-t border-blue-200 text-xs text-blue-600 italic text-center">robot interface only<br/>no on-device inference</div>
             </div>
           </div>
 
-          {/* Middle: Tailscale + HF Hub + data flows */}
-          <div className="flex flex-col items-center justify-center flex-1 px-2 gap-3">
-            <div className="bg-emerald-50 border-2 border-emerald-400 rounded-xl px-3 py-2 text-center w-full">
-              <p className="text-xs font-black text-emerald-700 uppercase tracking-widest">Tailscale · Live</p>
-              <p className="text-xs text-emerald-600 mt-0.5">arm · control · training · inference nodes</p>
-            </div>
-            <div className="flex flex-col items-center w-full gap-1">
-              <div className="text-xs text-gray-500 italic mb-0.5">episodes (HDF5)</div>
-              <div className="flex items-center w-full gap-1">
-                <div className="flex-1 border-t-2 border-dashed border-gray-400" />
-                <span className="text-gray-500 font-bold">→</span>
-                <div className="border-2 border-orange-400 rounded-xl bg-orange-50 px-3 py-2 text-center mx-1">
-                  <div className="text-xs font-black text-orange-700">HF Hub</div>
-                  <div className="text-xs text-gray-600">datasets</div>
-                  <div className="text-xs text-gray-600">checkpoints</div>
-                </div>
-                <span className="text-gray-500 font-bold">→</span>
-                <div className="flex-1 border-t-2 border-dashed border-gray-400" />
+          {/* Arrow */}
+          <div className="flex items-center justify-center px-0.5 text-gray-400 font-bold text-lg">⟷</div>
+
+          {/* ZONE 2: Jetson Orin — flexible node */}
+          <div className="flex flex-col w-44 flex-shrink-0">
+            <div className="text-xs font-black uppercase tracking-widest text-violet-700 mb-1.5 text-center">CHI@Edge · Jetson Orin</div>
+            <div className="flex-1 border-2 border-violet-400 rounded-xl p-2.5 bg-violet-50 flex flex-col gap-1.5">
+              <div className="text-xs font-black text-violet-800 text-center mb-0.5">Configurable Role</div>
+              <div className="bg-white border border-violet-200 rounded-lg px-2 py-1 text-xs text-gray-700">
+                <span className="font-bold text-violet-700">As robot interface</span><br/>arm + cameras + Talkbot<br/><span className="italic text-gray-400">same as Pi, more power</span>
               </div>
-              <div className="text-xs text-gray-500 italic mt-0.5">checkpoint pull</div>
+              <div className="bg-white border border-violet-200 rounded-lg px-2 py-1 text-xs text-gray-700">
+                <span className="font-bold text-violet-700">On-board inference</span><br/>GPU capable · LLM / VLA<br/><span className="italic text-gray-400">Pi cannot do this</span>
+              </div>
+              <div className="bg-white border border-violet-200 rounded-lg px-2 py-1 text-xs text-gray-700">
+                <span className="font-bold text-violet-700">Training offload</span><br/>local ACT / policy runs<br/><span className="italic text-gray-400">reduces MI100 load</span>
+              </div>
+              <div className="mt-auto pt-1 border-t border-violet-200 text-xs text-amber-700 italic text-center">⚠ pod egress blocked today<br/>assets baked into image</div>
+            </div>
+          </div>
+
+          {/* Middle: Tailscale + HF Hub */}
+          <div className="flex flex-col items-center justify-center flex-1 px-1 gap-2">
+            <div className="bg-emerald-50 border-2 border-emerald-400 rounded-xl px-2 py-1.5 text-center w-full">
+              <p className="text-xs font-black text-emerald-700 uppercase tracking-widest">Tailscale · Live</p>
+              <p className="text-xs text-emerald-600 mt-0.5">all fleet nodes</p>
+            </div>
+            <div className="flex flex-col items-center w-full gap-0.5">
+              <div className="text-xs text-gray-400 italic">episodes →</div>
+              <div className="border-2 border-orange-400 rounded-xl bg-orange-50 px-2 py-1.5 text-center w-full">
+                <div className="text-xs font-black text-orange-700">HF Hub</div>
+                <div className="text-xs text-gray-500">datasets · checkpoints</div>
+              </div>
+              <div className="text-xs text-gray-400 italic">← policy</div>
             </div>
             <div className="flex flex-col items-center w-full">
               <div className="flex items-center w-full">
                 <div className="flex-1 border-t-2 border-dashed border-red-300" />
-                <span className="text-xs text-red-500 italic px-1">inference req →</span>
+                <span className="text-xs text-red-400 italic px-0.5">infer →</span>
                 <div className="flex-1 border-t-2 border-dashed border-red-300" />
               </div>
               <div className="flex items-center w-full">
                 <div className="flex-1 border-t-2 border-dashed border-emerald-300" />
-                <span className="text-xs text-emerald-600 italic px-1">← action</span>
+                <span className="text-xs text-emerald-500 italic px-0.5">← action</span>
                 <div className="flex-1 border-t-2 border-dashed border-emerald-300" />
               </div>
             </div>
           </div>
 
-          {/* ZONE 2: Chameleon */}
-          <div className="flex flex-col w-52 flex-shrink-0">
-            <div className="text-xs font-black uppercase tracking-widest text-red-700 mb-2 text-center">Chameleon · CHI-261589</div>
-            <div className="flex-1 border-2 border-red-400 rounded-xl p-3 bg-red-50 flex flex-col gap-2">
-              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+          {/* ZONE 3: Chameleon cloud */}
+          <div className="flex flex-col w-44 flex-shrink-0">
+            <div className="text-xs font-black uppercase tracking-widest text-red-700 mb-1.5 text-center">Chameleon · CHI-261589</div>
+            <div className="flex-1 border-2 border-red-400 rounded-xl p-2.5 bg-red-50 flex flex-col gap-1.5">
+              <div className="bg-white border border-red-200 rounded-lg px-2 py-1 text-xs text-gray-700">
                 <span className="font-bold">Control node</span><br/>operator CLI · fleet mgmt
               </div>
-              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+              <div className="bg-white border border-red-200 rounded-lg px-2 py-1 text-xs text-gray-700">
                 <span className="font-bold">MI100 bare metal</span><br/>ROCm 6.3 · ACT training
               </div>
-              <div className="bg-white border border-red-200 rounded-lg px-2 py-1.5 text-xs text-gray-700">
+              <div className="bg-white border border-red-200 rounded-lg px-2 py-1 text-xs text-gray-700">
                 <span className="font-bold">CHI@Edge</span><br/>device enroll · containers
               </div>
-              <div className="bg-amber-50 border border-amber-300 rounded-lg px-2 py-1.5 text-xs text-amber-900">
-                <span className="font-bold">Jetson Orin</span><br/>inference node<br/>⚠ egress blocked
+              <div className="bg-white border border-red-200 rounded-lg px-2 py-1 text-xs text-gray-700">
+                <span className="font-bold">OpenRouter</span><br/>hosted inference fallback
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-3 flex gap-2 flex-wrap">
-          <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">Tailscale live — stable hostnames across fleet nodes</span>
-          <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full">Jetson pod: GPU works, outbound internet blocked</span>
-          <span className="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded-full">HF Hub = external data transfer layer today</span>
+        <div className="mt-2 flex gap-2 flex-wrap">
+          <span className="bg-violet-100 text-violet-700 text-xs font-bold px-2 py-0.5 rounded-full">Jetson Orin: robot interface or inference/training node — configurable</span>
+          <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">Tailscale live — stable hostnames across fleet</span>
+          <span className="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded-full">HF Hub = data transfer layer today</span>
         </div>
       </SlideShell>
     ),
