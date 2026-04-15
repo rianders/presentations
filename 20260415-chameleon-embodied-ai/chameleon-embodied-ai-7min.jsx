@@ -503,6 +503,46 @@ const slides = [
 
 /* ── Presentation shell ──────────────────────────────────── */
 
+const printMode = new URLSearchParams(window.location.search).has('print');
+
+function PrintView() {
+  return (
+    <div style={{ background: 'white' }}>
+      <style>{`
+        @page { size: 11in 8.5in landscape; margin: 0; }
+        @media print {
+          body { margin: 0; }
+          .print-nav { display: none !important; }
+        }
+        .slide-page {
+          width: 100vw; height: 100vh;
+          overflow: hidden;
+          page-break-after: always;
+          break-after: page;
+          box-sizing: border-box;
+        }
+        .slide-page:last-child { page-break-after: avoid; break-after: avoid; }
+      `}</style>
+      <div className="print-nav" style={{ padding: '12px 20px', background: '#f3f4f6', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <span style={{ fontSize: '13px', color: '#6b7280' }}>Print view — {slides.length} slides</span>
+        <button onClick={() => window.print()} style={{ padding: '6px 16px', background: '#dc2626', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '13px', cursor: 'pointer' }}>
+          Save as PDF
+        </button>
+        <button onClick={() => window.close()} style={{ padding: '6px 16px', background: '#6b7280', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '13px', cursor: 'pointer' }}>
+          Close
+        </button>
+      </div>
+      {slides.map((slide, i) => (
+        <div key={i} className="slide-page">
+          <div style={{ height: '100vh', overflow: 'hidden' }}>
+            {slide.content}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Presentation() {
   const [current, setCurrent] = useState(0);
 
@@ -510,6 +550,13 @@ function Presentation() {
   const next = () => setCurrent((c) => Math.min(slides.length - 1, c + 1));
   const first = () => setCurrent(0);
   const last = () => setCurrent(slides.length - 1);
+
+  const openPrint = () => {
+    const url = window.location.href.replace(/[?&]print/, '') +
+      (window.location.search ? '&print' : '?print');
+    const w = window.open(url, '_blank');
+    if (w) w.addEventListener('load', () => w.print(), { once: true });
+  };
 
   useEffect(() => {
     const handler = (e) => {
@@ -519,6 +566,8 @@ function Presentation() {
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, []);
+
+  if (printMode) return <PrintView />;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col">
@@ -544,6 +593,7 @@ function Presentation() {
 
         <button onClick={next} disabled={current === slides.length - 1} className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all disabled:bg-gray-300 disabled:cursor-not-allowed">Next →</button>
         <button onClick={last} className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all">End ⏭</button>
+        <button onClick={openPrint} className="px-5 py-2 bg-gray-700 text-white text-sm font-bold rounded-lg hover:bg-gray-800 active:scale-95 transition-all" title="Export all slides as PDF">PDF</button>
       </div>
 
       <div className="text-center text-xs text-gray-400 py-2">
