@@ -44,7 +44,7 @@
                 .then(jsxCode => {
                     // Transform JSX to plain JS using Babel directly
                     const output = Babel.transform(jsxCode, {
-                        presets: ['react'],
+                        presets: [['react', { runtime: 'classic' }]],
                         sourceType: 'script'
                     });
 
