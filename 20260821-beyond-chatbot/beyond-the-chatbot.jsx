@@ -1000,15 +1000,23 @@ If the answer is not in my materials, say so.`}</CodeBlock>
         <div className="bg-gray-900 rounded-xl p-5 mb-4">
           <p className="text-xs font-black uppercase tracking-widest text-amber-300 mb-2">Why this matters</p>
           <p className="text-sm text-white leading-relaxed mb-2">
-            At <strong>Arizona State</strong>, faculty course materials were moved into a
-            third-party AI system <strong className="text-red-300">without faculty
-            permission</strong>.{" "}
-            <span className="text-amber-300 font-bold">[ADD SOURCE LINK]</span>
+            In May, <strong>Arizona State</strong> launched <strong>ASU Atomic</strong> — an AI
+            platform that generated short video lessons from faculty lectures and course
+            content drawn from ASU Online's library. Faculty reported
+            <strong className="text-red-300"> no prior consultation</strong>. One professor
+            asked it for a lesson and found his own likeness teaching it:
+            <em className="text-gray-300"> "I was pretty surprised to see myself looking back
+            at me."</em>
+          </p>
+          <p className="text-xs text-gray-400 mb-3">
+            ASU called the pilot "not … the final project" and did not say whether faculty were
+            told beforehand. ·{" "}
+            <Link href="https://tucson.com/news/state-regional/article_cbc7ded4-b9f5-4986-a479-a86f0c754388.html">Arizona Republic, May 7, 2026 ↗</Link>
           </p>
           <p className="text-sm text-gray-300 leading-relaxed">
-            The answer to that isn't refusing to use these tools. It's holding your own copy.
-            Export your course and the materials are <strong>on your machine</strong>, where
-            you choose the tool, you choose what it sees, and you choose what comes back.
+            Your materials are an asset. The response isn't refusing these tools — it's being
+            an active party rather than a subject. Keep your own copy, and you decide which
+            tool sees your course, what it sees, and what comes back.
           </p>
         </div>
 
@@ -1098,6 +1106,8 @@ If the answer is not in my materials, say so.`}</CodeBlock>
 
         <Placeholder
           onDay={[
+            "ASU: say it as reported, and include their response. The citation is on the slide — point at it",
+            "EXPECT THE PUSHBACK: \"how does having my own export stop my university doing that?\" Honest answer — it doesn't. Owning a copy doesn't veto an institutional platform. What it changes is that you know what you have, you can show what changed, and you are not only finding out afterwards",
             "Demo on a copy. Say that you are demoing on a copy",
             "This is the slide people will screenshot. Slow down",
           ]}
