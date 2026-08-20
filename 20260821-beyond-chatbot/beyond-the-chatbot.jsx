@@ -574,12 +574,24 @@ const slides = [
         <div className="bg-gray-900 rounded-xl p-5 mb-4">
           <p className="text-[11px] font-black uppercase tracking-widest text-gray-400 mb-2">The through-line for today</p>
           <p className="text-lg font-bold text-white leading-snug mb-2">
-            A chatbot makes you bring your work to it, one paste at a time.
+            With a chatbot, you paste your course into someone else's window — and their copy
+            is the one that keeps working.
           </p>
-          <p className="text-lg font-bold text-blue-300 leading-snug">
-            Everything past that lets the work stay where it lives.
+          <p className="text-lg font-bold text-blue-300 leading-snug mb-3">
+            Work from your own folder and <span className="text-white">you hold the original.</span>
+          </p>
+          <p className="text-sm text-gray-300 leading-relaxed">
+            You decide what gets sent and which tool sees it. And when the tool changes — or
+            you stop trusting it — your course doesn't go anywhere.
           </p>
         </div>
+
+        <Note>
+          <strong>Say this precisely.</strong> "On your machine" means you hold the source of
+          truth, not that nothing is transmitted. A licensed cloud tool still sends what you
+          give it — under an agreement Rutgers negotiated. Only a local model keeps everything
+          on the laptop, and that is the Local AI segment, not this one.
+        </Note>
         <Placeholder
           port={["The Challenge of Now", "Landscape", "The Competition", "Chatbot vs. Agent"]}
         />
