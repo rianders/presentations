@@ -431,7 +431,6 @@ const Heading = ({ children }) => (
 // ── SLIDES ─────────────────────────────────────────────────
 
 const slides = [
-
   // ── 1: TITLE ──
   {
     label: "Title",
@@ -981,7 +980,116 @@ If the answer is not in my materials, say so.`}</CodeBlock>
     ),
   },
 
-  // ── 9: THE CANVAS ROUND TRIP ──
+  // ── 9: GEMINI NOTEBOOK ──
+  {
+    label: "Gemini Notebook",
+    content: (
+      <SlideShell tag="Segment 4 · 8 min" tagColor="bg-purple-600">
+        <Heading>Gemini Notebook</Heading>
+
+        <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4 mb-4">
+          <p className="text-sm text-gray-800">
+            <strong>This is NotebookLM.</strong> Google renamed it on July 16, 2026 — new name, new logo,
+            same product. Your notebooks, sources, and shared links all still work; old links redirect.
+          </p>
+          <p className="text-xs text-gray-600 mt-2">
+            The session abstract you registered on says "NotebookLM." Same thing.
+          </p>
+        </div>
+
+        <Lede>
+          Keeps the AI grounded in your own syllabus and readings instead of letting it
+          wander the open web. The grounding is the whole point — and it did not change in the rename.
+        </Lede>
+
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Actually new in the same update</p>
+          <ul className="space-y-1.5">
+            <Bullet icon="→">A secure <strong>cloud computer</strong> in each notebook that can write and run code</Bullet>
+            <Bullet icon="→">Rolling out to Ultra subscribers first, Pro following — <strong>check what your account has</strong></Bullet>
+          </ul>
+        </div>
+
+
+        <Demo
+          mode="Live"
+          time="3 min"
+          what="Pre-built notebook from a real syllabus + 2 readings. Ask 3 student questions and trace a citation."
+          steps={[
+            "Ask a question a student would actually ask",
+            "CLICK THE CITATION through to the source passage — this is the demo",
+            "Do not build the notebook live, ever",
+          ]}
+          fallback="Screen recording of the citation trace."
+        />
+
+        <Placeholder
+          port={["NotebookLM", "Materials"]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 10: GEMS vs NOTEBOOK (new — both ground on your sources) ──
+  {
+    label: "Gems vs. Notebook",
+    content: (
+      <SlideShell tag="Segment 4b · 4 min" tagColor="bg-indigo-600">
+        <Heading>Two Tools That Both "Use Only My Sources"</Heading>
+        <Lede>
+          As of Monday you have two Google tools that ground on material you upload.
+          They overlap enough to be genuinely confusing, so here's the split.
+        </Lede>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-purple-600 mb-1">Gemini Notebook</p>
+            <p className="text-sm font-bold text-gray-900 mb-2">Reach for it to <em>understand</em> a body of material</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">Many sources held together in one workspace</Bullet>
+              <Bullet icon="·">Citations back to the exact passage</Bullet>
+              <Bullet icon="·">Built for reading, synthesis, and study artifacts</Bullet>
+            </ul>
+          </div>
+          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">Gems</p>
+            <p className="text-sm font-bold text-gray-900 mb-2">Reach for it to <em>reuse a behavior</em> over and over</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">A persistent persona with your instructions baked in</Bullet>
+              <Bullet icon="·">Guided Learning mode → tutors and study tools</Bullet>
+              <Bullet icon="·">Shares via Google Drive — no direct links</Bullet>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-gray-100 rounded-xl px-5 py-3 mb-4">
+          <p className="text-sm text-gray-700">
+            <strong>Rough rule:</strong> a notebook is a place you go to think with your sources;
+            a Gem is a helper you hand to someone else — including students.
+          </p>
+        </div>
+
+
+        <Demo
+          mode="Live"
+          time="3 min"
+          what="Same syllabus in both. Then ask the Gem something outside its sources and let it decline."
+          steps={[
+            "Show the notebook and the Gem side by side",
+            "Ask the out-of-scope question",
+            "The refusal is the most persuasive moment in the deck",
+          ]}
+          fallback="Recording of the refusal. Rehearse the question — if it answers instead of declining, pick a different one."
+        />
+
+        <Placeholder
+          port={["Gems Demo"]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 11: THE CANVAS ROUND TRIP ──
   // Opens on consent/ownership: the ASU example is the motivation for the
   // whole export sequence. SOURCE LINK IS REQUIRED before this is shown.
   // The practical how-to. Highest-value slide in the deck and the riskiest
@@ -1119,7 +1227,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
     ),
   },
 
-  // ── 10: YOUR MATERIALS, ON YOUR MACHINE ──
+  // ── 12: YOUR MATERIALS, ON YOUR MACHINE ──
   // The ownership argument. The claim is portability -- once the folder is
   // local, any tool can work with it. ChatGPT Desktop + Codex is this
   // session's worked example, not the point itself.
@@ -1180,115 +1288,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
     ),
   },
 
-  // ── 11: GEMINI NOTEBOOK ──
-  {
-    label: "Gemini Notebook",
-    content: (
-      <SlideShell tag="Segment 4 · 8 min" tagColor="bg-purple-600">
-        <Heading>Gemini Notebook</Heading>
-
-        <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4 mb-4">
-          <p className="text-sm text-gray-800">
-            <strong>This is NotebookLM.</strong> Google renamed it on July 16, 2026 — new name, new logo,
-            same product. Your notebooks, sources, and shared links all still work; old links redirect.
-          </p>
-          <p className="text-xs text-gray-600 mt-2">
-            The session abstract you registered on says "NotebookLM." Same thing.
-          </p>
-        </div>
-
-        <Lede>
-          Keeps the AI grounded in your own syllabus and readings instead of letting it
-          wander the open web. The grounding is the whole point — and it did not change in the rename.
-        </Lede>
-
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Actually new in the same update</p>
-          <ul className="space-y-1.5">
-            <Bullet icon="→">A secure <strong>cloud computer</strong> in each notebook that can write and run code</Bullet>
-            <Bullet icon="→">Rolling out to Ultra subscribers first, Pro following — <strong>check what your account has</strong></Bullet>
-          </ul>
-        </div>
-
-
-        <Demo
-          mode="Live"
-          time="3 min"
-          what="Pre-built notebook from a real syllabus + 2 readings. Ask 3 student questions and trace a citation."
-          steps={[
-            "Ask a question a student would actually ask",
-            "CLICK THE CITATION through to the source passage — this is the demo",
-            "Do not build the notebook live, ever",
-          ]}
-          fallback="Screen recording of the citation trace."
-        />
-
-        <Placeholder
-          port={["NotebookLM", "Materials"]}
-        />
-      </SlideShell>
-    ),
-  },
-
-  // ── 12: GEMS vs NOTEBOOK (new — both ground on your sources) ──
-  {
-    label: "Gems vs. Notebook",
-    content: (
-      <SlideShell tag="Segment 4b · 4 min" tagColor="bg-indigo-600">
-        <Heading>Two Tools That Both "Use Only My Sources"</Heading>
-        <Lede>
-          As of Monday you have two Google tools that ground on material you upload.
-          They overlap enough to be genuinely confusing, so here's the split.
-        </Lede>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-purple-600 mb-1">Gemini Notebook</p>
-            <p className="text-sm font-bold text-gray-900 mb-2">Reach for it to <em>understand</em> a body of material</p>
-            <ul className="space-y-1.5">
-              <Bullet icon="·">Many sources held together in one workspace</Bullet>
-              <Bullet icon="·">Citations back to the exact passage</Bullet>
-              <Bullet icon="·">Built for reading, synthesis, and study artifacts</Bullet>
-            </ul>
-          </div>
-          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">Gems</p>
-            <p className="text-sm font-bold text-gray-900 mb-2">Reach for it to <em>reuse a behavior</em> over and over</p>
-            <ul className="space-y-1.5">
-              <Bullet icon="·">A persistent persona with your instructions baked in</Bullet>
-              <Bullet icon="·">Guided Learning mode → tutors and study tools</Bullet>
-              <Bullet icon="·">Shares via Google Drive — no direct links</Bullet>
-            </ul>
-          </div>
-        </div>
-
-        <div className="bg-gray-100 rounded-xl px-5 py-3 mb-4">
-          <p className="text-sm text-gray-700">
-            <strong>Rough rule:</strong> a notebook is a place you go to think with your sources;
-            a Gem is a helper you hand to someone else — including students.
-          </p>
-        </div>
-
-
-        <Demo
-          mode="Live"
-          time="3 min"
-          what="Same syllabus in both. Then ask the Gem something outside its sources and let it decline."
-          steps={[
-            "Show the notebook and the Gem side by side",
-            "Ask the out-of-scope question",
-            "The refusal is the most persuasive moment in the deck",
-          ]}
-          fallback="Recording of the refusal. Rehearse the question — if it answers instead of declining, pick a different one."
-        />
-
-        <Placeholder
-          port={["Gems Demo"]}
-        />
-      </SlideShell>
-    ),
-  },
-
   // ── 13: AGENTS ──
   {
     label: "Agents",
@@ -1337,6 +1336,8 @@ If the answer is not in my materials, say so.`}</CodeBlock>
   },
 
   // ── 14: VIBE CODING ──
+  // Path 1 is the promise registrants signed up on. Mar 6's loop, honest
+  // limitations and "Bounded Is Better" all port straight across.
   {
     label: "Vibe Coding",
     content: (
@@ -1344,62 +1345,160 @@ If the answer is not in my materials, say so.`}</CodeBlock>
         <Heading>Vibe Coding</Heading>
         <Lede>
           Describe a Canvas page, quiz, or interactive activity in plain English and get
-          working content back — no coding experience required. Two ways in, and the
-          difference between them decides what you can build.
+          working content back — no coding experience required. You are not learning to code.
+          You are learning to <strong>describe, evaluate, and iterate</strong>.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div className="bg-indigo-50 border-l-4 border-indigo-500 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-indigo-600 mb-1">Path 1 · In the chat window</p>
-            <p className="text-sm font-bold text-gray-900 mb-2">Gemini via ScarletApps · ChatGPT Edu</p>
-            <ul className="space-y-1.5">
-              <Bullet icon="·">Describe it, get it back, copy it into Canvas</Bullet>
+          <SectionCard title="Path 1 · In the chat window" icon="💬" accent={true}>
+            <p className="text-sm mb-2">Gemini via ScarletApps · ChatGPT Edu</p>
+            <ul className="space-y-1">
+              <Bullet icon="·">Describe it, get it back, paste it into Canvas</Bullet>
               <Bullet icon="·">Nothing to install — start in 30 seconds</Bullet>
               <Bullet icon="·">Works on <strong>one thing at a time</strong></Bullet>
             </ul>
-          </div>
-
-          <div className="bg-blue-50 border-l-4 border-blue-600 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">Path 2 · On your own files</p>
-            <p className="text-sm font-bold text-gray-900 mb-2">OpenCode desktop — free, open source</p>
-            <ul className="space-y-1.5">
-              <Bullet icon="·">Point it at a <strong>folder of course material</strong></Bullet>
-              <Bullet icon="·">It reads, edits, and creates files in place — no copy-paste</Bullet>
+          </SectionCard>
+          <SectionCard title="Path 2 · On your own files" icon="📁">
+            <p className="text-sm mb-2">ChatGPT Desktop with Codex</p>
+            <ul className="space-y-1">
+              <Bullet icon="·">Point it at your <strong>exported course folder</strong></Bullet>
+              <Bullet icon="·">Reads, edits and creates files in place — no copy-paste</Bullet>
               <Bullet icon="·">Works across <strong>a whole course at once</strong></Bullet>
             </ul>
-          </div>
+          </SectionCard>
         </div>
 
-        <div className="bg-gray-100 rounded-xl px-5 py-3 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">What path 2 makes possible that path 1 doesn't</p>
-          <ul className="space-y-1.5">
-            <Bullet icon="→">"Make every module page follow the same structure"</Bullet>
-            <Bullet icon="→">"Check my schedule against my syllabus and list what disagrees"</Bullet>
-            <Bullet icon="→">"Convert this folder of handouts to accessible HTML"</Bullet>
-          </ul>
+        <CodeBlock>{`DESCRIBE  →  AI generates a single HTML file
+EVALUATE  →  Does it do what I meant?
+REDIRECT  →  "Change the colors, add a timer, drop question 3"
+REFINE    →  Repeat
+DEPLOY    →  Canvas → Pages → HTML Editor → Paste`}</CodeBlock>
+
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">The skill that transfers</p>
+          <p className="text-sm text-gray-700">
+            Knowing what you want and being able to describe it clearly. Faculty already have
+            that — about their own courses.
+          </p>
         </div>
 
+        <DropIn label="Bounded Is Better">
+          The thing we just built is small. One activity. One topic. Ten questions. That is the
+          approach working correctly. The moment you ask AI to do something so large you cannot
+          review the output, you have left the zone where this is trustworthy.
+        </DropIn>
+
+        <Note>
+          <strong>Honest limitations:</strong> it breaks — and that is part of the demo, not a
+          failure. Not accessible by default; you have to ask for it. Not connected to the
+          Canvas gradebook. Content changes mean rebuilding.
+        </Note>
 
         <Demo
           mode="Live"
           time="4 min"
-          what="One Canvas page → a working interactive activity, then paste it back into Canvas."
+          what="One page of your own → a working interactive activity → pasted into Canvas."
           steps={[
             "Use a real page of your own",
             "Ask for one change in plain English so they see it iterate",
+            "PLAN TO SHOW IT BREAK. If Canvas accepts it first time, say what you would have done",
             "Show the paste-into-Canvas step — that is where people get stuck",
           ]}
-          fallback="Finished HTML file ready to open. The folder-scale version already ran on slide 9."
+          fallback="Finished HTML file ready to open."
         />
 
         <Placeholder
-          port={["Vibe Code", "Live Build", "The Prompt"]}
+          port={["Vibe Code", "Live Build"]}
+          onDay={[
+            "The recovery is the most important thing faculty see. Mar 6 proved it — protect that beat",
+            "Say which model it is pointed at during the demo — cloud vs local changes the privacy answer",
+            "Path 1 is what people registered for. Do not let Path 2 crowd it out",
+          ]}
         />
       </SlideShell>
     ),
   },
 
-  // ── 15: LOCAL AI ──
+  // ── 15: BUILD IT AGAINST YOUR RUBRIC ──
+  // The ingredient that makes vibe coding teaching rather than a party
+  // trick, and the payoff for the constrained prompt introduced on slide 8.
+  {
+    label: "Your Rubric",
+    content: (
+      <SlideShell tag="Segment 3b · 6 min" tagColor="bg-amber-700">
+        <Heading>Build It Against Your Rubric</Heading>
+        <Lede>
+          A generated quiz is a party trick. The same build, given <em>your</em> criteria,
+          becomes something that evaluates rather than answers — and that is the difference
+          between a demo and a teaching tool.
+        </Lede>
+
+        <div className="bg-red-600 text-white rounded-xl p-5 mb-4">
+          <p className="text-sm font-bold mb-1">The AI doesn't know which seat you're in.</p>
+          <p className="text-sm text-red-100">
+            A student and a professor can type the same prompt and get the same answer. Your
+            job is to define the role, the measures, and the limits — so it gives back what you
+            designed, not what a chatbot would volunteer.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <SectionCard title="Rating scale" icon="📊">
+            <p className="text-sm">Define every step, 1–5. It scores and states why — and it cannot go further.</p>
+          </SectionCard>
+          <SectionCard title="Checklist" icon="☑️">
+            <p className="text-sm">Yes/no against your exact criteria. No elaboration unless you ask for it.</p>
+          </SectionCard>
+          <SectionCard title="Close reading" icon="🔍">
+            <p className="text-sm">Prompts the student must engage with — not answers, not rewrites. "Quote the sentence where the argument is clearest."</p>
+          </SectionCard>
+        </div>
+
+        <CodeBlock>{`You are evaluating student work against a rubric.
+Do NOT rewrite or improve the student's work.
+Do NOT provide answers or solutions.
+For each rubric criterion, write ONE sentence:
+  — Does the work meet it? Where specifically?
+Then give a short bulleted list of concrete
+improvements the student could make.`}</CodeBlock>
+
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">What you just wrote, named</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+            {[
+              ["Role", "evaluator, not helper", "border-red-300 bg-red-50 text-red-700"],
+              ["Goal", "structured feedback on a rubric", "border-amber-300 bg-amber-50 text-amber-700"],
+              ["Constraints", "don't rewrite, don't solve", "border-orange-300 bg-orange-50 text-orange-600"],
+              ["Output", "one sentence each, then a list", "border-indigo-300 bg-indigo-50 text-indigo-700"],
+            ].map(([term, def, cls]) => (
+              <div key={term} className={`border rounded-lg px-3 py-2 ${cls}`}>
+                <p className="text-xs font-black uppercase tracking-wide">{term}</p>
+                <p className="text-xs mt-0.5 leading-snug">{def}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <DropIn label="This Is Already an Agent">
+          It has a role. It has constraints. It has a goal and a defined output format. That is
+          the anatomy of an agent — and you built one without writing a line of code. Everything
+          on the next slide is this same shape, pointed at a folder instead of a paragraph.
+        </DropIn>
+
+        <Placeholder
+          port={["Assessment", "The Prompt", "Context Engineering"]}
+          onDay={[
+            "THE LINE: a chatbot left to its own judgment rewrites the thesis and hands the student a better paragraph. Constrained to your scale it can only score it and say why — the improvement stays the student's work",
+            "Use a rubric you actually use. A real one lands; a generic one doesn't",
+            "This is the prompt people will ask you for. Have it ready to paste in the shared doc",
+            "Same constrained prompt as slide 8, one job further on — say so, so it reads as one artifact not three",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 16: LOCAL AI ──
   {
     label: "Local AI Tools",
     content: (
@@ -1445,7 +1544,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
     ),
   },
 
-  // ── 16: STUDENTS ──
+  // ── 17: STUDENTS ──
   {
     label: "What Students Bring",
     content: (
@@ -1505,66 +1604,75 @@ If the answer is not in my materials, say so.`}</CodeBlock>
     ),
   },
 
-  // ── 17: TAKEAWAYS ──
-  // Arc: who you are -> the uneven terrain you design for -> what you
-  //      design over -> the institutional reality you design within ->
-  //      the call that is yours -> the part that never transfers.
+  // ── 18: TAKEAWAYS ──
+  // Reframed to what someone can act on before September 1. Each claim
+  // names the slide it was earned on, so the deck stays navigable after.
   {
     label: "Takeaways",
     content: (
       <SlideShell tag="The Bridge · 3 min" tagColor="bg-gray-900">
         <Heading>What You're Walking Out With</Heading>
         <Lede>
-          Six things you can act on — and the slide each one came from.
+          Seven things you can act on before classes start — and where each one came from.
         </Lede>
 
         <div className="space-y-2 mb-4">
           {[
-            ["01", "I'm the context designer for my course.",
-             "Not the prompt writer — the designer of what the model can see, what it may not, and what the output has to be. Which model I pick matters far less than the context I build around it. Everything else on this list follows from this one.",
-             "All eight layers"],
-            ["02", "I can't control what my students use. I frame what good use looks like here.",
-             "They aren't limited to what the University licenses — some will pay for tools I don't have, others have never been taught these exist. I can't close that gap by policy. But I set what counts as acceptable in this course, and being transparent about how I use AI myself teaches them more than a syllabus paragraph ever will.",
-             "Students"],
-            ["03", "My course is a body of material, not a stack of pages.",
-             "Exporting it stopped being a backup chore and became the first move. Questions I could never ask one page at a time are now one question across everything.",
-             "Your Machine"],
+            ["01", "Export your course. That's the first move.",
+             "It stopped being a backup chore. The export is what gives you a copy you hold — and questions you could never ask one page at a time become one question across everything.",
+             "Canvas Round Trip"],
+            ["02", "Write the constraint once, reuse it everywhere.",
+             "\u201CUse ONLY the materials I have provided.\u201D That one paragraph is the difference between a tool grounded in your course and a tool wandering the open web. Same wording every time, so it becomes one habit rather than three.",
+             "Materials as Context"],
+            ["03", "Give it your rubric, not just your topic.",
+             "A generated quiz is a party trick. The same build against your criteria evaluates instead of answers — and the improvement stays the student's work. That is what makes this teaching.",
+             "Your Rubric"],
             ["04", "What a tool can do and what I'm allowed to do are different questions.",
-             "A $10 subscription I cannot buy without a business manager is the plainest example. Agent modes, connectors, publishing — all switched on or off by someone else. So I ask what's enabled and who enables it, and I start those conversations early.",
+             "A $10 subscription you cannot buy without a business manager is the plainest example. Agent modes, connectors, publishing — all switched on or off by someone else. Ask what's enabled and who enables it, and start that conversation early.",
              "Free vs. Paid"],
             ["05", "Choosing a model is a privacy and security decision.",
-             "It's the reason the University evaluates third-party vendors and their policies at all — that review exists to answer a real question. A local model may still be weaker, though that gap is closing fast, and nothing on it crosses the internet. Either way the responsibility lands on me, not the vendor.",
-             "Your Machine · Local AI"],
+             "It is why the University evaluates vendors at all. Your materials on your own machine, worked on with a licensed tool, is the version where you can answer for what happened to them.",
+             "Your Machine"],
             ["06", "I can delegate the work. I can't delegate the judgment.",
-             "I guide an agent the way I guide a student — toward work that fits the context and learning goals of this course, not toward whatever is generically good. \"Acceptable\" isn't a standard the model knows. It's mine, and checking against it is the part of my job that doesn't move.",
+             "Guide an agent the way you guide a student — toward work that fits this course, not whatever is generically good. \u201CAcceptable\u201D isn't a standard the model knows. It's yours, and checking against it is the part of the job that doesn't move.",
              "Agents · every demo today"],
+            ["07", "I can't control what my students use. I frame what good use looks like here.",
+             "Some will pay for tools you don't have; others have never been taught these exist. You can't close that gap by policy. But you set what counts as acceptable in this course — and being transparent about your own use teaches more than a syllabus paragraph.",
+             "What Students Bring"],
           ].map(([n, claim, body, src], i) => (
-            <div key={i} className="flex items-start gap-3 bg-gray-50 border-l-4 border-red-600 rounded-lg px-4 py-2.5">
-              <span className="text-xl font-black text-red-600 flex-shrink-0 leading-none mt-0.5">{n}</span>
-              <div className="flex-1">
-                <p className="text-sm font-black text-gray-900 mb-0.5">{claim}</p>
-                <p className="text-xs text-gray-600 leading-relaxed">{body}</p>
+            <div key={i} className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5">
+              <span className="text-lg font-black text-red-600 flex-shrink-0 leading-none mt-0.5">{n}</span>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-bold text-gray-900 leading-snug">{claim}</p>
+                <p className="text-xs text-gray-600 mt-1 leading-relaxed">{body}</p>
               </div>
-              <span className="text-[10px] text-gray-400 italic flex-shrink-0 hidden lg:block w-40 text-right mt-1">{src}</span>
+              <span className="text-[10px] uppercase tracking-wide text-gray-400 flex-shrink-0 hidden md:block">{src}</span>
             </div>
           ))}
         </div>
 
-        <div className="bg-gray-900 rounded-xl px-5 py-3 mb-4">
-          <p className="text-sm text-white">
-            Every one of these says the same thing a different way:
-            <strong className="text-red-300"> you are designing this, not receiving it.</strong>
+        <div className="bg-gray-900 rounded-xl p-4">
+          <p className="text-sm text-white leading-relaxed">
+            The through-line: <strong className="text-red-300">your course is yours, and it is
+            portable.</strong> Everything today was a way of acting on that rather than waiting
+            to be told what happens to it.
           </p>
         </div>
 
         <Placeholder
-          port={["Context Engineering", "Context Prompt", "Assessment"]}
+          port={["Assessment", "Context Prompt"]}
+          onDay={[
+            "Open the session with 01 and close with 06 — bookends work better than reading a block of seven",
+            "Map to Pathway Competencies 1, 2, 3 — the event listing promises alignment and these are the evidence",
+            "Put these on the handout; they are what people keep after Zoom closes",
+            "07 is the one that can start an argument. Decide in the moment whether you want it in the room or deferred to the Apr 9 rubric session",
+          ]}
         />
       </SlideShell>
     ),
   },
 
-  // ── 18: WORK SESSION ──
+  // ── 19: WORK SESSION ──
   {
     label: "Work Session",
     content: (
@@ -1636,7 +1744,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
     ),
   },
 
-  // ── 19: RESOURCES ──
+  // ── 20: RESOURCES ──
   // Structure ported from the Mar 6 "Resources" slide: a data array rendered
   // into colour-coded categories. Mar 6's personal notebook links and the
   // personal Gemini chat are deliberately NOT carried over.
@@ -1739,7 +1847,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
     ),
   },
 
-  // ── 20: CONTACT ──
+  // ── 21: CONTACT ──
   {
     label: "Contact",
     content: (
