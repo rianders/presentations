@@ -202,6 +202,48 @@ const Tag = ({ color = "bg-blue-100 text-blue-700", children }) => (
   <span className={`inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full ${color}`}>{children}</span>
 );
 
+/* ── Audience-facing vocabulary, ported from 20260306 so the two decks
+     share one visual language. Do not hand-roll cards inline. ── */
+
+const SectionCard = ({ title, icon, accent, children }) => (
+  <div className={`rounded-xl p-5 ${accent ? "bg-red-600 text-white" : "bg-gray-50 border border-gray-200"}`}>
+    <div className="flex items-center gap-2 mb-3">
+      <span className="text-xl">{icon}</span>
+      <h3 className={`font-bold text-sm uppercase tracking-wide ${accent ? "text-red-100" : "text-gray-500"}`}>{title}</h3>
+    </div>
+    <div className={accent ? "text-red-50" : "text-gray-700"}>{children}</div>
+  </div>
+);
+
+const Note = ({ children }) => (
+  <div className="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg px-4 py-3 mt-4">
+    <p className="text-xs text-amber-800">{children}</p>
+  </div>
+);
+
+const DropIn = ({ label, children }) => (
+  <div className="bg-red-50 border-l-4 border-red-400 rounded-r-lg px-4 py-3 mt-5">
+    <p className="text-xs font-bold text-red-700 uppercase tracking-wide mb-1">{label}</p>
+    <p className="text-sm text-red-900 italic leading-relaxed">{children}</p>
+  </div>
+);
+
+const CodeBlock = ({ children }) => (
+  <div className="bg-gray-900 text-green-400 rounded-xl p-4 font-mono text-xs leading-relaxed overflow-x-auto my-4">
+    <pre className="whitespace-pre-wrap">{children}</pre>
+  </div>
+);
+
+const PipelineStep = ({ num, title, children }) => (
+  <div className="flex items-start gap-4">
+    <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-black text-sm flex-shrink-0 mt-0.5">{num}</div>
+    <div>
+      <p className="font-bold text-gray-800 text-sm">{title}</p>
+      <p className="text-xs text-gray-600 mt-1">{children}</p>
+    </div>
+  </div>
+);
+
 /* Per-slide work tracker. Presenter-only.
      port  = slides available to port from 20260306/beyond-the-chatbot-workshop.jsx
      todo  = CONTENT WORK STILL OUTSTANDING. This is the worklist — it should
@@ -450,58 +492,33 @@ const slides = [
 
   // ── 2: WHO I AM ──
   // PURPOSE: standing. Why this person, on this topic, at this university.
-  // Recorded and shared, so it also introduces him to people who never
-  // attended. Keep it to ~60 seconds spoken.
+  // Ported from 20260306 "About" — same three-card structure and the same
+  // closing claim. Keep it to ~60 seconds spoken.
   {
     label: "Who I Am",
     content: (
       <SlideShell tag="Opening · 4 min" tagColor="bg-red-700">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Rick Anderson</h1>
-        <p className="text-base font-bold text-gray-700">Director of Emerging Technology</p>
-        <p className="text-sm text-gray-500 mb-3">University Online Education Services, Rutgers University</p>
-        <div className="w-16 h-1 bg-red-600 rounded mb-5" />
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-1 leading-tight">
+          Who I Am
+        </h1>
+        <p className="text-lg font-bold text-gray-700">Rick Anderson</p>
+        <p className="text-sm text-gray-500 mb-2">Director of Emerging Technologies, University Online Education Services</p>
+        <div className="w-16 h-1 bg-red-600 rounded mb-6" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Early 1990s</p>
-            <p className="text-sm text-gray-700 leading-relaxed">
-              Built some of the University's first websites. At the
-              <strong> Center for Electronic Texts in the Humanities</strong>, worked with
-              scholars worldwide on marking up and analyzing text — at the moment that field
-              was being invented.
-            </p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Since</p>
-            <p className="text-sm text-gray-700 leading-relaxed">
-              Infrastructure the University runs on. Virtual worlds. And each time something
-              new arrived, <strong>part of how Rutgers worked out what to do about it</strong> —
-              connecting emerging technology, research, and instructional design so they
-              actually meet.
-            </p>
-          </div>
-          <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-2">Now</p>
-            <p className="text-sm text-gray-700 leading-relaxed">
-              Emerging Technology at UOES — which means I try these tools on real course
-              material before anyone recommends them. This challenge is bigger than the ones
-              before it, and the early work on <strong>how text carries meaning</strong> turns
-              out to be exactly the right preparation.
-            </p>
-          </div>
+          <SectionCard title="Early 1990s" icon="🖥️">
+            <p className="text-sm">Built some of the University's first websites — New Brunswick Summer Session, University College, and more. At the <strong>Center for Electronic Texts in the Humanities</strong>, worked with experts worldwide on text markup and analysis at a critical moment for the field.</p>
+          </SectionCard>
+          <SectionCard title="Decades Since" icon="🔧">
+            <p className="text-sm">Built critical infrastructure for the University. Developed virtual worlds. Always working to connect <strong>emerging technologies, research, and instructional design</strong>.</p>
+          </SectionCard>
+          <SectionCard title="Today" icon="🎯" accent={true}>
+            <p className="text-sm">Director of Emerging Technology, UOES. That early work on electronic texts now informs how I understand <strong>AI's impact on knowledge and research</strong>.</p>
+          </SectionCard>
         </div>
 
-        <div className="bg-gray-900 rounded-xl px-5 py-4 mb-4">
-          <p className="text-sm text-white leading-relaxed mb-2">
-            I haven't only watched these arrive — I've helped this university respond to them.
-            First getting people onto the internet at all. Then social media literacy. The
-            challenges kept moving past where we'd just been.
-          </p>
-          <p className="text-sm text-white leading-relaxed">
-            <strong className="text-red-300">That's what I'm bringing to you today</strong> —
-            not a tour of what's new, but what three decades of helping Rutgers absorb new
-            technology suggests you should do about this one.
-          </p>
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+          <p className="text-sm text-gray-700">This history at Rutgers has given me a <strong className="text-red-600">unique perspective on technology adoption</strong> and integration into the knowledge ecosystem of higher education.</p>
         </div>
 
         <Poll
@@ -522,13 +539,14 @@ const slides = [
         </div>
 
         <Placeholder
+          port={["About"]}
           todo={[
             "CREATE THE SHARED DOC and paste its link where [ADD DOC LINK] is",
+            "TITLE INCONSISTENCY: this slide says 'Emerging Technologies' (Mar 6 wording); the title and contact slides say 'Emerging Technology'. Pick one and make all three match",
           ]}
           onDay={[
             "Paste both links in chat at minute 1 — chat is fine for delivering links, just not for discussion",
             "~60 seconds. The three cards are there for the recording; do not read them aloud",
-            "\"Three decades\" is arithmetic from the early-1990s start — change the number if you'd say it differently",
             "The internet → social media → AI progression is the point. Land that, skip the rest if you're behind",
             "If the warm-up poll skews experienced, cut What's New to 2 min",
           ]}
@@ -536,6 +554,7 @@ const slides = [
       </SlideShell>
     ),
   },
+
 
   // ── 3: WHAT'S NEW FOR FALL 2026 ──
   {
