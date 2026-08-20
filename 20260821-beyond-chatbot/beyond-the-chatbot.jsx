@@ -575,23 +575,23 @@ const slides = [
         <div className="bg-gray-900 rounded-xl p-5 mb-4">
           <p className="text-[11px] font-black uppercase tracking-widest text-gray-400 mb-2">The through-line for today</p>
           <p className="text-lg font-bold text-white leading-snug mb-2">
-            Decisions are being made about your course materials — which tools see them, what
-            gets built out of them, whether anyone asked you first.
+            It comes down to two things: <span className="text-blue-300">your materials</span>,
+            and <span className="text-blue-300">the context you put around them.</span>
           </p>
-          <p className="text-lg font-bold text-blue-300 leading-snug mb-3">
-            Today is about being <span className="text-white">the one who makes those
-            decisions.</span>
+          <p className="text-sm text-gray-300 leading-relaxed mb-2">
+            Every tool today is a way of keeping AI inside those two — grounded in what you
+            actually teach, constrained by what you actually want out of it. That is the whole
+            session. The tools change; that doesn't.
           </p>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            Having your own materials, on your own system, is what puts that choice back in
-            your hands. Not because it locks anyone out — because it makes you a participant
-            instead of someone who finds out afterwards.
+          <p className="text-sm text-white leading-relaxed">
+            And here is why it matters: <strong>if you don't set that context, someone else
+            sets it for you.</strong>
           </p>
         </div>
 
         <Note>
-          <strong>Plant it here, land it on the Canvas slide.</strong> This is the ASU point
-          before the room knows the story — don't tell it yet. Also say it precisely: "on your
+          <strong>Plant it here, land it on the Canvas slide.</strong> The last line is the
+          ASU point before the room knows the story — don't tell it yet. Also say it precisely: "on your
           own system" means you hold the source of truth and you choose the tool, not that
           nothing is transmitted. A licensed cloud tool still sends what you give it, under an
           agreement Rutgers negotiated. Only a local model keeps everything on the laptop, and
@@ -701,9 +701,14 @@ const slides = [
             </p>
           </SectionCard>
           <SectionCard title="Where AI comes in" icon="🤖" accent={true}>
-            <p className="text-sm">
+            <p className="text-sm mb-2">
               For material that is hard or impossible to fix by hand — scanned PDFs, figures,
-              charts, handwritten documents — these tools do in minutes what used to take hours.
+              charts, handwritten documents — these tools make it <strong>possible to attempt
+              at all</strong>.
+            </p>
+            <p className="text-sm">
+              Not instant. Some of it still takes real time. But "too hard to even start" has
+              stopped being the honest answer, and that is the change that matters.
             </p>
           </SectionCard>
         </div>
@@ -722,6 +727,7 @@ const slides = [
             "Some of the room heard the old April 2026 date. Say plainly that it was extended to April 26, 2027 — otherwise half of them think you have it wrong",
             "Don't let the extension read as relief. Two semesters, and notation and diagrams take the longest",
             "Point forward to Sep 18 and Nov 6 — this slide is also how those sessions get their audience",
+            "Do NOT promise 'minutes instead of hours'. This room has tried it. The honest claim is that the hard material is now attemptable — overpromising here costs you credibility for the rest of the hour",
           ]}
         />
       </SlideShell>
