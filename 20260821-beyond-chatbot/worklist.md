@@ -194,4 +194,10 @@ the deck is reordered — re-run the extraction rather than renumbering by hand.
       GitHub Pages. If the link is "anyone with the link", the Gem is effectively public;
       if it is Rutgers/ScarletMail-restricted, outsiders simply cannot open it. Either is
       fine — but know which one you are publishing.
-- [ ] Notebook link still outstanding — only if it contains no real course material.
+- [x] **Notebook linked** — "Social Engagement with XR" syllabus notebook, on slide 9 as
+      the source material and in Resources. Domain corrected throughout: the rename moved it
+      to notebook.google.com.
+- [ ] **VERIFY BOTH SHARE LINKS FROM A SECOND ACCOUNT** before merging to main. The
+      notebook one especially — notebook sharing is the difficult path, and a dead link in
+      a published deck is worse than no link. If it does not open, keep the notebook as a
+      live demo only and link just notebook.google.com.

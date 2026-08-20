@@ -1002,6 +1002,19 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           wander the open web. The grounding is the whole point — and it did not change in the rename.
         </Lede>
 
+        <div className="bg-purple-50 border-l-4 border-purple-500 rounded-r-xl px-4 py-3 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-purple-700 mb-1">Today's source material — one syllabus</p>
+          <p className="text-sm text-gray-800 mb-1">
+            <strong>Social Engagement with XR</strong> — my own syllabus, loaded as the sources.
+            Everything it answers comes from that document, with a citation back to the passage
+            it came from. Start here, because the syllabus is the thing every course already has.
+          </p>
+          <p className="text-sm">
+            <Link href="https://notebook.google.com/notebook/fb42c548-e83a-450e-8841-ca664a8463af">Open the notebook ↗</Link>
+            <span className="text-xs text-gray-500"> · sign in to Google first · notebook.google.com</span>
+          </p>
+        </div>
+
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
           <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Actually new in the same update</p>
           <ul className="space-y-1.5">
@@ -1019,6 +1032,8 @@ If the answer is not in my materials, say so.`}</CodeBlock>
             "Ask a question a student would actually ask",
             "CLICK THE CITATION through to the source passage — this is the demo",
             "Do not build the notebook live, ever",
+            "Open notebook.google.com first so they see the new domain and the rename lands visually",
+            "VERIFY THE SHARE LINK from a second account before relying on it. Notebook sharing is the difficult one — if it does not open for them, say so plainly and use it as the example. Do not pretend it worked",
           ]}
           fallback="Screen recording of the citation trace."
         />
@@ -1794,7 +1809,8 @@ improvements the student could make.`}</CodeBlock>
             category: "Ground It in Your Sources",
             color: "text-purple-700",
             links: [
-              { label: "Gemini Notebook (formerly NotebookLM)", url: "https://notebooklm.google.com" },
+              { label: "Gemini Notebook (formerly NotebookLM)", url: "https://notebook.google.com" },
+              { label: "Social Engagement with XR — syllabus notebook", url: "https://notebook.google.com/notebook/fb42c548-e83a-450e-8841-ca664a8463af" },
               { label: "Gemini", url: "https://gemini.google.com" },
             ],
           },
