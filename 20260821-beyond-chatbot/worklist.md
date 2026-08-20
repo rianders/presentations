@@ -155,9 +155,12 @@ the deck is reordered — re-run the extraction rather than renumbering by hand.
 
 ## Still open from that session
 
-- [ ] **Slide 9 — ASU framing.** Rick: this slide answers ASU using course material for a
-      chatbot project. NEED THE SPECIFICS/LINK before writing it; do not paraphrase from
-      memory.
+- [ ] **SLIDE 9 — ASU SOURCE LINK IS A BLOCKER.** The slide now names Arizona State and
+      states that faculty course materials were moved into a third-party AI system without
+      faculty permission. `[ADD SOURCE LINK]` is on the slide. This session is recorded and
+      published — do not present this slide until the citation is in place and the wording
+      has been checked against it. If no source can be linked, switch to the unnamed
+      version ("a large public university").
 - [ ] **Slide 10 — refocus** onto ChatGPT Desktop + Codex opening the exported course.
       Drop "One Folder, Many Models" and the engine-swap recording.
 - [ ] **Slide 12 (Gems / Notebook) moves BEFORE the export** — those tools want clean

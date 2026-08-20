@@ -982,6 +982,8 @@ If the answer is not in my materials, say so.`}</CodeBlock>
   },
 
   // ── 9: THE CANVAS ROUND TRIP ──
+  // Opens on consent/ownership: the ASU example is the motivation for the
+  // whole export sequence. SOURCE LINK IS REQUIRED before this is shown.
   // The practical how-to. Highest-value slide in the deck and the riskiest
   // to teach: a bad import damages someone's live course. Import ADDS
   // content, it does not replace. Sandbox first, every time.
@@ -991,9 +993,28 @@ If the answer is not in my materials, say so.`}</CodeBlock>
       <SlideShell tag="Segment 3c · 8 min" tagColor="bg-red-600">
         <Heading>Out of Canvas, Through AI, Back Into Canvas</Heading>
         <Lede>
-          The full loop. Run your own rubric across a whole course, fix what it finds, and
-          put it back — using the licensed tool you can buy through the Software Portal.
+          Your course materials are going to end up in AI systems. The only real question is
+          whether that was your decision.
         </Lede>
+
+        <div className="bg-gray-900 rounded-xl p-5 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-amber-300 mb-2">Why this matters</p>
+          <p className="text-sm text-white leading-relaxed mb-2">
+            At <strong>Arizona State</strong>, faculty course materials were moved into a
+            third-party AI system <strong className="text-red-300">without faculty
+            permission</strong>.{" "}
+            <span className="text-amber-300 font-bold">[ADD SOURCE LINK]</span>
+          </p>
+          <p className="text-sm text-gray-300 leading-relaxed">
+            The answer to that isn't refusing to use these tools. It's holding your own copy.
+            Export your course and the materials are <strong>on your machine</strong>, where
+            you choose the tool, you choose what it sees, and you choose what comes back.
+          </p>
+        </div>
+
+        <p className="text-sm text-gray-700 mb-3">
+          Here is the whole loop — export, work locally, and put it back.
+        </p>
 
         <div className="space-y-2 mb-4">
           {[
