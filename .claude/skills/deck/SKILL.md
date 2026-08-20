@@ -106,3 +106,15 @@ a JSX error.
 - Image `src` paths in a deck resolve against the **repo root**, not the deck folder —
   they must include the folder: `src="YYYYMMDD-short-name/qr.png"`.
 - Deck folders for future sessions may exist but be empty and untracked.
+
+## Worklist lives outside the deck
+
+Outstanding content work goes in `worklist.md` inside the deck folder, keyed by slide
+number — not in `todo` arrays inside slides. Todo lists embedded in slides let decisions
+sit deferred while the deck looks finished.
+
+`Placeholder onDay={[...]}` stays in the deck: those are delivery instructions, read live
+under `&notes`, and they never "complete".
+
+Slide numbers in the worklist come from the `// ── N:` markers and shift on reorder —
+re-extract rather than renumbering by hand.
