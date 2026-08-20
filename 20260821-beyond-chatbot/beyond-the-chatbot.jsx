@@ -66,9 +66,14 @@ const presenterMode = (() => {
      Opening 5 (incl. warm-up poll)   Framing 3
      Seg 1  What You Have      6      Seg 1b Free vs. Paid   4*
      Seg 2  Agents             6      Seg 3  Vibe Coding     9
-     Seg 3b One Folder…        6      Seg 4  Notebook        8
-     Seg 4b Gems vs. Notebook  4*     Seg 5  Local AI        4
-     Seg 6  Students           5 (incl. chat)          = 60
+     Seg 3b Your Machine       6      Seg 4  Notebook        8
+     Seg 4b Gems vs. Notebook  4*     Seg 5  Local AI        2
+     Seg 6  Students           5 (incl. chat)          = 58
+
+   NOTE: totals drift as slides are reordered under the Aug 20
+   revision (Gems/Notebook move BEFORE the export; slide 10
+   refocused on ChatGPT Desktop + Codex). Re-derive against
+   time-budget.md once the running order is final.
      Takeaways  2  ── drawn from the work session's
                     0-5 setup beat, NOT from the 60
      Hands-On work session                              = 30
@@ -1080,83 +1085,62 @@ If the answer is not in my materials, say so.`}</CodeBlock>
     ),
   },
 
-  // ── 10: ONE FOLDER, MANY MODELS ──
+  // ── 10: YOUR MATERIALS, ON YOUR MACHINE ──
+  // The ownership argument. The claim is portability -- once the folder is
+  // local, any tool can work with it. ChatGPT Desktop + Codex is this
+  // session's worked example, not the point itself.
   {
-    label: "One Folder, Many Models",
+    label: "Your Machine",
     content: (
       <SlideShell tag="Segment 3b · 6 min" tagColor="bg-blue-700">
-        <Heading>Your Materials Stay Put. The Engine Swaps.</Heading>
+        <Heading>Your Materials, On Your Machine</Heading>
         <Lede>
-          This is the part that has no equivalent in a chat window. Your course folder sits
-          on your machine and doesn't move. What changes is which model you point at it —
-          and you pick that per job, not once and forever.
+          The export isn't a backup chore. It's how your course stops being something you
+          edit one page at a time through a browser and becomes a body of material you hold.
         </Lede>
 
-        <div className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">The shape of it</p>
-          <p className="text-sm text-gray-800">
-            <strong>The folder you just exported</strong> →
-            <strong> one folder</strong> on your machine →
-            <strong> one desktop app</strong> →
-            <strong> 75+ models</strong> you can switch between, cloud or local.
+        <div className="bg-gray-900 rounded-xl p-5 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Why this is the important part</p>
+          <p className="text-sm text-white leading-relaxed mb-2">
+            Once the folder is on your machine, <strong className="text-red-300">any tool can
+            work with it</strong> — the one I'm showing you today, a different one next year,
+            or one that doesn't exist yet.
+          </p>
+          <p className="text-sm text-gray-300 leading-relaxed">
+            You are not adopting a product. You are keeping a copy of your own work in a form
+            that outlives whichever tool is best this semester.
           </p>
         </div>
 
-        <div className="bg-white border-l-4 border-red-500 rounded-xl p-4 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-1">Why that export was worth doing</p>
-          <p className="text-sm text-gray-800 mb-2">
-            Exporting your Canvas course used to be a backup chore with no payoff — a file you
-            saved and never opened. <strong>That changed.</strong> The export is now the input:
-            unzip it and you have the folder an agent can actually work across.
-          </p>
-          <p className="text-sm text-gray-700">
-            Your course stops being something you edit one page at a time through a browser,
-            and becomes a body of material you can ask questions about all at once.
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <SectionCard title="This session's tool" icon="🖥️" accent={true}>
+            <p className="text-sm"><strong>ChatGPT Desktop</strong> with the Codex feature. Point it at the unzipped course folder and it reads and edits files in place — no copy-paste, no one-page-at-a-time.</p>
+          </SectionCard>
+          <SectionCard title="Why AI helps here" icon="🧩">
+            <p className="text-sm">It can see <strong>how your course fits together</strong> — schedule against syllabus, objectives against modules, one page against every other page. Questions you could never ask a chatbot one paste at a time.</p>
+          </SectionCard>
+          <SectionCard title="Start where you already are" icon="🔵">
+            <p className="text-sm"><strong>Gemini via ScarletApps</strong> takes the exported files uploaded. More manual than a folder agent, licensed, and available to every person in this room today.</p>
+          </SectionCard>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-          <div className="bg-red-50 border-l-4 border-red-600 rounded-lg p-3">
-            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-1">The licensed option · ChatGPT Edu</p>
-            <p className="text-sm text-gray-700">Desktop app with Codex, which is what runs across a folder. <strong>Keeps course content inside a licensed tool</strong> — what policy asks of you. Needs departmental procurement, so treat it as the destination, not the starting point.</p>
-          </div>
-          <div className="bg-gray-900 rounded-lg p-3">
-            <p className="text-xs font-black uppercase tracking-widest text-red-400 mb-1">Not approved · free consumer tiers</p>
-            <p className="text-sm text-gray-100">A free consumer AI account is <strong>not licensed by the University</strong>. It does not matter that the tool is capable — course content and student work do not go there.</p>
-          </div>
-          <div className="bg-emerald-50 border-l-4 border-emerald-600 rounded-lg p-3">
-            <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">Start here · Gemini via ScarletApps</p>
-            <p className="text-sm text-gray-700">Licensed, and you already have it. Upload the exported files rather than pointing at a folder — more manual, but it is available to every single person in this room today.</p>
-          </div>
-          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-3">
-            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">Your own research · local models</p>
-            <p className="text-sm text-gray-700">LM Studio and similar run open models on your own machine. Excellent for learning what these things do, on your own reading and writing. <strong>Not a route around licensing for course content.</strong></p>
-          </div>
-        </div>
-
-        <div className="bg-gray-100 rounded-xl px-5 py-3 mb-4">
-          <p className="text-sm text-gray-700">
-            <strong>Why this is the "beyond" in Beyond the Chatbot:</strong> a chatbot makes you
-            bring your material to it, one paste at a time, and you take whatever model it gives you.
-            Here the material stays where it lives and you choose the engine — from the ones the
-            University has actually licensed.
+        <div className="bg-red-50 border-l-4 border-red-500 rounded-r-lg px-4 py-3 mb-4">
+          <p className="text-sm text-red-900">
+            <strong>The licensing line doesn't move.</strong> Course content and student work
+            belong in Rutgers-licensed tools. A free consumer account is not one, however
+            capable it is — and "it runs on my laptop" is not a route around that for course
+            content either.
           </p>
         </div>
-
-
-        <Demo
-          mode="Recorded"
-          time="60 sec"
-          what="Same folder, same prompt, run on a local model then a licensed one."
-          steps={[
-            "Play at speed",
-            "Talk over it — the comparison is the point, not the waiting",
-          ]}
-          fallback="Two screenshots side by side."
-        />
 
         <Placeholder
           port={[]}
+          onDay={[
+            "Don't re-teach the export here — the previous slide did it. This slide is only about what having the folder buys you",
+            "Say the portability claim plainly: the folder outlives the tool. That is the argument, the demo is just today's example",
+            "Show where Codex opens a folder in the desktop UI — that is the whole trick",
+            "Have an answer for \"I don't want an agent touching my files\": work on a copy, read-only first",
+          ]}
         />
       </SlideShell>
     ),
@@ -1510,13 +1494,13 @@ If the answer is not in my materials, say so.`}</CodeBlock>
              "Students"],
             ["03", "My course is a body of material, not a stack of pages.",
              "Exporting it stopped being a backup chore and became the first move. Questions I could never ask one page at a time are now one question across everything.",
-             "One Folder, Many Models"],
+             "Your Machine"],
             ["04", "What a tool can do and what I'm allowed to do are different questions.",
              "A $10 subscription I cannot buy without a business manager is the plainest example. Agent modes, connectors, publishing — all switched on or off by someone else. So I ask what's enabled and who enables it, and I start those conversations early.",
              "Free vs. Paid"],
             ["05", "Choosing a model is a privacy and security decision.",
              "It's the reason the University evaluates third-party vendors and their policies at all — that review exists to answer a real question. A local model may still be weaker, though that gap is closing fast, and nothing on it crosses the internet. Either way the responsibility lands on me, not the vendor.",
-             "One Folder · Local AI"],
+             "Your Machine · Local AI"],
             ["06", "I can delegate the work. I can't delegate the judgment.",
              "I guide an agent the way I guide a student — toward work that fits the context and learning goals of this course, not toward whatever is generically good. \"Acceptable\" isn't a standard the model knows. It's mine, and checking against it is the part of my job that doesn't move.",
              "Agents · every demo today"],
