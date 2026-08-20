@@ -740,8 +740,8 @@ const slides = [
             <p className="text-xs font-black uppercase tracking-widest text-blue-600 mb-2">Gemini Sharing</p>
             <ul className="space-y-1.5">
               <Bullet icon="·">Share chats, generated content, and resources with other users</Bullet>
-              <Bullet icon="·">Goes through <strong>Google Drive</strong></Bullet>
-              <Bullet icon="·">Direct link sharing is <strong>not</strong> available — plan around this</Bullet>
+              <Bullet icon="·">Goes through <strong>Google Drive</strong> — shared like any Drive file</Bullet>
+              <Bullet icon="·">Works across <strong>ScarletMail accounts</strong>; not a route to share outside Rutgers</Bullet>
             </ul>
           </div>
         </div>
@@ -1049,6 +1049,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
               <Bullet icon="·">Many sources held together in one workspace</Bullet>
               <Bullet icon="·">Citations back to the exact passage</Bullet>
               <Bullet icon="·">Built for reading, synthesis, and study artifacts</Bullet>
+              <Bullet icon="·"><strong>Sharing is the hard part</strong> — the friction is real</Bullet>
             </ul>
           </div>
           <div className="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-4">
@@ -1057,15 +1058,17 @@ If the answer is not in my materials, say so.`}</CodeBlock>
             <ul className="space-y-1.5">
               <Bullet icon="·">A persistent persona with your instructions baked in</Bullet>
               <Bullet icon="·">Guided Learning mode → tutors and study tools</Bullet>
-              <Bullet icon="·">Shares via Google Drive — no direct links</Bullet>
+              <Bullet icon="·"><strong>Shares easily</strong> — through Drive, to ScarletMail accounts</Bullet>
             </ul>
           </div>
         </div>
 
         <div className="bg-gray-100 rounded-xl px-5 py-3 mb-4">
           <p className="text-sm text-gray-700">
-            <strong>Rough rule:</strong> a notebook is a place you go to think with your sources;
-            a Gem is a helper you hand to someone else — including students.
+            <strong>The rule, and sharing is what proves it:</strong> a notebook is a place
+            <em>you</em> go to think with your sources. A Gem is a helper you hand to someone
+            else. That isn't a matter of taste — the Gem shares cleanly through Drive and the
+            notebook fights you. If you want something in other people's hands, that decides it.
           </p>
         </div>
 

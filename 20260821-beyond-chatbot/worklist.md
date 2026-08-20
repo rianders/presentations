@@ -177,3 +177,16 @@ the deck is reordered — re-run the extraction rather than renumbering by hand.
 - [ ] **Canvas** — confirm faculty can create a new course themselves, or the slide 15
       finale demos something the room cannot reproduce.
 - [ ] **DRAFT chrome** — remove from all five places as the last edit before delivery.
+
+## Verified 2026-08-20 by building both
+
+- [x] **Gem sharing works** — through Google Drive, across ScarletMail, confirmed for
+      faculty and staff. The deck previously said direct link sharing was unavailable;
+      that was wrong and is corrected on slides 6 and 10.
+- [x] **Gemini Notebook sharing is the difficult one.** This empirically confirms the
+      slide 10 rule (notebook = where you think, Gem = what you hand over) that was
+      previously written from the announcement rather than from use.
+- [ ] **Student ScarletMail accounts + shared Gems — UNVERIFIED.** Decides "which do I
+      point students at?". Delivery note on slide 10 gives the honest wording until tested.
+- [ ] Notebook + Gem links for the Resources slide — only if they contain no real course
+      material; this deck publishes publicly.
