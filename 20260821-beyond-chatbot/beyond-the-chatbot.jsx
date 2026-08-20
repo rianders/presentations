@@ -1,0 +1,1960 @@
+const { useState, useEffect } = React;
+
+/* VIEW MODES ─────────────────────────────────────────────────────────────
+   Notes are ON by default when you are working locally, OFF by default on
+   the published site. So the authoring loop always shows your notes, and a
+   shared link never does.
+
+     localhost / 127.0.0.1 / file://  →  notes ON   (authoring)
+     rianders.github.io               →  notes OFF  (audience)
+     ?notes    force ON      ?clean   force OFF     (either wins)
+     Notes button in the nav toggles and REMEMBERS the choice.
+
+   Anything you would not want a registrant to read must live in a
+   <Placeholder>, or the `note` prop of <Poll>/<Interact>. Nothing else
+   is hidden.
+
+   SLIDE DEEP-LINK: ?s=8 opens on slide 8, and the URL tracks as you
+   navigate — so reloading after an edit puts you back where you were
+   instead of at slide 1.
+   ───────────────────────────────────────────────────────────────────── */
+const _params = new URLSearchParams(window.location.search);
+const _isLocal = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
+const presenterMode = (() => {
+  if (_params.has('notes')) return true;
+  if (_params.has('clean')) return false;
+  try {
+    const saved = window.localStorage.getItem('btc-notes');
+    if (saved !== null) return saved === '1';
+  } catch (e) { /* storage blocked — fall through to default */ }
+  return _isLocal;
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   BEYOND THE CHATBOT — DRAFT SKELETON
+   UOES / TIIP Faculty Workshop · August 21, 2026 · 11:00–12:30
+   Format: 60 min content · 30 min work session
+   Pathway: Teaching and Generative AI — Competencies 1, 2, 3
+
+   Every slide below is a PLACEHOLDER. The <Placeholder> blocks
+   name the candidate slides to port from:
+     20260306/beyond-the-chatbot-workshop.jsx  ("Beyond ChatGPT")
+   Remove the DRAFT chips in SlideShell + the title slide, and the
+   DRAFT badge in index.html, once content is final.
+
+   ── CONFIRMED SINCE THE MAR 6 DECK ──────────────────────────
+   Jul 16, 2026 · Google renamed NotebookLM → GEMINI NOTEBOOK.
+     Same product, same notebooks; new logo; existing links and
+     shared notebooks redirect automatically. New in the same
+     update: a secure cloud computer per notebook that writes and
+     runs code (Ultra first, Pro following).
+     9to5google.com/2026/07/16/notebooklm-gemini-notebook/
+   Aug 17, 2026 · OIT enabled GEMINI GEMS + GEMINI SHARING for
+     ScarletApps — four days before this session. Source: Aaron
+     Richton (Service Owner, ScarletMail/ScarletApps) announcement.
+     That email explicitly asks recipients to share it onward.
+
+   NOTE: the published abstract says "NotebookLM" — that is the
+   word registrants signed up on. Keep "(formerly NotebookLM)"
+   visible at least once so they can connect the two.
+
+   ── TIME BUDGET — SCENARIO 1-R APPLIED ──────────────────────
+   Tags below are live and total exactly 60 min. Each tag INCLUDES
+   that slide's own poll/chat time — roughly 10 min of the 60 is
+   interaction, not talking.
+
+     Opening 5 (incl. warm-up poll)   Framing 3
+     Seg 1  What You Have      6      Seg 1b Free vs. Paid   4*
+     Seg 2  Agents             6      Seg 3  Vibe Coding     9
+     Seg 3b One Folder…        6      Seg 4  Notebook        8
+     Seg 4b Gems vs. Notebook  4*     Seg 5  Local AI        4
+     Seg 6  Students           5 (incl. chat)          = 60
+     Takeaways  2  ── drawn from the work session's
+                    0-5 setup beat, NOT from the 60
+     Hands-On work session                              = 30
+
+   * "Folded" = no longer its own segment; shares the parent's
+     budget at a reduced allocation. Both slides survive, but their
+     CONTENT still has to be cut to fit. Seg 1b holds one merged
+     2-question poll plus a chat moment in 4 min — workable, but it
+     is still the tightest spot in the deck. See time-budget.md.
+
+   Spine: the folder-and-swappable-models pathway (Seg 3 → 3b) is
+   the most important idea here. Thesis is stated on Framing and
+   paid off on Seg 3b.
+
+   ── DEMOS ───────────────────────────────────────────────────
+   Eight, marked inline on their slides in presenter view (violet).
+   Full plan, prep checklist, and failure plan: demos.md.
+     LIVE      portal wall · Notebook · Gems · Vibe · Local AI
+     RECORDED  engine swap · agents (with a failure in it)
+     HYBRID    Canvas round trip — live / recorded / live
+   Rule: if the room cannot legally use the tool on Monday, it is a
+   showcase, not a demo. Record it, keep it short, label it.
+   Every live demo needs a fallback reachable in 10 seconds.
+
+   ── SHARED, RECORDED, AND CLIPPED ───────────────────────────
+   This deck gets shared. People follow along live in their own
+   browser and keep the link afterward, and the recording will be
+   cut into short standalone pieces. Three consequences:
+
+   1. AUDIENCE VIEW IS THE DEFAULT. Backstage notes only live in
+      <Placeholder>, or the `note` prop of <Poll>/<Interact>.
+      Anything written anywhere else is public. Present from
+      ?notes on your own screen; share the plain URL.
+
+   2. EVERY SEGMENT MUST STAND ALONE. A clip has no "as I said
+      earlier." Restate the premise at the top of each segment,
+      name the segment out loud so the editor has a cut point,
+      and never point at a poll result a clip won't contain.
+
+   3. NO RELATIVE TIME. "Monday" and "four days ago" are wrong the
+      moment the clip is posted. Always the literal date.
+      Footer carries the deck URL on every slide so any frame
+      grabbed from the video still shows where to get it.
+
+   ── INTERACTION — ZOOM CHAT IS NOT THE CHANNEL ──────────────
+   Chat scrolls away, is lost when the call ends, and is unusable
+   on playback. Use instead:
+     · Polls        structured, fast, and the results are data
+     · Shared doc   persists, everyone sees it, becomes a written
+                    artifact afterward — set this up before Friday
+                    and put the link on the About slide
+     · Unmute       for the Students moment specifically; it is
+                    worth hearing in someone's voice and it records
+                    far better than you reading chat aloud
+   Chat still catches "I can't hear you" — just do not build
+   content on it.
+
+   ── ZOOM PREP ───────────────────────────────────────────────
+   Zoom polls must be BUILT IN THE WEB PORTAL BEFORE the meeting
+   starts — they cannot be created on the fly. Build these THREE
+   polls on the Aug 21 meeting, in this order:
+
+     1. Slide 2  · "Which of these have you already tried?"
+                   1 question · multi-select · warm-up
+     2. Slide 5  · "Rutgers paid plans"      ← 2 QUESTIONS, ONE POLL
+                   Q1 "Do you have any of the Rutgers paid AI
+                      plans?"  multi-select
+                   Q2 "How did the approval process go?"  single
+                   Mark the POLL anonymous — in Zoom that setting is
+                   per-poll, not per-question, so it covers both.
+     3. Slide 14 · "Which track are you taking?"
+                   1 question · single · launch BEFORE breakouts
+
+   You are hosting, so you can build all three now — they attach to
+   the scheduled meeting and are ready whenever you launch them.
+
+   Chat moments (no prep needed): slide 5 and slide 12.
+
+   One host-side note: launching a poll, running a demo, and
+   watching chat at once is a lot for one person. Decide in advance
+   which polls you will read aloud and which you will just share
+   results for, and consider parking chat until the end of a segment.
+   ═══════════════════════════════════════════════════════════ */
+
+const RutgersLogo = () => (
+  <div className="flex items-center gap-2">
+    <div className="w-8 h-8 bg-red-700 rounded flex items-center justify-center">
+      <span className="text-white font-black text-sm italic">R</span>
+    </div>
+    <span className="text-xs font-semibold text-gray-500 tracking-widest uppercase">Rutgers</span>
+  </div>
+);
+
+const DraftChip = () => (
+  <span className="bg-amber-400 text-amber-900 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
+    Draft
+  </span>
+);
+
+const SlideShell = ({ tag, tagColor = "bg-red-600", children }) => (
+  <div className="flex flex-col h-full min-h-[520px]">
+    <div className="flex items-center justify-between px-6 py-3 border-b border-gray-100">
+      <div className="flex items-center gap-3">
+        <RutgersLogo />
+        <DraftChip />
+      </div>
+      <span className={`text-xs font-bold uppercase tracking-widest text-white px-3 py-1 rounded-full ${tagColor}`}>
+        {tag}
+      </span>
+    </div>
+    <div className="flex-1 overflow-auto p-6 sm:p-10">
+      {children}
+    </div>
+    <div className="px-6 py-2 border-t border-gray-100 flex justify-between items-center">
+      <span className="text-xs text-gray-400">rianders.github.io/presentations</span>
+      <span className="flex items-center gap-2 text-xs text-gray-400">
+        Rutgers UOES · TIIP · August 21, 2026
+      </span>
+    </div>
+  </div>
+);
+
+const Bullet = ({ icon = "▸", children }) => (
+  <li className="flex items-start gap-3 text-gray-700 text-sm leading-relaxed">
+    <span className="text-red-500 mt-0.5 flex-shrink-0 font-bold">{icon}</span>
+    <span>{children}</span>
+  </li>
+);
+
+const Tag = ({ color = "bg-blue-100 text-blue-700", children }) => (
+  <span className={`inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full ${color}`}>{children}</span>
+);
+
+/* Per-slide work tracker. Presenter-only.
+     port  = slides available to port from 20260306/beyond-the-chatbot-workshop.jsx
+     todo  = CONTENT WORK STILL OUTSTANDING. This is the worklist — it should
+             empty out as you finish the slide. Empty todo = slide is done.
+     onDay = things to say or do during delivery. These never "complete", so
+             they live separately or the worklist can never clear. */
+const Placeholder = ({ port = [], todo = [], onDay = [] }) => {
+  if (!presenterMode) return null;
+  const done = todo.length === 0;
+  return (
+    <div className={`border-2 border-dashed rounded-xl p-5 ${done ? "border-emerald-400 bg-emerald-50" : "border-amber-400 bg-amber-50"}`}>
+      <div className="flex items-center gap-2 mb-3">
+        <p className={`text-xs font-black uppercase tracking-widest ${done ? "text-emerald-700" : "text-amber-700"}`}>
+          {done ? "Content complete" : `To write — ${todo.length} open`}
+        </p>
+        {done && <span className="text-emerald-600 font-black">✓</span>}
+      </div>
+
+      {!done && (
+        <ul className="space-y-1.5 mb-4">
+          {todo.map((t, i) => (
+            <li key={i} className="flex items-start gap-2 text-sm text-gray-800">
+              <span className="text-amber-600 font-bold flex-shrink-0">☐</span>
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {onDay.length > 0 && (
+          <div>
+            <p className="text-[11px] font-black uppercase tracking-widest text-gray-500 mb-2">On the day</p>
+            <ul className="space-y-1.5">
+              {onDay.map((t, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                  <span className="text-gray-400 font-bold flex-shrink-0">▸</span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {port.length > 0 && (
+          <div>
+            <p className="text-[11px] font-black uppercase tracking-widest text-gray-500 mb-2">Candidate ports · Mar 6 deck</p>
+            <ul className="space-y-1.5">
+              {port.map((pp, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                  <span className="text-amber-600 font-bold flex-shrink-0">↳</span>
+                  <span><code className="text-xs bg-white border border-gray-200 rounded px-1.5 py-0.5">{pp}</code></span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+/* Zoom poll cue. Polls CANNOT be made on the fly — they must be built in the
+   Zoom web portal before the meeting starts. Every <Poll> below needs to exist
+   there by Friday morning. See the ZOOM PREP list in the header comment. */
+const Poll = ({ question, options = [], questions, anonymous = false, note }) => {
+  // One Zoom poll can hold several questions and is launched once. Pass `questions`
+  // for that; pass `question`/`options` for a single-question poll.
+  const items = questions || [{ question, options }];
+  return (
+    <div className="border-2 border-blue-400 bg-blue-50 rounded-xl p-4 mb-4">
+      <div className="flex items-center gap-2 mb-2 flex-wrap">
+        <span className="bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
+          Zoom Poll
+        </span>
+        {items.length > 1 && (
+          <span className="bg-white text-blue-700 border border-blue-300 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
+            {items.length} questions · one launch
+          </span>
+        )}
+        {anonymous && (
+          <span className="bg-white text-blue-700 border border-blue-300 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
+            Anonymous
+          </span>
+        )}
+      </div>
+      {items.map((it, qi) => (
+        <div key={qi} className={qi > 0 ? "mt-3 pt-3 border-t border-blue-200" : ""}>
+          <p className="text-sm font-bold text-gray-900 mb-2">
+            {items.length > 1 && <span className="text-blue-600">Q{qi + 1}. </span>}
+            {it.question}
+          </p>
+          <ul className="space-y-1">
+            {(it.options || []).map((o, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                <span className="text-blue-500 font-bold flex-shrink-0">○</span>
+                <span>{o}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      {note && presenterMode && <p className="text-xs text-gray-600 mt-2 italic">{note}</p>}
+    </div>
+  );
+};
+
+/* Non-poll audience moment — chat waterfall, reactions, unmute. */
+const Interact = ({ kind = "Shared doc", prompt, note }) => (
+  <div className="border-2 border-teal-400 bg-teal-50 rounded-xl p-4 mb-4">
+    <span className="bg-teal-600 text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
+      {kind}
+    </span>
+    <p className="text-sm font-bold text-gray-900 mt-2">{prompt}</p>
+    {note && presenterMode && <p className="text-xs text-gray-600 mt-1 italic">{note}</p>}
+  </div>
+);
+
+/* The through-line. Each segment adds one layer to what "context design"
+   means, so the Takeaways slide names something the room has already been
+   assembling rather than introducing it cold. Audience-facing, not a note. */
+const CONTEXT_LAYERS = 8;
+const ContextLayer = ({ n, children }) => (
+  <div className="flex items-center gap-3 bg-gray-900 rounded-lg px-4 py-2.5 mb-4">
+    <div className="flex gap-1 flex-shrink-0">
+      {Array.from({ length: CONTEXT_LAYERS }, (_, i) => (
+        <span
+          key={i}
+          className={`w-1.5 h-4 rounded-sm ${i < n ? "bg-red-500" : "bg-gray-700"}`}
+        />
+      ))}
+    </div>
+    <div className="min-w-0">
+      <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 leading-none mb-1">
+        Context design · {n} of {CONTEXT_LAYERS}
+      </p>
+      <p className="text-sm font-bold text-white leading-snug">{children}</p>
+    </div>
+  </div>
+);
+
+/* Demo marker. Presenter-only. Full plan and prep checklist in demos.md.
+   mode: "Live" | "Recorded" | "Hybrid" */
+const Demo = ({ mode = "Live", time, what, steps = [], fallback }) => {
+  if (!presenterMode) return null;
+  const tone = mode === "Recorded"
+    ? "bg-slate-600"
+    : mode === "Hybrid" ? "bg-fuchsia-700" : "bg-violet-600";
+  return (
+    <div className="border-2 border-violet-400 bg-violet-50 rounded-xl p-4 mb-4">
+      <div className="flex items-center gap-2 mb-2 flex-wrap">
+        <span className={`${tone} text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded`}>
+          Demo · {mode}
+        </span>
+        {time && (
+          <span className="bg-white text-violet-700 border border-violet-300 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
+            {time}
+          </span>
+        )}
+      </div>
+      <p className="text-sm font-bold text-gray-900 mb-2">{what}</p>
+      {steps.length > 0 && (
+        <ul className="space-y-1 mb-2">
+          {steps.map((t, i) => (
+            <li key={i} className="flex items-start gap-2 text-xs text-gray-700">
+              <span className="text-violet-500 font-bold flex-shrink-0">{i + 1}.</span>
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {fallback && (
+        <p className="text-xs text-gray-700 bg-white border border-violet-200 rounded px-2 py-1">
+          <strong>If it fails:</strong> {fallback}
+        </p>
+      )}
+    </div>
+  );
+};
+
+const Lede = ({ children }) => (
+  <p className="text-sm text-gray-600 leading-relaxed max-w-3xl mb-5">{children}</p>
+);
+
+const Heading = ({ children }) => (
+  <>
+    <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 leading-tight">{children}</h1>
+    <div className="w-16 h-1 bg-red-600 rounded mb-4" />
+  </>
+);
+
+// ── SLIDES ─────────────────────────────────────────────────
+
+const slides = [
+
+  // ── 1: TITLE ──
+  {
+    label: "Title",
+    content: (
+      <SlideShell tag="Faculty Workshop 2026–27" tagColor="bg-red-600">
+        <div className="flex flex-col md:flex-row gap-8 items-start justify-between h-full min-h-[380px]">
+        <div className="flex flex-col items-start justify-center flex-1">
+          <p className="text-xs font-bold uppercase tracking-widest text-red-500 mb-3">Rutgers UOES · TIIP Partnership</p>
+          <h1 className="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-1">Beyond</h1>
+          <h1 className="text-4xl sm:text-5xl font-black text-red-600 leading-tight mb-2">the Chatbot</h1>
+          <div className="mb-4">
+            <span className="bg-amber-400 text-amber-900 text-xs font-black uppercase tracking-widest px-3 py-1 rounded">
+              Draft — not for distribution
+            </span>
+          </div>
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-500 mb-4">What's actually new this year, and what it changes about teaching</h2>
+          <div className="w-20 h-1 bg-red-600 rounded mb-5" />
+          <p className="text-sm text-gray-600 max-w-xl leading-relaxed mb-5">
+            A high-level tour of agents, vibe coding, Gemini Notebook (formerly NotebookLM),
+            the Gems that arrived August 17, and local AI tools — what's available through your
+            ScarletMail account, and what each of them is actually good for.
+          </p>
+          <div className="flex flex-wrap gap-2 mb-6">
+            <Tag color="bg-red-100 text-red-700">Agents</Tag>
+            <Tag color="bg-blue-100 text-blue-700">Vibe Coding</Tag>
+            <Tag color="bg-purple-100 text-purple-700">Gemini Notebook</Tag>
+            <Tag color="bg-amber-100 text-amber-800">Gems — Aug 17, 2026</Tag>
+            <Tag color="bg-emerald-100 text-emerald-700">Local AI</Tag>
+          </div>
+          <div>
+            <p className="text-sm font-bold text-gray-800">Rick Anderson</p>
+            <p className="text-xs text-gray-500">Director of Emerging Technology · Rutgers UOES</p>
+            <p className="text-xs text-gray-400">August 21, 2026 · 11:00 am – 12:30 pm · Zoom</p>
+          </div>
+        </div>
+
+        <div className="md:w-48 flex-shrink-0 flex flex-col items-center justify-center self-center">
+          <img
+            src="20260821-beyond-chatbot/qr-beyond-the-chatbot-20260821.png"
+            alt="QR code linking to this presentation"
+            className="rounded-lg border border-gray-200 shadow-sm w-40 h-40"
+            width="160"
+            height="160"
+          />
+          <p className="text-xs font-bold text-gray-700 mt-2 text-center">Scan to follow along</p>
+          <p className="text-[10px] text-gray-400 mt-0.5 text-center">yours to keep</p>
+        </div>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // ── 2: WHO I AM ──
+  // PURPOSE: standing. Why this person, on this topic, at this university.
+  // Recorded and shared, so it also introduces him to people who never
+  // attended. Keep it to ~60 seconds spoken.
+  {
+    label: "Who I Am",
+    content: (
+      <SlideShell tag="Opening · 4 min" tagColor="bg-red-700">
+        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 leading-tight">Rick Anderson</h1>
+        <p className="text-base font-bold text-gray-700">Director of Emerging Technology</p>
+        <p className="text-sm text-gray-500 mb-3">University Online Education Services, Rutgers University</p>
+        <div className="w-16 h-1 bg-red-600 rounded mb-5" />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Early 1990s</p>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              Built some of the University's first websites. At the
+              <strong> Center for Electronic Texts in the Humanities</strong>, worked with
+              scholars worldwide on marking up and analyzing text — at the moment that field
+              was being invented.
+            </p>
+          </div>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Since</p>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              Infrastructure the University runs on. Virtual worlds. And each time something
+              new arrived, <strong>part of how Rutgers worked out what to do about it</strong> —
+              connecting emerging technology, research, and instructional design so they
+              actually meet.
+            </p>
+          </div>
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-2">Now</p>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              Emerging Technology at UOES — which means I try these tools on real course
+              material before anyone recommends them. This challenge is bigger than the ones
+              before it, and the early work on <strong>how text carries meaning</strong> turns
+              out to be exactly the right preparation.
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-gray-900 rounded-xl px-5 py-4 mb-4">
+          <p className="text-sm text-white leading-relaxed mb-2">
+            I haven't only watched these arrive — I've helped this university respond to them.
+            First getting people onto the internet at all. Then social media literacy. The
+            challenges kept moving past where we'd just been.
+          </p>
+          <p className="text-sm text-white leading-relaxed">
+            <strong className="text-red-300">That's what I'm bringing to you today</strong> —
+            not a tour of what's new, but what three decades of helping Rutgers absorb new
+            technology suggests you should do about this one.
+          </p>
+        </div>
+
+        <Poll
+          question="Which of these have you already tried? (Check all that apply)"
+          options={[
+            "An AI agent that completes multi-step tasks",
+            "Building a page or activity by describing it",
+            "NotebookLM / Gemini Notebook",
+            "AI running locally on my own machine",
+            "None of these yet",
+          ]}
+          note="Opening warm-up. Tells you which segments to expand and which to compress — decide live."
+        />
+
+        <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-3 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">Questions &amp; notes — shared doc</p>
+          <p className="text-sm text-gray-700">Ask anything, it stays up after today. <span className="text-red-600 font-bold">[ADD DOC LINK]</span></p>
+        </div>
+
+        <Placeholder
+          todo={[
+            "CREATE THE SHARED DOC and paste its link where [ADD DOC LINK] is",
+          ]}
+          onDay={[
+            "Paste both links in chat at minute 1 — chat is fine for delivering links, just not for discussion",
+            "~60 seconds. The three cards are there for the recording; do not read them aloud",
+            "\"Three decades\" is arithmetic from the early-1990s start — change the number if you'd say it differently",
+            "The internet → social media → AI progression is the point. Land that, skip the rest if you're behind",
+            "If the warm-up poll skews experienced, cut What's New to 2 min",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 3: WHAT'S NEW FOR FALL 2026 ──
+  {
+    label: "New for Fall 2026",
+    content: (
+      <SlideShell tag="Framing · 3 min" tagColor="bg-gray-700">
+        <Heading>What's New for Fall 2026</Heading>
+        <Lede>
+          What actually landed over the summer, and why "it's a chatbot" stopped being a
+          useful description of any of it.
+        </Lede>
+
+        <div className="bg-red-600 rounded-xl p-4 mb-4 flex items-center gap-4">
+          <div className="flex-shrink-0 text-center">
+            <p className="text-4xl font-black text-white leading-none">11</p>
+            <p className="text-[10px] font-black uppercase tracking-widest text-red-200 mt-1">days</p>
+          </div>
+          <div>
+            <p className="text-sm font-bold text-white leading-snug">Classes start September 1.</p>
+            <p className="text-sm text-red-100 leading-snug">
+              So the test for everything today is simple: can it help you before then? Some of
+              this pays off over a year. Some of it pays off this week — and I'll tell you which
+              is which.
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-gray-900 rounded-xl p-5 mb-4">
+          <p className="text-[11px] font-black uppercase tracking-widest text-gray-400 mb-2">The through-line for today</p>
+          <p className="text-lg font-bold text-white leading-snug mb-2">
+            A chatbot makes you bring your work to it, one paste at a time.
+          </p>
+          <p className="text-lg font-bold text-blue-300 leading-snug">
+            Everything past that lets the work stay where it lives.
+          </p>
+        </div>
+        <Placeholder
+          port={["The Challenge of Now", "Landscape", "The Competition", "Chatbot vs. Agent"]}
+          todo={[
+            "Open with the concrete proof: a tool got renamed in July and two more turned on Monday",
+            "Pick ONE framing — the Mar 6 deck has four overlapping ones",
+            "Update the model landscape; the Mar 6 rankings screenshot is stale",
+            "Cut vendor-race content — faculty audience cares about capability, not leaderboards",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 4: AI INITIATIVE (ported from Mar 6 "AI Initiative") ──
+  {
+    label: "AI Initiative",
+    content: (
+      <SlideShell tag="Policy · 5 min" tagColor="bg-gray-700">
+        <Heading>The AI Initiative at Rutgers</Heading>
+
+        <div className="bg-red-600 text-white rounded-xl p-5 mb-4">
+          <p className="text-lg font-bold mb-1">If it involves your students or your course content, it stays in a licensed tool.</p>
+          <p className="text-sm text-red-100">
+            Three policies govern this: Academic Integrity (10.2.13), Information
+            Classification (70.1.2), Acceptable Use (70.1.1).
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Check the hub</p>
+            <p className="text-sm text-blue-600 font-bold">it.rutgers.edu/ai</p>
+          </div>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Use your ScarletMail account</p>
+            <p className="text-sm text-gray-700">Signing in with <strong>@scarletmail.rutgers.edu</strong> is what keeps you inside the licensed ecosystem.</p>
+          </div>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Data classification</p>
+            <p className="text-sm text-gray-700">Know what's sensitive — student records, personal data, institutional data — <em>before</em> choosing a tool.</p>
+          </div>
+        </div>
+
+        <div className="bg-gray-900 rounded-xl p-5 mb-4">
+          <p className="text-sm font-bold text-amber-300 mb-2">Beyond policy: your ethical choices</p>
+          <p className="text-sm text-gray-100 mb-2">
+            I'm going to show you a lot of tools today. Policy tells you what's
+            <strong> allowed</strong>. It does not tell you what you <strong>should</strong> do.
+          </p>
+          <p className="text-sm text-gray-100">
+            Everything you see today carries questions policy doesn't answer — about labor,
+            about data, about who benefits and who doesn't. I want you to know what's
+            available. I also want you to apply your own judgment to what you use and how.
+            That isn't my decision to make for you.
+          </p>
+        </div>
+
+        <Placeholder
+          port={["AI Initiative"]}
+          todo={[
+            "VERIFY all three policy numbers are still current for AY2026-27 — these came from the Mar 6 deck",
+            "Add the data classification chart link from OIT's Aug 17 email",
+          ]}
+          onDay={[
+            "The 'your secrets' point from Mar 6 is worth saying aloud: it isn't only about students. Tools with access to your files can surface API keys, passwords, private mail — things you never meant to share",
+            "This slide earns you the right to demo freely for the next hour. Don't rush it",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 5: ACCESSIBILITY (ported from Mar 6 "Accessibility") ──
+  {
+    label: "Accessibility",
+    content: (
+      <SlideShell tag="Guiding Principle · 4 min" tagColor="bg-teal-700">
+        <Heading>Accessibility Is Not Optional</Heading>
+
+        <div className="bg-red-600 text-white rounded-xl p-5 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-red-200 mb-1">Deadline — extended</p>
+          <p className="text-lg font-bold mb-1">April 26, 2027</p>
+          <p className="text-sm text-red-100">
+            Federal digital accessibility requirements. Course materials must meet
+            <strong> WCAG 2.1</strong>. Not a recommendation — a compliance requirement.
+          </p>
+        </div>
+
+        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-4 mb-4">
+          <p className="text-sm text-gray-800">
+            <strong>It moved, and it is still closer than it looks.</strong> That's this fall
+            and next spring — two semesters. And the material that takes longest to fix is
+            the material most courses have the most of.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">The University position</p>
+            <p className="text-sm text-gray-700 mb-2">
+              Rutgers is committed to making all digital content accessible to everyone,
+              including people with disabilities.
+            </p>
+            <p className="text-xs text-teal-700 font-bold">academicaffairs.rutgers.edu/digital-accessibility</p>
+          </div>
+          <div className="bg-teal-50 border-l-4 border-teal-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-teal-700 mb-2">Where AI comes in</p>
+            <p className="text-sm text-gray-700">
+              For material that is hard or impossible to fix by hand — scanned PDFs, figures,
+              charts, handwritten documents — these tools do in minutes what used to take hours.
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-teal-50 border border-teal-200 rounded-xl p-4 mb-4">
+          <p className="text-sm text-teal-900">
+            <strong>This thread runs through the whole session.</strong> Every tool you see
+            today has an accessibility dimension — and the next two sessions in this series,
+            September 18 and November 6, are entirely about it.
+          </p>
+        </div>
+
+        <Placeholder
+          port={["Accessibility"]}
+          todo={[]}
+          onDay={[
+            "Some of the room heard the old April 2026 date. Say plainly that it was extended to April 26, 2027 — otherwise half of them think you have it wrong",
+            "Don't let the extension read as relief. Two semesters, and notation and diagrams take the longest",
+            "Point forward to Sep 18 and Nov 6 — this slide is also how those sessions get their audience",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 6: SCARLETMAIL ──
+  {
+    label: "New as of Monday",
+    content: (
+      <SlideShell tag="Segment 1 · 6 min" tagColor="bg-red-600">
+        <Heading>What's New as of Monday</Heading>
+
+        <div className="bg-red-50 border-l-4 border-red-600 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-1">New · August 17, 2026</p>
+          <p className="text-base font-black text-gray-900 mb-1">Gemini Gems and Gemini sharing turned on for ScarletApps</p>
+          <p className="text-sm text-gray-700">
+            Available to faculty, faculty emeritus, staff, students, <strong>and guests</strong> with ScarletApps access.
+            Announced by OIT (Aaron Richton, Service Owner, ScarletMail/ScarletApps).
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-purple-600 mb-2">Gems</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">Customized versions of Gemini, tailored to your teaching style</Bullet>
+              <Bullet icon="·">Upload notes, PDFs, images — direct a Gem to rely <strong>only</strong> on those sources</Bullet>
+              <Bullet icon="·"><strong>Guided Learning mode</strong> — build study tools or tutors</Bullet>
+            </ul>
+          </div>
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-600 mb-2">Gemini Sharing</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">Share chats, generated content, and resources with other users</Bullet>
+              <Bullet icon="·">Goes through <strong>Google Drive</strong></Bullet>
+              <Bullet icon="·">Direct link sharing is <strong>not</strong> available — plan around this</Bullet>
+            </ul>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3">
+            <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">The good news</p>
+            <p className="text-sm text-gray-700">ScarletMail/ScarletApps input is <strong>not used to train or improve Google's AI models</strong> — and this is the licensed tool every one of you already has.</p>
+          </div>
+          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-lg p-3">
+            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">The limits</p>
+            <p className="text-sm text-gray-700">Not intended for university business · never with critical PHI · see OIT's data classification chart for AI tools.</p>
+          </div>
+        </div>
+
+        <Placeholder
+          port={["Your Tools", "AI Initiative", "Accessibility"]}
+          todo={[
+            "Check your own account Thursday; add an \"if you don't see it yet\" line — staged rollouts rarely land on the stated date",
+            "Add OIT's other no-cost AI tools (Connect + ScarletApps) and note Copilot / Google AI Pro as paid options",
+            "Re-verify the rest of the Mar 6 entitlement list — six months stale",
+          ]}
+          onDay={[
+            "\"Monday\" works live and breaks in a clip. The on-screen date carries it — but say \"August 17\" out loud at least once so the standalone cut still makes sense",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 7: FREE vs PAID ──
+  {
+    label: "Free vs. Paid",
+    content: (
+      <SlideShell tag="Segment 1b · 4 min" tagColor="bg-gray-700">
+        <Heading>What's Free, What's Worth Buying</Heading>
+        <Lede>
+          Most of what we're covering today costs nothing. One paid option is worth knowing about —
+          and there's a step between wanting it and having it.
+        </Lede>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-2">No cost · you have it now</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">Gemini, Gems, and Gemini sharing via ScarletApps</Bullet>
+              <Bullet icon="·">Gemini Notebook</Bullet>
+              <Bullet icon="·">OIT's other no-cost AI tools — Connect <em>and</em> ScarletApps</Bullet>
+              <Bullet icon="·"><strong>This is the licensed set.</strong> Course content and student work belong here</Bullet>
+            </ul>
+          </div>
+
+          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">Paid · via University Software Portal</p>
+            <p className="text-sm font-bold text-gray-900 mb-1">ChatGPT Edu — from $10/month</p>
+            <p className="text-xs text-gray-600 mb-2">OIT negotiated and approved this price tier.</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">Higher limits and better model access</Bullet>
+              <Bullet icon="·">Create and share custom GPTs</Bullet>
+              <Bullet icon="·">Rutgers data protected from training</Bullet>
+              <Bullet icon="·">Priority support</Bullet>
+            </ul>
+            <p className="text-xs text-gray-600 mt-2">Also available: Microsoft 365 Copilot · Google AI Pro</p>
+          </div>
+        </div>
+
+        <div className="bg-gray-900 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-amber-300 mb-2">You probably cannot buy this today</p>
+          <p className="text-sm text-gray-100 mb-2">
+            Go to the Software Portal right now and most of you will get this:
+          </p>
+          <p className="text-xs text-gray-300 italic border-l-2 border-gray-600 pl-3 mb-3">
+            "You cannot currently subscribe. There are no PaymentAccounts available to use, and you
+            do not have permission to create one. Contact your department's business manager…"
+          </p>
+          <p className="text-sm text-gray-100">
+            It is <strong>departmental procurement</strong>, not a purchase. Someone in your unit has to
+            be a Payment Account Owner, and your department has to have a process.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3">
+            <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">How you actually get it</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="1">Talk to your supervisor — that starts it</Bullet>
+              <Bullet icon="2">Ask who your Payment Account Owner is</Bullet>
+              <Bullet icon="3">If you <em>are</em> a manager, you can set this up for your unit</Bullet>
+            </ul>
+            <p className="text-xs text-gray-500 mt-2 italic">ithelp.rutgers.edu — KB0017480</p>
+          </div>
+          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-lg p-3">
+            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">So plan around it</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·"><strong>Start the conversation today.</strong> Lead time is weeks, not minutes</Bullet>
+              <Bullet icon="·"><strong>A free ChatGPT account is not the workaround.</strong> Free consumer tiers are not licensed by the University — course content does not go there</Bullet>
+              <Bullet icon="·">Until then, <strong>Gemini through ScarletApps is licensed and you already have it</strong>. That is the fallback</Bullet>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-gray-100 rounded-xl px-5 py-3 mb-4">
+          <p className="text-sm text-gray-700">
+            <strong>The pattern worth carrying:</strong> free or paid, what a tool can actually do here
+            depends on what our administrators have switched on — agent modes, connectors, and publishing
+            are all admin-gated. The feature existing is not the same as you having it.
+          </p>
+        </div>
+
+        <Poll
+          anonymous
+          questions={[
+            {
+              question: "Do you have any of the Rutgers paid AI plans? (Check all that apply)",
+              options: [
+                "ChatGPT Edu",
+                "Microsoft 365 Copilot",
+                "Google AI Pro",
+                "No paid plan",
+                "Not sure what I have",
+              ],
+            },
+            {
+              question: "If you got one — how did the approval process go?",
+              options: [
+                "Straightforward, approved quickly",
+                "Took a while, but got there",
+                "Still in progress",
+                "Tried and gave up",
+                "Didn't need approval / N/A",
+              ],
+            },
+          ]}
+          note="One poll, two questions, one launch — roughly 90 s instead of 3 min. Anonymity is a per-poll setting in Zoom, so merging makes Q1 anonymous too; that is fine, arguably better."
+        />
+
+        <Interact
+          kind="Shared doc"
+          prompt="If you went through it: who did you have to ask, and how long did it take?"
+          note="Zoom chat is bad for this — answers scroll away and are lost after the call. Put it in the shared doc so it persists, and so you can turn it into a written how-to afterward. Read two or three aloud."
+        />
+
+        <Demo
+          mode="Live"
+          time="30 sec"
+          what="Load the ChatGPT Edu subscribe page and let the refusal render on screen."
+          steps={[
+            "Software Portal → ChatGPT Edu → Subscribe",
+            "Let the 'no PaymentAccounts available' error sit there for a beat",
+            "Say: this is takeaway #04, live",
+          ]}
+          fallback="Screenshot of the error, already on the desktop."
+        />
+
+        <Placeholder
+          port={[]}
+          todo={[
+            "BUILD ALL THREE POLLS IN THE ZOOM PORTAL BEFORE FRIDAY — they cannot be created live",
+            "Confirm which tier $10 buys — the page says \"starting at $10\" and the 2025 announcement still says $20",
+            "Ask OIT whether UOES/TIIP can sponsor accounts for workshop attendees — if the answer is yes, that is the single most useful thing you can announce on Friday",
+            "Ask OIT what is enabled in the Rutgers ChatGPT tenant: agent mode, Sites, connectors",
+            "Have a fallback line if the poll shows almost nobody has a paid plan — that is a likely result",
+            "Do NOT make this a work-session track — nobody gets provisioned in 30 minutes, and now we know it is weeks",
+            "The poll will likely show almost nobody has it. That is the honest lead-in to this slide, not a problem with it",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 8: YOUR COURSE MATERIALS AS CONTEXT (ported from Mar 6 "Materials") ──
+  // Sets up slide 10. The Mar 6 version already had the thesis in it —
+  // "materials in a folder you own belong to you" — before there was a
+  // desktop app that made it practical.
+  {
+    label: "Materials as Context",
+    content: (
+      <SlideShell tag="Segment 2 · 5 min" tagColor="bg-emerald-700">
+        <Heading>Your Course Materials as Context</Heading>
+
+        <div className="bg-gray-900 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Where the rest of today is going</p>
+          <p className="text-sm text-white leading-relaxed mb-2">
+            Everything from here builds one idea: <strong className="text-red-300">you are the
+            context designer for your course.</strong> Each tool adds a layer to what that means,
+            and I'll mark them as we go.
+          </p>
+          <p className="text-sm text-gray-300 leading-relaxed">
+            This is a level above prompting. A good prompt is a sentence. Context design is
+            deciding what the model can see, what it may not, what shape the output has to take,
+            and who it is for — the architecture that a prompt operates inside.
+            <span className="text-gray-400"> (Prompting gets its own session on January 29.)</span>
+          </p>
+        </div>
+
+        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-4">
+          <p className="text-sm text-emerald-900">
+            Students learn from <strong>you</strong> — how you organize a course, the
+            connections you draw, the sequence you choose. Canvas delivers that structure.
+            But it isn't a deep authoring tool. If you want interactivity, you need something
+            that can <strong>think with your materials</strong>.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Canvas organizes</p>
+            <p className="text-sm text-gray-700">Canvas is where your course lives. It isn't where your course thinks. Your syllabus, readings, notes, and rubrics are related — Canvas doesn't treat them that way.</p>
+          </div>
+          <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">AI works in context</p>
+            <p className="text-sm text-gray-700">Give it your materials and it can build assignments, quizzes, summaries, and discussion prompts grounded in <em>your</em> course — not someone else's.</p>
+          </div>
+          <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-purple-700 mb-1">Gemini Notebook is the entry point</p>
+            <p className="text-sm text-gray-700">Upload notes, readings, or a syllabus. It indexes them and lets you — and your students — treat your course as a knowledge base.</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Open source = permission to transform</p>
+            <p className="text-sm text-gray-700">A proprietary textbook can't be fed to AI tools or redistributed as derivatives. With open material, <strong>derivatives are the point</strong>.</p>
+            <p className="text-xs text-gray-500 mt-2 italic">Cite the source. Note where AI was used. Model the practice you want from students.</p>
+          </div>
+          <div className="bg-red-50 border-l-4 border-red-600 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-1">Ownership</p>
+            <p className="text-sm text-gray-700">Materials in Canvas belong to the Canvas workflow. Materials in <strong>a folder you own</strong> belong to you.</p>
+            <p className="text-xs text-gray-500 mt-2 italic">Hold this thought — the next slide is how you actually do it.</p>
+          </div>
+        </div>
+
+        <div className="mt-4">
+          <ContextLayer n={1}>Your materials are the context. Not the internet, not a general model's idea of your field.</ContextLayer>
+
+          <Placeholder
+            port={["Materials", "Context Prompt"]}
+            todo={[
+              "Decide whether to also port the Mar 6 'Context Prompt' code block — \"Use ONLY the materials I have provided\" is the single most reusable artifact in the old deck",
+            ]}
+            onDay={[
+              "The ownership card sets up the next two slides. Say it deliberately and let it sit",
+              "This is where takeaway #01 gets earned — you are the context designer",
+            ]}
+          />
+        </div>
+      </SlideShell>
+    ),
+  },
+
+  // ── 9: THE CANVAS ROUND TRIP ──
+  // The practical how-to. Highest-value slide in the deck and the riskiest
+  // to teach: a bad import damages someone's live course. Import ADDS
+  // content, it does not replace. Sandbox first, every time.
+  {
+    label: "Canvas Round Trip",
+    content: (
+      <SlideShell tag="Segment 3c · 8 min" tagColor="bg-red-600">
+        <Heading>Out of Canvas, Through AI, Back Into Canvas</Heading>
+        <Lede>
+          The full loop. Run your own rubric across a whole course, fix what it finds, and
+          put it back — using the licensed tool you can buy through the Software Portal.
+        </Lede>
+
+        <div className="space-y-2 mb-4">
+          {[
+            ["1", "Export", "Course → Settings → Export Course Content → Course → Create Export. Download the .imscc file.", "bg-gray-50 border-gray-300"],
+            ["2", "Unzip", "Rename .imscc to .zip and unzip it. That folder is your course — pages, files, and a manifest that maps them.", "bg-gray-50 border-gray-300"],
+            ["3", "Work", "Use a licensed tool. ChatGPT Edu with Codex points straight at the folder; Gemini through ScarletApps takes the files uploaded. Run your rubric across every page, check objectives against the schedule, fix heading structure for accessibility.", "bg-red-50 border-red-500"],
+            ["4", "Re-zip", "Zip the folder back up. Do NOT rename, add, or delete files — the manifest maps them by name and path.", "bg-gray-50 border-gray-300"],
+            ["5", "Import — specific content", "Settings → Import Course Content → Common Cartridge. Choose Select specific content and pick only what you changed. Sandbox first if the course is live.", "bg-amber-50 border-amber-500"],
+            ["6", "Verify, then move", "Check it rendered correctly, then copy what you want into the live course.", "bg-emerald-50 border-emerald-500"],
+          ].map(([n, title, body, cls], i) => (
+            <div key={i} className={`${cls} border-l-4 rounded-lg px-4 py-2.5 flex items-start gap-3`}>
+              <span className="text-lg font-black text-gray-400 flex-shrink-0 leading-none mt-0.5">{n}</span>
+              <div>
+                <p className="text-sm font-black text-gray-900">{title}</p>
+                <p className="text-xs text-gray-700 leading-relaxed">{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-emerald-50 border-l-4 border-emerald-600 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">The good news — this is why the loop works</p>
+          <p className="text-sm text-gray-800 mb-2">
+            Canvas tags every item with a migration ID and keeps it through export. Re-import the
+            same course and it <strong>matches on that ID and replaces</strong> — you do not get two
+            of everything. Canvas tells you so:
+          </p>
+          <p className="text-xs text-gray-700 italic border-l-2 border-emerald-300 pl-3">
+            "Previously imported content from the same course will be replaced. Manually added
+            content will remain."
+          </p>
+        </div>
+
+        <div className="bg-gray-900 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-amber-300 mb-2">And that is exactly where the danger is</p>
+          <ul className="space-y-1.5">
+            <li className="flex items-start gap-2 text-sm text-gray-100">
+              <span className="text-amber-400 font-bold flex-shrink-0">!</span>
+              <span><strong>Anything you edited in Canvas after exporting gets overwritten.</strong> The import wins. Those edits are gone, and <strong>it cannot be undone.</strong></span>
+            </li>
+            <li className="flex items-start gap-2 text-sm text-gray-100">
+              <span className="text-amber-400 font-bold flex-shrink-0">!</span>
+              <span><strong>Never do this in a live course with student work in it.</strong> Submissions and grades are on the line.</span>
+            </li>
+            <li className="flex items-start gap-2 text-sm text-gray-100">
+              <span className="text-amber-400 font-bold flex-shrink-0">!</span>
+              <span>Use <strong>Select specific content</strong> on import. Replace the three pages you changed, not the whole course.</span>
+            </li>
+            <li className="flex items-start gap-2 text-sm text-gray-100">
+              <span className="text-amber-400 font-bold flex-shrink-0">!</span>
+              <span><strong>New Quizzes are the exception</strong> — re-importing reverts to the original. You have to duplicate the assessment to bring changes in.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">Why this stays inside policy</p>
+          <p className="text-sm text-gray-700">
+            Your course content goes into a Rutgers-licensed tool and comes back out. That's
+            exactly what the AI Initiative asks for. Steps 1, 2, 4, 5 and 6 are identical whichever
+            licensed tool does step 3 — <strong>the workflow is yours today, through ScarletApps,
+            with no purchase and no approval.</strong> Codex makes step 3 faster; it does not make
+            the workflow possible.
+          </p>
+        </div>
+
+        <ContextLayer n={2}>You own the corpus. It can leave Canvas, be worked on, and come back.</ContextLayer>
+
+        <Demo
+          mode="Hybrid"
+          time="8 min · THE demo"
+          what="Export → unzip → work → re-zip → import to sandbox. Live, recorded middle, live."
+          steps={[
+            "LIVE: Settings → Export Course Content → download → unzip",
+            "RECORDED: the folder being processed — slow and dull in real time",
+            "LIVE: re-zip → Import Course Content → SANDBOX → verify",
+            "Show GEMINI first, Codex second as the upgrade",
+            "Say out loud: this is a copy, and this is a sandbox",
+          ]}
+          fallback="Pre-exported .imscc on the desktop; skip straight to the import half."
+        />
+
+        <Placeholder
+          todo={[
+            "⚠ RUN THE WHOLE LOOP YOURSELF FIRST, on a real course, into a real sandbox. This is the one slide where being wrong damages someone else's course",
+            "Confirm the exact Canvas menu wording for THIS Canvas instance — it drifts between versions",
+            "Confirmed: same-course re-import matches on migration ID and REPLACES. Verify it behaves that way on the Rutgers instance before you say it on stage",
+            "Decide whether faculty can even create a sandbox course themselves, or whether that is a request — if it's a request, this workflow has a lead time and they need to know",
+            "Write the rubric prompt you'll demo in step 3 — that prompt is the artifact people will actually want",
+            "DEMO STEP 3 IN GEMINI, not only Codex. Codex is the version most of the room cannot legally reproduce on Monday",
+          ]}
+          onDay={[
+            "Demo on a copy. Say that you are demoing on a copy",
+            "This is the slide people will screenshot. Slow down",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 10: ONE FOLDER, MANY MODELS ──
+  {
+    label: "One Folder, Many Models",
+    content: (
+      <SlideShell tag="Segment 3b · 6 min" tagColor="bg-blue-700">
+        <Heading>Your Materials Stay Put. The Engine Swaps.</Heading>
+        <Lede>
+          This is the part that has no equivalent in a chat window. Your course folder sits
+          on your machine and doesn't move. What changes is which model you point at it —
+          and you pick that per job, not once and forever.
+        </Lede>
+
+        <div className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">The shape of it</p>
+          <p className="text-sm text-gray-800">
+            <strong>The folder you just exported</strong> →
+            <strong> one folder</strong> on your machine →
+            <strong> one desktop app</strong> →
+            <strong> 75+ models</strong> you can switch between, cloud or local.
+          </p>
+        </div>
+
+        <div className="bg-white border-l-4 border-red-500 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-red-600 mb-1">Why that export was worth doing</p>
+          <p className="text-sm text-gray-800 mb-2">
+            Exporting your Canvas course used to be a backup chore with no payoff — a file you
+            saved and never opened. <strong>That changed.</strong> The export is now the input:
+            unzip it and you have the folder an agent can actually work across.
+          </p>
+          <p className="text-sm text-gray-700">
+            Your course stops being something you edit one page at a time through a browser,
+            and becomes a body of material you can ask questions about all at once.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <div className="bg-red-50 border-l-4 border-red-600 rounded-lg p-3">
+            <p className="text-xs font-black uppercase tracking-widest text-red-700 mb-1">The licensed option · ChatGPT Edu</p>
+            <p className="text-sm text-gray-700">Desktop app with Codex, which is what runs across a folder. <strong>Keeps course content inside a licensed tool</strong> — what policy asks of you. Needs departmental procurement, so treat it as the destination, not the starting point.</p>
+          </div>
+          <div className="bg-gray-900 rounded-lg p-3">
+            <p className="text-xs font-black uppercase tracking-widest text-red-400 mb-1">Not approved · free consumer tiers</p>
+            <p className="text-sm text-gray-100">A free ChatGPT or Claude account is <strong>not licensed by the University</strong>. It does not matter that the tool is capable — course content and student work do not go there.</p>
+          </div>
+          <div className="bg-emerald-50 border-l-4 border-emerald-600 rounded-lg p-3">
+            <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">Start here · Gemini via ScarletApps</p>
+            <p className="text-sm text-gray-700">Licensed, and you already have it. Upload the exported files rather than pointing at a folder — more manual, but it is available to every single person in this room today.</p>
+          </div>
+          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-3">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">Your own research · local models</p>
+            <p className="text-sm text-gray-700">LM Studio and similar run open models on your own machine. Excellent for learning what these things do, on your own reading and writing. <strong>Not a route around licensing for course content.</strong></p>
+          </div>
+        </div>
+
+        <div className="bg-gray-100 rounded-xl px-5 py-3 mb-4">
+          <p className="text-sm text-gray-700">
+            <strong>Why this is the "beyond" in Beyond the Chatbot:</strong> a chatbot makes you
+            bring your material to it, one paste at a time, and you take whatever model it gives you.
+            Here the material stays where it lives and you choose the engine — from the ones the
+            University has actually licensed.
+          </p>
+        </div>
+
+        <ContextLayer n={3}>The context is the durable asset. The model is the disposable part.</ContextLayer>
+
+        <Demo
+          mode="Recorded"
+          time="60 sec"
+          what="Same folder, same prompt, run on a local model then a licensed one."
+          steps={[
+            "Play at speed",
+            "Talk over it — the comparison is the point, not the waiting",
+          ]}
+          fallback="Two screenshots side by side."
+        />
+
+        <Placeholder
+          port={[]}
+          todo={[
+            "Don't re-teach the export here — the previous slide already did it. This slide is only about which engine, and why licensed matters",
+            "Demo the switch itself — same folder, same prompt, run it on a local model then a frontier one",
+            "VERIFY the ChatGPT Edu desktop app + Codex actually works on a local folder under the $10 tier — the Canvas round trip depends on this",
+            "Name the tradeoff honestly — local is slower and weaker; say so rather than selling it",
+            "Show where the model picker actually lives in the desktop UI; that's the whole trick",
+            "Have a story for \"what if I don't want an agent touching my files\" — read-only first, copy of the folder",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 11: GEMINI NOTEBOOK ──
+  {
+    label: "Gemini Notebook",
+    content: (
+      <SlideShell tag="Segment 4 · 8 min" tagColor="bg-purple-600">
+        <Heading>Gemini Notebook</Heading>
+
+        <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4 mb-4">
+          <p className="text-sm text-gray-800">
+            <strong>This is NotebookLM.</strong> Google renamed it on July 16, 2026 — new name, new logo,
+            same product. Your notebooks, sources, and shared links all still work; old links redirect.
+          </p>
+          <p className="text-xs text-gray-600 mt-2">
+            The session abstract you registered on says "NotebookLM." Same thing.
+          </p>
+        </div>
+
+        <Lede>
+          Keeps the AI grounded in your own syllabus and readings instead of letting it
+          wander the open web. The grounding is the whole point — and it did not change in the rename.
+        </Lede>
+
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Actually new in the same update</p>
+          <ul className="space-y-1.5">
+            <Bullet icon="→">A secure <strong>cloud computer</strong> in each notebook that can write and run code</Bullet>
+            <Bullet icon="→">Rolling out to Ultra subscribers first, Pro following — <strong>check what your account has</strong></Bullet>
+          </ul>
+        </div>
+
+        <ContextLayer n={4}>Grounding is a constraint you impose — not a feature you are given.</ContextLayer>
+
+        <Demo
+          mode="Live"
+          time="3 min"
+          what="Pre-built notebook from a real syllabus + 2 readings. Ask 3 student questions and trace a citation."
+          steps={[
+            "Ask a question a student would actually ask",
+            "CLICK THE CITATION through to the source passage — this is the demo",
+            "Do not build the notebook live, ever",
+          ]}
+          fallback="Screen recording of the citation trace."
+        />
+
+        <Placeholder
+          port={["NotebookLM", "Materials"]}
+          todo={[
+            "Rename every \"NotebookLM\" mention in ported Mar 6 slides + screenshots — logo changed too",
+            "Use a live notebook built from a real syllabus, not a canned one",
+            "Show a citation trace — click through to the source passage",
+            "Confirm whether ScarletApps accounts get the cloud computer at all before demoing it",
+            "Audio Overview: mention it, don't spend five minutes on it",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 12: GEMS vs NOTEBOOK (new — both ground on your sources) ──
+  {
+    label: "Gems vs. Notebook",
+    content: (
+      <SlideShell tag="Segment 4b · 4 min" tagColor="bg-indigo-600">
+        <Heading>Two Tools That Both "Use Only My Sources"</Heading>
+        <Lede>
+          As of Monday you have two Google tools that ground on material you upload.
+          They overlap enough to be genuinely confusing, so here's the split.
+        </Lede>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-purple-600 mb-1">Gemini Notebook</p>
+            <p className="text-sm font-bold text-gray-900 mb-2">Reach for it to <em>understand</em> a body of material</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">Many sources held together in one workspace</Bullet>
+              <Bullet icon="·">Citations back to the exact passage</Bullet>
+              <Bullet icon="·">Built for reading, synthesis, and study artifacts</Bullet>
+            </ul>
+          </div>
+          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">Gems</p>
+            <p className="text-sm font-bold text-gray-900 mb-2">Reach for it to <em>reuse a behavior</em> over and over</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">A persistent persona with your instructions baked in</Bullet>
+              <Bullet icon="·">Guided Learning mode → tutors and study tools</Bullet>
+              <Bullet icon="·">Shares via Google Drive — no direct links</Bullet>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-gray-100 rounded-xl px-5 py-3 mb-4">
+          <p className="text-sm text-gray-700">
+            <strong>Rough rule:</strong> a notebook is a place you go to think with your sources;
+            a Gem is a helper you hand to someone else — including students.
+          </p>
+        </div>
+
+        <ContextLayer n={5}>Encode your intent, not only your sources. A Gem carries how you want it read.</ContextLayer>
+
+        <Demo
+          mode="Live"
+          time="3 min"
+          what="Same syllabus in both. Then ask the Gem something outside its sources and let it decline."
+          steps={[
+            "Show the notebook and the Gem side by side",
+            "Ask the out-of-scope question",
+            "The refusal is the most persuasive moment in the deck",
+          ]}
+          fallback="Recording of the refusal. Rehearse the question — if it answers instead of declining, pick a different one."
+        />
+
+        <Placeholder
+          port={["Gems Demo"]}
+          todo={[
+            "PRESSURE-TEST THE RULE ABOVE — I wrote it from the announcement, not from building both",
+            "Build one Gem and one notebook from the SAME syllabus; show them side by side",
+            "Answer the question everyone will ask: which do I point students at?",
+            "Cover the Drive-only sharing limit here — it decides what is realistic with a class",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 13: AGENTS ──
+  {
+    label: "Agents",
+    content: (
+      <SlideShell tag="Segment 2 · 6 min" tagColor="bg-blue-600">
+        <Heading>Agents</Heading>
+        <Lede>
+          An agent browses the web, writes, and completes multi-step tasks on its own.
+          You already watched one do it — that was Codex working across the course folder.
+          Here is what was actually happening, and where it goes wrong.
+        </Lede>
+
+        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">Say this plainly</p>
+          <p className="text-sm text-gray-700 mb-2">
+            The folder agent you just watched runs in ChatGPT Edu — the plan most of you cannot
+            buy yet. It is the deep end of what agents do.
+          </p>
+          <p className="text-sm text-gray-700">
+            <strong>The everyday end is different and you already have it.</strong> Semester
+            prep is the obvious one: check your syllabus dates against the Fall 2026 academic
+            calendar, confirm the building and room, verify add/drop and withdrawal deadlines.
+            Work you do by hand every term, that an agent can do while you read something else.
+          </p>
+        </div>
+        <ContextLayer n={6}>Delegated work still happens inside your frame. You set the frame first.</ContextLayer>
+
+        <Demo
+          mode="Recorded"
+          time="2 min + live discussion"
+          what="TWO examples: inside your materials (Codex), and out on the web (semester prep)."
+          steps={[
+            "A) CODEX across the course folder — internal consistency. Same recording as slide 9",
+            "B) WEB: 'Check my syllabus dates against the Fall 2026 academic calendar and tell me what disagrees'",
+            "B keeps going: confirm the building and room, check add/drop and withdrawal deadlines",
+            "B is licensed, runnable Monday, and every person in the room does it by hand every term",
+            "Let it get one thing wrong. Catch it out loud — that is takeaway #06",
+          ]}
+          fallback="It is already recorded. This is the fallback."
+        />
+
+        <Placeholder
+          port={["Agents", "Chatbot vs. Agent", "Monday"]}
+          todo={[
+            "Record ONE Codex session that serves both this slide and slide 9 — do not shoot two",
+            "Run the syllabus-vs-calendar check yourself first — you need to know the right answer before you can catch it being wrong on stage",
+            "Use a REAL syllabus with at least one genuinely wrong date in it. The agent finding a mistake you actually made is the whole demo",
+            "Codex looks like programming to this room. Say what it is doing in plain language while it runs, or it reads as 'not for me'",
+            "Script the failure you want on camera — an invented citation is the best one",
+            "The honest limits: what it gets wrong, and exactly how you caught it",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 14: VIBE CODING ──
+  {
+    label: "Vibe Coding",
+    content: (
+      <SlideShell tag="Segment 3 · 9 min" tagColor="bg-indigo-600">
+        <Heading>Vibe Coding</Heading>
+        <Lede>
+          Describe a Canvas page, quiz, or interactive activity in plain English and get
+          working content back — no coding experience required. Two ways in, and the
+          difference between them decides what you can build.
+        </Lede>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-indigo-50 border-l-4 border-indigo-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-indigo-600 mb-1">Path 1 · In the chat window</p>
+            <p className="text-sm font-bold text-gray-900 mb-2">Gemini, ChatGPT, Claude</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">Describe it, get it back, copy it into Canvas</Bullet>
+              <Bullet icon="·">Nothing to install — start in 30 seconds</Bullet>
+              <Bullet icon="·">Works on <strong>one thing at a time</strong></Bullet>
+            </ul>
+          </div>
+
+          <div className="bg-blue-50 border-l-4 border-blue-600 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">Path 2 · On your own files</p>
+            <p className="text-sm font-bold text-gray-900 mb-2">OpenCode desktop — free, open source</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">Point it at a <strong>folder of course material</strong></Bullet>
+              <Bullet icon="·">It reads, edits, and creates files in place — no copy-paste</Bullet>
+              <Bullet icon="·">Works across <strong>a whole course at once</strong></Bullet>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-gray-100 rounded-xl px-5 py-3 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">What path 2 makes possible that path 1 doesn't</p>
+          <ul className="space-y-1.5">
+            <Bullet icon="→">"Make every module page follow the same structure"</Bullet>
+            <Bullet icon="→">"Check my schedule against my syllabus and list what disagrees"</Bullet>
+            <Bullet icon="→">"Convert this folder of handouts to accessible HTML"</Bullet>
+          </ul>
+        </div>
+
+        <ContextLayer n={7}>Anything you generate inherits the context it was built from.</ContextLayer>
+
+        <Demo
+          mode="Live"
+          time="4 min"
+          what="One Canvas page → a working interactive activity, then paste it back into Canvas."
+          steps={[
+            "Use a real page of your own",
+            "Ask for one change in plain English so they see it iterate",
+            "Show the paste-into-Canvas step — that is where people get stuck",
+          ]}
+          fallback="Finished HTML file ready to open. The folder-scale version already ran on slide 9."
+        />
+
+        <Placeholder
+          port={["Vibe Code", "Live Build", "The Prompt"]}
+          todo={[
+            "Build something Canvas-shaped live — the Mar 6 demo was a standalone page",
+            "Show the paste-into-Canvas step; that's the part people get stuck on",
+            "DEMO PATH 2 ON A REAL COURSE FOLDER — the whole-course example is the thing they haven't seen",
+            "Use a COPY of the folder on stage; an agent editing files in place makes people nervous, rightly",
+            "Say which model it's pointed at during the demo — cloud vs local changes the privacy answer",
+            "Prepared fallback artifact in case either live build stalls",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 15: LOCAL AI ──
+  {
+    label: "Local AI Tools",
+    content: (
+      <SlideShell tag="Segment 5 · 4 min" tagColor="bg-emerald-600">
+        <Heading>Local AI Tools</Heading>
+        <Lede>
+          Speech-to-text, text-to-speech, and small models running on your own laptop —
+          build course materials without anything leaving the room.
+        </Lede>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+          <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-xl p-4">
+            <p className="text-[11px] font-black uppercase tracking-widest text-emerald-700 mb-1">Start here · no setup</p>
+            <p className="text-sm font-bold text-gray-900 mb-1">Speech &amp; voice</p>
+            <p className="text-xs text-gray-600">Handy for speech-to-text; text-to-speech in the browser. Runs on your machine, works today.</p>
+          </div>
+          <div className="bg-teal-50 border-l-4 border-teal-500 rounded-xl p-4">
+            <p className="text-[11px] font-black uppercase tracking-widest text-teal-700 mb-1">Some setup</p>
+            <p className="text-sm font-bold text-gray-900 mb-1">Small models via Ollama</p>
+            <p className="text-xs text-gray-600">Pull a model, run it offline. Modest hardware gets you surprisingly far.</p>
+          </div>
+          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-4">
+            <p className="text-[11px] font-black uppercase tracking-widest text-blue-700 mb-1">For your own research</p>
+            <p className="text-sm font-bold text-gray-900 mb-1">LM Studio · OpenCode</p>
+            <p className="text-xs text-gray-600">Free, run entirely on your machine, and the fastest way to understand what these models actually do. For your own reading and writing — not course content. Links in Resources.</p>
+          </div>
+        </div>
+
+        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-lg p-3 mb-4">
+          <p className="text-sm text-gray-700">
+            <strong>"Local" is a configuration, not a default.</strong> Open tools connect to 75+ cloud
+            providers straight out of the box, and in that mode your material absolutely does leave the
+            room — outside anything Rutgers has licensed. It is local <em>only</em> when you deliberately
+            point it at a local model. If you explore this, that setting is the whole ballgame.
+          </p>
+        </div>
+
+        <Demo
+          mode="Live"
+          time="90 sec"
+          what="Handy dictating a paragraph, then browser TTS reading a passage aloud."
+          steps={[
+            "Dictate something real, not 'testing one two three'",
+            "Then TTS a course reading",
+            "Name it: none of that touched the internet",
+          ]}
+          fallback="Pre-generated audio file. Check mic permissions BEFORE Zoom takes the mic."
+        />
+
+        <Placeholder
+          port={["Voice", "Making It Accessible", "STEM OCR"]}
+          todo={[
+            "Handy (speech-to-text) + browser TTS demo — both ran well on Mar 6",
+            "Say plainly why local matters: unreleased material, student work, no vendor terms",
+            "20-second mention, not a demo — frame it as personal research and point at Resources",
+            "Confirm the desktop client is still beta on Friday, and say so if it is",
+            "Keep STEM OCR brief — it's the Nov 6 session's core topic, not this one",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 16: STUDENTS ──
+  {
+    label: "What Students Bring",
+    content: (
+      <SlideShell tag="Segment 6 · 5 min" tagColor="bg-gray-700">
+        <Heading>What Students Are Arriving With</Heading>
+        <Lede>
+          Not a single baseline — a wider spread than we have ever designed for.
+        </Lede>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">The ceiling is higher than ours</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">They aren't limited to what the University licenses</Bullet>
+              <Bullet icon="·">They can pay for frontier tools we don't have, and use anything they find</Bullet>
+              <Bullet icon="·">No procurement, no approval, no admin toggle</Bullet>
+            </ul>
+          </div>
+          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-4">
+            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-2">The floor is lower than we assume</p>
+            <ul className="space-y-1.5">
+              <Bullet icon="·">Many have had <strong>no formal instruction in AI at all</strong></Bullet>
+              <Bullet icon="·">Students don't arrive at college equally prepared, and this is one more axis of that</Bullet>
+              <Bullet icon="·">Some don't know these tools exist, let alone how to use them well</Bullet>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-gray-900 rounded-xl px-5 py-3 mb-4">
+          <p className="text-sm text-white">
+            The gap between the most and least equipped student in your class is
+            <strong className="text-red-300"> wider than it has ever been</strong> — and it
+            tracks the advantages they showed up with. An assignment written for a single
+            baseline now meets two very different rooms at once.
+          </p>
+        </div>
+
+        <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-2">What you still control</p>
+          <ul className="space-y-1.5">
+            <Bullet icon="→">You can't police access. You <strong>can</strong> say what good use looks like in this course</Bullet>
+            <Bullet icon="→"><strong>Be transparent about your own use.</strong> Showing students how you used AI on the course — and where you chose not to — teaches more than a policy paragraph</Bullet>
+            <Bullet icon="→">Naming what you don't want is as instructive as naming what you do</Bullet>
+          </ul>
+        </div>
+        <Interact
+          kind="Shared doc · or unmute"
+          prompt="What have you actually seen from students — at either end? The one who used it brilliantly, or the one who clearly had no idea it existed."
+          note="Best interaction in the deck. Asking for BOTH ends surfaces the spread instead of ten variations on the same cheating story. Invite unmuting here — this one is worth hearing in someone's actual voice, and it records well for clips."
+        />
+
+        <ContextLayer n={8}>You design the context your students work inside. That is the whole job.</ContextLayer>
+
+        <Placeholder
+          port={["Assessment", "Context Engineering", "Context Prompt"]}
+          todo={[
+            "Fresh data on student tool use — Mar 6 numbers are six months old",
+            "Find data on the SPREAD, not the average — \"68% have used AI\" hides the whole point",
+            "One assignment, shown against both ends: the over-equipped student and the one who has never been taught",
+            "Decide how far to take the equity framing — it is the honest read and it is also the one that can dominate the room",
+            "Model the transparency you are asking for: say out loud which parts of THIS deck you built with AI, and which you didn't",
+            "Point forward to the Apr 9, 2027 rubric session rather than solving it here",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 17: TAKEAWAYS ──
+  // Arc: who you are -> the uneven terrain you design for -> what you
+  //      design over -> the institutional reality you design within ->
+  //      the call that is yours -> the part that never transfers.
+  {
+    label: "Takeaways",
+    content: (
+      <SlideShell tag="The Bridge · 3 min" tagColor="bg-gray-900">
+        <Heading>What You're Walking Out With</Heading>
+        <Lede>
+          We built one idea across eight layers. Here it is, and the five things that follow from it.
+        </Lede>
+
+        <div className="flex items-center gap-3 bg-gray-900 rounded-lg px-4 py-2.5 mb-4">
+          <div className="flex gap-1 flex-shrink-0">
+            {Array.from({ length: CONTEXT_LAYERS }, (_, i) => (
+              <span key={i} className="w-1.5 h-4 rounded-sm bg-red-500" />
+            ))}
+          </div>
+          <p className="text-sm font-bold text-white leading-snug">
+            Context design · complete
+          </p>
+        </div>
+
+        <div className="space-y-2 mb-4">
+          {[
+            ["01", "I'm the context designer for my course.",
+             "Not the prompt writer — the designer of what the model can see, what it may not, and what the output has to be. Which model I pick matters far less than the context I build around it. Everything else on this list follows from this one.",
+             "All eight layers"],
+            ["02", "I can't control what my students use. I frame what good use looks like here.",
+             "They aren't limited to what the University licenses — some will pay for tools I don't have, others have never been taught these exist. I can't close that gap by policy. But I set what counts as acceptable in this course, and being transparent about how I use AI myself teaches them more than a syllabus paragraph ever will.",
+             "Students"],
+            ["03", "My course is a body of material, not a stack of pages.",
+             "Exporting it stopped being a backup chore and became the first move. Questions I could never ask one page at a time are now one question across everything.",
+             "One Folder, Many Models"],
+            ["04", "What a tool can do and what I'm allowed to do are different questions.",
+             "A $10 subscription I cannot buy without a business manager is the plainest example. Agent modes, connectors, publishing — all switched on or off by someone else. So I ask what's enabled and who enables it, and I start those conversations early.",
+             "Free vs. Paid"],
+            ["05", "Choosing a model is a privacy and security decision.",
+             "It's the reason the University evaluates third-party vendors and their policies at all — that review exists to answer a real question. A local model may still be weaker, though that gap is closing fast, and nothing on it crosses the internet. Either way the responsibility lands on me, not the vendor.",
+             "One Folder · Local AI"],
+            ["06", "I can delegate the work. I can't delegate the judgment.",
+             "I guide an agent the way I guide a student — toward work that fits the context and learning goals of this course, not toward whatever is generically good. \"Acceptable\" isn't a standard the model knows. It's mine, and checking against it is the part of my job that doesn't move.",
+             "Agents · every demo today"],
+          ].map(([n, claim, body, src], i) => (
+            <div key={i} className="flex items-start gap-3 bg-gray-50 border-l-4 border-red-600 rounded-lg px-4 py-2.5">
+              <span className="text-xl font-black text-red-600 flex-shrink-0 leading-none mt-0.5">{n}</span>
+              <div className="flex-1">
+                <p className="text-sm font-black text-gray-900 mb-0.5">{claim}</p>
+                <p className="text-xs text-gray-600 leading-relaxed">{body}</p>
+              </div>
+              <span className="text-[10px] text-gray-400 italic flex-shrink-0 hidden lg:block w-40 text-right mt-1">{src}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-gray-900 rounded-xl px-5 py-3 mb-4">
+          <p className="text-sm text-white">
+            Every one of these says the same thing a different way:
+            <strong className="text-red-300"> you are designing this, not receiving it.</strong>
+          </p>
+        </div>
+
+        <Placeholder
+          port={["Context Engineering", "Context Prompt", "Assessment"]}
+          todo={[
+            "Read #01 as the arrival, not a new idea — the room has been assembling it since slide 8",
+            "Map to Pathway Competencies 1, 2, 3 — the event listing promises alignment and these are the natural evidence",
+            "Put these on the one-page handout; they are what people keep after Zoom closes",
+            "Consider opening the session with #1 and closing with #6 — bookends rather than a single block",
+            "#02 is the one that will start an argument. Decide if you want it in the room or deferred to the Apr 9 rubric session",
+            "Possible 7th: \"teaching AI literacy is now part of my job, because no one else is doing it systematically.\" Currently implied by #02 rather than stated",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 18: WORK SESSION ──
+  {
+    label: "Work Session",
+    content: (
+      <SlideShell tag="Hands-On · 30 min" tagColor="bg-red-600">
+        <Heading>Your Turn — 30 Minutes</Heading>
+        <Lede>
+          Pick one track and run it on <strong>the course you are teaching in eleven days</strong>.
+          Not a practice exercise — actual prep you need done. Everyone stays in the main room;
+          questions go in the shared doc and I'll answer out loud.
+        </Lede>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-4 text-center">
+          <div className="bg-gray-100 rounded-lg px-3 py-2">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500">0–5 min</p>
+            <p className="text-sm font-bold text-gray-900">Pick &amp; set up</p>
+          </div>
+          <div className="bg-red-50 rounded-lg px-3 py-2">
+            <p className="text-xs font-black uppercase tracking-widest text-red-600">5–25 min</p>
+            <p className="text-sm font-bold text-gray-900">Work · chat is open</p>
+          </div>
+          <div className="bg-gray-100 rounded-lg px-3 py-2">
+            <p className="text-xs font-black uppercase tracking-widest text-gray-500">25–30 min</p>
+            <p className="text-sm font-bold text-gray-900">Show one thing</p>
+          </div>
+        </div>
+
+        <div className="space-y-2 mb-4">
+          {[
+            ["Agents", "bg-blue-50 border-blue-500",
+             "Check your fall syllabus against the academic calendar, room, and deadlines",
+             "You find at least one thing that was wrong"],
+            ["Vibe Coding", "bg-indigo-50 border-indigo-500",
+             "Build the week-one activity you haven't made yet",
+             "Something you could put in Canvas before you log off"],
+            ["Your Course as a Folder", "bg-red-50 border-red-600",
+             "Export the course you're teaching and ask what's inconsistent across it",
+             "A list of fixes you'd never have found page by page"],
+            ["Gemini Notebook / Gem", "bg-purple-50 border-purple-500",
+             "Build the study tutor for your first unit",
+             "It answers from your sources and declines everything else"],
+            ["Local AI", "bg-emerald-50 border-emerald-500",
+             "Narrate your week-one welcome, or transcribe something you need in text",
+             "A file you made with nothing leaving your laptop"],
+          ].map(([name, cls, task, done], i) => (
+            <div key={i} className={`${cls} border-l-4 rounded-lg px-4 py-2 flex flex-col md:flex-row md:items-center gap-1 md:gap-4`}>
+              <p className="text-sm font-black text-gray-900 md:w-52 flex-shrink-0">{name}</p>
+              <p className="text-xs text-gray-700 flex-1">{task}</p>
+              <p className="text-xs text-gray-500 italic md:w-72 flex-shrink-0">Done when: {done}</p>
+            </div>
+          ))}
+        </div>
+
+        <Poll
+          question="Which track are you taking for the next 30 minutes?"
+          options={[
+            "Agents",
+            "Vibe coding",
+            "Your course as a folder",
+            "Gemini Notebook / Gem",
+            "Local AI",
+          ]}
+          note="Launch BEFORE you turn them loose. Results tell you which recipe to walk through out loud first. Frame it as: which of these do you need done before September 1?"
+        />
+
+        <Placeholder
+          port={[]}
+          todo={[
+            "See work-session.md in this folder for the full facilitation plan and the five recipes",
+            "Write the five one-page recipes — each must fit on ONE page and assume zero setup",
+            "Have a starter pack for anyone who brought nothing: a sample syllabus, page, and reading",
+            "Add a 6th option people will ask for: draft the AI-use statement for their fall syllabus. It is the most last-minute thing on anyone's list right now",
+            "Pre-export one of your own courses so the folder track can start instantly",
+            "Decide the share-back format — 2 volunteers screen-sharing beats 10 people describing",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 19: RESOURCES ──
+  {
+    label: "Resources",
+    content: (
+      <SlideShell tag="Take With You" tagColor="bg-gray-700">
+        <Heading>Resources</Heading>
+        <Lede>
+          Links, handouts, and where to go next in the 2026–27 workshop series.
+        </Lede>
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">From OIT's August 17 announcement</p>
+          <ul className="space-y-1.5">
+            <Bullet icon="→">Google docs: how to use Gems · premade Gems quick start · tips for custom Gems</Bullet>
+            <Bullet icon="→">Google docs: sharing chats, canvases, and generated media via Drive</Bullet>
+            <Bullet icon="→"><strong>Data classification chart for AI tools</strong> — read before uploading anything</Bullet>
+            <Bullet icon="→">Questions: <span className="text-blue-600 font-semibold">help@scarletmail.rutgers.edu</span></Bullet>
+          </ul>
+        </div>
+
+        <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-4 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">For your own research — not for course content</p>
+          <p className="text-sm text-gray-700 mb-3">
+            If you want to understand what these tools can really do, the best way is to try them on
+            something of your own. These two are free, run on your machine, and cost you nothing but disk space.
+          </p>
+          <ul className="space-y-1.5">
+            <Bullet icon="→"><strong>LM Studio</strong> — lmstudio.ai · desktop app for running open models locally. No terminal, no account. Start here</Bullet>
+            <Bullet icon="→"><strong>OpenCode</strong> — opencode.ai · open source agent that works across a folder of files, in the terminal or a desktop client</Bullet>
+          </ul>
+          <p className="text-xs text-gray-700 mt-3 bg-white border border-blue-200 rounded p-2">
+            <strong>Keep the line clean.</strong> These are for your own reading, writing, and
+            experimentation. Student work and course content stay in the licensed tools — that
+            distinction is what makes it simple.
+          </p>
+        </div>
+
+        <Placeholder
+          port={["Resources"]}
+          todo={[
+            "Paste the actual URLs from the OIT email — it linked the titles, not bare links",
+            "Port the Mar 6 link set, then prune to this session's topics",
+            "Fix the four Mar 6 NotebookLM links — they redirect, but the labels read wrong now",
+            "Add the Sep 18 / Nov 6 session registration links",
+            "Re-check every URL — several Mar 6 links point at personal notebooks",
+          ]}
+          onDay={[
+            "Say the line out loud: personal research yes, course content no. That one sentence keeps this consistent with the AI Initiative slide",
+            "LM Studio first, OpenCode second — one is a download-and-run, the other is a project",
+            "QR for this deck is already on the title slide; no second one needed here",
+          ]}
+        />
+      </SlideShell>
+    ),
+  },
+
+  // ── 20: CONTACT ──
+  {
+    label: "Contact",
+    content: (
+      <SlideShell tag="Questions" tagColor="bg-gray-700">
+        <div className="flex flex-col items-start justify-center h-full min-h-[380px]">
+          <p className="text-xs font-bold uppercase tracking-widest text-red-500 mb-3">Rutgers UOES · TIIP Partnership · August 21, 2026</p>
+          <h1 className="text-4xl font-black text-gray-900 mb-2">Questions?</h1>
+          <div className="w-20 h-1 bg-red-600 rounded mb-6" />
+          <ul className="space-y-2 mb-8">
+            <Bullet icon="→">rianders.github.io/presentations — all decks in this series</Bullet>
+            <Bullet icon="→">it.rutgers.edu/ai — Rutgers AI Hub</Bullet>
+            <Bullet icon="→">Next up: AI-Assisted Digital Accessibility Workflows · September 18, 2026</Bullet>
+          </ul>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <div className="bg-red-600 text-white text-sm font-black tracking-widest px-5 py-2 rounded inline-block mb-3">
+              RUTGERS UNIVERSITY
+            </div>
+            <p className="text-sm font-bold text-gray-800">Rick Anderson</p>
+            <p className="text-xs text-gray-500">Director of Emerging Technology · UOES</p>
+            <p className="text-blue-600 text-sm mt-2 font-semibold">rick.anderson@uoes.rutgers.edu</p>
+          </div>
+        </div>
+      </SlideShell>
+    ),
+  },
+
+
+];
+
+/* ── Presentation shell ──────────────────────────────────── */
+
+const printMode = new URLSearchParams(window.location.search).has('print');
+
+function PrintView() {
+  return (
+    <div style={{ background: 'white' }}>
+      <style>{`
+        @page { size: 11in 8.5in landscape; margin: 0; }
+        @media print {
+          body { margin: 0; }
+          .print-nav { display: none !important; }
+        }
+        .slide-page {
+          width: 100vw; height: 100vh;
+          overflow: hidden;
+          page-break-after: always;
+          break-after: page;
+          box-sizing: border-box;
+        }
+        .slide-page:last-child { page-break-after: avoid; break-after: avoid; }
+      `}</style>
+      <div className="print-nav" style={{ padding: '12px 20px', background: '#f3f4f6', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <span style={{ fontSize: '13px', color: '#6b7280' }}>
+          Print view — {slides.length} slides · DRAFT{presenterMode ? ' · WITH PRESENTER NOTES' : ' · audience version'}
+        </span>
+        <button onClick={() => window.print()} style={{ padding: '6px 16px', background: '#dc2626', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '13px', cursor: 'pointer' }}>
+          Save as PDF
+        </button>
+        <button onClick={() => window.close()} style={{ padding: '6px 16px', background: '#6b7280', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '13px', cursor: 'pointer' }}>
+          Close
+        </button>
+      </div>
+      {slides.map((slide, i) => (
+        <div key={i} className="slide-page">
+          <div style={{ height: '100vh', overflow: 'hidden' }}>
+            {slide.content}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Presentation() {
+  const startAt = (() => {
+    const n = parseInt(_params.get('s'), 10);
+    return Number.isFinite(n) && n >= 1 && n <= slides.length ? n - 1 : 0;
+  })();
+  const [current, setCurrent] = useState(startAt);
+
+  // Keep ?s= in sync so a reload after editing lands on the same slide.
+  useEffect(() => {
+    const u = new URL(window.location.href);
+    u.searchParams.set('s', String(current + 1));
+    window.history.replaceState(null, '', u.toString());
+  }, [current]);
+
+  const prev = () => setCurrent((c) => Math.max(0, c - 1));
+  const next = () => setCurrent((c) => Math.min(slides.length - 1, c + 1));
+  const first = () => setCurrent(0);
+  const last = () => setCurrent(slides.length - 1);
+
+  const openPrint = () => {
+    const url = window.location.href.replace(/[?&]print/, '') +
+      (window.location.search ? '&print' : '?print');
+    const w = window.open(url, '_blank');
+    if (w) w.addEventListener('load', () => w.print(), { once: true });
+  };
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); next(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
+  if (printMode) return <PrintView />;
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col">
+      <div className={`text-center text-xs font-black uppercase tracking-widest py-1.5 ${presenterMode ? "bg-gray-900 text-amber-300" : "bg-amber-400 text-amber-900"}`}>
+        {presenterMode
+          ? "Presenter view · backstage notes visible · do not screen-share this"
+          : "Draft · August 21, 2026"}
+      </div>
+
+      <div className="flex-1 flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-auto">
+        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden relative">
+          {slides[current].content}
+          <div className="absolute top-3 right-3 text-xs text-gray-400 bg-white/80 px-2 py-0.5 rounded-full border border-gray-200">
+            {presenterMode && <span className="text-gray-600 font-semibold">{slides[current].label} · </span>}
+            {current + 1} / {slides.length}
+          </div>
+        </div>
+      </div>
+
+      <div className="sticky bottom-0 bg-white border-t border-gray-200 shadow-lg px-4 py-3 flex items-center justify-center gap-2 flex-wrap">
+        <button onClick={first} className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all">⏮ Begin</button>
+        <button onClick={prev} disabled={current === 0} className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all disabled:bg-gray-300 disabled:cursor-not-allowed">← Prev</button>
+
+        <div className="flex gap-2 items-center">
+          {slides.map((s, i) => (
+            <button key={i} onClick={() => setCurrent(i)} title={s.label}
+              className={`transition-all rounded-full ${i === current ? "w-6 h-2.5 bg-red-600" : "w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400"}`} />
+          ))}
+        </div>
+
+        <button onClick={next} disabled={current === slides.length - 1} className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all disabled:bg-gray-300 disabled:cursor-not-allowed">Next →</button>
+        <button onClick={last} className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all">End ⏭</button>
+        <button onClick={openPrint} className="px-5 py-2 bg-gray-700 text-white text-sm font-bold rounded-lg hover:bg-gray-800 active:scale-95 transition-all" title="Export all slides as PDF">PDF</button>
+        <button
+          onClick={() => {
+            try { window.localStorage.setItem('btc-notes', presenterMode ? '0' : '1'); } catch (e) {}
+            const u = new URL(window.location.href);
+            u.searchParams.delete('notes');
+            u.searchParams.delete('clean');
+            u.searchParams.set(presenterMode ? 'clean' : 'notes', '');
+            window.location.href = u.toString();
+          }}
+          className={`px-5 py-2 text-sm font-bold rounded-lg active:scale-95 transition-all ${presenterMode ? "bg-amber-500 text-amber-950 hover:bg-amber-600" : "bg-gray-400 text-white hover:bg-gray-500"}`}
+          title={presenterMode ? "Hide backstage notes (audience view)" : "Show backstage notes (presenter view)"}
+        >
+          {presenterMode ? "Notes ON" : "Notes"}
+        </button>
+      </div>
+
+      <div className="text-center text-xs text-gray-400 py-2">
+        Use ← → arrow keys to navigate · {slides.length} slides · 60 min content + 30 min work session
+      </div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Presentation />);

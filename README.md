@@ -9,9 +9,25 @@ https://rianders.github.io/presentations/
 
 ## Presentations
 
+### Upcoming — Teaching with GenAI Faculty Workshop Series 2026–27
+
+| Date | Title | Audience | Status |
+|------|-------|----------|--------|
+| Aug 21, 2026 | Beyond the Chatbot | UOES / TIIP Partnership | **Draft** |
+| Sep 18, 2026 | AI-Assisted Digital Accessibility Workflows | UOES / TIIP Partnership | Not started |
+| Nov 6, 2026 | Beyond Alt Text: Notation & Diagrams with AI | UOES / TIIP Partnership | Not started |
+| Jan 29, 2027 | The Prompting Cookbook: Context Engineering | UOES / TIIP Partnership | Not started |
+| Feb 26, 2027 | Moving from Static to Dynamic Content | UOES / TIIP Partnership | Not started |
+| Apr 9, 2027 | Rubric Design & AI-Assisted Feedback | UOES / TIIP Partnership | Not started |
+
+### Past
+
 | Date | Title | Audience |
 |------|-------|----------|
-| Mar 6, 2026 | Beyond the Chatbot | UOES Emerging Technology |
+| Apr 15, 2026 | From RC Cars to Robot Arms | Chameleon User Meeting |
+| Apr 10, 2026 | Prompting Cookbook | Faculty Workshop |
+| Mar 13, 2026 | Emerging Technology for XR | UOES Emerging Technology |
+| Mar 6, 2026 | Beyond ChatGPT | UOES Emerging Technology |
 | Feb 25, 2026 | Rutgers AI Policy Update | UOES EmTech |
 | Dec 16, 2025 | AI, Emerging Technology, and Your Teaching | Rutgers Camden Faculty Senate |
 
