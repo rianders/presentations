@@ -574,23 +574,27 @@ const slides = [
         <div className="bg-gray-900 rounded-xl p-5 mb-4">
           <p className="text-[11px] font-black uppercase tracking-widest text-gray-400 mb-2">The through-line for today</p>
           <p className="text-lg font-bold text-white leading-snug mb-2">
-            With a chatbot, you paste your course into someone else's window — and their copy
-            is the one that keeps working.
+            Decisions are being made about your course materials — which tools see them, what
+            gets built out of them, whether anyone asked you first.
           </p>
           <p className="text-lg font-bold text-blue-300 leading-snug mb-3">
-            Work from your own folder and <span className="text-white">you hold the original.</span>
+            Today is about being <span className="text-white">the one who makes those
+            decisions.</span>
           </p>
           <p className="text-sm text-gray-300 leading-relaxed">
-            You decide what gets sent and which tool sees it. And when the tool changes — or
-            you stop trusting it — your course doesn't go anywhere.
+            Having your own materials, on your own system, is what puts that choice back in
+            your hands. Not because it locks anyone out — because it makes you a participant
+            instead of someone who finds out afterwards.
           </p>
         </div>
 
         <Note>
-          <strong>Say this precisely.</strong> "On your machine" means you hold the source of
-          truth, not that nothing is transmitted. A licensed cloud tool still sends what you
-          give it — under an agreement Rutgers negotiated. Only a local model keeps everything
-          on the laptop, and that is the Local AI segment, not this one.
+          <strong>Plant it here, land it on the Canvas slide.</strong> This is the ASU point
+          before the room knows the story — don't tell it yet. Also say it precisely: "on your
+          own system" means you hold the source of truth and you choose the tool, not that
+          nothing is transmitted. A licensed cloud tool still sends what you give it, under an
+          agreement Rutgers negotiated. Only a local model keeps everything on the laptop, and
+          that is the Local AI segment.
         </Note>
         <Placeholder
           port={["The Challenge of Now", "Landscape", "The Competition", "Chatbot vs. Agent"]}
@@ -1264,6 +1268,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
 
         <Placeholder
           onDay={[
+            "THIS IS THE PAYOFF for the through-line on slide 3. Call back to it explicitly: 'I said decisions are being made about your materials — here is what that looked like'",
             "ASU: say it as reported, and include their response. The citation is on the slide — point at it",
             "DO NOT claim ASU ingested Canvas. Not established publicly. Atomizer is described as deploying 'all of ASU's assets', which is broader than Canvas, and the ingestion path (Canvas API vs IMSCC export vs a separate ASU Online repository vs media indexing) is unreported. Instructional designers in this room know Canvas — an overclaim gets caught",
             "If asked 'did it pull from their Canvas?': Canvas is where most ASU Online instructional content lives, so in practice much of it likely originates there — but the mechanism has not been made public. Say that, and stop",
