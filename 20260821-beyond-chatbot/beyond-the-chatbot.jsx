@@ -1107,6 +1107,9 @@ If the answer is not in my materials, say so.`}</CodeBlock>
         <Placeholder
           onDay={[
             "ASU: say it as reported, and include their response. The citation is on the slide — point at it",
+            "DO NOT claim ASU ingested Canvas. Not established publicly. Atomizer is described as deploying 'all of ASU's assets', which is broader than Canvas, and the ingestion path (Canvas API vs IMSCC export vs a separate ASU Online repository vs media indexing) is unreported. Instructional designers in this room know Canvas — an overclaim gets caught",
+            "If asked 'did it pull from their Canvas?': Canvas is where most ASU Online instructional content lives, so in practice much of it likely originates there — but the mechanism has not been made public. Say that, and stop",
+            "Worth noting if it comes up: ASU distinguishes licensed library material (the LRO) from faculty-created lectures and slides. It is the faculty-created side that drove the objection — which is exactly the material this session is about",
             "EXPECT THE PUSHBACK: \"how does having my own export stop my university doing that?\" Honest answer — it doesn't. Owning a copy doesn't veto an institutional platform. What it changes is that you know what you have, you can show what changed, and you are not only finding out afterwards",
             "Demo on a copy. Say that you are demoing on a copy",
             "This is the slide people will screenshot. Slow down",
