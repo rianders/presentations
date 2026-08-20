@@ -528,7 +528,8 @@ const slides = [
 
         <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-3 mb-4">
           <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">Questions &amp; notes — shared doc</p>
-          <p className="text-sm text-gray-700">Ask anything, it stays up after today. <span className="text-red-600 font-bold">[ADD DOC LINK]</span></p>
+          <p className="text-sm text-gray-700 mb-1">Ask anything — I read from it and answer out loud, so nothing scrolls away. It stays up after today.</p>
+          <p className="text-sm"><Link href="https://docs.google.com/document/d/1AIO-VKwNZM4ZZ65Olt8YteM0sByexcJr-Rrd2-jo1QY/edit?usp=sharing">Open the questions doc ↗</Link></p>
         </div>
 
         <Placeholder
@@ -1738,6 +1739,10 @@ improvements the student could make.`}</CodeBlock>
           Not a practice exercise — actual prep you need done. Everyone stays in the main room;
           questions go in the shared doc and I'll answer out loud.
         </Lede>
+
+        <p className="text-sm mb-4">
+          <Link href="https://docs.google.com/document/d/1AIO-VKwNZM4ZZ65Olt8YteM0sByexcJr-Rrd2-jo1QY/edit?usp=sharing">Questions doc — open it now ↗</Link>
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-4 text-center">
           <div className="bg-gray-100 rounded-lg px-3 py-2">

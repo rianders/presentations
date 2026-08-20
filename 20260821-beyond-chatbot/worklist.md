@@ -10,7 +10,7 @@ the deck is reordered — re-run the extraction rather than renumbering by hand.
 
 ## Slide 2 · WHO I AM
 
-- [ ] CREATE THE SHARED DOC and paste its link where [ADD DOC LINK] is
+- [x] Shared questions doc created and linked on slides 2 and 19
 - [ ] TITLE INCONSISTENCY: this slide says 'Emerging Technologies' (Mar 6 wording); the title and contact slides say 'Emerging Technology'. Pick one and make all three match
 
 ## Slide 3 · WHAT'S NEW FOR FALL 2026
@@ -201,3 +201,6 @@ the deck is reordered — re-run the extraction rather than renumbering by hand.
       notebook one especially — notebook sharing is the difficult path, and a dead link in
       a published deck is worse than no link. If it does not open, keep the notebook as a
       live demo only and link just notebook.google.com.
+
+- [x] **Shared doc live** — linked on slide 2 (opening) and slide 19 (work session).
+      Seed content in shared-doc-seed.md. Confirm sharing is set to Rutgers → Editor.
