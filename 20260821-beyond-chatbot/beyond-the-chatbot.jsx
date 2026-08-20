@@ -1183,8 +1183,12 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </p>
         </div>
 
-        <p className="text-sm text-gray-700 mb-3">
+        <p className="text-sm text-gray-700 mb-1">
           Here is the whole loop — export, work locally, and put it back.
+          Follow along in your own course:
+        </p>
+        <p className="text-sm mb-3">
+          <Link href="https://canvas.rutgers.edu">canvas.rutgers.edu ↗</Link>
         </p>
 
         <div className="space-y-2 mb-4">
@@ -1823,6 +1827,7 @@ improvements the student could make.`}</CodeBlock>
             category: "Rutgers & Policy",
             color: "text-red-700",
             links: [
+              { label: "Canvas — canvas.rutgers.edu", url: "https://canvas.rutgers.edu" },
               { label: "Rutgers AI Hub", url: "https://it.rutgers.edu/ai" },
               { label: "Digital Accessibility Guidelines", url: "https://academicaffairs.rutgers.edu/digital-accessibility" },
             ],
