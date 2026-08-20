@@ -1084,6 +1084,11 @@ If the answer is not in my materials, say so.`}</CodeBlock>
 
         <Placeholder
           port={["Gems Demo"]}
+          onDay={[
+            "SHARING — tested: a Gem shares through Drive and works across ScarletMail. Confirmed for faculty and staff. If a STUDENT ScarletMail account has not been verified, say 'faculty and staff, confirmed; students I'd test before relying on it' rather than promising it",
+            "This is where 'which do I point students at?' gets answered — sharing is the deciding factor, not features",
+            "Ask the Gem something outside its sources and let it decline. That refusal is the most persuasive moment in the deck",
+          ]}
         />
       </SlideShell>
     ),
