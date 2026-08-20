@@ -205,6 +205,13 @@ const Tag = ({ color = "bg-blue-100 text-blue-700", children }) => (
 /* ── Audience-facing vocabulary, ported from 20260306 so the two decks
      share one visual language. Do not hand-roll cards inline. ── */
 
+const Link = ({ href, children }) => (
+  <a href={href} target="_blank" rel="noreferrer"
+     className="text-blue-600 font-bold hover:text-blue-800 hover:underline break-words">
+    {children}
+  </a>
+);
+
 const SectionCard = ({ title, icon, accent, children }) => (
   <div className={`rounded-xl p-5 ${accent ? "bg-red-600 text-white" : "bg-gray-50 border border-gray-200"}`}>
     <div className="flex items-center gap-2 mb-3">
@@ -429,7 +436,7 @@ const Lede = ({ children }) => (
 
 const Heading = ({ children }) => (
   <>
-    <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 leading-tight">{children}</h1>
+    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 leading-tight">{children}</h1>
     <div className="w-16 h-1 bg-red-600 rounded mb-4" />
   </>
 );
@@ -619,19 +626,16 @@ const slides = [
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Check the hub</p>
-            <p className="text-sm text-blue-600 font-bold">it.rutgers.edu/ai</p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Use your ScarletMail account</p>
-            <p className="text-sm text-gray-700">Signing in with <strong>@scarletmail.rutgers.edu</strong> is what keeps you inside the licensed ecosystem.</p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Data classification</p>
-            <p className="text-sm text-gray-700">Know what's sensitive — student records, personal data, institutional data — <em>before</em> choosing a tool.</p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <SectionCard title="Check the hub" icon="🔗">
+            <p className="text-sm"><Link href="https://it.rutgers.edu/ai">it.rutgers.edu/ai ↗</Link></p>
+          </SectionCard>
+          <SectionCard title="Use your ScarletMail account" icon="🔐">
+            <p className="text-sm">Signing in with <strong>@scarletmail.rutgers.edu</strong> is what keeps you inside the licensed ecosystem.</p>
+          </SectionCard>
+          <SectionCard title="Data classification" icon="📊">
+            <p className="text-sm">Know what's sensitive — student records, personal data, institutional data — <em>before</em> choosing a tool.</p>
+          </SectionCard>
         </div>
 
         <div className="bg-gray-900 rounded-xl p-5 mb-4">
@@ -648,6 +652,16 @@ const slides = [
           </p>
         </div>
 
+        <DropIn label="Your Secrets">
+          The concern isn't only student work and FERPA. When AI tools have access to your
+          files, email, or cloud storage, it becomes easy to accidentally expose things you
+          didn't intend to share — API keys, passwords, personal data, confidential
+          communications. A prompt that pulls context from your documents might surface
+          something sensitive without you realizing it. The question is not just "is this
+          about a student?" It's "what else might this tool be seeing — and where is that
+          going?"
+        </DropIn>
+
         <Placeholder
           port={["AI Initiative"]}
           todo={[
@@ -655,7 +669,7 @@ const slides = [
             "Add the data classification chart link from OIT's Aug 17 email",
           ]}
           onDay={[
-            "The 'your secrets' point from Mar 6 is worth saying aloud: it isn't only about students. Tools with access to your files can surface API keys, passwords, private mail — things you never meant to share",
+            "The 'Your Secrets' card is on the slide now — read it, don't paraphrase it",
             "This slide earns you the right to demo freely for the next hour. Don't rush it",
           ]}
         />
@@ -688,21 +702,21 @@ const slides = [
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">The University position</p>
-            <p className="text-sm text-gray-700 mb-2">
+          <SectionCard title="The University position" icon="🏛️">
+            <p className="text-sm mb-2">
               Rutgers is committed to making all digital content accessible to everyone,
               including people with disabilities.
             </p>
-            <p className="text-xs text-teal-700 font-bold">academicaffairs.rutgers.edu/digital-accessibility</p>
-          </div>
-          <div className="bg-teal-50 border-l-4 border-teal-500 rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-teal-700 mb-2">Where AI comes in</p>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm">
+              <Link href="https://academicaffairs.rutgers.edu/digital-accessibility">academicaffairs.rutgers.edu/digital-accessibility ↗</Link>
+            </p>
+          </SectionCard>
+          <SectionCard title="Where AI comes in" icon="🤖" accent={true}>
+            <p className="text-sm">
               For material that is hard or impossible to fix by hand — scanned PDFs, figures,
               charts, handwritten documents — these tools do in minutes what used to take hours.
             </p>
-          </div>
+          </SectionCard>
         </div>
 
         <div className="bg-teal-50 border border-teal-200 rounded-xl p-4 mb-4">
@@ -989,13 +1003,34 @@ const slides = [
           </div>
         </div>
 
+        <p className="text-sm text-gray-700 mb-1">
+          The risk with any AI tool is that it wanders — pulling in outside sources, other
+          textbooks, generic examples that have nothing to do with your course. The fix is an
+          explicit constraint you write once and reuse everywhere:
+          <strong> the context is the course.</strong>
+        </p>
+
+        <CodeBlock>{`Use ONLY the materials I have provided.
+Do NOT draw from outside sources, other textbooks,
+or general knowledge.
+All examples, explanations, and questions must
+come directly from the context I have given you.
+If the answer is not in my materials, say so.`}</CodeBlock>
+
+        <DropIn label="The Venn Diagram">
+          When you give AI your syllabus, your notes, your readings — and then constrain it to
+          stay there — everything it produces lives inside the Venn diagram of your materials.
+          The AI doesn't reach outside that circle. The output reflects your course, not the
+          internet.
+        </DropIn>
+
         <div className="mt-4">
           <ContextLayer n={1}>Your materials are the context. Not the internet, not a general model's idea of your field.</ContextLayer>
 
           <Placeholder
             port={["Materials", "Context Prompt"]}
             todo={[
-              "Decide whether to also port the Mar 6 'Context Prompt' code block — \"Use ONLY the materials I have provided\" is the single most reusable artifact in the old deck",
+              "This prompt recurs on the Live Build and folder slides — keep the wording identical every time so the room learns one artifact, not three",
             ]}
             onDay={[
               "The ownership card sets up the next two slides. Say it deliberately and let it sit",
@@ -1478,7 +1513,7 @@ const slides = [
           <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-xl p-4">
             <p className="text-[11px] font-black uppercase tracking-widest text-emerald-700 mb-1">Start here · no setup</p>
             <p className="text-sm font-bold text-gray-900 mb-1">Speech &amp; voice</p>
-            <p className="text-xs text-gray-600">Handy for speech-to-text; text-to-speech in the browser. Runs on your machine, works today.</p>
+            <p className="text-xs text-gray-600"><Link href="https://handy.computer">Handy</Link> for speech-to-text; <Link href="https://rianders.github.io/kittenttsinweb/">text-to-speech in the browser</Link>. Runs on your machine, works today.</p>
           </div>
           <div className="bg-teal-50 border-l-4 border-teal-500 rounded-xl p-4">
             <p className="text-[11px] font-black uppercase tracking-widest text-teal-700 mb-1">Some setup</p>
@@ -1769,7 +1804,7 @@ const slides = [
             <Bullet icon="→">Google docs: how to use Gems · premade Gems quick start · tips for custom Gems</Bullet>
             <Bullet icon="→">Google docs: sharing chats, canvases, and generated media via Drive</Bullet>
             <Bullet icon="→"><strong>Data classification chart for AI tools</strong> — read before uploading anything</Bullet>
-            <Bullet icon="→">Questions: <span className="text-blue-600 font-semibold">help@scarletmail.rutgers.edu</span></Bullet>
+            <Bullet icon="→">Questions: <Link href="mailto:help@scarletmail.rutgers.edu">help@scarletmail.rutgers.edu</Link></Bullet>
           </ul>
         </div>
 
@@ -1780,8 +1815,8 @@ const slides = [
             something of your own. These two are free, run on your machine, and cost you nothing but disk space.
           </p>
           <ul className="space-y-1.5">
-            <Bullet icon="→"><strong>LM Studio</strong> — lmstudio.ai · desktop app for running open models locally. No terminal, no account. Start here</Bullet>
-            <Bullet icon="→"><strong>OpenCode</strong> — opencode.ai · open source agent that works across a folder of files, in the terminal or a desktop client</Bullet>
+            <Bullet icon="→"><strong>LM Studio</strong> — <Link href="https://lmstudio.ai">lmstudio.ai</Link> · desktop app for running open models locally. No terminal, no account. Start here</Bullet>
+            <Bullet icon="→"><strong>OpenCode</strong> — <Link href="https://opencode.ai">opencode.ai</Link> · open source agent that works across a folder of files, in the terminal or a desktop client</Bullet>
           </ul>
           <p className="text-xs text-gray-700 mt-3 bg-white border border-blue-200 rounded p-2">
             <strong>Keep the line clean.</strong> These are for your own reading, writing, and
@@ -1819,8 +1854,8 @@ const slides = [
           <h1 className="text-4xl font-black text-gray-900 mb-2">Questions?</h1>
           <div className="w-20 h-1 bg-red-600 rounded mb-6" />
           <ul className="space-y-2 mb-8">
-            <Bullet icon="→">rianders.github.io/presentations — all decks in this series</Bullet>
-            <Bullet icon="→">it.rutgers.edu/ai — Rutgers AI Hub</Bullet>
+            <Bullet icon="→"><Link href="https://rianders.github.io/presentations">rianders.github.io/presentations</Link> — all decks in this series</Bullet>
+            <Bullet icon="→"><Link href="https://it.rutgers.edu/ai">it.rutgers.edu/ai</Link> — Rutgers AI Hub</Bullet>
             <Bullet icon="→">Next up: AI-Assisted Digital Accessibility Workflows · September 18, 2026</Bullet>
           </ul>
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
