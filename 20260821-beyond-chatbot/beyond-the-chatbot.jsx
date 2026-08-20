@@ -1041,6 +1041,19 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           They overlap enough to be genuinely confusing, so here's the split.
         </Lede>
 
+        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl px-4 py-3 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">Today's example — a Gem I actually use</p>
+          <p className="text-sm text-gray-800 mb-1">
+            <strong>Alternate Text WCAG 2.2</strong> — built once, pointed at the standard, and
+            reused every time an image needs alt text. This is the shape of the thing: not a
+            chat you retype, a collaborator you keep.
+          </p>
+          <p className="text-sm">
+            <Link href="https://gemini.google.com/gem/1hmK0aNsbu9gOF2FQ62pcYIt8_Fdwge4B?usp=sharing">Open the Gem ↗</Link>
+            <span className="text-xs text-gray-500"> · view access · sign in to Google first</span>
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4">
             <p className="text-xs font-black uppercase tracking-widest text-purple-600 mb-1">Gemini Notebook</p>
@@ -1090,6 +1103,8 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           onDay={[
             "SHARING — tested: a Gem shares through Drive and works across ScarletMail. Confirmed for faculty and staff. If a STUDENT ScarletMail account has not been verified, say 'faculty and staff, confirmed; students I'd test before relying on it' rather than promising it",
             "This is where 'which do I point students at?' gets answered — sharing is the deciding factor, not features",
+            "The WCAG Gem is the demo. Open it from gemini.google.com/gems/view so they see where Gems live, then show the share link. Everyone must be signed in to Google or they see nothing",
+            "It is an ACCESSIBILITY Gem — call back to the April 2027 deadline and forward to Sep 18 / Nov 6. That is the same thread, not a detour",
             "Ask the Gem something outside its sources and let it decline. That refusal is the most persuasive moment in the deck",
           ]}
         />
@@ -1781,6 +1796,14 @@ improvements the student could make.`}</CodeBlock>
             links: [
               { label: "Gemini Notebook (formerly NotebookLM)", url: "https://notebooklm.google.com" },
               { label: "Gemini", url: "https://gemini.google.com" },
+            ],
+          },
+          {
+            category: "Gems — reusable, and shareable",
+            color: "text-amber-700",
+            links: [
+              { label: "Alternate Text WCAG 2.2 — Rick's Gem", url: "https://gemini.google.com/gem/1hmK0aNsbu9gOF2FQ62pcYIt8_Fdwge4B?usp=sharing" },
+              { label: "Your Gems — gemini.google.com/gems/view", url: "https://gemini.google.com/gems/view" },
             ],
           },
           {

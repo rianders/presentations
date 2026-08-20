@@ -188,5 +188,10 @@ the deck is reordered — re-run the extraction rather than renumbering by hand.
       previously written from the announcement rather than from use.
 - [ ] **Student ScarletMail accounts + shared Gems — UNVERIFIED.** Decides "which do I
       point students at?". Delivery note on slide 10 gives the honest wording until tested.
-- [ ] Notebook + Gem links for the Resources slide — only if they contain no real course
-      material; this deck publishes publicly.
+- [x] **Gem linked** — "Alternate Text WCAG 2.2", on slide 10 as the worked example and in
+      Resources. No course material or student data in it, so safe on a public page.
+- [ ] **CONFIRM THE GEM'S SHARE SCOPE** before merging to main. This deck is public on
+      GitHub Pages. If the link is "anyone with the link", the Gem is effectively public;
+      if it is Rutgers/ScarletMail-restricted, outsiders simply cannot open it. Either is
+      fine — but know which one you are publishing.
+- [ ] Notebook link still outstanding — only if it contains no real course material.
