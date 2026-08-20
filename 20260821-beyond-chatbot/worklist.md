@@ -138,3 +138,41 @@ the deck is reordered — re-run the extraction rather than renumbering by hand.
 - [ ] Fix the four Mar 6 NotebookLM links — they redirect, but the labels read wrong now
 - [ ] Add the Sep 18 / Nov 6 session registration links
 - [ ] Re-check every URL — several Mar 6 links point at personal notebooks
+
+---
+
+## Decisions taken 2026-08-20 (session with Claude)
+
+- [x] **ContextLayer apparatus retired** — 8 layers, the counter and the Takeaways progress
+      bar are gone. Slide 8 no longer carries the "context designer" advice voice.
+- [x] **Local AI kept, trimmed to 2 min** — live demo dropped, three named items retained
+      (abstract promises speech-to-text, text-to-speech, small models).
+- [x] **Claude removed** — no University agreement. Path 1 now reads "Gemini via
+      ScarletApps · ChatGPT Edu"; the unlicensed warning generalised to "free consumer AI
+      account".
+- [x] **Resources rebuilt** on the Mar 6 categorised array — 15 clickable links, personal
+      notebooks and personal Gemini chat deliberately excluded.
+
+## Still open from that session
+
+- [ ] **Slide 9 — ASU framing.** Rick: this slide answers ASU using course material for a
+      chatbot project. NEED THE SPECIFICS/LINK before writing it; do not paraphrase from
+      memory.
+- [ ] **Slide 10 — refocus** onto ChatGPT Desktop + Codex opening the exported course.
+      Drop "One Folder, Many Models" and the engine-swap recording.
+- [ ] **Slide 12 (Gems / Notebook) moves BEFORE the export** — those tools want clean
+      documents; a Canvas export is messy HTML. Say that reason out loud.
+- [ ] **Takeaways** — reframe to "what you can do Monday". Six claims currently cite slide
+      names that the reorder changes.
+- [ ] **Slide 8** — convert remaining hand-rolled cards to SectionCard.
+- [ ] **Slides 11/12** — anchor on the syllabus the way Mar 6 anchored on real documents.
+      Mar 6's Gems line is worth taking whole: "Same model — different relationship."
+- [ ] **Slide 14** — port the Mar 6 DESCRIBE→EVALUATE→REDIRECT→REFINE→DEPLOY loop, the
+      honest-limitations Note, and the "Bounded Is Better" DropIn.
+- [ ] **Slide 12/Live Build** — port the Mar 6 Context Engineering 8-element agent grid as
+      the "you just built an agent" reveal.
+- [ ] **Resources** — add the OIT Aug 17 doc URLs (Gems how-to, sharing, data
+      classification chart); currently described but unlinked.
+- [ ] **Canvas** — confirm faculty can create a new course themselves, or the slide 15
+      finale demos something the room cannot reproduce.
+- [ ] **DRAFT chrome** — remove from all five places as the last edit before delivery.

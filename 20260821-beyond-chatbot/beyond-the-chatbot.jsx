@@ -373,26 +373,6 @@ const Interact = ({ kind = "Shared doc", prompt, note }) => (
 /* The through-line. Each segment adds one layer to what "context design"
    means, so the Takeaways slide names something the room has already been
    assembling rather than introducing it cold. Audience-facing, not a note. */
-const CONTEXT_LAYERS = 8;
-const ContextLayer = ({ n, children }) => (
-  <div className="flex items-center gap-3 bg-gray-900 rounded-lg px-4 py-2.5 mb-4">
-    <div className="flex gap-1 flex-shrink-0">
-      {Array.from({ length: CONTEXT_LAYERS }, (_, i) => (
-        <span
-          key={i}
-          className={`w-1.5 h-4 rounded-sm ${i < n ? "bg-red-500" : "bg-gray-700"}`}
-        />
-      ))}
-    </div>
-    <div className="min-w-0">
-      <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 leading-none mb-1">
-        Context design · {n} of {CONTEXT_LAYERS}
-      </p>
-      <p className="text-sm font-bold text-white leading-snug">{children}</p>
-    </div>
-  </div>
-);
-
 /* Demo marker. Presenter-only. Full plan and prep checklist in demos.md.
    mode: "Live" | "Recorded" | "Hybrid" */
 const Demo = ({ mode = "Live", time, what, steps = [], fallback }) => {
@@ -924,21 +904,6 @@ const slides = [
       <SlideShell tag="Segment 2 · 5 min" tagColor="bg-emerald-700">
         <Heading>Your Course Materials as Context</Heading>
 
-        <div className="bg-gray-900 rounded-xl p-4 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Where the rest of today is going</p>
-          <p className="text-sm text-white leading-relaxed mb-2">
-            Everything from here builds one idea: <strong className="text-red-300">you are the
-            context designer for your course.</strong> Each tool adds a layer to what that means,
-            and I'll mark them as we go.
-          </p>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            This is a level above prompting. A good prompt is a sentence. Context design is
-            deciding what the model can see, what it may not, what shape the output has to take,
-            and who it is for — the architecture that a prompt operates inside.
-            <span className="text-gray-400"> (Prompting gets its own session on January 29.)</span>
-          </p>
-        </div>
-
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-4">
           <p className="text-sm text-emerald-900">
             Students learn from <strong>you</strong> — how you organize a course, the
@@ -998,7 +963,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
         </DropIn>
 
         <div className="mt-4">
-          <ContextLayer n={1}>Your materials are the context. Not the internet, not a general model's idea of your field.</ContextLayer>
 
           <Placeholder
             port={["Materials", "Context Prompt"]}
@@ -1091,7 +1055,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </p>
         </div>
 
-        <ContextLayer n={2}>You own the corpus. It can leave Canvas, be worked on, and come back.</ContextLayer>
 
         <Demo
           mode="Hybrid"
@@ -1159,7 +1122,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </div>
           <div className="bg-gray-900 rounded-lg p-3">
             <p className="text-xs font-black uppercase tracking-widest text-red-400 mb-1">Not approved · free consumer tiers</p>
-            <p className="text-sm text-gray-100">A free ChatGPT or Claude account is <strong>not licensed by the University</strong>. It does not matter that the tool is capable — course content and student work do not go there.</p>
+            <p className="text-sm text-gray-100">A free consumer AI account is <strong>not licensed by the University</strong>. It does not matter that the tool is capable — course content and student work do not go there.</p>
           </div>
           <div className="bg-emerald-50 border-l-4 border-emerald-600 rounded-lg p-3">
             <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">Start here · Gemini via ScarletApps</p>
@@ -1180,7 +1143,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </p>
         </div>
 
-        <ContextLayer n={3}>The context is the durable asset. The model is the disposable part.</ContextLayer>
 
         <Demo
           mode="Recorded"
@@ -1230,7 +1192,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </ul>
         </div>
 
-        <ContextLayer n={4}>Grounding is a constraint you impose — not a feature you are given.</ContextLayer>
 
         <Demo
           mode="Live"
@@ -1290,7 +1251,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </p>
         </div>
 
-        <ContextLayer n={5}>Encode your intent, not only your sources. A Gem carries how you want it read.</ContextLayer>
 
         <Demo
           mode="Live"
@@ -1336,7 +1296,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
             Work you do by hand every term, that an agent can do while you read something else.
           </p>
         </div>
-        <ContextLayer n={6}>Delegated work still happens inside your frame. You set the frame first.</ContextLayer>
 
         <Demo
           mode="Recorded"
@@ -1374,7 +1333,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div className="bg-indigo-50 border-l-4 border-indigo-500 rounded-xl p-4">
             <p className="text-xs font-black uppercase tracking-widest text-indigo-600 mb-1">Path 1 · In the chat window</p>
-            <p className="text-sm font-bold text-gray-900 mb-2">Gemini, ChatGPT, Claude</p>
+            <p className="text-sm font-bold text-gray-900 mb-2">Gemini via ScarletApps · ChatGPT Edu</p>
             <ul className="space-y-1.5">
               <Bullet icon="·">Describe it, get it back, copy it into Canvas</Bullet>
               <Bullet icon="·">Nothing to install — start in 30 seconds</Bullet>
@@ -1402,7 +1361,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </ul>
         </div>
 
-        <ContextLayer n={7}>Anything you generate inherits the context it was built from.</ContextLayer>
 
         <Demo
           mode="Live"
@@ -1427,7 +1385,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
   {
     label: "Local AI Tools",
     content: (
-      <SlideShell tag="Segment 5 · 4 min" tagColor="bg-emerald-600">
+      <SlideShell tag="Segment 5 · 2 min" tagColor="bg-emerald-600">
         <Heading>Local AI Tools</Heading>
         <Lede>
           Speech-to-text, text-to-speech, and small models running on your own laptop —
@@ -1461,17 +1419,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </p>
         </div>
 
-        <Demo
-          mode="Live"
-          time="90 sec"
-          what="Handy dictating a paragraph, then browser TTS reading a passage aloud."
-          steps={[
-            "Dictate something real, not 'testing one two three'",
-            "Then TTS a course reading",
-            "Name it: none of that touched the internet",
-          ]}
-          fallback="Pre-generated audio file. Check mic permissions BEFORE Zoom takes the mic."
-        />
 
         <Placeholder
           port={["Voice", "Making It Accessible", "STEM OCR"]}
@@ -1532,7 +1479,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           note="Best interaction in the deck. Asking for BOTH ends surfaces the spread instead of ten variations on the same cheating story. Invite unmuting here — this one is worth hearing in someone's actual voice, and it records well for clips."
         />
 
-        <ContextLayer n={8}>You design the context your students work inside. That is the whole job.</ContextLayer>
 
         <Placeholder
           port={["Assessment", "Context Engineering", "Context Prompt"]}
@@ -1551,19 +1497,8 @@ If the answer is not in my materials, say so.`}</CodeBlock>
       <SlideShell tag="The Bridge · 3 min" tagColor="bg-gray-900">
         <Heading>What You're Walking Out With</Heading>
         <Lede>
-          We built one idea across eight layers. Here it is, and the five things that follow from it.
+          Six things you can act on — and the slide each one came from.
         </Lede>
-
-        <div className="flex items-center gap-3 bg-gray-900 rounded-lg px-4 py-2.5 mb-4">
-          <div className="flex gap-1 flex-shrink-0">
-            {Array.from({ length: CONTEXT_LAYERS }, (_, i) => (
-              <span key={i} className="w-1.5 h-4 rounded-sm bg-red-500" />
-            ))}
-          </div>
-          <p className="text-sm font-bold text-white leading-snug">
-            Context design · complete
-          </p>
-        </div>
 
         <div className="space-y-2 mb-4">
           {[
@@ -1684,38 +1619,94 @@ If the answer is not in my materials, say so.`}</CodeBlock>
   },
 
   // ── 19: RESOURCES ──
+  // Structure ported from the Mar 6 "Resources" slide: a data array rendered
+  // into colour-coded categories. Mar 6's personal notebook links and the
+  // personal Gemini chat are deliberately NOT carried over.
   {
     label: "Resources",
     content: (
       <SlideShell tag="Take With You" tagColor="bg-gray-700">
         <Heading>Resources</Heading>
         <Lede>
-          Links, handouts, and where to go next in the 2026–27 workshop series.
+          Everything from today, plus where this series goes next. The deck stays up — this
+          slide is the reason to come back to it.
         </Lede>
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">From OIT's August 17 announcement</p>
-          <ul className="space-y-1.5">
-            <Bullet icon="→">Google docs: how to use Gems · premade Gems quick start · tips for custom Gems</Bullet>
-            <Bullet icon="→">Google docs: sharing chats, canvases, and generated media via Drive</Bullet>
-            <Bullet icon="→"><strong>Data classification chart for AI tools</strong> — read before uploading anything</Bullet>
-            <Bullet icon="→">Questions: <Link href="mailto:help@scarletmail.rutgers.edu">help@scarletmail.rutgers.edu</Link></Bullet>
-          </ul>
+
+        {[
+          {
+            category: "Rutgers & Policy",
+            color: "text-red-700",
+            links: [
+              { label: "Rutgers AI Hub", url: "https://it.rutgers.edu/ai" },
+              { label: "Digital Accessibility Guidelines", url: "https://academicaffairs.rutgers.edu/digital-accessibility" },
+            ],
+          },
+          {
+            category: "Ground It in Your Sources",
+            color: "text-purple-700",
+            links: [
+              { label: "Gemini Notebook (formerly NotebookLM)", url: "https://notebooklm.google.com" },
+              { label: "Gemini", url: "https://gemini.google.com" },
+            ],
+          },
+          {
+            category: "Course Design",
+            color: "text-emerald-700",
+            links: [
+              { label: "Context Engineering Prompt Examples", url: "https://docs.google.com/document/d/1TxwRWoNKdXvt_eXY6SfIUYABG8Wb9fCTTTqx_-k3YTE/edit?usp=sharing" },
+              { label: "Italian 101 Open Textbook — Dr. Carmela Scala", url: "https://openpub.libraries.rutgers.edu/italian101/" },
+            ],
+          },
+          {
+            category: "Local · nothing leaves your laptop",
+            color: "text-teal-700",
+            links: [
+              { label: "Handy — local speech-to-text", url: "https://handy.computer" },
+              { label: "Text-to-Speech in the Browser", url: "https://rianders.github.io/kittenttsinweb/" },
+              { label: "LM Studio — run small models locally", url: "https://lmstudio.ai" },
+            ],
+          },
+          {
+            category: "For Your Own Research — not course content",
+            color: "text-indigo-700",
+            links: [
+              { label: "OpenCode — open source folder agent", url: "https://opencode.ai" },
+            ],
+          },
+        ].map(({ category, color, links }) => (
+          <div key={category} className="mb-3">
+            <p className={`text-xs font-black uppercase tracking-wide mb-2 ${color}`}>{category}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {links.map((r) => (
+                <a
+                  key={r.url}
+                  href={r.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 hover:bg-gray-100 hover:border-gray-300"
+                >
+                  <span className="text-sm text-gray-800 font-semibold">{r.label}</span>
+                  <span className="text-xs text-gray-400 flex-shrink-0">↗</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <div className="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg px-4 py-3 mb-4">
+          <p className="text-sm text-amber-900">
+            <strong>Keep the line clean.</strong> The local and open-source tools are for your
+            own reading, writing, and experimentation. Student work and course content stay in
+            the licensed tools — that distinction is what makes all of this simple.
+          </p>
         </div>
 
-        <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-4 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-2">For your own research — not for course content</p>
-          <p className="text-sm text-gray-700 mb-3">
-            If you want to understand what these tools can really do, the best way is to try them on
-            something of your own. These two are free, run on your machine, and cost you nothing but disk space.
-          </p>
-          <ul className="space-y-1.5">
-            <Bullet icon="→"><strong>LM Studio</strong> — <Link href="https://lmstudio.ai">lmstudio.ai</Link> · desktop app for running open models locally. No terminal, no account. Start here</Bullet>
-            <Bullet icon="→"><strong>OpenCode</strong> — <Link href="https://opencode.ai">opencode.ai</Link> · open source agent that works across a folder of files, in the terminal or a desktop client</Bullet>
-          </ul>
-          <p className="text-xs text-gray-700 mt-3 bg-white border border-blue-200 rounded p-2">
-            <strong>Keep the line clean.</strong> These are for your own reading, writing, and
-            experimentation. Student work and course content stay in the licensed tools — that
-            distinction is what makes it simple.
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Next in this series</p>
+          <p className="text-sm text-gray-700">
+            <strong>September 18</strong> — AI-Assisted Digital Accessibility Workflows ·{" "}
+            <strong>November 6</strong> — Beyond Alt Text: Notation &amp; Diagrams ·{" "}
+            <strong>January 29</strong> — The Prompting Cookbook
           </p>
         </div>
 
@@ -1723,7 +1714,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           port={["Resources"]}
           onDay={[
             "Say the line out loud: personal research yes, course content no. That one sentence keeps this consistent with the AI Initiative slide",
-            "LM Studio first, OpenCode second — one is a download-and-run, the other is a project",
             "QR for this deck is already on the title slide; no second one needed here",
           ]}
         />
