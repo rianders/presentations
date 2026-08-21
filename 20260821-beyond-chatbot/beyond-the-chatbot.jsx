@@ -442,15 +442,6 @@ const slides = [
             sets it for you.</strong>
           </p>
         </div>
-
-        <Note>
-          <strong>Plant it here, land it on the Canvas slide.</strong> The last line is the
-          ASU point before the room knows the story — don't tell it yet. Also say it precisely: "on your
-          own system" means you hold the source of truth and you choose the tool, not that
-          nothing is transmitted. A licensed cloud tool still sends what you give it, under an
-          agreement Rutgers negotiated. Only a local model keeps everything on the laptop, and
-          that is the Local AI segment.
-        </Note>
       </SlideShell>
     ),
   },

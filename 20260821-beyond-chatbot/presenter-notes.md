@@ -102,7 +102,14 @@ Full plans and prep checklists are in `demos.md`.
 
 ### 3 · New for Fall 2026 · *What's New*
 
-*No delivery notes.*
+- Plant the through-line here, land it on the Canvas slide. The closing line
+  ("if you don't set that context, someone else sets it for you") is the ASU
+  point before the room knows the story — **don't tell it yet.**
+- Say it precisely when you get there: *on your own system* means you hold the
+  source of truth and you choose the tool. It does **not** mean nothing is
+  transmitted. A licensed cloud tool still sends what you give it, under an
+  agreement Rutgers negotiated. Only a local model keeps everything on the
+  laptop — and that is the Local AI segment.
 
 ### 4 · AI Initiative · *Policy*
 
