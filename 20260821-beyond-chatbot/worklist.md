@@ -1,7 +1,8 @@
 # Worklist — Beyond the Chatbot (Aug 21, 2026)
 
 Extracted from the deck's `Placeholder todo={[...]}` arrays so the slides carry
-only delivery notes. `onDay` guidance stays in the deck and shows under `&notes`.
+only delivery notes. Delivery guidance now lives in `presenter-notes.md`; the deck
+itself has no presenter view.
 
 **Slide numbers are the numbers in the deck's `// ── N:` markers.** They shift when
 the deck is reordered — re-run the extraction rather than renumbering by hand.

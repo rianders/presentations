@@ -1,34 +1,17 @@
 const { useState, useEffect } = React;
 
 /* VIEW MODES ─────────────────────────────────────────────────────────────
-   Notes are ON by default when you are working locally, OFF by default on
-   the published site. So the authoring loop always shows your notes, and a
-   shared link never does.
-
-     localhost / 127.0.0.1 / file://  →  notes ON   (authoring)
-     rianders.github.io               →  notes OFF  (audience)
-     ?notes    force ON      ?clean   force OFF     (either wins)
-     Notes button in the nav toggles and REMEMBERS the choice.
-
-   Anything you would not want a registrant to read must live in a
-   <Placeholder>, or the `note` prop of <Poll>/<Interact>. Nothing else
-   is hidden.
+   This deck has exactly ONE view, and it is the audience's. Every word in
+   this file is public. Delivery notes — run of show, demo steps, poll
+   scripts, fallbacks — live in presenter-notes.md in this folder and are
+   never rendered, so there is no backstage copy to reveal by sharing the
+   wrong URL.
 
    SLIDE DEEP-LINK: ?s=8 opens on slide 8, and the URL tracks as you
    navigate — so reloading after an edit puts you back where you were
    instead of at slide 1.
    ───────────────────────────────────────────────────────────────────── */
 const _params = new URLSearchParams(window.location.search);
-const _isLocal = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
-const presenterMode = (() => {
-  if (_params.has('notes')) return true;
-  if (_params.has('clean')) return false;
-  try {
-    const saved = window.localStorage.getItem('btc-notes');
-    if (saved !== null) return saved === '1';
-  } catch (e) { /* storage blocked — fall through to default */ }
-  return _isLocal;
-})();
 
 /* ═══════════════════════════════════════════════════════════
    BEYOND THE CHATBOT
@@ -37,7 +20,7 @@ const presenterMode = (() => {
    Pathway: Teaching and Generative AI — Competencies 1, 2, 3
 
    Ported from 20260306/beyond-the-chatbot-workshop.jsx
-   ("Beyond ChatGPT"). <Placeholder onDay={...}> blocks carry
+   ("Beyond ChatGPT").blocks carry
    delivery notes and render only under &notes.
 
    ── CONFIRMED SINCE THE MAR 6 DECK ──────────────────────────
@@ -101,10 +84,9 @@ const presenterMode = (() => {
    browser and keep the link afterward, and the recording will be
    cut into short standalone pieces. Three consequences:
 
-   1. AUDIENCE VIEW IS THE DEFAULT. Backstage notes only live in
-      <Placeholder>, or the `note` prop of <Poll>/<Interact>.
-      Anything written anywhere else is public. Present from
-      ?notes on your own screen; share the plain URL.
+   1. THERE IS ONLY ONE VIEW AND IT IS PUBLIC. Anything you would not
+      want a registrant to read belongs in presenter-notes.md, which
+      is never rendered. Share the plain URL — there is no other one.
 
    2. EVERY SEGMENT MUST STAND ALONE. A clip has no "as I said
       earlier." Restate the premise at the top of each segment,
@@ -247,73 +229,10 @@ const PipelineStep = ({ num, title, children }) => (
   </div>
 );
 
-/* Per-slide presenter aid. Presenter-only.
-     port  = slides available to port from 20260306/beyond-the-chatbot-workshop.jsx
-     onDay = things to say or do during delivery. These never "complete", so they
-             live here rather than in the worklist.
-
-   Outstanding CONTENT WORK lives in worklist.md in this folder, not in the deck.
-   Keep it that way — todo lists inside slides made it easy to defer decisions
-   indefinitely while the deck looked finished. */
-const Placeholder = ({ port = [], todo = [], onDay = [] }) => {
-  if (!presenterMode) return null;
-  const done = todo.length === 0;
-  return (
-    <div className={`border-2 border-dashed rounded-xl p-5 ${done ? "border-emerald-400 bg-emerald-50" : "border-amber-400 bg-amber-50"}`}>
-      <div className="flex items-center gap-2 mb-3">
-        <p className={`text-xs font-black uppercase tracking-widest ${done ? "text-emerald-700" : "text-amber-700"}`}>
-          {done ? "Content complete" : `To write — ${todo.length} open`}
-        </p>
-        {done && <span className="text-emerald-600 font-black">✓</span>}
-      </div>
-
-      {!done && (
-        <ul className="space-y-1.5 mb-4">
-          {todo.map((t, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm text-gray-800">
-              <span className="text-amber-600 font-bold flex-shrink-0">☐</span>
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {onDay.length > 0 && (
-          <div>
-            <p className="text-[11px] font-black uppercase tracking-widest text-gray-500 mb-2">On the day</p>
-            <ul className="space-y-1.5">
-              {onDay.map((t, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-gray-400 font-bold flex-shrink-0">▸</span>
-                  <span>{t}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-        {port.length > 0 && (
-          <div>
-            <p className="text-[11px] font-black uppercase tracking-widest text-gray-500 mb-2">Candidate ports · Mar 6 deck</p>
-            <ul className="space-y-1.5">
-              {port.map((pp, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-amber-600 font-bold flex-shrink-0">↳</span>
-                  <span><code className="text-xs bg-white border border-gray-200 rounded px-1.5 py-0.5">{pp}</code></span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
 /* Zoom poll cue. Polls CANNOT be made on the fly — they must be built in the
    Zoom web portal before the meeting starts. Every <Poll> below needs to exist
-   there by Friday morning. See the ZOOM PREP list in the header comment. */
-const Poll = ({ question, options = [], questions, anonymous = false, note }) => {
+   there by Friday morning. Poll scripts are in presenter-notes.md. */
+const Poll = ({ question, options = [], questions, anonymous = false }) => {
   // One Zoom poll can hold several questions and is launched once. Pass `questions`
   // for that; pass `question`/`options` for a single-question poll.
   const items = questions || [{ question, options }];
@@ -350,64 +269,23 @@ const Poll = ({ question, options = [], questions, anonymous = false, note }) =>
           </ul>
         </div>
       ))}
-      {note && presenterMode && <p className="text-xs text-gray-600 mt-2 italic">{note}</p>}
     </div>
   );
 };
 
 /* Non-poll audience moment — chat waterfall, reactions, unmute. */
-const Interact = ({ kind = "Shared doc", prompt, note }) => (
+const Interact = ({ kind = "Shared doc", prompt }) => (
   <div className="border-2 border-teal-400 bg-teal-50 rounded-xl p-4 mb-4">
     <span className="bg-teal-600 text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
       {kind}
     </span>
     <p className="text-sm font-bold text-gray-900 mt-2">{prompt}</p>
-    {note && presenterMode && <p className="text-xs text-gray-600 mt-1 italic">{note}</p>}
   </div>
 );
 
 /* The through-line. Each segment adds one layer to what "context design"
    means, so the Takeaways slide names something the room has already been
    assembling rather than introducing it cold. Audience-facing, not a note. */
-/* Demo marker. Presenter-only. Full plan and prep checklist in demos.md.
-   mode: "Live" | "Recorded" | "Hybrid" */
-const Demo = ({ mode = "Live", time, what, steps = [], fallback }) => {
-  if (!presenterMode) return null;
-  const tone = mode === "Recorded"
-    ? "bg-slate-600"
-    : mode === "Hybrid" ? "bg-fuchsia-700" : "bg-violet-600";
-  return (
-    <div className="border-2 border-violet-400 bg-violet-50 rounded-xl p-4 mb-4">
-      <div className="flex items-center gap-2 mb-2 flex-wrap">
-        <span className={`${tone} text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded`}>
-          Demo · {mode}
-        </span>
-        {time && (
-          <span className="bg-white text-violet-700 border border-violet-300 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
-            {time}
-          </span>
-        )}
-      </div>
-      <p className="text-sm font-bold text-gray-900 mb-2">{what}</p>
-      {steps.length > 0 && (
-        <ul className="space-y-1 mb-2">
-          {steps.map((t, i) => (
-            <li key={i} className="flex items-start gap-2 text-xs text-gray-700">
-              <span className="text-violet-500 font-bold flex-shrink-0">{i + 1}.</span>
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-      {fallback && (
-        <p className="text-xs text-gray-700 bg-white border border-violet-200 rounded px-2 py-1">
-          <strong>If it fails:</strong> {fallback}
-        </p>
-      )}
-    </div>
-  );
-};
-
 const Lede = ({ children }) => (
   <p className="text-sm text-gray-600 leading-relaxed max-w-3xl mb-5">{children}</p>
 );
@@ -509,7 +387,6 @@ const slides = [
             "AI running locally on my own machine",
             "None of these yet",
           ]}
-          note="Opening warm-up. Tells you which segments to expand and which to compress — decide live."
         />
 
         <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-3 mb-4">
@@ -518,15 +395,6 @@ const slides = [
           <p className="text-sm"><Link href="https://docs.google.com/document/d/1AIO-VKwNZM4ZZ65Olt8YteM0sByexcJr-Rrd2-jo1QY/edit?usp=sharing">Open the questions doc ↗</Link></p>
         </div>
 
-        <Placeholder
-          port={["About"]}
-          onDay={[
-            "Paste both links in chat at minute 1 — chat is fine for delivering links, just not for discussion",
-            "~60 seconds. The three cards are there for the recording; do not read them aloud",
-            "The internet → social media → AI progression is the point. Land that, skip the rest if you're behind",
-            "If the warm-up poll skews experienced, cut What's New to 2 min",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -583,9 +451,6 @@ const slides = [
           agreement Rutgers negotiated. Only a local model keeps everything on the laptop, and
           that is the Local AI segment.
         </Note>
-        <Placeholder
-          port={["The Challenge of Now", "Landscape", "The Competition", "Chatbot vs. Agent"]}
-        />
       </SlideShell>
     ),
   },
@@ -641,13 +506,6 @@ const slides = [
           going?"
         </DropIn>
 
-        <Placeholder
-          port={["AI Initiative"]}
-          onDay={[
-            "The 'Your Secrets' card is on the slide now — read it, don't paraphrase it",
-            "This slide earns you the right to demo freely for the next hour. Don't rush it",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -707,15 +565,6 @@ const slides = [
           </p>
         </div>
 
-        <Placeholder
-          port={["Accessibility"]}
-          onDay={[
-            "Some of the room heard the old April 2026 date. Say plainly that it was extended to April 26, 2027 — otherwise half of them think you have it wrong",
-            "Don't let the extension read as relief. Two semesters, and notation and diagrams take the longest",
-            "Point forward to Sep 18 and Nov 6 — this slide is also how those sessions get their audience",
-            "Do NOT promise 'minutes instead of hours'. This room has tried it. The honest claim is that the hard material is now attemptable — overpromising here costs you credibility for the rest of the hour",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -766,12 +615,6 @@ const slides = [
           </div>
         </div>
 
-        <Placeholder
-          port={["Your Tools", "AI Initiative", "Accessibility"]}
-          onDay={[
-            "\"Monday\" works live and breaks in a clip. The on-screen date carries it — but say \"August 17\" out loud at least once so the standalone cut still makes sense",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -879,30 +722,14 @@ const slides = [
               ],
             },
           ]}
-          note="One poll, two questions, one launch — roughly 90 s instead of 3 min. Anonymity is a per-poll setting in Zoom, so merging makes Q1 anonymous too; that is fine, arguably better."
         />
 
         <Interact
           kind="Shared doc"
           prompt="If you went through it: who did you have to ask, and how long did it take?"
-          note="Zoom chat is bad for this — answers scroll away and are lost after the call. Put it in the shared doc so it persists, and so you can turn it into a written how-to afterward. Read two or three aloud."
         />
 
-        <Demo
-          mode="Live"
-          time="30 sec"
-          what="Load the ChatGPT Edu subscribe page and let the refusal render on screen."
-          steps={[
-            "Software Portal → ChatGPT Edu → Subscribe",
-            "Let the 'no PaymentAccounts available' error sit there for a beat",
-            "Say: this is takeaway #04, live",
-          ]}
-          fallback="Screenshot of the error, already on the desktop."
-        />
 
-        <Placeholder
-          port={[]}
-        />
       </SlideShell>
     ),
   },
@@ -977,13 +804,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
 
         <div className="mt-4">
 
-          <Placeholder
-            port={["Materials", "Context Prompt"]}
-            onDay={[
-              "The ownership card sets up the next two slides. Say it deliberately and let it sit",
-              "This is where takeaway #01 gets earned — you are the context designer",
-            ]}
-          />
         </div>
       </SlideShell>
     ),
@@ -1033,23 +853,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
         </div>
 
 
-        <Demo
-          mode="Live"
-          time="3 min"
-          what="Pre-built notebook from a real syllabus + 2 readings. Ask 3 student questions and trace a citation."
-          steps={[
-            "Ask a question a student would actually ask",
-            "CLICK THE CITATION through to the source passage — this is the demo",
-            "Do not build the notebook live, ever",
-            "Open notebook.google.com first so they see the new domain and the rename lands visually",
-            "VERIFY THE SHARE LINK from a second account before relying on it. Notebook sharing is the difficult one — if it does not open for them, say so plainly and use it as the example. Do not pretend it worked",
-          ]}
-          fallback="Screen recording of the citation trace."
-        />
 
-        <Placeholder
-          port={["NotebookLM", "Materials"]}
-        />
       </SlideShell>
     ),
   },
@@ -1110,28 +914,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
         </div>
 
 
-        <Demo
-          mode="Live"
-          time="3 min"
-          what="Same syllabus in both. Then ask the Gem something outside its sources and let it decline."
-          steps={[
-            "Show the notebook and the Gem side by side",
-            "Ask the out-of-scope question",
-            "The refusal is the most persuasive moment in the deck",
-          ]}
-          fallback="Recording of the refusal. Rehearse the question — if it answers instead of declining, pick a different one."
-        />
 
-        <Placeholder
-          port={["Gems Demo"]}
-          onDay={[
-            "SHARING — tested: a Gem shares through Drive and works across ScarletMail. Confirmed for faculty and staff. If a STUDENT ScarletMail account has not been verified, say 'faculty and staff, confirmed; students I'd test before relying on it' rather than promising it",
-            "This is where 'which do I point students at?' gets answered — sharing is the deciding factor, not features",
-            "The WCAG Gem is the demo. Open it from gemini.google.com/gems/view so they see where Gems live, then show the share link. Everyone must be signed in to Google or they see nothing",
-            "It is an ACCESSIBILITY Gem — call back to the April 2027 deadline and forward to Sep 18 / Nov 6. That is the same thread, not a detour",
-            "Ask the Gem something outside its sources and let it decline. That refusal is the most persuasive moment in the deck",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -1249,32 +1032,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
         </div>
 
 
-        <Demo
-          mode="Hybrid"
-          time="8 min · THE demo"
-          what="Export → unzip → work → re-zip → import to sandbox. Live, recorded middle, live."
-          steps={[
-            "LIVE: Settings → Export Course Content → download → unzip",
-            "RECORDED: the folder being processed — slow and dull in real time",
-            "LIVE: re-zip → Import Course Content → SANDBOX → verify",
-            "Show GEMINI first, Codex second as the upgrade",
-            "Say out loud: this is a copy, and this is a sandbox",
-          ]}
-          fallback="Pre-exported .imscc on the desktop; skip straight to the import half."
-        />
 
-        <Placeholder
-          onDay={[
-            "THIS IS THE PAYOFF for the through-line on slide 3. Call back to it explicitly: 'I said decisions are being made about your materials — here is what that looked like'",
-            "ASU: say it as reported, and include their response. The citation is on the slide — point at it",
-            "DO NOT claim ASU ingested Canvas. Not established publicly. Atomizer is described as deploying 'all of ASU's assets', which is broader than Canvas, and the ingestion path (Canvas API vs IMSCC export vs a separate ASU Online repository vs media indexing) is unreported. Instructional designers in this room know Canvas — an overclaim gets caught",
-            "If asked 'did it pull from their Canvas?': Canvas is where most ASU Online instructional content lives, so in practice much of it likely originates there — but the mechanism has not been made public. Say that, and stop",
-            "Worth noting if it comes up: ASU distinguishes licensed library material (the LRO) from faculty-created lectures and slides. It is the faculty-created side that drove the objection — which is exactly the material this session is about",
-            "EXPECT THE PUSHBACK: \"how does having my own export stop my university doing that?\" Honest answer — it doesn't. Owning a copy doesn't veto an institutional platform. What it changes is that you know what you have, you can show what changed, and you are not only finding out afterwards",
-            "Demo on a copy. Say that you are demoing on a copy",
-            "This is the slide people will screenshot. Slow down",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -1327,15 +1085,6 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </p>
         </div>
 
-        <Placeholder
-          port={[]}
-          onDay={[
-            "Don't re-teach the export here — the previous slide did it. This slide is only about what having the folder buys you",
-            "Say the portability claim plainly: the folder outlives the tool. That is the argument, the demo is just today's example",
-            "Show where Codex opens a folder in the desktop UI — that is the whole trick",
-            "Have an answer for \"I don't want an agent touching my files\": work on a copy, read-only first",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -1366,23 +1115,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           </p>
         </div>
 
-        <Demo
-          mode="Recorded"
-          time="2 min + live discussion"
-          what="TWO examples: inside your materials (Codex), and out on the web (semester prep)."
-          steps={[
-            "A) CODEX across the course folder — internal consistency. Same recording as slide 9",
-            "B) WEB: 'Check my syllabus dates against the Fall 2026 academic calendar and tell me what disagrees'",
-            "B keeps going: confirm the building and room, check add/drop and withdrawal deadlines",
-            "B is licensed, runnable Monday, and every person in the room does it by hand every term",
-            "Let it get one thing wrong. Catch it out loud — that is takeaway #06",
-          ]}
-          fallback="It is already recorded. This is the fallback."
-        />
 
-        <Placeholder
-          port={["Agents", "Chatbot vs. Agent", "Monday"]}
-        />
       </SlideShell>
     ),
   },
@@ -1446,27 +1179,7 @@ DEPLOY    →  Canvas → Pages → HTML Editor → Paste`}</CodeBlock>
           Canvas gradebook. Content changes mean rebuilding.
         </Note>
 
-        <Demo
-          mode="Live"
-          time="4 min"
-          what="One page of your own → a working interactive activity → pasted into Canvas."
-          steps={[
-            "Use a real page of your own",
-            "Ask for one change in plain English so they see it iterate",
-            "PLAN TO SHOW IT BREAK. If Canvas accepts it first time, say what you would have done",
-            "Show the paste-into-Canvas step — that is where people get stuck",
-          ]}
-          fallback="Finished HTML file ready to open."
-        />
 
-        <Placeholder
-          port={["Vibe Code", "Live Build"]}
-          onDay={[
-            "The recovery is the most important thing faculty see. Mar 6 proved it — protect that beat",
-            "Say which model it is pointed at during the demo — cloud vs local changes the privacy answer",
-            "Path 1 is what people registered for. Do not let Path 2 crowd it out",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -1537,15 +1250,6 @@ improvements the student could make.`}</CodeBlock>
           on the next slide is this same shape, pointed at a folder instead of a paragraph.
         </DropIn>
 
-        <Placeholder
-          port={["Assessment", "The Prompt", "Context Engineering"]}
-          onDay={[
-            "THE LINE: a chatbot left to its own judgment rewrites the thesis and hands the student a better paragraph. Constrained to your scale it can only score it and say why — the improvement stays the student's work",
-            "Use a rubric you actually use. A real one lands; a generic one doesn't",
-            "This is the prompt people will ask you for. Have it ready to paste in the shared doc",
-            "Same constrained prompt as slide 8, one job further on — say so, so it reads as one artifact not three",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -1589,9 +1293,6 @@ improvements the student could make.`}</CodeBlock>
         </div>
 
 
-        <Placeholder
-          port={["Voice", "Making It Accessible", "STEM OCR"]}
-        />
       </SlideShell>
     ),
   },
@@ -1645,13 +1346,9 @@ improvements the student could make.`}</CodeBlock>
         <Interact
           kind="Shared doc · or unmute"
           prompt="What have you actually seen from students — at either end? The one who used it brilliantly, or the one who clearly had no idea it existed."
-          note="Best interaction in the deck. Asking for BOTH ends surfaces the spread instead of ten variations on the same cheating story. Invite unmuting here — this one is worth hearing in someone's actual voice, and it records well for clips."
         />
 
 
-        <Placeholder
-          port={["Assessment", "Context Engineering", "Context Prompt"]}
-        />
       </SlideShell>
     ),
   },
@@ -1711,15 +1408,6 @@ improvements the student could make.`}</CodeBlock>
           </p>
         </div>
 
-        <Placeholder
-          port={["Assessment", "Context Prompt"]}
-          onDay={[
-            "Open the session with 01 and close with 06 — bookends work better than reading a block of seven",
-            "Map to Pathway Competencies 1, 2, 3 — the event listing promises alignment and these are the evidence",
-            "Put these on the handout; they are what people keep after Zoom closes",
-            "07 is the one that can start an argument. Decide in the moment whether you want it in the room or deferred to the Apr 9 rubric session",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -1790,12 +1478,8 @@ improvements the student could make.`}</CodeBlock>
             "Gemini Notebook / Gem",
             "Local AI",
           ]}
-          note="Launch BEFORE you turn them loose. Results tell you which recipe to walk through out loud first. Frame it as: which of these do you need done before September 1?"
         />
 
-        <Placeholder
-          port={[]}
-        />
       </SlideShell>
     ),
   },
@@ -1902,13 +1586,6 @@ improvements the student could make.`}</CodeBlock>
           </p>
         </div>
 
-        <Placeholder
-          port={["Resources"]}
-          onDay={[
-            "Say the line out loud: personal research yes, course content no. That one sentence keeps this consistent with the AI Initiative slide",
-            "QR for this deck is already on the title slide; no second one needed here",
-          ]}
-        />
       </SlideShell>
     ),
   },
@@ -1967,7 +1644,7 @@ function PrintView() {
       `}</style>
       <div className="print-nav" style={{ padding: '12px 20px', background: '#f3f4f6', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '12px' }}>
         <span style={{ fontSize: '13px', color: '#6b7280' }}>
-          Print view — {slides.length} slides{presenterMode ? ' · WITH PRESENTER NOTES' : ' · audience version'}
+          Print view — {slides.length} slides
         </span>
         <button onClick={() => window.print()} style={{ padding: '6px 16px', background: '#dc2626', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '13px', cursor: 'pointer' }}>
           Save as PDF
@@ -2026,17 +1703,15 @@ function Presentation() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col">
-      <div className={`text-center text-xs font-black uppercase tracking-widest py-1.5 ${presenterMode ? "bg-gray-900 text-amber-300" : "bg-gray-800 text-gray-200"}`}>
-        {presenterMode
-          ? "Presenter view · backstage notes visible · do not screen-share this"
-          : "Beyond the Chatbot · UOES / TIIP · August 21, 2026"}
+      <div className="text-center text-xs font-black uppercase tracking-widest py-1.5 bg-gray-800 text-gray-200">
+        Beyond the Chatbot · UOES / TIIP · August 21, 2026
       </div>
 
       <div className="flex-1 flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-auto">
         <div className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden relative">
           {slides[current].content}
-          <div className="absolute top-3 right-3 text-xs text-gray-400 bg-white/80 px-2 py-0.5 rounded-full border border-gray-200">
-            {presenterMode && <span className="text-gray-600 font-semibold">{slides[current].label} · </span>}
+          <div className="absolute bottom-1.5 text-xs text-gray-400 bg-white/80 px-2 py-0.5 rounded-full border border-gray-200"
+               style={{ left: '50%', transform: 'translateX(-50%)' }}>
             {current + 1} / {slides.length}
           </div>
         </div>
@@ -2056,20 +1731,6 @@ function Presentation() {
         <button onClick={next} disabled={current === slides.length - 1} className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all disabled:bg-gray-300 disabled:cursor-not-allowed">Next →</button>
         <button onClick={last} className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-lg hover:bg-red-700 active:scale-95 transition-all">End ⏭</button>
         <button onClick={openPrint} className="px-5 py-2 bg-gray-700 text-white text-sm font-bold rounded-lg hover:bg-gray-800 active:scale-95 transition-all" title="Export all slides as PDF">PDF</button>
-        <button
-          onClick={() => {
-            try { window.localStorage.setItem('btc-notes', presenterMode ? '0' : '1'); } catch (e) {}
-            const u = new URL(window.location.href);
-            u.searchParams.delete('notes');
-            u.searchParams.delete('clean');
-            u.searchParams.set(presenterMode ? 'clean' : 'notes', '');
-            window.location.href = u.toString();
-          }}
-          className={`px-5 py-2 text-sm font-bold rounded-lg active:scale-95 transition-all ${presenterMode ? "bg-amber-500 text-amber-950 hover:bg-amber-600" : "bg-gray-400 text-white hover:bg-gray-500"}`}
-          title={presenterMode ? "Hide backstage notes (audience view)" : "Show backstage notes (presenter view)"}
-        >
-          {presenterMode ? "Notes ON" : "Notes"}
-        </button>
       </div>
 
       <div className="text-center text-xs text-gray-400 py-2">

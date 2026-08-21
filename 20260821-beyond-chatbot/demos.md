@@ -127,7 +127,7 @@ is "I need a subscription I can't get."
 - [ ] Confirm and rehearse the ScarletApps-licensed agent equivalent, so slide 13 has a path for the room
 - [ ] Screenshot backups for every live demo
 - [ ] Test Handy + browser TTS on the presenting machine, with Zoom running
-- [ ] Decide screen-share layout: deck in `?notes` on one screen, demo on the shared one
+- [ ] Decide screen-share layout: `presenter-notes.md` on one screen, deck + demo on the shared one
 
 ## Failure plan
 
