@@ -1375,7 +1375,7 @@ improvements the student could make.`}</CodeBlock>
     label: "Takeaways",
     content: (
       <SlideShell tag="Takeaways from today" tagColor="bg-gray-900">
-        <Heading>What You're Walking Out With</Heading>
+        <Heading>What You're Taking With You</Heading>
         <Lede>
           Seven things you can act on before classes start — and where each one came from.
         </Lede>
