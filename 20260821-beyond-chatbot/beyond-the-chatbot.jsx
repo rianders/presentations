@@ -1092,20 +1092,44 @@ If the answer is not in my materials, say so.`}</CodeBlock>
           Here is what was actually happening, and where it goes wrong.
         </Lede>
 
-        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-4 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">Say this plainly</p>
-          <p className="text-sm text-gray-700 mb-2">
-            The folder agent you just watched runs in ChatGPT Edu — the plan most of you cannot
-            buy yet. It is the deep end of what agents do.
-          </p>
-          <p className="text-sm text-gray-700">
-            <strong>The everyday end is different and you already have it.</strong> Semester
-            prep is the obvious one: check your syllabus dates against the Fall 2026 academic
-            calendar, confirm the building and room, verify add/drop and withdrawal deadlines.
-            Work you do by hand every term, that an agent can do while you read something else.
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <SectionCard title="The deep end" icon="🧪">
+            <p className="text-sm mb-2">
+              The folder agent you just watched working across a whole course export.
+            </p>
+            <p className="text-sm">
+              It runs in <strong>ChatGPT Edu</strong> — the plan most of you cannot buy yet.
+              Worth seeing. Not where you start.
+            </p>
+          </SectionCard>
+
+          <SectionCard title="The everyday end" icon="📅" accent>
+            <p className="text-sm mb-2">
+              Different work, and <strong>you already have it</strong> through ScarletApps.
+            </p>
+            <p className="text-sm">
+              Semester prep is the obvious one — the checking you redo by hand every term.
+            </p>
+          </SectionCard>
         </div>
 
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-3">
+            Hand it your syllabus and ask it to check
+          </p>
+          <ul className="space-y-1.5">
+            <Bullet>Every date against the <strong>Fall 2026 academic calendar</strong></Bullet>
+            <Bullet>The building and room number</Bullet>
+            <Bullet><strong>Add/drop</strong> and <strong>withdrawal</strong> deadlines</Bullet>
+            <Bullet>Whether the weekly schedule actually adds up to the sessions you have</Bullet>
+          </ul>
+        </div>
+
+        <DropIn label="The Real Test">
+          None of that is impressive. It is half an hour of careful checking you do every
+          term, that an agent does while you read something else — and it catches the date
+          you got wrong, which is the part that matters.
+        </DropIn>
 
       </SlideShell>
     ),

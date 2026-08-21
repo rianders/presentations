@@ -210,6 +210,14 @@ Export → unzip → work → re-zip → import to sandbox. Live, recorded middl
 
 ### 13 · Agents · *Agents*
 
+- **Say it plainly:** the folder agent they just watched runs in ChatGPT Edu — the
+  plan most of them cannot buy yet. That is the deep end. The everyday end is
+  different and they already have it through ScarletApps. The slide now carries
+  this as two cards; say the "you already have it" half out loud, because it is
+  the part that decides whether this segment reads as *for me* or *not for me*.
+- The four checks on the slide are the demo. Don't just describe them — the
+  agent catching a date you actually got wrong is the whole point.
+
 **Demo — Recorded · 2 min + live discussion**
 TWO examples: inside your materials (Codex), and out on the web (semester prep).
 
