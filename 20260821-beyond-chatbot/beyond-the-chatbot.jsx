@@ -1089,7 +1089,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
         <Lede>
           An agent browses the web, writes, and completes multi-step tasks on its own.
           You already watched one do it — that was Codex working across the course folder.
-          Here is what was actually happening, and where it goes wrong.
+          Here is the everyday version — the one you can run on Monday.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
