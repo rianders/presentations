@@ -85,9 +85,20 @@ node .claude/skills/deck/check.js path.jsx   # one deck
 ```
 
 Compiles with the same pinned Babel version and `runtime: 'classic'` preset that
-`shell.html` uses. This repo has multiple past commits fixing blank decks; this check is
-what prevents another one. Run it after any edit — reading the file back does not catch
-a JSX error.
+`shell.html` uses. Run it after any edit — reading the file back does not catch a JSX
+error.
+
+**`check.js` only checks syntax.** A deck that references a component it no longer
+defines compiles clean and renders blank. Catch that with:
+
+```bash
+node .claude/skills/deck/render-check.js path/to/deck.jsx
+```
+
+It executes the compiled deck against a stub React and walks the whole tree, so an
+undefined component surfaces as `RUNTIME FAIL: SlideShell is not defined` instead of as
+an empty white card in front of a room. Run **both** before committing — deleting a
+component definition is exactly the edit `check.js` waves through.
 
 ## Ship
 
