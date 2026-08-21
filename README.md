@@ -13,7 +13,7 @@ https://rianders.github.io/presentations/
 
 | Date | Title | Audience | Status |
 |------|-------|----------|--------|
-| Aug 21, 2026 | Beyond the Chatbot | UOES / TIIP Partnership | **Draft** |
+| Aug 21, 2026 | Beyond the Chatbot | UOES / TIIP Partnership | Live |
 | Sep 18, 2026 | AI-Assisted Digital Accessibility Workflows | UOES / TIIP Partnership | Not started |
 | Nov 6, 2026 | Beyond Alt Text: Notation & Diagrams with AI | UOES / TIIP Partnership | Not started |
 | Jan 29, 2027 | The Prompting Cookbook: Context Engineering | UOES / TIIP Partnership | Not started |

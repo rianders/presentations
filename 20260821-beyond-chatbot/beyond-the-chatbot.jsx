@@ -31,16 +31,14 @@ const presenterMode = (() => {
 })();
 
 /* ═══════════════════════════════════════════════════════════
-   BEYOND THE CHATBOT — DRAFT SKELETON
+   BEYOND THE CHATBOT
    UOES / TIIP Faculty Workshop · August 21, 2026 · 11:00–12:30
    Format: 60 min content · 30 min work session
    Pathway: Teaching and Generative AI — Competencies 1, 2, 3
 
-   Every slide below is a PLACEHOLDER. The <Placeholder> blocks
-   name the candidate slides to port from:
-     20260306/beyond-the-chatbot-workshop.jsx  ("Beyond ChatGPT")
-   Remove the DRAFT chips in SlideShell + the title slide, and the
-   DRAFT badge in index.html, once content is final.
+   Ported from 20260306/beyond-the-chatbot-workshop.jsx
+   ("Beyond ChatGPT"). <Placeholder onDay={...}> blocks carry
+   delivery notes and render only under &notes.
 
    ── CONFIRMED SINCE THE MAR 6 DECK ──────────────────────────
    Jul 16, 2026 · Google renamed NotebookLM → GEMINI NOTEBOOK.
@@ -167,18 +165,11 @@ const RutgersLogo = () => (
   </div>
 );
 
-const DraftChip = () => (
-  <span className="bg-amber-400 text-amber-900 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
-    Draft
-  </span>
-);
-
 const SlideShell = ({ tag, tagColor = "bg-red-600", children }) => (
   <div className="flex flex-col h-full min-h-[520px]">
     <div className="flex items-center justify-between px-6 py-3 border-b border-gray-100">
       <div className="flex items-center gap-3">
         <RutgersLogo />
-        <DraftChip />
       </div>
       <span className={`text-xs font-bold uppercase tracking-widest text-white px-3 py-1 rounded-full ${tagColor}`}>
         {tag}
@@ -441,11 +432,6 @@ const slides = [
           <p className="text-xs font-bold uppercase tracking-widest text-red-500 mb-3">Rutgers UOES · TIIP Partnership</p>
           <h1 className="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-1">Beyond</h1>
           <h1 className="text-4xl sm:text-5xl font-black text-red-600 leading-tight mb-2">the Chatbot</h1>
-          <div className="mb-4">
-            <span className="bg-amber-400 text-amber-900 text-xs font-black uppercase tracking-widest px-3 py-1 rounded">
-              Draft — not for distribution
-            </span>
-          </div>
           <h2 className="text-lg sm:text-xl font-semibold text-gray-500 mb-4">What's actually new this year, and what it changes about teaching</h2>
           <div className="w-20 h-1 bg-red-600 rounded mb-5" />
           <p className="text-sm text-gray-600 max-w-xl leading-relaxed mb-5">
@@ -490,12 +476,12 @@ const slides = [
   {
     label: "Who I Am",
     content: (
-      <SlideShell tag="Opening · 4 min" tagColor="bg-red-700">
+      <SlideShell tag="Opening" tagColor="bg-red-700">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-1 leading-tight">
           Who I Am
         </h1>
         <p className="text-lg font-bold text-gray-700">Rick Anderson</p>
-        <p className="text-sm text-gray-500 mb-2">Director of Emerging Technologies, University Online Education Services</p>
+        <p className="text-sm text-gray-500 mb-2">Director of Emerging Technology, University Online Education Services</p>
         <div className="w-16 h-1 bg-red-600 rounded mb-6" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
@@ -550,7 +536,7 @@ const slides = [
   {
     label: "New for Fall 2026",
     content: (
-      <SlideShell tag="Framing · 3 min" tagColor="bg-gray-700">
+      <SlideShell tag="What's New" tagColor="bg-gray-700">
         <Heading>What's New for Fall 2026</Heading>
         <Lede>
           What actually landed over the summer, and why "it's a chatbot" stopped being a
@@ -608,7 +594,7 @@ const slides = [
   {
     label: "AI Initiative",
     content: (
-      <SlideShell tag="Policy · 5 min" tagColor="bg-gray-700">
+      <SlideShell tag="Policy" tagColor="bg-gray-700">
         <Heading>The AI Initiative at Rutgers</Heading>
 
         <div className="bg-red-600 text-white rounded-xl p-5 mb-4">
@@ -670,7 +656,7 @@ const slides = [
   {
     label: "Accessibility",
     content: (
-      <SlideShell tag="Guiding Principle · 4 min" tagColor="bg-teal-700">
+      <SlideShell tag="Guiding Principle" tagColor="bg-teal-700">
         <Heading>Accessibility Is Not Optional</Heading>
 
         <div className="bg-red-600 text-white rounded-xl p-5 mb-4">
@@ -738,7 +724,7 @@ const slides = [
   {
     label: "New as of Monday",
     content: (
-      <SlideShell tag="Segment 1 · 6 min" tagColor="bg-red-600">
+      <SlideShell tag="What You Have" tagColor="bg-red-600">
         <Heading>What's New as of Monday</Heading>
 
         <div className="bg-red-50 border-l-4 border-red-600 rounded-xl p-4 mb-4">
@@ -794,7 +780,7 @@ const slides = [
   {
     label: "Free vs. Paid",
     content: (
-      <SlideShell tag="Segment 1b · 4 min" tagColor="bg-gray-700">
+      <SlideShell tag="Free vs. Paid" tagColor="bg-gray-700">
         <Heading>What's Free, What's Worth Buying</Heading>
         <Lede>
           Most of what we're covering today costs nothing. One paid option is worth knowing about —
@@ -928,7 +914,7 @@ const slides = [
   {
     label: "Materials as Context",
     content: (
-      <SlideShell tag="Segment 2 · 5 min" tagColor="bg-emerald-700">
+      <SlideShell tag="Materials as Context" tagColor="bg-emerald-700">
         <Heading>Your Course Materials as Context</Heading>
 
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-4">
@@ -1007,7 +993,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
   {
     label: "Gemini Notebook",
     content: (
-      <SlideShell tag="Segment 4 · 8 min" tagColor="bg-purple-600">
+      <SlideShell tag="Gemini Notebook" tagColor="bg-purple-600">
         <Heading>Gemini Notebook</Heading>
 
         <div className="bg-purple-50 border-l-4 border-purple-500 rounded-xl p-4 mb-4">
@@ -1072,7 +1058,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
   {
     label: "Gems vs. Notebook",
     content: (
-      <SlideShell tag="Segment 4b · 4 min" tagColor="bg-indigo-600">
+      <SlideShell tag="Gems vs. Notebook" tagColor="bg-indigo-600">
         <Heading>Two Tools That Both "Use Only My Sources"</Heading>
         <Lede>
           As of Monday you have two Google tools that ground on material you upload.
@@ -1159,7 +1145,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
   {
     label: "Canvas Round Trip",
     content: (
-      <SlideShell tag="Segment 3c · 8 min" tagColor="bg-red-600">
+      <SlideShell tag="The Canvas Round Trip" tagColor="bg-red-600">
         <Heading>Out of Canvas, Through AI, Back Into Canvas</Heading>
         <Lede>
           Your course materials are going to end up in AI systems. The only real question is
@@ -1300,7 +1286,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
   {
     label: "Your Machine",
     content: (
-      <SlideShell tag="Segment 3b · 6 min" tagColor="bg-blue-700">
+      <SlideShell tag="Your Machine" tagColor="bg-blue-700">
         <Heading>Your Materials, On Your Machine</Heading>
         <Lede>
           The export isn't a backup chore. It's how your course stops being something you
@@ -1358,7 +1344,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
   {
     label: "Agents",
     content: (
-      <SlideShell tag="Segment 2 · 6 min" tagColor="bg-blue-600">
+      <SlideShell tag="Agents" tagColor="bg-blue-600">
         <Heading>Agents</Heading>
         <Lede>
           An agent browses the web, writes, and completes multi-step tasks on its own.
@@ -1407,7 +1393,7 @@ If the answer is not in my materials, say so.`}</CodeBlock>
   {
     label: "Vibe Coding",
     content: (
-      <SlideShell tag="Segment 3 · 9 min" tagColor="bg-indigo-600">
+      <SlideShell tag="Vibe Coding" tagColor="bg-indigo-600">
         <Heading>Vibe Coding</Heading>
         <Lede>
           Describe a Canvas page, quiz, or interactive activity in plain English and get
@@ -1491,7 +1477,7 @@ DEPLOY    →  Canvas → Pages → HTML Editor → Paste`}</CodeBlock>
   {
     label: "Your Rubric",
     content: (
-      <SlideShell tag="Segment 3b · 6 min" tagColor="bg-amber-700">
+      <SlideShell tag="Your Rubric" tagColor="bg-amber-700">
         <Heading>Build It Against Your Rubric</Heading>
         <Lede>
           A generated quiz is a party trick. The same build, given <em>your</em> criteria,
@@ -1568,7 +1554,7 @@ improvements the student could make.`}</CodeBlock>
   {
     label: "Local AI Tools",
     content: (
-      <SlideShell tag="Segment 5 · 2 min" tagColor="bg-emerald-600">
+      <SlideShell tag="Local AI" tagColor="bg-emerald-600">
         <Heading>Local AI Tools</Heading>
         <Lede>
           Speech-to-text, text-to-speech, and small models running on your own laptop —
@@ -1614,7 +1600,7 @@ improvements the student could make.`}</CodeBlock>
   {
     label: "What Students Bring",
     content: (
-      <SlideShell tag="Segment 6 · 5 min" tagColor="bg-gray-700">
+      <SlideShell tag="Students" tagColor="bg-gray-700">
         <Heading>What Students Are Arriving With</Heading>
         <Lede>
           Not a single baseline — a wider spread than we have ever designed for.
@@ -1676,7 +1662,7 @@ improvements the student could make.`}</CodeBlock>
   {
     label: "Takeaways",
     content: (
-      <SlideShell tag="The Bridge · 3 min" tagColor="bg-gray-900">
+      <SlideShell tag="The Bridge" tagColor="bg-gray-900">
         <Heading>What You're Walking Out With</Heading>
         <Lede>
           Seven things you can act on before classes start — and where each one came from.
@@ -1981,7 +1967,7 @@ function PrintView() {
       `}</style>
       <div className="print-nav" style={{ padding: '12px 20px', background: '#f3f4f6', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '12px' }}>
         <span style={{ fontSize: '13px', color: '#6b7280' }}>
-          Print view — {slides.length} slides · DRAFT{presenterMode ? ' · WITH PRESENTER NOTES' : ' · audience version'}
+          Print view — {slides.length} slides{presenterMode ? ' · WITH PRESENTER NOTES' : ' · audience version'}
         </span>
         <button onClick={() => window.print()} style={{ padding: '6px 16px', background: '#dc2626', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '13px', cursor: 'pointer' }}>
           Save as PDF
@@ -2040,10 +2026,10 @@ function Presentation() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col">
-      <div className={`text-center text-xs font-black uppercase tracking-widest py-1.5 ${presenterMode ? "bg-gray-900 text-amber-300" : "bg-amber-400 text-amber-900"}`}>
+      <div className={`text-center text-xs font-black uppercase tracking-widest py-1.5 ${presenterMode ? "bg-gray-900 text-amber-300" : "bg-gray-800 text-gray-200"}`}>
         {presenterMode
           ? "Presenter view · backstage notes visible · do not screen-share this"
-          : "Draft · August 21, 2026"}
+          : "Beyond the Chatbot · UOES / TIIP · August 21, 2026"}
       </div>
 
       <div className="flex-1 flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-auto">
