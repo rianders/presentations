@@ -3,13 +3,19 @@
 Plain text on purpose: Zoom chat does not render Markdown, and bare URLs stay
 clickable. Paste as one block; Zoom keeps the line breaks.
 
+**No bare `@domain` strings.** A leading `@` opens Zoom's mention picker and can
+paste as a broken mention. It also reads like a destination when it is only the
+sign-in domain — and scarletmail.rutgers.edu just redirects to an info page, not
+a login, so it is not worth linking. Say "your ScarletMail account" instead.
+
 ---
 
 ## 1 · As people join (paste ~10:55, and again at 11:00)
 
 Welcome — Beyond the Chatbot. We'll start right at 11:00.
 
-Two links. Sign in with your @scarletmail.rutgers.edu account for both:
+Two links. Open both with your Rutgers ScarletMail account — not a personal
+Google account, or you'll get a permission error:
 
 Slides — follow along live or grab them afterward:
 https://rianders.github.io/presentations/shell.html?p=20260821-beyond-chatbot/beyond-the-chatbot
@@ -27,7 +33,7 @@ Canvas page, a syllabus, or a reading open.
 
 Slides: https://rianders.github.io/presentations/shell.html?p=20260821-beyond-chatbot/beyond-the-chatbot
 Questions doc: https://docs.google.com/document/d/1AIO-VKwNZM4ZZ65Olt8YteM0sByexcJr-Rrd2-jo1QY/edit?usp=sharing
-Sign in with @scarletmail.rutgers.edu.
+Open both with your Rutgers ScarletMail account, not a personal Google account.
 
 ---
 
