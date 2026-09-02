@@ -52,10 +52,16 @@ const _params = new URLSearchParams(window.location.search);
    even there it is "here is what to check," not "you must."
 
    ── THE SPINE ───────────────────────────────────────────────
-   Every workflow in this deck is the same four beats, introduced
-   on slide 5 and then re-run three times:
+   Every workflow in this deck is the same loop, introduced on
+   slide 5 and then re-run three times:
 
-       SOURCE → AI PASS → VERIFY → PLACE IT IN CANVAS
+       ALLY → SOURCE → AI PASS → VERIFY → CANVAS → back to ALLY
+
+   It is a LOOP, not a line. It starts at Ally because that is what
+   tells you what needs work and how much of it there is, and it
+   ends at Ally because that is how you find out whether the fix
+   actually cleared. Anything that re-runs the shape must show all
+   five beats and must close it — see slide 13.
 
    The VERIFY beat is the one that makes this a workflow instead of
    a trick, and it is the beat faculty skip. Name it every single
@@ -118,11 +124,22 @@ const RutgersLogo = () => (
   </div>
 );
 
+/* DRAFT CHROME — remove all five markers when this goes out of draft:
+   this component, its use in SlideShell, the title-slide badge, the DRAFT
+   in the print header, the audience banner text, and the badge in
+   index.html. Flip README status to Live in the same commit. */
+const DraftChip = () => (
+  <span className="bg-amber-400 text-amber-900 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
+    Draft
+  </span>
+);
+
 const SlideShell = ({ tag, tagColor = "bg-red-600", children }) => (
   <div className="flex flex-col h-full min-h-[520px]">
     <div className="flex items-center justify-between px-6 py-3 border-b border-gray-100">
       <div className="flex items-center gap-3">
         <RutgersLogo />
+        <DraftChip />
       </div>
       <span className={`text-xs font-bold uppercase tracking-widest text-white px-3 py-1 rounded-full ${tagColor}`}>
         {tag}
@@ -265,7 +282,7 @@ const Heading = ({ children }) => (
 const VerifyBeat = ({ children }) => (
   <div className="bg-gray-900 rounded-xl px-5 py-4 mt-4">
     <p className="text-[10px] font-black uppercase tracking-widest text-amber-400 mb-1">
-      Step 3 · Verify — the step everyone skips
+      Step 4 · Verify — the step everyone skips
     </p>
     <p className="text-sm text-gray-100 leading-relaxed">{children}</p>
   </div>
@@ -285,6 +302,11 @@ const slides = [
             <p className="text-xs font-bold uppercase tracking-widest text-red-500 mb-3">Rutgers UOES · TIIP Partnership</p>
             <h1 className="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-1">AI-Assisted</h1>
             <h1 className="text-4xl sm:text-5xl font-black text-red-600 leading-tight mb-2">Accessibility Workflows</h1>
+            <div className="mb-4">
+              <span className="bg-amber-400 text-amber-900 text-xs font-black uppercase tracking-widest px-3 py-1 rounded">
+                Draft — not for distribution
+              </span>
+            </div>
             <h2 className="text-lg sm:text-xl font-semibold text-gray-500 mb-4">Text-to-speech, vision, and content conversion</h2>
             <div className="w-20 h-1 bg-red-600 rounded mb-5" />
             <p className="text-sm text-gray-600 max-w-xl leading-relaxed mb-5">
@@ -458,27 +480,34 @@ const slides = [
     label: "The Shape",
     content: (
       <SlideShell tag="Framing · 4 min" tagColor="bg-gray-700">
-        <Heading>Every Workflow Today Is the Same Four Beats</Heading>
+        <Heading>Every Workflow Today Is the Same Loop</Heading>
         <Lede>
-          Three different problems, one shape. You will see it three times today.
+          Three different problems, one shape. It starts in Canvas and it ends back in
+          Canvas, and you will see it three times today.
         </Lede>
 
-        <div className="space-y-4 mb-4">
-          <PipelineStep num="1" title="Source — get the material into a form the tool can read">
-            The step people underestimate. A clean scan beats a clever prompt, and a
-            PDF that was born digital is a different problem from one that was photographed.
+        <div className="space-y-3 mb-4">
+          <PipelineStep num="1" title="Ally — find out what needs work, and how much">
+            Ally is already scoring your course. It tells you how big the job is, which
+            parts are quick enough to finish today, and where the harder problems are.
           </PipelineStep>
-          <PipelineStep num="2" title="AI pass — one specific instruction, not 'make this accessible'">
-            The quality of what comes back tracks how much context you gave: what the
-            material is, who reads it, and what it is doing in your course.
+          <PipelineStep num="2" title="Source — get the material into a form a tool can read">
+            The step people underestimate. A clean scan beats a clever prompt, and a PDF
+            that was born digital is a different problem from one that was photographed.
           </PipelineStep>
-          <PipelineStep num="3" title="Verify — a human check, scoped so it takes seconds not hours">
-            Every segment today names exactly what to look at. You are not re-reading
-            the output; you are checking the two or three things this tool gets wrong.
+          <PipelineStep num="3" title="AI pass — try what's built in, then take it further">
+            Press the built-in button first; a first draft is faster to fix than a blank
+            field. Then bring it to a chatbot with the context the built-in tool never had —
+            the page around it, and what it is doing in your course.
           </PipelineStep>
-          <PipelineStep num="4" title="Place it — into Canvas, where it does someone some good">
-            An accessible file on your desktop has helped nobody. The last beat is
-            always where it lands and how a student reaches it.
+          <PipelineStep num="4" title="Verify — a human check, scoped so it takes seconds not hours">
+            Every segment today names exactly what to look at. You are not re-reading the
+            output; you are checking the two or three things this tool tends to get wrong.
+          </PipelineStep>
+          <PipelineStep num="5" title="Back into Canvas — then back to Ally">
+            An accessible file on your desktop has helped nobody. Put it where a student
+            reaches it, then re-run Ally on that item. That is how you find out whether the
+            problem is actually gone, and it is what closes the loop.
           </PipelineStep>
         </div>
 
@@ -678,7 +707,7 @@ const slides = [
           <SectionCard title="Acronyms and numbers" icon="🔢">
             <p className="text-sm">
               Read as words when they should be spelled out, or the reverse. Dates, ranges,
-              and anything hyphenated are reliably wrong.
+              and anything hyphenated often don't come out right.
             </p>
           </SectionCard>
           <SectionCard title="Structure it can't see" icon="📄">
@@ -729,21 +758,25 @@ const slides = [
         </Lede>
 
         <div className="space-y-4 mb-4">
-          <PipelineStep num="1" title="Source">
+          <PipelineStep num="1" title="Ally">
+            It has already flagged the images with no description, or a bad one. That list
+            is where this segment starts.
+          </PipelineStep>
+          <PipelineStep num="2" title="Source">
             The image, plus the paragraph around it. Context is what separates a
             description from a useful description.
           </PipelineStep>
-          <PipelineStep num="2" title="AI pass">
-            Ask for the description, and tell it what the image is doing in the course —
-            see the prompt on the next slide.
+          <PipelineStep num="3" title="AI pass">
+            Try Ally's own auto-generate first. Then bring the image — and the page around
+            it — to a chatbot, and say what it is doing in your course.
           </PipelineStep>
-          <PipelineStep num="3" title="Verify">
-            One question: could a student who cannot see this image answer the question
-            it was put there to help them answer?
+          <PipelineStep num="4" title="Verify">
+            One question: could a student who cannot see this image answer the question it
+            was put there to help them answer?
           </PipelineStep>
-          <PipelineStep num="4" title="Place it">
-            Into the alt text field in Canvas — not into the caption, and not into the
-            body text where sighted students read it twice.
+          <PipelineStep num="5" title="Back to Canvas, then Ally">
+            Into the alt text field — not the caption, and not the body text where sighted
+            students read it twice. Then check Ally again and watch the flag clear.
           </PipelineStep>
         </div>
 
@@ -785,8 +818,23 @@ const slides = [
               to 240 in 2022, then recovers to 380 by 2026 — ending just below where it started."
             </p>
             <p className="text-xs text-emerald-800 mt-2">
-              Names the trend, gives the numbers that carry it, and states the conclusion
-              the figure exists to support.
+              Names the trend, gives the numbers that carry it, and states the conclusion —
+              which is right when the figure is there to illustrate a point you have already
+              made.
+            </p>
+          </div>
+          <div className="bg-blue-50 border-l-4 border-blue-600 rounded-r-lg px-4 py-3">
+            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">
+              And when the figure is the exercise — say less
+            </p>
+            <p className="text-sm text-gray-700 font-mono">
+              "Bar chart, 2019–2026. Values by year: 400, 395, 405, 240, 290, 340, 380."
+            </p>
+            <p className="text-xs text-blue-800 mt-2">
+              If students are meant to read the trend themselves, naming it hands them the
+              answer a sighted student still has to work for. Give the data and let them do
+              the same reading. <strong>You have to decide which kind of image this is — the
+              tool can't know, and it will usually offer you the conclusion.</strong>
             </p>
           </div>
         </div>
@@ -799,7 +847,11 @@ Students are meant to take away [the specific point].
 Replace the image, don't describe it. Give the numbers or
 details a student would need to follow the argument. Skip
 "image of" and "chart showing". Under 150 characters if the
-image is decorative, longer if it carries data.`}</CodeBlock>
+image is decorative, longer if it carries data.
+
+This figure is something students are asked to interpret,
+so do not state the conclusion or answer any question the
+image is posing. Give what is on the page and stop.`}</CodeBlock>
 
         <Note>
           Decorative images work the other way. An image that carries no information takes
@@ -860,9 +912,10 @@ image is decorative, longer if it carries data.`}</CodeBlock>
 
         <VerifyBeat>
           Two checks, both fast. <strong>One:</strong> pick two numbers from the description
-          and find them in the image. <strong>Two:</strong> read the description on its own.
-          Does it make the point the figure is there to make? If not, add that sentence
-          yourself. That part was always going to be yours.
+          and find them in the image. <strong>Two:</strong> read the description on its own and
+          ask whether a student who can't see the figure can now do <em>the same work</em> as a
+          student who can — not more, and not less. If the image is an exercise, an answer in
+          the alt text is a failure, not a bonus.
         </VerifyBeat>
       </SlideShell>
     ),
@@ -933,28 +986,33 @@ image is decorative, longer if it carries data.`}</CodeBlock>
       <SlideShell tag="Segment 3 · Conversion · 6 min" tagColor="bg-emerald-700">
         <Heading>Scan to Canvas Page</Heading>
         <Lede>
-          The same four beats. This is the longest of the three workflows, and verifying
-          costs the most here. Budget for it.
+          The same loop. This is the longest of the three workflows, and verifying costs
+          the most here. Budget for it.
         </Lede>
 
         <div className="space-y-4 mb-4">
-          <PipelineStep num="1" title="Source — improve the scan before you convert it">
+          <PipelineStep num="1" title="Ally — confirm this is the chapter worth the hour">
+            A twenty-page conversion is the most expensive thing in this session. Check
+            Ally first that this is the file students are actually blocked on.
+          </PipelineStep>
+          <PipelineStep num="2" title="Source — improve the scan before you convert it">
             Straighten it, drop the black borders, and split double-page spreads into
             single pages. Five minutes here saves more than five minutes later.
           </PipelineStep>
-          <PipelineStep num="2" title="AI pass — ask for structure, and ask it not to guess">
+          <PipelineStep num="3" title="AI pass — ask for structure, and ask it not to guess">
             Headings as headings, tables as tables. Then the instruction that matters most:
             <em> where you are not sure what something says, mark it uncertain rather than
             guessing.</em> Twenty flags beat one confident error, and it is what makes step 3
             possible at all.
           </PipelineStep>
-          <PipelineStep num="3" title="Verify — proper nouns, numbers, and the marked gaps">
+          <PipelineStep num="4" title="Verify — proper nouns, numbers, and the marked gaps">
             Go straight to anything the model flagged as uncertain, then spot-check names
             and figures. You are not proofreading the whole chapter.
           </PipelineStep>
-          <PipelineStep num="4" title="Place it — a Canvas page, with the original alongside">
-            Keep the scan available too. Some students want the page images; the accessible
-            version is an addition, not a replacement.
+          <PipelineStep num="5" title="Back into Canvas — then back to Ally">
+            Keep the scan available too; some students want the page images, and the
+            accessible version is an addition rather than a replacement. Then re-run Ally
+            on the new page and watch the score move.
           </PipelineStep>
         </div>
 
@@ -1323,7 +1381,7 @@ function PrintView() {
       `}</style>
       <div className="print-nav" style={{ padding: '12px 20px', background: '#f3f4f6', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '12px' }}>
         <span style={{ fontSize: '13px', color: '#6b7280' }}>
-          Print view — {slides.length} slides
+          Print view — {slides.length} slides · DRAFT
         </span>
         <button onClick={() => window.print()} style={{ padding: '6px 16px', background: '#dc2626', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '13px', cursor: 'pointer' }}>
           Save as PDF
@@ -1381,8 +1439,8 @@ function Presentation() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col">
-      <div className="text-center text-xs font-black uppercase tracking-widest py-1.5 bg-gray-800 text-gray-200">
-        AI-Assisted Accessibility Workflows · UOES / TIIP · September 18, 2026
+      <div className="text-center text-xs font-black uppercase tracking-widest py-1.5 bg-amber-400 text-amber-900">
+        Draft · September 18, 2026
       </div>
 
       <div className="flex-1 flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-auto">
