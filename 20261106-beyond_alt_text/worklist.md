@@ -81,12 +81,19 @@ Strongest candidates from `notation-inventory.md`, chosen to prove the range:
 - **STEM** — an equation image, the canonical case with the most existing machinery.
 - **Wildcard for warmth** — chess, knitting charts, or baseball scorekeeping.
 
-### 3. Verify the Canvas notation stack before claiming it.
-The abstract promises "screen-reader-renderable notation in Canvas." Confirm, don't assume:
-- Canvas equation editor — what does it actually emit, MathML or an image?
+### 3. Verify the Canvas notation stack before claiming it. — PARTLY ANSWERED
+**Answered September 2, 2026 (see `notation-inventory.md` for detail):**
+- **MathML is the deliverable.** NVDA, JAWS and VoiceOver all read it. **LaTeX is not read
+  natively** — MathJax renders it and supplies the accessibility layer. So the abstract's
+  promise of "screen-reader-renderable notation" means MathML, however it is authored.
+- **MathCAT is built into NVDA as of 2026.1**, no download; JAWS has supported it since
+  December 2024. It does speech, braille, and structural navigation of an expression.
+
+**Still to verify, on a real Rutgers course:**
+- Canvas equation editor — does it emit MathML or an image?
 - MathJax in Rutgers Canvas — on by default?
-- Does Ally do anything at all for math, or does it just score the image?
-- What a real screen reader does with each of those, on the demo machine.
+- Does Ally do anything for math, or only score the image?
+- What a real screen reader does with each, on the demo machine.
 
 **Carry September 18's entitlement discipline over verbatim: the moment you name a tool
 you inherit the obligation to be right.** Every claim gets verified with a date.
@@ -105,6 +112,51 @@ Do not repeat it. One view and it is the audience's — every delivery note goes
 ---
 
 ## IMPORTANT
+
+### 5b. Material moved here from the September session, September 2, 2026
+September 18 is the beginner/everyday session; these are the specialist findings that came
+out of that work and belong here instead. Detail is in `notation-inventory.md`.
+
+**The thesis now has a name and a switch — lead with this.**
+MathCAT offers two speech *styles* for the same expression: **MathSpeak** (precise,
+structural, verbose) and **ClearSpeak** (natural phrasing, closer to how a teacher says it).
+The listener chooses. **One expression, two correct spoken forms** — which means *"the"*
+spoken form of a notation does not exist. That is this session's whole argument, already
+shipped as a configuration option, and it is far stronger than asserting it.
+
+**Braille is more mature than speech here.** MathCAT emits Nemeth, UEB Technical, CMU and
+others, all standardized. Useful counterweight to the room's assumption that audio is what
+accessibility means.
+
+**Chemistry is partial, music is a different world.** MathCAT has chemistry heuristics and
+speaks detected formulas *as chemistry*. Screen readers do not read music at all —
+MuseScore 4 has its own support, MusicXML converts via projects like Talking Score, and
+braille music is its own code. Both confirm the group C argument.
+
+**PDF/UA-2 (ISO 14289-2)** — the accessibility standard aligned with PDF 2.0. Figure tags
+can now carry sub-structures, so a complex diagram can be described in parts. Almost nobody
+has adopted it, and Rutgers' standard is WCAG 2.1 AA. A "coming, not here" note.
+
+**The handwriting failure, stated precisely.** With bad enough handwriting, AI stops reading
+and starts concluding. It infers what was probably meant — sometimes correctly, which is
+what makes it dangerous, because a plausible completion is indistinguishable from a correct
+reading. And the conclusion comes from general training, not from *this* course, *this*
+convention, *this* instructor's meaning. Local notation gets silently normalized.
+
+**A live specimen, if it holds up.** In the September 2 test, page 8 of a Rutgers logic
+textbook came back with a biconditional truth table headed **P ⟹ Q** where the source has
+**P ⟺ Q** — with biconditional values underneath. Internally inconsistent, unflagged.
+**Confirm by eye before using it.** Note the source is copyrighted, so reproduce the
+specimen rather than screenshotting the page.
+
+**A real test artifact exists.** `~/Downloads/scanned-logic-20p.pdf` — 20 image-only pages
+of notation-dense Rutgers material, plus a replication prompt and scoring sheet at
+`20260918-digital_accessibility/pdf-conversion-test.md`. Both were built for the September
+session and are more useful here.
+
+**Also: the sandbox already has a math-accessibility module.** The Canvas export's course is
+*"Accessibility and Math"* with a module *"Mathematics PDF Accessibility"* containing
+`logic.pdf`, `2.1 Notes.pdf` and `2.1ws.pdf`. Open it before building anything new.
 
 ### 6. Settle the spine before writing slides.
 September 18's four beats (Source → AI pass → Verify → Place it) are why that deck holds

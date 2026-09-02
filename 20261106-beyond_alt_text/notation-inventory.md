@@ -164,3 +164,69 @@ November 6. Do **not** import this. Two cheap moves only:
    on this topic before and left as a blank slide. Naming it on September 18 as *"this is
    real, it is hard, and it is the whole of November 6"* is better than promising it a
    second time, and better than pretending the earlier promise was never made.
+
+---
+
+## What screen readers can actually read — verified September 2, 2026
+
+The question "screen readers can read LaTeX or MathML — what else?" has a sharper answer
+than expected, and one part of it is a direct confirmation of this file's thesis.
+
+### MathML is the target. LaTeX is not, quite.
+**NVDA, JAWS, and VoiceOver all read MathML.** LaTeX is *not* read natively — MathJax
+renders LaTeX and supplies the accessibility layer, so LaTeX works **through** a renderer,
+not on its own. That distinction matters when promising "screen-reader-renderable notation
+in Canvas": the deliverable is MathML, however you author it.
+
+### MathCAT is the current engine, and it just became default
+**As of NVDA 2026.1, MathCAT is built in — no download.** JAWS has supported it since
+December 2024. It converts MathML to speech *and* braille, and adds navigation (you can
+walk an expression by structure rather than hearing it flat).
+
+### The thesis, formalized as a setting
+MathCAT offers two speech **styles**, and the difference is exactly what this session is about:
+
+| Style | What it does | Who it suits |
+|---|---|---|
+| **MathSpeak** | Precise and structural. Unambiguous, verbose, announces scope. | Advanced users who need to reconstruct the notation exactly |
+| **ClearSpeak** | Natural phrasing, closer to how a teacher says it aloud | Beginners; students with dyscalculia |
+
+**One expression, two correct spoken forms, chosen by the listener.** That is *"we read it
+differently than we say it"* turned into a configuration option — and it is the single best
+evidence that the problem this session names is real and already has infrastructure.
+It also means "the" spoken form of a notation does not exist, which is worth saying out loud.
+
+### Braille is further along than speech in some ways
+MathCAT outputs **Nemeth, UEB Technical, CMU, Vietnamese, German/Austrian LaTeX, and
+ASCIIMath**. Nemeth-within-UEB has its own published guidance. Braille math is a mature,
+standardized encoding — which is a useful counterweight to the assumption that audio is the
+accessible format.
+
+### Chemistry — partial
+MathML handles chemical and nuclear equations reasonably well when rendered through MathJax,
+and MathCAT has chemistry heuristics that detect formulas and speak them **as chemistry**
+rather than as arithmetic. Structural formulas remain group C.
+
+### Music — a different world
+Screen readers do not read music notation. What exists instead:
+- **MuseScore 4** ships screen-reader support (better with NVDA and Narrator than JAWS).
+- **MusicXML** can be converted by projects such as **Talking Score** into text a screen
+  reader can read.
+- **Braille music** (BMML) is its own established code.
+
+This confirms the group C argument: the answer is a different artifact and often a different
+tool, not a better description.
+
+### The handwriting failure that belongs on a slide
+**With bad enough handwriting, AI stops reading and starts concluding.** It infers what was
+probably meant. Sometimes it is right — and that is what makes it dangerous, because a
+plausible completion is indistinguishable from a correct reading in the output.
+
+The conclusion it reaches is drawn from general training, not from **this course, this
+notation convention, this instructor's meaning.** An instructor who writes a variable a
+particular way, or uses a local convention, will get it silently normalized to the common
+form.
+
+**The mitigation is a prompting move:** instruct the tool to flag uncertainty rather than
+resolve it — `[UNCERTAIN: best reading]` — and to prefer twenty flags over one confident
+error. See `pdf-conversion-test.md` in the September folder for a prompt built around this.
