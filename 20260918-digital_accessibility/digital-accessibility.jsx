@@ -34,6 +34,23 @@ const _params = new URLSearchParams(window.location.search);
    boundary out loud so the room knows what it is not getting today
    and comes back for it.
 
+   ── STANCE — GOVERNS EVERY SLIDE ────────────────────────────
+   This deck does NOT tell faculty what to do. The job is to put
+   things in their toolbox and let them enhance the context of
+   their own courses. They know that context; we don't.
+
+   In practice, when editing:
+     · Offer, don't instruct. "Here is a routine that works" beats
+       "do this." "Worth trying" beats "you should."
+     · Built-in tools get tried and improved, never warned about.
+       Auto-generate is a first draft, not a trap.
+     · Ask more than you assert. The source material this series
+       comes from is question-led — "How might we…", "How did that
+       go?" — and that register is warmer for an intro audience.
+     · The room decides what fits. Say so out loud.
+   The verify beat is the one place rigour is non-negotiable — but
+   even there it is "here is what to check," not "you must."
+
    ── THE SPINE ───────────────────────────────────────────────
    Every workflow in this deck is the same four beats, introduced
    on slide 5 and then re-run three times:
@@ -309,8 +326,10 @@ const slides = [
           <SectionCard title="Role" icon="🏛️">
             <p className="text-sm">
               Director of Emerging Technology, Office of University Online Education
-              Services. I evaluate these tools for Rutgers and then have to say which
-              ones faculty should actually use.
+              Services. I research emerging technologies and bring back what might be worth
+              <strong>adding to your toolbox</strong>. You know your course and its context; I don't.
+              I also sit on the Rutgers AI Academic Working Group — put anything the
+              University ought to hear in the chat and I will carry it there.
             </p>
           </SectionCard>
           <SectionCard title="This series" icon="📚">
@@ -321,8 +340,8 @@ const slides = [
           </SectionCard>
           <SectionCard title="The bias I'll admit to" icon="⚖️" accent={true}>
             <p className="text-sm">
-              I would rather show you a routine you can repeat next Tuesday than a
-              demo that only works when I run it.
+              I would rather show you something you can repeat next Tuesday than a demo
+              that only works when I run it. Take what fits your course and leave the rest.
             </p>
           </SectionCard>
         </div>
@@ -383,9 +402,8 @@ const slides = [
         </div>
 
         <DropIn label="The reframe">
-          You are not trying to make your whole course accessible today. You are trying to
-          get a routine that works on one document, so the other forty are a scheduling
-          problem instead of a research problem.
+          You don't have to make your whole course accessible today. Get one routine
+          working on one document. After that, the other forty are time on a calendar.
         </DropIn>
       </SlideShell>
     ),
@@ -400,9 +418,8 @@ const slides = [
       <SlideShell tag="Framing · 2 min" tagColor="bg-teal-700">
         <Heading>What Today Covers — and What It Doesn't</Heading>
         <Lede>
-          Accessibility work splits cleanly into the cases a careful non-specialist can
-          verify, and the cases that need someone who reads the notation. Today is the
-          first kind. That's most of your material.
+          Some of this work you can check yourself. Some of it needs someone who reads the
+          notation. Today is the first kind, and that covers most of your material.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
@@ -428,8 +445,8 @@ const slides = [
         </div>
 
         <Note>
-          If you brought something from the right-hand column — bring it back on November 6.
-          It is a genuinely harder problem and it deserves the session that's built for it.
+          Brought something from the right-hand column? Bring it back on November 6. It is
+          a harder problem and it gets its own session.
         </Note>
       </SlideShell>
     ),
@@ -443,8 +460,7 @@ const slides = [
       <SlideShell tag="Framing · 4 min" tagColor="bg-gray-700">
         <Heading>Every Workflow Today Is the Same Four Beats</Heading>
         <Lede>
-          This is the whole session in one slide. Three different problems, one shape.
-          By the third time through you should be able to say the beats before I do.
+          Three different problems, one shape. You will see it three times today.
         </Lede>
 
         <div className="space-y-4 mb-4">
@@ -467,9 +483,8 @@ const slides = [
         </div>
 
         <DropIn label="Why this matters more than any tool I show you">
-          Tools get renamed, repriced, and discontinued — three of the ones in the August
-          session changed names this year. The shape survives all of that. Learn the shape
-          and you can swap the tool.
+          Tools get renamed, repriced, and discontinued. Three of these changed names this
+          year. The shape doesn't change. Learn the shape and you can swap the tool.
         </DropIn>
       </SlideShell>
     ),
@@ -481,9 +496,16 @@ const slides = [
   // only tool named in this deck that needs no entitlement caveat: it is already
   // running in every Canvas course and nobody had to buy it.
   //
-  // The "Auto-generate description" button is the SAME failure as the middle tier
-  // on the alt-text slide (10). Make that connection out loud — it is the moment
-  // the room understands why a green score is not the goal.
+  // REGISTER — READ THIS BEFORE EDITING. Ally is a BUILT-IN tool, and the stance
+  // toward built-in tools in this deck is generous: try them, then improve what they
+  // give you. "Auto-generate description" is a first draft, not a trap. It gets you
+  // out of a blank field faster than you would get out of it yourself, and the work
+  // is the second draft. Say it that way. The point that a green score is not the
+  // goal still lands — it just lands as "your job is the second draft" rather than
+  // as "this button is lying to you."
+  //
+  // This connects forward to the middle tier on slide 10, which is the same idea:
+  // populated is not the same as useful. Make that connection out loud.
   //
   // ACCESSIBILITY OF THIS SLIDE: the screenshot's alt text is written out in full
   // and is worth reading aloud as a specimen. Do not shorten it to "Ally panel".
@@ -491,11 +513,12 @@ const slides = [
     label: "Start With Ally",
     content: (
       <SlideShell tag="Before the Four Beats · 4 min" tagColor="bg-gray-700">
-        <Heading>First, Find Out What's Actually Broken</Heading>
+        <Heading>Start Where Ally Points You</Heading>
         <Lede>
-          Every slide after this one assumes you have already picked a document. This is
-          how you pick. Ally has been running inside your Canvas course the whole time —
-          you didn't install it, and most people have never opened it.
+          Ally is built into Canvas. You didn't install it and you don't have to turn it
+          on. It has been scoring every file in your course the whole time. Running it
+          first tells you three things: how big the job actually is, which parts are quick
+          enough to finish today, and where the genuinely hard problems are.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start mb-4">
@@ -507,40 +530,40 @@ const slides = [
               width="250"
             />
             <p className="text-xs text-gray-500 italic text-center mt-2 max-w-[250px]">
-              Note the filename. The images that score worst are usually the ones nobody
-              ever named.
+              Note the filename. The lowest scores are usually on files nobody ever named.
             </p>
           </div>
 
           <div className="space-y-3">
             <SectionCard title="What the score is for" icon="📊">
               <p className="text-sm">
-                A triage number, not a grade. Ally scores every file in your course and
-                tells you <em>why</em> each one failed — so what you get is a ranked list
-                instead of a feeling.
+                A triage number, not a grade. Ally tells you <em>why</em> each file fell
+                short, so you can spend your hour on the three that matter rather than on
+                whichever one you opened first.
               </p>
             </SectionCard>
-            <SectionCard title="The button that looks like the answer" icon="⚠️" accent={true}>
+            <SectionCard title="Try auto-generate — then write the second draft" icon="✨" accent={true}>
               <p className="text-sm">
-                “Auto-generate description” will fill that field with something, and the
-                score will go green. Green means the field is populated. It does not mean
-                a student can use what is in it.
+                Press it. A first draft is much faster to fix than a blank field, and the
+                score goes green immediately. Then read what it wrote the way a student
+                would, and write it again yourself. Green means the field is filled in.
+                The second draft is where the value is.
               </p>
             </SectionCard>
-            <SectionCard title="The one it gets exactly right" icon="✓">
+            <SectionCard title="The fastest win on the page" icon="✓">
               <p className="text-sm">
                 “Indicate image is decorative” is genuinely useful and badly underused.
-                Most course pages carry images that should be marked decorative rather
-                than described.
+                Plenty of what Ally flags is a divider or a stock photo that should be
+                marked decorative rather than described — and that is a real fix, done.
               </p>
             </SectionCard>
           </div>
         </div>
 
-        <DropIn label="Why this comes before the workflows">
-          The most common mistake in this work is not doing it badly. It is doing it
-          thoroughly, to the file nobody opens. Two minutes of triage beats an hour spent
-          converting the wrong chapter.
+        <DropIn label="Why this comes first">
+          Two minutes with Ally tells you which three files to fix first. That beats an
+          hour spent carefully converting a chapter nobody opens. Come back to Ally after
+          you fix something, too — it will tell you whether the problem is actually gone.
         </DropIn>
       </SlideShell>
     ),
@@ -572,48 +595,49 @@ const slides = [
       <SlideShell tag="Segment 1 · Text-to-Speech · 7 min" tagColor="bg-blue-700">
         <Heading>The Audio Is Already Being Made</Heading>
         <Lede>
-          Ally has been generating an MP3 of every file in your Canvas course this whole
-          time. Nobody turned it on and nobody had to buy it. So the question is not how
-          you make audio — it is whether the audio already being made is worth listening to.
+          Two tools are already reading your course out loud and you turned on neither of
+          them. ReadSpeaker reads your Canvas pages. Ally hands students an audio version
+          of your files. The catch is what they can reach — ReadSpeaker reads HTML, so a
+          page you built in Canvas gets read aloud and a picture of a page does not.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <SectionCard title="1 · Institutional" icon="🏛️">
+          <SectionCard title="Already on in Canvas" icon="🏛️">
             <p className="text-sm">
-              Ally hands every student an audio version of your file — alongside ePub,
-              tagged PDF and braille — on their own initiative. <strong>SensusAccess</strong> covers
-              what isn't in Canvas. Licensed by Rutgers. Your effort: none.
+              <strong>ReadSpeaker</strong> reads any Canvas page aloud, for any student, with no
+              setup. <strong>Ally</strong> offers an audio version of your files alongside ePub,
+              tagged PDF and braille. Rutgers licenses both. Your effort: none.
             </p>
           </SectionCard>
-          <SectionCard title="2 · Authored" icon="🎙️">
+          <SectionCard title="A form, outside Canvas" icon="📤">
             <p className="text-sm">
-              Gemini Notebook builds an audio <em>companion</em> from your sources — and you can
-              steer it toward your own learning objectives. Free with your NetID. You make
-              this one, so you own what it says.
+              <strong>SensusAccess</strong> takes a file and emails back an audiobook, EPUB or
+              braille. It eats what nothing else will read — image-only PDFs, JPGs,
+              PowerPoints. Sign in with your Rutgers email; the link lives on the Libraries
+              site.
             </p>
           </SectionCard>
-          <SectionCard title="3 · Local" icon="💻" accent={true}>
+          <SectionCard title="Yours to drive" icon="🎙️" accent={true}>
             <p className="text-sm">
-              A speech model small enough to run inside a browser tab. No account, no
-              upload, nothing leaves your laptop. This is the lane for material you are
-              not allowed to put in a cloud tool.
+              <strong>Gemini Notebook</strong> builds an audio companion from your sources, and you
+              can steer it toward your own objectives. For material that can't go to a cloud
+              tool at all, a speech model small enough to run in a browser tab.
             </p>
           </SectionCard>
         </div>
 
-        <DropIn label="The trap in lane 2">
-          A companion is not a substitute for the reading. Giving the student who needs
-          audio a generated discussion <em>about</em> the article, while everyone else gets the
-          article, is not equal access. It is the “Auto-generate description” button
-          again, wearing a better costume.
+        <DropIn label="One thing to watch">
+          A companion is not a substitute for the reading. If the student who needs audio
+          gets a generated discussion <em>about</em> the article while everyone else gets the
+          article, that is not equal access. Offer both. Don't swap one for the other.
         </DropIn>
 
         <VerifyBeat>
-          What you check depends on the lane. <strong>Lanes 1 and 3 fail at pronunciation</strong> —
-          don't listen to the whole thing, listen to the first thirty seconds and then skip
-          to any proper noun, acronym, or number. <strong>Lane 2 fails at fidelity</strong> — it
-          will pronounce every word perfectly and still tell your students something you
-          never said.
+          What you check depends on which one you used. <strong>Anything that reads your words
+          fails at pronunciation</strong> — listen to the first thirty seconds, then skip to any
+          proper noun, acronym, or number. <strong>A companion fails at fidelity</strong> — it will
+          pronounce every word perfectly and still tell your students something you never
+          said.
         </VerifyBeat>
       </SlideShell>
     ),
@@ -640,9 +664,8 @@ const slides = [
       <SlideShell tag="Segment 1 · Text-to-Speech · 4 min" tagColor="bg-blue-700">
         <Heading>What Goes Wrong</Heading>
         <Lede>
-          Predictable failures, which is good news — predictable means checkable in under a
-          minute instead of by listening to forty minutes of audio. Four of these you can
-          hear. The fifth one you cannot, and that is what makes it dangerous.
+          These failures are predictable, so you can check for them in about a minute
+          instead of listening to forty. Four of them you can hear. The fifth one you can't.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
@@ -674,12 +697,12 @@ const slides = [
 
         <SectionCard title="The fifth one · Notation" icon="⚠️" accent={true}>
           <p className="text-sm">
-            <strong>x² + y²</strong> read aloud as “x two plus y two” is fluent, confident, and
-            false. The other four failures announce themselves — a mangled name still sounds
-            mangled, and the listener knows something went by. This one doesn't. A student
-            who can't see the page has no way to know they just received different
-            mathematics than everyone else. Equations, chemical structures, logic, IPA,
-            music — most fields have some. <strong>That is the whole of November 6.</strong>
+            <strong>x² + y²</strong> read aloud as “x two plus y two” sounds right and isn't.
+            The other four failures give themselves away — a mangled name still sounds
+            mangled. This one doesn't. A student who can't see the page has no way to know
+            they got different mathematics than everyone else. Equations, chemical
+            structures, logic, IPA, music — most fields have some of this.
+            <strong>It is the whole of November 6.</strong>
           </p>
         </SectionCard>
 
@@ -699,9 +722,10 @@ const slides = [
       <SlideShell tag="Segment 2 · Vision · 5 min" tagColor="bg-purple-700">
         <Heading>Alt Text That Actually Says Something</Heading>
         <Lede>
-          Most alt text in most courses is either missing or useless — "chart.png",
-          "image of a graph". AI vision is genuinely good at the first draft here, and
-          genuinely bad at knowing what the image is <em>for</em>. That gap is your job.
+          Most alt text in most courses is missing or useless — "chart.png", "image of a
+          graph". AI can describe an image well. What it doesn't always get is the whole
+          page — why this image is here, in this week, next to this paragraph. You know
+          that part.
         </Lede>
 
         <div className="space-y-4 mb-4">
@@ -724,8 +748,8 @@ const slides = [
         </div>
 
         <DropIn label="The distinction worth holding onto">
-          Alt text is not a description of the image. It is a replacement for it. Those
-          produce different sentences, and the difference is the whole skill.
+          Alt text replaces the image, it doesn't describe it. Write what the student
+          needs to know, not what the picture looks like.
         </DropIn>
       </SlideShell>
     ),
@@ -778,9 +802,9 @@ details a student would need to follow the argument. Skip
 image is decorative, longer if it carries data.`}</CodeBlock>
 
         <Note>
-          Decorative images are the exception that trips people up: an image that carries
-          no information should have <em>empty</em> alt text, so a screen reader skips it
-          entirely. Describing your decorative header photo makes the page worse, not better.
+          Decorative images work the other way. An image that carries no information takes
+          <em>empty</em> alt text, so a screen reader skips it. Describing a header photo
+          just adds noise to the page.
         </Note>
       </SlideShell>
     ),
@@ -793,8 +817,8 @@ image is decorative, longer if it carries data.`}</CodeBlock>
       <SlideShell tag="Segment 2 · Vision · 4 min" tagColor="bg-purple-700">
         <Heading>Where AI Vision Fails</Heading>
         <Lede>
-          It fails confidently, in fluent prose, which is exactly what makes the verify
-          beat non-negotiable here. These are the four to check for.
+          It fails confidently, and in good prose. That is why this one needs checking.
+          Here are the four to look for.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -818,17 +842,27 @@ image is decorative, longer if it carries data.`}</CodeBlock>
           </SectionCard>
           <SectionCard title="It over-writes" icon="📏">
             <p className="text-sm">
-              Three hundred words where forty would do. A screen-reader user cannot skim
-              your alt text; length is a real cost to them, not just untidiness.
+              Three hundred words where forty would do. A screen-reader user can't skim alt
+              text, so length costs them real time. This one is the easiest to fix: ask for
+              a word limit and it will give you one.
             </p>
           </SectionCard>
         </div>
 
+        <Note>
+          Most of these are prompting problems, not tool problems. Screenshot the whole
+          page — the image plus the text before and after it — and hand that over instead
+          of the image alone. The description comes back fitted to where the image actually
+          sits on the page. <strong>Your students can do this too</strong>, in the other direction:
+          screenshot the page into their own chatbot and ask “how might this image relate to
+          my class?”
+        </Note>
+
         <VerifyBeat>
           Two checks, both fast. <strong>One:</strong> pick two numbers from the description
-          and find them in the image. <strong>Two:</strong> read the description alone and
-          ask whether it makes the point the figure is there to make. If it doesn't, add
-          that sentence yourself — that's the part that was always going to be yours.
+          and find them in the image. <strong>Two:</strong> read the description on its own.
+          Does it make the point the figure is there to make? If not, add that sentence
+          yourself. That part was always going to be yours.
         </VerifyBeat>
       </SlideShell>
     ),
@@ -841,9 +875,9 @@ image is decorative, longer if it carries data.`}</CodeBlock>
       <SlideShell tag="Segment 3 · Conversion · 6 min" tagColor="bg-emerald-700">
         <Heading>The Scanned PDF Problem</Heading>
         <Lede>
-          Every course has them: a photocopied chapter, scanned crooked in 2011, that a
-          screen reader sees as one large photograph of nothing. This used to be where
-          accessibility work stopped.
+          Every course has one: a photocopied chapter, scanned crooked in 2011, that a
+          screen reader sees as one large photograph of nothing. This used to be where the
+          work stopped.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -870,10 +904,23 @@ image is decorative, longer if it carries data.`}</CodeBlock>
           </SectionCard>
         </div>
 
+        <div className="mb-4">
+          <SectionCard title="The one that surprises people" icon="🔄">
+            <p className="text-sm">
+              A PDF with a <em>bad</em> text layer can be harder to work with than one with no
+              text at all. I tested this on a Rutgers textbook: pulling the existing text
+              turned <strong>a<sup>k</sup></strong> into <strong>ak</strong> and <strong>x²</strong> into
+              <strong> x2</strong>. Reading the same pages as pictures got them right. If the
+              extracted text looks wrong, try handing over the page image instead.
+            </p>
+          </SectionCard>
+        </div>
+
         <Note>
-          Before you convert anything: check whether an accessible version already exists.
-          The library may license the same chapter as tagged HTML, and ten minutes of
-          searching beats an hour of conversion and verification. Ask your subject librarian.
+          Before you convert anything, check whether someone will do it for you. The
+          Libraries take a <strong>content remediation request</strong> for library material and
+          respond within two business days. They may also already license the same chapter
+          as tagged HTML. Ten minutes of asking beats an hour of converting.
         </Note>
       </SlideShell>
     ),
@@ -886,8 +933,8 @@ image is decorative, longer if it carries data.`}</CodeBlock>
       <SlideShell tag="Segment 3 · Conversion · 6 min" tagColor="bg-emerald-700">
         <Heading>Scan to Canvas Page</Heading>
         <Lede>
-          The same four beats. This is the longest of the three workflows and the one
-          where the verify step costs the most — budget for that honestly.
+          The same four beats. This is the longest of the three workflows, and verifying
+          costs the most here. Budget for it.
         </Lede>
 
         <div className="space-y-4 mb-4">
@@ -895,9 +942,11 @@ image is decorative, longer if it carries data.`}</CodeBlock>
             Straighten it, drop the black borders, and split double-page spreads into
             single pages. Five minutes here saves more than five minutes later.
           </PipelineStep>
-          <PipelineStep num="2" title="AI pass — ask for structure, not just text">
-            Request headings as headings, tables as tables, and a note wherever the source
-            was unreadable. That last instruction is what makes step 3 possible.
+          <PipelineStep num="2" title="AI pass — ask for structure, and ask it not to guess">
+            Headings as headings, tables as tables. Then the instruction that matters most:
+            <em> where you are not sure what something says, mark it uncertain rather than
+            guessing.</em> Twenty flags beat one confident error, and it is what makes step 3
+            possible at all.
           </PipelineStep>
           <PipelineStep num="3" title="Verify — proper nouns, numbers, and the marked gaps">
             Go straight to anything the model flagged as uncertain, then spot-check names
@@ -910,9 +959,10 @@ image is decorative, longer if it carries data.`}</CodeBlock>
         </div>
 
         <DropIn label="The honest number">
-          A twenty-page scanned chapter is not a five-minute job even now. It is maybe
-          forty minutes, most of it verification. What changed is that it used to be four
-          hours, or not attempted at all.
+          Twenty pages is not too many to read — I tested that, and it read all twenty
+          without drifting. Producing twenty good pages is the harder half, and verifying
+          them is where the time goes. Call it forty minutes for a scanned chapter, most of
+          it checking. It used to be four hours, or nobody tried.
         </DropIn>
       </SlideShell>
     ),
@@ -927,8 +977,8 @@ image is decorative, longer if it carries data.`}</CodeBlock>
       <SlideShell tag="Honest Limits · 5 min" tagColor="bg-gray-800">
         <Heading>What This Does Not Solve</Heading>
         <Lede>
-          Said plainly, because a session that oversells this leaves you with inaccessible
-          material you believe is fine — which is worse than where you started.
+          Said plainly. If a session oversells these tools, you walk out with inaccessible
+          material you think is fine.
         </Lede>
 
         <ul className="space-y-3 mb-4">
@@ -952,11 +1002,25 @@ image is decorative, longer if it carries data.`}</CodeBlock>
             work, and licensed readings each carry different restrictions on what may be
             uploaded to which tool. When in doubt, ask before you upload.
           </Bullet>
+          <Bullet icon="✕">
+            <strong>My results are not your results — and not because I'm better at this.</strong>
+            {" "}These tools remember. Mine have months of my conversations behind them, so
+            they already know I want structure, alt text and accessible output, and they
+            quietly supply assumptions I never typed. Yours won't, on day one. Anything that
+            matters has to be <em>in the prompt</em>, not in the history.
+          </Bullet>
         </ul>
 
+        <Note>
+          If you want to see what a tool does without your history helping it, start a
+          <strong> temporary chat</strong>. ChatGPT and Gemini both have one, and it uses no saved
+          memories and creates none. It is also how you check whether a workflow will
+          actually travel to a colleague.
+        </Note>
+
         <DropIn label="The standard to hold">
-          If you would not put your name on the output, it is not ready to be in front of
-          a student. That test has not changed and these tools do not change it.
+          If you wouldn't put your name on it, it isn't ready for a student. That test
+          hasn't changed.
         </DropIn>
       </SlideShell>
     ),
@@ -1061,15 +1125,101 @@ image is decorative, longer if it carries data.`}</CodeBlock>
         </div>
 
         <Note>
-          The fourth track is the right one for more people than pick it. If you don't yet
-          know what's broken in your course, finding out is worth more than converting one
-          arbitrary file.
+          More people should take the fourth track than usually do. If you don't know
+          what's broken yet, finding out beats converting one file at random.
         </Note>
       </SlideShell>
     ),
   },
 
-  // ── 17: RESOURCES ──
+  // ── 17: THE TOOLS AND THEIR DOCUMENTATION ──
+  // PURPOSE: a reference page. Nobody reads this from the podium — it exists so the room
+  // can find the tool again on Monday, and so the work session has somewhere to point.
+  //
+  // EVERY LINK VERIFIED September 2, 2026. The canvas.rutgers.edu pages block automated
+  // checkers with a 403 but load fine in a browser — do not "fix" them on a bad report.
+  // Re-check before delivery: these are third-party products and Rutgers' licensing of
+  // them can change.
+  //
+  // The grouping is deliberate and is the same one used on slide 7: already running /
+  // you switch it on / outside Canvas. That is the distinction faculty actually need.
+  {
+    label: "The Tools",
+    content: (
+      <SlideShell tag="Resources · Tools" tagColor="bg-gray-700">
+        <Heading>The Tools, and Where Their Documentation Lives</Heading>
+        <Lede>
+          Everything named today, with a link you can find again on Monday. All of it is
+          licensed by Rutgers — none of it needs a purchase or a request.
+        </Lede>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <SectionCard title="Already running in Canvas" icon="🏛️">
+            <ul className="space-y-2">
+              <Bullet icon="→">
+                <Link href="https://canvas.rutgers.edu/external-apps/ally/">Ally at Rutgers</Link>
+                {" "}— scores, instructor feedback, alternative formats
+              </Bullet>
+              <Bullet icon="→">
+                <Link href="https://help.anthology.com/ally-lms/en/students/alternative-formats.html">Ally alternative formats</Link>
+                {" "}— what students can download, from the vendor
+              </Bullet>
+              <Bullet icon="→">
+                <Link href="https://canvas.rutgers.edu/external-apps/readspeaker/">ReadSpeaker at Rutgers</Link>
+                {" "}— reads Canvas pages aloud, for every user
+              </Bullet>
+              <Bullet icon="→">
+                <Link href="https://radr.rutgers.edu/resource/optical-character-recognition-ocr-tool-canvas-ally">OCR in Ally</Link>
+                {" "}— Access and Disability Resources, on scanned files
+              </Bullet>
+            </ul>
+          </SectionCard>
+
+          <SectionCard title="There, but you switch it on" icon="🔌">
+            <ul className="space-y-2">
+              <Bullet icon="→">
+                <Link href="https://canvas.rutgers.edu/external-apps/cidilabs-designplus/">CidiLabs DesignPLUS</Link>
+                {" "}— enable it in course navigation; its checker covers headings, alt text,
+                links and <strong>colour contrast</strong>
+              </Bullet>
+              <Bullet icon="→">
+                <Link href="https://canvas.rutgers.edu/external-apps/">Every Canvas app Rutgers licenses</Link>
+                {" "}— worth a look; there is more here than most people know
+              </Bullet>
+            </ul>
+          </SectionCard>
+        </div>
+
+        <SectionCard title="Outside Canvas — a form or a person" icon="📤">
+          <ul className="space-y-2">
+            <Bullet icon="→">
+              <Link href="https://it.rutgers.edu/accessibility/sensusaccess">SensusAccess</Link>
+              {" "}— converts a file to audiobook, EPUB or braille. The page that describes it
+              does not link the form; <Link href="https://www.libraries.rutgers.edu/about-rutgers-university-libraries/accessibility/accessibility-services-users">the Libraries page</Link> does.
+              Sign in with your Rutgers email.
+            </Bullet>
+            <Bullet icon="→">
+              <Link href="https://libraries.rutgers.edu/accessibility">Rutgers Libraries accessibility</Link>
+              {" "}— including the content remediation request, answered in two business days.
+              For library material this is often the cheapest route.
+            </Bullet>
+            <Bullet icon="→">
+              <Link href="https://it.rutgers.edu/ai">it.rutgers.edu/ai</Link>
+              {" "}— which AI tools you are entitled to, and what data may go in them
+            </Bullet>
+          </ul>
+        </SectionCard>
+
+        <Note>
+          These are third-party products and what the University licenses can change. Links
+          checked September 2, 2026. If one has moved, the full app list above is the place
+          to start.
+        </Note>
+      </SlideShell>
+    ),
+  },
+
+  // ── 18: RESOURCES ──
   {
     label: "Resources",
     content: (
@@ -1120,7 +1270,7 @@ image is decorative, longer if it carries data.`}</CodeBlock>
     ),
   },
 
-  // ── 18: CONTACT ──
+  // ── 19: CONTACT ──
   {
     label: "Contact",
     content: (

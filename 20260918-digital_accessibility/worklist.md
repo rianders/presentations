@@ -58,6 +58,403 @@ WCAG 2.1 Level AA).
 
 ---
 
+## THE TOOLKIT IS NOW SETTLED — verified August 31, 2026
+
+Checking Rick's DesignPLUS note against **canvas.rutgers.edu/external-apps** turned up the
+full list of Canvas LTI tools Rutgers licenses, and it answers Segment 1 and the contrast
+problem at the same time. Two of these were missed on every earlier pass.
+
+### ReadSpeaker — the tool this deck should have led with
+**"Text-to-speech technology by ReadSpeaker has been made available to all Canvas Users."**
+**"Rutgers has an enterprise license for ReadSpeaker."** It reads HTML content aloud to
+students, needs no download, works on any internet-connected device, and Rutgers' own page
+frames it as ideal for *"those with reading disabilities, dyslexia, visual impairment, and
+… non-native English users."*
+
+This is a tier-1, enterprise-licensed, already-in-Canvas text-to-speech tool. Verify
+whether instructors must switch it on per course.
+
+**CORRECTION, same day: ReadSpeaker does not replace SensusAccess.** That call was wrong.
+They do different jobs and Rutgers has both:
+
+| | ReadSpeaker | SensusAccess |
+|---|---|---|
+| What it is | An **in-place reader** | A **file converter** |
+| Where | Inside Canvas | A web form, outside Canvas |
+| Input | Canvas HTML content | Any file — image-only PDF, JPG, PowerPoint |
+| Output | Speech, in the browser, now | A file emailed back: MP3, DAISY, EPUB, Mobi, braille |
+| Who acts | Nobody — the student just presses play | Someone submits the file |
+
+**ReadSpeaker leads** because it requires zero action from anyone and is already running.
+**SensusAccess is the answer when a student needs a file to keep** — an audiobook for the
+commute, an EPUB, braille — or when the source is something ReadSpeaker cannot read at all,
+which is most of what this session is about.
+
+### SensusAccess — the front door exists, it is just not on IT's pages
+**Found August 31, 2026.** The IT pages describe SensusAccess and never link the form. The
+**Rutgers University Libraries** page is the one with the working route:
+
+> "Rutgers subscribes to SensusAccess, a document conversion utility that helps you create
+> accessible documents. You can **access the tool directly** (you'll need a Rutgers email
+> address to sign in), watch a video to learn more, or visit OIT's tutorial for more help."
+
+- Libraries accessibility services page — carries the direct link
+- Canvas tutorial: `rutgers.instructure.com/courses/10014/pages/what-is-sensusaccess`
+- Sign-in: a **Rutgers email address**
+
+**So SensusAccess stays on slide 7 — but link it from the Libraries page, not IT's.**
+Rick's confusion here was the correct instinct: IT documents the service without telling
+you how to use it.
+
+### And this closes the last open piece of blocking item 1
+**"Rutgers Libraries can supply remediated, accessible versions of digital or electronic
+collections for library users"** via a content remediation request, with a response inside
+**two business days**. That is the library accessible-copy service this worklist has been
+asking about since the first pass. For library material, the answer is not a tool at all —
+it is a request form and a person.
+
+**And it sharpens Rick's authoring point:** ReadSpeaker reads **HTML**. A page authored
+properly in Canvas gets read aloud. An image of text, or a PDF, does not. That is exactly
+why authoring matters, said concretely, with a tool the room already has.
+
+### CidiLabs DesignPLUS — confirmed, with a catch
+**"Rutgers has an enterprise license."** DesignPLUS carries an accessibility checker
+covering **heading structure, image/alt text, links, and colour contrast**.
+
+**The catch: the instructor must switch it on** — "enabling it in the course navigation."
+Unlike Ally, it is not already running. That is a real difference and it belongs on the
+slide, because "already on" versus "you turn it on" is the distinction faculty need.
+
+**CidiLabs TidyUp is also licensed** (content cleanup, already documented at Rutgers).
+UDOIT is **not** in the Rutgers list — do not mention it.
+
+### The resulting toolkit — matches Rick's own two-column framing
+| | Tool | State |
+|---|---|---|
+| **Built-in, already running** | Ally (scores, alternative formats, MP3, PDF auto-tag) · ReadSpeaker (reads pages aloud) | Nothing to do |
+| **Built-in, you turn it on** | DesignPLUS (accessibility checker, contrast) · TidyUp | One-time enable |
+| **Bring your own** | Gemini · Copilot · Gemini Notebook | Yours to drive |
+
+### 35. The screenshot move — Rick's core workflow, and it is not in the deck
+**"Have Ally do the analysis of the page and images. If the image doesn't have good alt
+text, take a screenshot of the page and give it to Gemini or Copilot."**
+
+The screenshot is **of the page, not the image** — that is the whole point. The built-in
+tools describe an image in isolation; handing over the whole page gives the model the
+surrounding text, so it can propose alt text that fits the context. That is the concrete
+reason to leave the built-in tool, and it is the bridge between the two columns above.
+Gemini Notebook can take the same input (it now OCRs images and separates handwritten from
+printed regions).
+
+This is also the student move (item 30): a student screenshots the page into their own
+chatbot and asks *"How might this image relate to my class?"* **Same gesture, both
+directions.** Faculty use it to author; students use it to understand.
+
+### 36. Contrast — two different problems with two different answers
+- **Contrast in a Canvas page** → DesignPLUS's contrast checker. Fix it in place.
+- **Contrast in a PDF** → Ally will *find* it, but finding is all it does. Fixing means
+  converting the document, which is where AI comes in — and it lands Segment 3 back on
+  Ally's new PDF auto-tag (note 7b).
+
+Worth saying plainly: **Ally is a detector, not a repair shop.** It tells you what is wrong
+and hands the fixing to you. That is the honest version of "start with Ally," and it sets
+up every segment that follows.
+
+**This also closes item 6 (contrast-check the deck itself)** with a better answer than a
+manual pass: run this deck's own colours through the same reasoning, and say from the
+podium that you did.
+
+---
+
+## SOURCE REVIEW — the two added decks, August 31, 2026
+
+Two more source decks were added to this folder: **Part 1 (picking the right AI tool &
+identifying possible biases)** and **Part 3 (AI tools to support accessible images)**.
+Reviewed August 31, 2026. Part 3 is the direct ancestor of Segment 2; Part 1 carries more
+accessibility material than its title suggests.
+
+**Do not commit the .pptx files.** They are co-authored source material, they contain
+personal email addresses, and this is a public repo. Extract what is needed and leave the
+originals untracked. Same reasoning as the naming scrub.
+
+### Confirmed for the third time — the toolkit split
+Both decks organize tools the same way: **Multimodal Chatbots** (Gemini, ChatGPT, CoPilot)
+versus **Built-in Tools** (PowerPoint's Alt-Text Generator, ALLY in Canvas). That is the
+framing for a slide. The T1–T4 entitlement tiers stay in `tts-decision-matrix.md` where
+they belong.
+
+### FLAGGED FOR THIS DECK — beginner/intro items that are missing
+
+**27. The tool taxonomy.** Chatbots (Gemini, CoPilot) / Services (Grammarly) /
+Applications (Canva). Beginners do not know these are different kinds of thing, and the
+distinction governs where course material is allowed to go. One card.
+
+**28. VPAT.** Voluntary Product Accessibility Template — how you check whether a *tool
+itself* is accessible before you ask students to use it. This is squarely an accessibility
+session's business and it is absent here. One line, with the point that a vendor without
+one has told you something.
+
+**29. The bias-to-accessibility bridge.** From Part 1: *"Bias can become accessibility and
+inclusive issues in course materials. Students would read the material and think you are
+as biased as the LLM."* That second sentence is the most beginner-legible argument in any
+of the source material. It belongs near the limits slide (14).
+
+**30. The student prompt — closes item 17.** Part 3 asks *"How might a student use these
+tools?"* and gives the actual prompt: **"How might this image relate to my class?"**
+That is the student-agency moment this deck has been missing, and it arrives with a
+concrete thing a student types. Pair it with Rick's own note 9: a student can screenshot
+the page into their own chatbot and have it explained in context.
+
+**31. FERPA and student data in prompts.** Part 1: *"No student PII in prompts."* A
+beginner session that names cloud tools has to say this once. Absent here.
+
+**32. "Each of us are evaluators of the technology."** Part 1's framing line. It is the
+right stance for an intro session and it is the one this deck implies but never states.
+
+**33. The five-step activity — better scaffolded than the current work session.**
+Part 3: pick an image → **define a context and learning objective** → write the prompt →
+generate → **refine the prompt to align with the objective**. Steps 2 and 5 are the
+learning-objectives thread (item 21) built directly into the activity. Consider replacing
+the four tracks on slide 16 with this, or adding it as the structure inside a track.
+
+**34. The image-bias demo.** Part 1 asks *"What does a Rutgers student look like? What
+does a Rutgers class look like?"* — generate and examine. This is the same argument as
+Rick's New Brunswick artists example (review note 11) and gives it a demo that takes
+thirty seconds.
+
+### DO NOT CARRY OVER — stale facts in the source material
+- **April 24, 2026 deadline** (Part 3, slide 11). Now **April 26, 2027**.
+- **"Spring 2025" OIT tool list** (Part 1, slides 11–12) — superseded by the it.rutgers.edu
+  list verified August 28, 2026. The claim that Gemini "does not include Gemini Advanced"
+  is stale.
+- **Model names** (Part 1, slide 23): GPT-4o-mini, Claude 3.5 Sonnet, Gemini 2.0 Pro,
+  o1/o3-mini, DeepSeek r1. All superseded. Naming specific models dates a deck faster than
+  anything else — this deck names none, and should keep it that way.
+
+### TONE — what those decks do that this one doesn't
+They are **question-led**. "How might we identify what's in our AI tools?" "What would we
+like that process to be?" "How did that go?" "What ideas could we work on for next time?"
+The room is asked to evaluate, repeatedly, and the chat is opened early ("What AI tools
+have you worked with — let's make a list").
+
+This deck is **declarative**. It tells the room what is true and what to do. That is not
+wrong — it is a single-presenter deck and the confidence is earned — but for an intro
+audience it is colder, and the participation gap (item 20, ~54 minutes before the room
+does anything) is the symptom. **The cheapest fix is to convert three or four existing
+statements into the questions they are already answers to.**
+
+---
+
+## TEST RESULT — the twenty-page question, September 2, 2026
+
+**Test artifact.** The Accessibility Sandbox export was checked first, and **none of its
+PDFs are scanned** — the Barthes files and the math files all carry text layers. The
+worklist had assumed Barthes was the scanned-text demo. It isn't. So a real artifact was
+built: **20 pages of `math/logic.pdf` rasterized at 150dpi and rebuilt as an image-only
+PDF** — 4.8MB, **zero extractable text**, verified with `pdftotext`.
+
+The source is *Introduction to Mathematical Reasoning* by **Chris Woodward, Rutgers
+University, New Brunswick** — real Rutgers course material, densely notated. Strong demo
+candidate on its own.
+
+### Result 1 — twenty pages is not the problem
+All 20 pages were read end to end with **no drift and no truncation.** Page 20 came back as
+accurate as page 1. The strongest evidence: page 20 contains deliberate typos in the
+original — *"the auhtor makes mitsakes"* — and they were **preserved exactly.** A model
+losing fidelity or paraphrasing would have silently corrected them.
+
+### Result 2 — the finding worth putting on a slide
+**On notation, reading the image beat extracting the text layer.**
+
+| | `pdftotext` on the original | Reading the scanned image |
+|---|---|---|
+| k-th root | `ak = b` | `a^k = b` ✓ |
+| square root problem | `x2 = 4`, `y 2 = 4` | `x² = 4`, `y² = 4` ✓ |
+
+Text extraction **flattens superscripts to baseline characters.** The digital, "accessible"
+text layer silently destroyed the mathematics; the picture of the page did not. That
+inverts the intuition everyone brings to this — and it is a real, reproducible result from
+Rutgers course material.
+
+### Result 3 — and it produced a live specimen of the deck's own claim
+On page 8 the biconditional truth table came back headed **`P ⟹ Q`** where the source has
+**`P ⟺ Q`**. The truth values transcribed underneath (T, F, F, T) are the *biconditional's*
+values, so the table is internally inconsistent — but nothing in the output flags it.
+
+**That is exactly the silent-notation failure slide 8 describes**, caught in the wild, on
+the first try, in real course material. One glyph, meaning inverted, output still fluent.
+**Confirm by eye against page 8 before using it** — but if it holds, this is the single
+best example the session has.
+
+### What this does NOT settle
+- **Reading is not converting.** This tested whether a multimodal model can *read* twenty
+  scanned pages faithfully. It did not test producing twenty pages of accessible Canvas
+  output, which is where output-length limits and drift actually bite.
+- **This was not Gemini, Copilot, or ChatGPT.** It is the same category of system, but the
+  specific products in the deck remain untested. Running the same PDF through Gemini in a
+  browser is the next step and takes ten minutes.
+- **The code path is still the recommendation** for producing output at length, and is
+  still untested.
+
+**So slide 13 can now say:** reading twenty scanned pages is not the constraint, producing
+twenty pages of output is — and verification is where the time goes. It cannot yet name a
+product.
+
+---
+
+## REVIEW NOTES — second pass, September 2, 2026
+
+### SensusAccess — answered properly this time
+**What it is, in one sentence:** a web form you upload a file to, which converts it and
+emails the result back — audiobook (MP3/DAISY), EPUB, Mobi, or digital braille. It eats
+the things nothing else will read: image-only PDFs, JPGs, PowerPoints.
+
+**How it integrates with Canvas at Rutgers: it doesn't.** And that is the useful finding.
+
+- SensusAccess **does** ship a Canvas LTI. Their own documentation describes *"SensusAccess
+  Inside Canvas,"* configurable from within Canvas, appearing as a course-nav menu item,
+  enabled or disabled per course by the instructor.
+- **It is not on Rutgers' Canvas external-apps list.** Ally, ReadSpeaker, DesignPLUS,
+  TidyUp and about seventy others are. SensusAccess is not.
+- So Rutgers licenses the service but reaches it through **a web form on the Libraries
+  site** — sign in with a Rutgers email — not through Canvas.
+
+**Two consequences.** On the slide, say plainly that this one lives outside Canvas; that
+contrast with ReadSpeaker is informative rather than confusing. And separately: **Rutgers
+could turn the Canvas LTI on.** That is a concrete, cheap, high-value ask, and it is
+exactly the kind of thing to carry to the AI Academic Working Group.
+
+### 12 · Handwriting, and the PDF standard question — verified
+**Handwriting:** the honest line is that it produces a best-effort reading, and context
+improves it. Do not promise accuracy on handwriting in this session.
+
+**The new PDF standard is real: PDF/UA-2 (ISO 14289-2).** It is the accessibility standard
+aligned with **PDF 2.0**, replacing PDF/UA-1 — which dates from 2012, was last revised in
+2014, and is built on PDF 1.7. The relevant improvement for this deck: **Figure tags can
+now contain sub-structures**, so a complex image or diagram can be described in parts
+rather than as one undifferentiated blob.
+
+**Rick's instinct was right: almost nobody has switched.** As of 2026 it is still being
+promoted for adoption rather than widely implemented. And Rutgers' standard is
+**WCAG 2.1 Level AA**, not PDF/UA — so this is a "coming, worth knowing about, do not plan
+around it" note, not a workflow. One line at most, probably on slide 12.
+
+### 13 · Can a chatbot convert a twenty-page PDF? — needs a real test
+Rick's question, and his instinct about code is the right one. What can be said now:
+- **Reading** twenty pages is not the constraint. Context windows are far past that.
+- **Producing** a faithful twenty-page accessible conversion in one response is where it
+  breaks — output length limits and drift partway through.
+- **The reliable path is the one Rick named:** have the tool write and run code to do the
+  conversion, rather than doing it in prose. Prior material in this series already makes
+  this point about Copilot extracting figures from documents by writing the code itself.
+
+**Do not put a claim on the slide until it has been tested on a real twenty-page scanned
+chapter.** This is blocking item 1's last open question and it decides whether slide 13 is
+a live demo, a recorded one, or a described workflow.
+
+### General · Ally closes the loop as well as opening it
+**"You can use Ally to see if you still have problems after a fix."** Ally is not only the
+triage step — it is the check that the fix worked. That makes it bookend the spine rather
+than sit in front of it, and it is a better answer to "how do I know I'm done?" than
+anything currently in the deck. **Applied to slide 6.** Consider echoing it on 13 and 16.
+
+---
+
+## REVIEW NOTES — page-by-page pass, August 31, 2026
+
+Rick's own notes from walking the deck, with what turned up against each. He flagged this
+as **"a taste of the various issues"** — more coming, so leave this section open.
+
+### 1 · Title — subhead doesn't match what was advertised
+The registered title is **"AI-Assisted Digital Accessibility Workflows"**; the slide says
+"AI-Assisted Accessibility Workflows." The word **Digital** is missing, and the subhead
+should track the advertised one. Cheap fix, but it is the first thing a registrant checks.
+
+### 2 · Who I Am — role is wrong; look at the other bios
+The *title* matches the other decks ("Director of Emerging Technology, UOES"). What differs
+is the **bio itself**. The prior treatment is a three-card history — *Early 1990s* (first
+University websites; Center for Electronic Texts in the Humanities), *Decades Since*
+(infrastructure, virtual worlds), *Today* (that early text work informs how I understand
+AI's impact on knowledge and research) — closing on "a unique perspective on technology
+adoption." This deck replaced all of that with Role / This series / The bias I'll admit to.
+**Open question for Rick: port the three-card history, or fix the Role card's wording?**
+
+### 3 · The Deadline — this is the non-negotiable part of accessibility
+Say that plainly. The prior version of this slide was titled **"Accessibility Is Not
+Optional"** and this deck softened it into arithmetic. Restore the stance; keep the numbers.
+
+### 5 · The Shape — is this the same loop?
+Rick's own loop: **ALLY identify → Canvas check the existing description and try
+auto-generate → GenAI with the prompt framework → refine → back into Canvas.**
+The deck's spine is Source → AI pass → Verify → Place it, which is compatible but
+**does not make Ally the entry point.** Ally is built into Canvas, it is the go-to tool,
+and it is where you go first — that belongs *inside* the loop, not on a slide before it.
+
+### 6 · Ally — the delivery shape is two demos, not one
+"I do a walk through of the tool where it works well, and then an example where it has a
+challenge." The rewritten slide 6 supports the first half. It needs the second: one real
+case where Ally struggles. Pick it when the sandbox course is confirmed (item 19).
+
+### 7 · SensusAccess — needs a link, and there isn't one
+**Checked August 31, 2026: the Rutgers KB page describes SensusAccess but publishes no
+link to a conversion form and no instructions for starting one.** Its only outbound links
+are the policy article and the accessibility purchasing form. So there is currently no way
+for the room to act on it.
+
+**Recommendation: pull SensusAccess from slide 7 unless Rick tests it and finds the route.**
+Naming a tool nobody can reach is worse than not naming it. Ask IT Accessibility directly.
+
+### 7b · New for this fall — Ally can now auto-tag PDFs
+**Found August 31, 2026 in Ally's 2026 release notes.** Instructors can **Auto-tag untagged
+PDFs** from inside Instructor Feedback — a *Generate Tags* workflow that produces a tag
+structure the instructor **reviews and approves before it is applied.**
+
+Two reasons this matters a lot:
+1. **It may be the missing Segment 3 tool** (see note 13). Segment 3 currently describes a
+   conversion workflow with no product attached.
+2. **It is the deck's register, shipped as a feature** — a generous starting point plus a
+   mandatory human review step. That is the whole argument of this session, built into a
+   tool the University already licenses.
+
+**Verify first: it is administrator-enabled.** Confirm Rutgers has it switched on before
+demoing it. Also confirms the fall Canvas fixes to keyboard navigation on the Alternative
+Formats menu.
+
+### 9 · AI Vision — this is where LLMs actually shine
+Two additions, both Rick's:
+- **They see the image *and* the page.** Ally and PowerPoint describe an image in isolation;
+  Gemini or Copilot can read the surrounding page and propose alt text that fits the
+  context. That is the concrete reason to leave the built-in tool and go to an LLM, and the
+  deck does not currently say it.
+- **Students can do this themselves.** A student can screenshot the page into their own
+  chatbot and have it explained in context. **This is the student-agency moment item 17 has
+  been missing** — and it reframes accessibility as something students do for themselves.
+
+### 10 · Alt text worked example — the chart slide needs an actual chart
+"The same chart three ways" describes a chart in prose. It needs to *show* one. Combine
+with item 7's fix: use real material, not the invented enrollment numbers.
+
+### 11 · Vision failures — tie to our examples, and add the harder problem
+- Tie the failure cases to the deck's own examples rather than generic ones.
+- **Ask the room** whether they have vision failures to share.
+- **New and stronger — generated images that look real.** Tools like Gemini Notebook can
+  produce realistic images that are hallucinated but look like they belong. Rick's example:
+  **art generated for a slide, based on the work of real artists in New Brunswick, NJ.**
+  It looks right and it is an insult to those artists — because it uses their style without
+  using, crediting, or paying for their work.
+
+  This is a different failure from "the AI misread the chart." It is not an accuracy
+  problem, it is an **integrity** problem, and it is the strongest ethical beat available
+  in the deck. It also pairs with the alt-text argument: a description that sounds
+  plausible and a picture that looks plausible fail the same way.
+
+### 13 · The round trip — the workflow has no tool
+"Not sure what tool would make that pattern work. It's the workflow without the example
+tool." Correct, and it is blocking item 1's last open segment. **Ally's new PDF auto-tag
+(note 7b) is the leading candidate.**
+
+---
+
 ## BLOCKING — the deck cannot be delivered without these
 
 ### 1. Pick the tools. (Slides 7, 9, 12 — all three segments)

@@ -1,0 +1,126 @@
+PROMPTS FOR TESTING PDF TRANSCRIPTION
+Paste one of these into ChatGPT, Copilot, or Gemini with the PDF attached.
+Test file: ~/Downloads/scanned-logic-20p.pdf  (20 pages, image-only, no text layer)
+Written September 2, 2026.
+
+================================================================
+RUN THIS IN A CLEAN CONTEXT — READ FIRST
+================================================================
+
+Your account is not a neutral test bench. These tools remember, and months of your
+own conversations have taught them that you want structure, accessible output, alt
+text, MathML. They will supply those assumptions without being asked. A faculty
+member on day one gets none of that.
+
+So a result you get in your normal chat is not a result the room can reproduce, and
+you would be demoing your history as much as the tool.
+
+Three settings, not one. As of 2026 there is no single privacy switch anywhere:
+history, training, and memory are separate questions and you usually have to check
+at least two.
+
+  ChatGPT   Memory has TWO layers, toggled separately:
+            Settings > Personalization > Memory
+              - "Saved memories"        (an explicit, editable list of facts)
+              - "Reference chat history" (implicit recall of your past chats)
+            Easiest clean run: use a TEMPORARY CHAT. It uses no existing memories
+            and creates none.
+
+  Gemini    Use a TEMPORARY CHAT. It stays out of Recent Chats and Gemini Apps
+            Activity. Also check whether past chats are set to influence responses.
+            Note your Gems are separate — do not run the test inside one.
+
+  Copilot   Most fragmented of the three, because the rules depend on account type.
+            Check the account you are actually testing with, and say which one it
+            was when you report the result.
+
+Run each test twice if you can: once clean, once in your normal chat. The gap
+between them IS a finding, and it is worth showing the room.
+
+Also worth knowing: because a cold tool assumes nothing, everything that matters has
+to be IN THE PROMPT. That is the real argument for Prompt B's length. It is not
+fussiness — it is what you have to type when the tool does not already know you.
+
+
+================================================================
+PROMPT A — THE QUICK TEST  (start here)
+================================================================
+
+I've attached a 20-page scanned PDF with no text layer. It's a mathematics text, so
+it's full of logical and mathematical notation.
+
+Transcribe it faithfully. Do not summarize, shorten, or improve anything — including
+any typos in the original, which I want preserved.
+
+Three rules:
+1. Keep the notation exactly as it appears. Superscripts stay superscripts, subscripts
+   stay subscripts, and every symbol stays itself. Do not substitute a similar-looking
+   symbol or normalize anything.
+2. Where you are not certain what a character or symbol is, do not guess. Mark it
+   [UNCERTAIN: your best reading] and keep going. I would rather have twenty flags
+   than one confident error.
+3. Tell me at the end how many pages you actually transcribed and how many
+   [UNCERTAIN] flags you raised.
+
+
+================================================================
+PROMPT B — THE CAREFUL TEST  (accessible output)
+================================================================
+
+I've attached a 20-page scanned PDF with no text layer. It's a mathematics text, so
+it's dense with logical and mathematical notation.
+
+Transcribe it to accessible HTML, five pages at a time, stopping after each batch so
+I can check it. Do not summarize, condense, or improve anything — I need a faithful
+transcription, including any typographical errors in the original.
+
+Rules:
+1. Notation must survive exactly. Superscripts stay superscripts, subscripts stay
+   subscripts. Preserve the following as themselves and do not substitute
+   similar-looking symbols:  for all, there exists, and, or, not, implies,
+   if-and-only-if, turnstile, entails.
+2. Mark every equation up as MathML so a screen reader can read it. If you cannot
+   produce MathML, give me LaTeX and say so explicitly.
+3. Where you are not certain what a character or symbol is, do not guess. Mark it
+   [UNCERTAIN: your best reading] and keep going. Twenty flags beat one confident
+   error.
+4. Use real headings, real lists, and real table markup — not visual formatting.
+5. For any figure or image, write [FIGURE: what it shows] rather than inventing a
+   description.
+
+After each batch of five pages, tell me which pages you did, how many [UNCERTAIN]
+flags you raised, and anything you could not read at all.
+
+
+================================================================
+PROMPT C — THE FOLLOW-UP  (ask for code)
+================================================================
+
+Now write and run code to do the same conversion on the whole file, so the result
+doesn't depend on you transcribing by hand. Tell me what the code does, and where
+it would fail.
+
+
+================================================================
+FOUR THINGS TO CHECK IN THE OUTPUT
+================================================================
+
+These have known answers, so they tell you whether the tool is accurate or fluent.
+
+1. Page 12, k-th root.        Correct: a^k = b
+                              Pulling the original PDF's text gives "ak = b".
+                              Did the tool keep the superscript?
+
+2. Page 12, square root.      Correct: x-squared = 4 and y-squared = 4
+                              Text extraction gives "x2 = 4", "y 2 = 4".
+
+3. Page 8, truth table.       The biconditional table header should be the
+                              if-and-only-if symbol, with values T, F, F, T.
+                              A previous run returned the implies symbol instead,
+                              with biconditional values underneath — internally
+                              inconsistent, and not flagged. Watch for this one.
+
+4. Page 20, deliberate typos. The original reads "the auhtor makes mitsakes".
+                              A tool that silently corrects these is smoothing the
+                              source, which is a fidelity failure even though it
+                              looks like a favour.
