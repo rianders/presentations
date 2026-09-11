@@ -302,6 +302,451 @@ product.
 
 ---
 
+## TEST IN PROGRESS — auditing Gemini Notebook on an image, September 11, 2026
+
+Gemini Notebook was given **an image and nothing else.** It OCR'd it, produced close
+readings, and generated material from it. The output is usable. **Whether the recognition
+underneath was any good is not knowable from the output.**
+
+### The audit problem, stated plainly
+These systems do not hand you raw recognition. They filter readings that look implausible
+and snap ambiguous ones to something they already know. So a wrong character that happens
+to sit in a familiar phrase gets quietly corrected, and a right character that sits in an
+unfamiliar one can get quietly "corrected" too. **The output is fluent either way, and it
+carries no record of which words came off the page and which came from the model's
+priors.** That is why a true audit of Gemini Notebook is hard: you are grading a
+reconstruction and calling it a transcription.
+
+This is the verify beat in its hardest form. The page 8 truth-table error (Result 3 above)
+was catchable because the source was in hand *and* the output contradicted itself. The
+failure mode here is the opposite and worse — **a plausible reading that is simply wrong,
+with nothing in the output to flag it.**
+
+### The instrument that does work — unguessable content
+Page 20's deliberate typos — *"the auhtor makes mitsakes"* — worked as a test precisely
+because **no prior predicts a typo.** A model reconstructing from priors smooths them; a
+model reading the page keeps them. Generalize that into the audit:
+
+to measure recognition, put content in the image that priors cannot supply —
+- typos and misspellings the tool is expected to preserve
+- non-words and random strings (no dictionary to fall back on)
+- a formula that is well-formed but **wrong**, off by one glyph
+- numbers with no pattern, and a label that is deliberately mismatched to its figure
+
+**Fidelity is measured by what the tool refuses to improve.** Anything it smooths, it was
+guessing at.
+
+### What is being tried next
+The same single image through Notebook's **other output types** — Audio Overview, study
+guide, briefing doc, mind map, FAQ — to see how far each one transforms the source. Each
+transform is another place provenance is lost: the further the output is from a
+transcription, the less it can be checked against the page at all. Audio Overview is the
+extreme case and **is verified differently from the document outputs** (see item 25) —
+these must not be collapsed into one claim.
+
+### What this does NOT settle
+- **Whether it read the image correctly.** Nothing here is a measurement yet; it is a
+  statement of why the obvious measurement does not work.
+- **One image is not the twenty-page test.** Different question, different failure modes.
+- **Which product.** This is Gemini Notebook specifically. The deck's other named tools
+  remain untested on this path.
+
+---
+
+## POSITIONING — Gemini Notebook vs. Gemini Gems, September 11, 2026
+
+**The problem as stated:** Gemini Notebook is hard to fit into the accessibility workflow.
+
+**The answer: it does not go in the workflow. It goes on a second axis.** Trying to seat it
+in the spine is what makes it feel wrong, and the instinct that it doesn't fit is correct.
+
+### Two jobs, and only one of them is the spine
+| | **Remediation** | **UDL** |
+|---|---|---|
+| What it's for | Meeting WCAG 2.1 Level AA | More ways into the same material |
+| Driven by | The April 26, 2027 deadline | Teaching judgment |
+| Output must be | Checkable against the source | Useful, and honest about not being the source |
+| Scored by | Ally | Nothing; it's an addition |
+| The tool | **Gems** | **Gemini Notebook** |
+
+**Notebook is disqualified from remediation for exactly one reason, and it's decisive: it
+has no transcription mode and no visibility into its own process.** You cannot tell whether
+a sentence came off the page or came from the model's *understanding* of the page — direct
+from transcription, or AI-assisted reading of the transcription. Remediation output has to
+be checkable against the source, so a tool that won't show you the seam can't do the job.
+
+**But that flaw is irrelevant to the job Notebook is actually good at.** A study companion
+never claimed to be the source. Notebook's weakness as a transcription tool does not touch
+its strength as an engagement tool. **That is the line for the slide** — and it is a better
+answer than either "use Notebook for accessibility" or leaving it out.
+
+### Where it attaches in the spine — after beat 5, not inside beat 3
+Notebook hangs off the **end** of the pipeline, not the middle. Fix the source, put it back
+in Canvas, re-run Ally — *then* a companion is an addition. Run in the other order and it
+is the trap slide 7's DropIn already names: the student who needs audio gets a generated
+discussion *about* the article while everyone else gets the article. **A UDL addition does
+not discharge the WCAG obligation.** Ordering is the whole safeguard, and it is one sentence.
+
+### Multilingual — real strength, but it is a different kind of claim
+Notebook's multilingual support is good, and it may be the **only verified multilingual path
+in this deck** — slide 7 currently carries an explicit prohibition on multilingual *audio*
+claims, because Ally's "translated version" is text and translate-then-speak is untested
+(item 26). Two cautions before this goes on a slide:
+1. **It is untested here.** Entitlement discipline applies: verify on a Rutgers NetID first.
+2. **Language access is not disability access.** Useful, and squarely UDL — but it is not a
+   WCAG 2.1 AA obligation and must not be presented as one. (The exception is 3.1.2,
+   Language of Parts, which is about markup, not translation.)
+
+---
+
+## THE GEM — task-oriented WCAG 2.1 AA evaluation
+
+This is the stronger of the two examples, and it is strong for the precise reason Notebook
+is weak: **a Gem's process is inspectable.** You can read its instructions. You wrote them.
+
+### Why a Gem and not just a prompt
+- **Repeatability.** Same criteria, same output shape, every file. Evaluation that changes
+  its mind between documents isn't evaluation.
+- **Criterion-referenced.** Put the actual 2.1 AA success criteria in the instructions and
+  the output cites a criterion instead of offering an impression.
+- **Bounded verification.** A finding with a pointer — *this image, 1.1.1, here's why* —
+  takes seconds to confirm by eye. That is the deck's verify beat, satisfied by design.
+- **It survives the session.** Faculty leave with a saved tool, not a prompt they retype.
+
+### The hard limit, and it goes on the slide
+**A Gem triages; it cannot determine conformance.** Several 2.1 AA criteria are not
+machine-decidable — 1.1.1 (is this alt text *meaningful*), 1.3.1 (are those the *correct*
+semantic relationships), 2.4.6 (is that heading *descriptive*), 3.1.2 (language of parts).
+The Gem produces **candidate findings** a human confirms. **Ally stays the detector of
+record; DesignPLUS stays the in-place checker.** The Gem is "bring your own," and if it is
+presented as a compliance tool faculty will read its output as a pass.
+
+### Open before it can be demoed
+- **Entitlement.** Can a Rutgers NetID Gemini account create and save Gems, or is that a
+  paid tier? `gemini-gem-manager.png` shows a **PRO** account and **2.5 Pro** — so the
+  existing screenshot does not answer this. Verify, do not assume.
+- **Version hygiene.** That same screenshot contains the typo **"WVAG 2.2"**. This deck's
+  standard is **WCAG 2.1 Level AA** (DOJ April 2024 rule, April 26, 2027). The Gem's name
+  and instructions must say 2.1 AA. Re-shoot the screenshot; do not reuse it (item 709).
+
+### Drafted — `gem-instructions.txt`
+Paste-ready instructions written September 11, 2026, plus setup notes, optional knowledge
+files, and a five-probe test document with known answers to run **before** recording.
+
+**The design decision that makes it worth having:** the Gem deliberately **does not report
+what Ally already reports.** Missing alt text, missing headings, contrast, missing document
+language — Ally finds all of it automatically, for free, unprompted. A Gem that repeats those
+has no reason to exist. So the instructions scope it to the criteria that need judgment:
+**1.1.1** (is the alt text *meaningful*, not merely present), **1.3.1**, **1.4.5**, **2.4.4**,
+**2.4.6**, **3.1.2**, **1.2.x**. That is the half Ally cannot do, and it is why the Gem earns
+its place in "bring your own" instead of competing with the built-in column.
+
+Three rules in it carry the deck's own arguments: **never claim conformance** (candidate
+findings only), **do not guess and do not smooth** (straight from the September 11 audit
+finding — a Gem that silently corrects a typo is reconstructing, not reading), and **ask for
+the page, not the image** (item 35's screenshot move, built into the tool).
+
+**The core test probe** is an image whose alt text is accurate but useless — *"a bar chart
+showing data."* A checker passes it because text is present. If the Gem does not catch that
+one, it has no reason to exist and should not be shown.
+
+### Why this is the video, not the live demo
+Building a Gem is a five-minute multi-step UI task with persistent state — the worst
+possible live demo in a session already under time pressure (item 10), and the one thing
+that is genuinely better watched than performed. Contrast the screenshot-to-chatbot move
+(item 35), which is ten seconds and should stay live.
+
+**Outline drafted — `gem-video-outline.md`.** 8–9 minutes, chaptered, with a pre-record
+checklist (entitlement check first, test against the five probes, build the demo doc from the
+probe document, clean browser), an accessibility spec for the video itself, and a fallback
+re-cut if Gems turn out to be a paid tier.
+
+**The chapter that matters is chapter 4: reject a finding on camera.** A tutorial in which the
+tool is right about everything teaches faculty to paste output. Showing it flag a decorative
+divider, and saying out loud *the tool does not know what the image is for — you do*, is the
+deck's entire argument delivered in forty seconds. Not optional.
+
+**So: record the Gem build as a full tutorial, link it from the Tools slide, and spend
+session time on the Gem's *output* instead — one file, one set of findings, one confirmed
+by eye from the podium.** The Hands-On slide gains a fifth track: *run the Gem on the
+document you brought.* Done when you have confirmed one finding and rejected one.
+
+---
+
+## SETTLED — which WCAG version the deck cites, September 11, 2026
+
+Verified against primary sources this date. **Do not relitigate; do not "update" 2.1 to 2.2.**
+
+### Three versions are in play at once, and all three numbers are correct
+| Source | Version | What it governs |
+|---|---|---|
+| **DOJ Title II rule** — the law for Rutgers | **2.1 Level AA** | The obligation. The April 26, 2027 deadline. |
+| **Section 508** — federal procurement and funding | **2.0 Level AA** | Unrevised since the 2017 refresh |
+| **Ally** — the tool scoring your course | **2.2 Level AA** | What the score in the panel actually measures |
+
+That last row is new information and it matters: **Anthology's own documentation now says "Ally's
+accessibility checklist is based on WCAG 2.2 AA."** A faculty member who follows the Ally link
+from the Tools slide will read 2.2 while slide 3 says 2.1, and will ask. Have the answer ready.
+
+### The decision: cite 2.1 AA, build to 2.2, never argue about it from the podium
+1. **2.1 AA is the regulation.** It is what a complaint or an audit measures against. Saying
+   2.2 where the law says 2.1 sounds authoritative and is wrong about the requirement.
+2. **2.2 is backward compatible.** W3C: "The 2.0 and 2.1 success criteria are essentially the
+   same in 2.2, with one exception." Meeting 2.2 means you have met 2.1. **You cannot lose by
+   working to the newer one.** (The exception is 4.1.1 Parsing, removed from 2.2 as obsolete —
+   a markup-validity criterion with no bearing on course content.)
+3. **The rule permits equivalent facilitation** — alternative approaches achieving equivalent
+   or greater accessibility. 2.2 is "greater." There is no exposure in exceeding the floor.
+4. **For this room the delta is empty.** All nine new 2.2 criteria are interactive-UI criteria:
+   focus not obscured, focus appearance, dragging movements, target size, consistent help,
+   redundant entry, accessible authentication. **Not one applies to writing alt text, fixing
+   headings, or converting a scanned PDF.** They belong to the LMS vendor and the web
+   developer. **The version question is a developer's question, not a faculty question.**
+
+**Consequences:** slide 3 stays at "WCAG 2.1 Level AA." **The Gem cites 2.1 AA criterion
+numbers** — that keeps its findings legible against what the deck teaches. Do not chase
+**WCAG 3.0**: still a working draft with a different conformance model, not a compliance
+target, and nobody's remediation work is made obsolete by it. Regulations name a frozen
+version deliberately — a moving target is unenforceable — so expect 2.1 to remain the cited
+number for years. Moving to 2.2 would require new rulemaking.
+
+**Deadline confirmed correct.** April 26, 2027 for public entities of 50,000+ population,
+extended once by the DOJ interim final rule of April 20, 2026 (from the original April 24,
+2026). Slide 3's "already extended once" badge is accurate.
+
+---
+
+## MULTILINGUAL — item 26 CLOSED, verified September 11, 2026
+
+**Ally does handle multilingual content, in three distinct ways.** Item 26 was resolved in
+August *by removal* on the grounds that the chain was unverified. It is now verified, and the
+answer is more useful than the removal assumed. Sources are Anthology's own help pages.
+
+### 1. Ally's audio is multilingual by detection — and this is the finding
+> **"Ally detects the language of the original content and selects a matching language for
+> the audio format file."**
+
+A Spanish document gets Spanish audio. Automatically, in every Canvas course, with no setup
+and no instructor action. **This belongs in the "already running" column** and the deck
+currently says nothing about it.
+
+### 2. But translate-then-speak does not chain — item 26's suspicion, confirmed
+> **"If you want the original content in a different language, try the Translated Version
+> format."**
+
+Audio follows the **original** language, not the translated one. So an English document
+**cannot** yield Spanish audio through Ally. Translation and audio remain two separate
+alternative formats and they do not compose. **The August instinct was right; the reason is
+now documented rather than guessed.**
+
+### 3. RESOLVED at Rutgers — Translated Version is NOT enabled; Immersive Reader IS
+**Settled September 11, 2026 by opening the actual dialog** in a live Rutgers Canvas course
+(`rutgers.instructure.com`, Files → a PDF → Download alternative formats). This is the
+authoritative answer documentation could not give.
+
+**The Rutgers list, observed, for a born-digital PDF:**
+> HTML · ePub · Electronic braille · **Audio (MP3)** · BeeLine Reader · **Immersive Reader**
+
+**No Translated Version.** And this is conclusive, not a file-type artifact: Anthology lists
+**PDF** among the file types Translated Version supports, so if it were enabled it would
+appear here. **It is off at Rutgers** — consistent with Anthology's "disabled by default;
+administrators can submit a support case."
+
+**The Rutgers page's caption was a stock screenshot after all.** It listed "translated
+version"; the live tenant does not have it. Good call not to cite it (3b) — that near-miss
+would have put a false claim on a slide in front of the room most likely to test it.
+
+### 3a. The better finding — the multilingual path exists, under a different name
+**Immersive Reader is in the list, and it does both jobs.** From Anthology's own page:
+> **"Translate content in real-time"** into **over 100 languages**, and
+> **"Convert text-to-speech (both male and female voices)."**
+
+With the caveat, also theirs: *"the languages available for the Immersive Reader differ from
+the ones available for Ally translated versions."*
+
+**So the answer to "can Rutgers students get this reading in another language?" is yes — via
+Immersive Reader, not via Translated Version.** That is a correction to the deck's mental
+model, and it is a *better* story: it is already on, it needs no support case, and it sits in
+the "already running" column with Ally and ReadSpeaker.
+
+**How it differs from the MP3, and this matters for how it gets taught:**
+- **Real-time and in-browser**, not a downloadable artifact. The dialog itself says
+  *"Internet required."* You cannot hand it to a student as a file.
+- **Student-driven.** Faculty do nothing; the student opens it and sets their own language.
+- **It may close the chain the MP3 cannot.** Ally's audio follows the source language only.
+  Immersive Reader has translate *and* text-to-speech in one surface, so read-aloud in a
+  translated language may be reachable there. **UNVERIFIED — Microsoft's documentation does
+  not state whether Read Aloud speaks the translated text.** Test by hand before claiming it.
+  If it holds, it is the only end-to-end multilingual audio path in the deck.
+
+### 3b. Open problem the same screenshot created — slide 7's "tagged PDF"
+**Tagged PDF and OCR'd PDF were both absent from the dialog.** Slide 7 currently says Ally
+"offers an audio version of your files alongside **ePub, tagged PDF** and braille," and the
+toolkit table says "Ally (scores, alternative formats, MP3, **PDF auto-tag**)."
+
+**A faculty member who follows that sentence and opens this dialog will not find tagged PDF.**
+The likely explanation is conditional offering — OCR'd PDF only for *scanned* PDFs, tagged PDF
+for *non-PDF* sources — but that is inference, not verification.
+
+**Check before delivery, two files, five minutes:** open the alternative-formats dialog on
+(a) a **Word or PowerPoint** file and (b) a **scanned, image-only PDF**, and record what each
+offers. Then either qualify slide 7's sentence or cut the formats that do not reliably appear.
+**Promising a format the room cannot find is the fastest way to lose them.**
+
+### 4. Ally already flags the 3.1.1 failure — and it is the cheapest win in the deck
+Ally's checklist (now stated as **WCAG 2.2 AA**) includes, all rated **Minor**:
+- *"The PDF does not have a language set"* / *"does not have the correct language set"*
+- the same pair for **Word** documents and for **PowerPoint** presentations
+- HTML: *"`<html>` element must have a lang attribute"* / *"must have a valid value"*
+- and one 3.1.2-adjacent check: *"lang attribute must have a valid value"*
+
+**Because they are Minor, they sit at the bottom of everyone's Ally list, unread.** But the
+language setting is what Ally's own audio detection reads. So:
+
+> **Set the document language → Ally's MP3 picks the right voice → every student's audio
+> improves.** One setting, two clicks, and it propagates downstream through a tool that is
+> already running.
+
+**The cheapest multilingual fix is not a translation. It is one language setting.** That is a
+slide line, it is free, and it threads the language topic onto the spine instead of bolting
+it on.
+
+### Where Notebook actually sits now
+Notebook is **not** the missing link in the Ally chain — Ally's multilingual audio already
+works for source-language content. Notebook does something different: it **generates a
+discussion in the target language** from your sources.
+
+**And its verify beat fails.** For English audio the instruction is "listen to the first thirty
+seconds and fix one pronunciation." For a Spanish Audio Overview, **an instructor who does not
+speak Spanish has no verification move at all.** Fidelity failure and translation failure
+compound: you cannot hear a fabrication in a language you do not read. Disqualifying for
+anything offered *as* the accessible version of a reading — *offer it, don't substitute it,
+and don't claim you checked it.*
+
+### Language access is not disability access — the distinction stays sharp
+- WCAG 2.1 AA's language criteria are **3.1.1 Language of Page** and **3.1.2 Language of
+  Parts.** Both are about **markup declaring the language** so assistive tech picks the right
+  voice and phonetics. **Neither requires providing a translation of anything.**
+- Providing content in another language is **language access** — a civil rights obligation, but
+  **Title VI (national origin)**, not ADA Title II or Section 504. Different statute, different
+  office on campus.
+- **The risk for this room** is a faculty member concluding "I added a Spanish version, so I've
+  done accessibility." They have not touched a single WCAG criterion.
+- **The one real intersection is 3.1.2**, and slide 7 already names it: a quoted phrase in
+  another language, unmarked, gets read with the wrong phonetics. *That* is the AA failure.
+
+**So the compliance move is one attribute; the translation is pedagogy** — and the attribute
+is the one Ally is already flagging and nobody is fixing.
+
+---
+
+## STANDING RULE — the tenant is the source of truth, not the vendor, September 11, 2026
+
+**Rutgers has almost certainly not enabled everything Anthology ships.** Translated Version
+proved it: documented, supported for PDF, and simply absent from the live dialog. Treat that
+as the general case, not the exception.
+
+> **Vendor documentation states the product's ceiling. The tenant states your floor.
+> Only the floor is true for the room on September 18.**
+
+This extends the entitlement discipline already governing the deck. That rule asked *does
+Rutgers license this tool.* The new rule asks the harder question: **of the features inside a
+tool Rutgers does license, which ones are switched on here?** Ally is configured per
+institution — alternative formats can be toggled individually, and some ship off by default.
+
+**The error runs in both directions, which is the part worth remembering:**
+- **Absent though documented** — Translated Version. Would have been a false promise.
+- **Present though barely documented** — **Immersive Reader and BeeLine Reader are both in
+  the Rutgers dialog and neither appears anywhere in the deck.** The audit found a *missing
+  capability*, not just a bad claim. Immersive Reader is the better multilingual answer.
+
+### Audit of the deck's Ally claims against what is actually verified
+
+**Verified on the live tenant** (screenshot, September 11, a born-digital PDF) — safe to say:
+HTML · ePub · Electronic braille · **Audio (MP3)** · BeeLine Reader · **Immersive Reader**,
+all student-downloadable with no instructor action.
+
+**Safe — core engine, not per-tenant configurable:** accessibility scores and the score panel,
+the instructor feedback tool, the course accessibility report, the checklist items (including
+the language checks in section 4 above), and audio's source-language detection.
+
+**UNVERIFIED — every one of these is a deck claim with no tenant evidence:**
+
+| Claim | Where | Status |
+|---|---|---|
+| Ally offers **tagged PDF** | Slide 7 · toolkit table | **Absent from the dialog.** Check a Word/PowerPoint source. |
+| Ally does **PDF auto-tag / OCR'd PDF** | Toolkit table · Segment 3 | **Two separate things — see the DETECT vs. REPAIR section below.** The *alternative format* was absent from the dialog; the *quick-fix* that rewrites the file is admin-gated and lives in the feedback panel. Check both. |
+| Ally's **"Auto-generate description"** for images | Slide 6 image + Segment 2 step 3 | **Check whether `ally-score-panel.png` was shot in a Rutgers course or is stock.** Ally's AI alt-text generation is an admin-configurable feature — the exact shape of trap Translated Version just sprang. This one is load-bearing: Segment 2 tells the room to try it *first*. |
+
+**Do not resolve these from help.anthology.com.** Open the dialogs. Three files — a Word
+document, a scanned image-only PDF, and a Canvas page with an unlabeled image — answer all
+three rows in under ten minutes.
+
+**And add the two found formats to the deck** once checked: Immersive Reader belongs in
+Segment 1 alongside the MP3 (it is the real multilingual answer, and it is already on), and
+both belong in the "already running" column of the toolkit table.
+
+---
+## DETECT vs. REPAIR — the distinction faculty get wrong, September 11, 2026
+
+Sharpens item 36's "Ally is a detector, not a repair shop." That is right in spirit and now
+slightly too blunt. **Two different things both look like "Ally fixed it," and only one is.**
+
+### 1. Alternative formats do NOT fix your file
+The MP3, the ePub, the OCR'd PDF, the tagged PDF — these are **derivative copies generated for
+students.** They do not touch the file in your course. **Your PDF stays broken, your Ally score
+does not move, and the default every future student gets is still the broken original.**
+
+Rutgers' own RADR page says this out loud: instructors should *"replace the original scanned
+file with the OCRed version for a permanent fix."* **The OCR'd alternative format is not the
+fix. Manually swapping it in is the fix.**
+
+**This is the single most confusable thing about Ally** and the deck does not currently say
+it. A faculty member who sees "OCR'd PDF" in the student download menu will reasonably
+conclude the problem is handled. It is not.
+
+### 2. PDF quick fixes DO change the file — four of them, and only four
+From Anthology's PDF Remediation Options page. These write back:
+> *"After making these fixes, Ally will save and upload a new version of the PDF into the
+> course and **overwrite the old file** in the process."*
+
+| Fix | How |
+|---|---|
+| **Auto-tag** an untagged PDF | Ally proposes a tag structure; you *"review the suggested tags from the side panel against the content in the PDF"* and **"select Approve all."** |
+| **Missing title** | You type it |
+| **Missing language** | You pick from a dropdown |
+| **Scanned PDF OCR** | You preview, then apply |
+
+**Two gates on all of it:** it is **PDF-only**, and *"when enabled by the Administrator,
+instructors will see a new Generate Tags workflow."* **Admin enablement required** — so this
+lands on the same verification list as Translated Version, and the empty dialog gives no
+information either way (quick fixes live in the instructor feedback panel, not the student
+download menu).
+
+### 3. Everything else — you do the work
+Alt text, headings, contrast, table headers, list formatting, link text, font size, captions.
+**Ally tells you what is wrong and why it matters. You fix it.** That is the honest shape.
+
+**So the refined line for the slide:** *Ally is a detector with exactly four repairs — all
+PDF-only, all needing your approval, and only if your admin switched them on. Everything else
+it finds, you fix.* More accurate than "not a repair shop," and it sets the expectation
+correctly before the room goes looking for a button that is not there.
+
+### The payoff — "Missing language" is one of the four, and that closes a loop
+Section 4 of the multilingual note argued the cheapest win in the deck is setting the document
+language. **It turns out Ally both flags it *and* offers a one-click dropdown to fix it in
+place, on PDFs.** So the whole chain is demonstrable end to end:
+
+> **Ally flags it (Minor, ignored at the bottom of the list) → fix it from the dropdown, in
+> Ally, in seconds → the file in the course is genuinely updated → Ally's audio now detects
+> the right language and picks the right voice → every student's MP3 improves.**
+
+**This is the best live demo candidate in the deck.** It is fast, it is visible, it produces a
+real file change rather than a derivative, it pays off the spine's "back to Ally" beat, and it
+ties the language thread to the audio segment instead of leaving it an aside. **Verify the
+quick-fix panel is enabled at Rutgers first** — if it is off, this demo does not exist.
+
+---
 ## REVIEW NOTES — second pass, September 2, 2026
 
 ### SensusAccess — answered properly this time
