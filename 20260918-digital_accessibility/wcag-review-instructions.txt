@@ -1,6 +1,18 @@
-GEM INSTRUCTIONS — WCAG 2.1 AA COURSE MATERIAL REVIEW
-Drafted September 11, 2026 for the September 18 session.
-Paste the block under "THE INSTRUCTIONS" into a Gemini Gem's instructions field.
+INSTRUCTION BLOCK — WCAG 2.1 AA COURSE MATERIAL REVIEW
+Drafted September 11, 2026 for the September 18 session. Reframed September 14.
+
+THE INSTRUCTIONS ARE THE ARTIFACT. THE CONTAINER IS NOT.
+
+Paste the block under "THE INSTRUCTIONS" wherever you are working:
+
+  - At the top of an ordinary chat in Gemini, Copilot, or ChatGPT. THIS IS THE
+    MAIN PATH. It works everywhere and it works today.
+  - Into a Gemini Gem's instructions field, IF your account has Gems, so you do
+    not retype it. That is a convenience, not a requirement.
+
+Saved-assistant features churn — they get renamed, restricted to paid or
+enterprise tiers, or replaced outright, and the pace of that in 2026 is brisk.
+The text below does not care. Anything you can paste, you can keep.
 
 
 ================================================================

@@ -429,7 +429,7 @@ presented as a compliance tool faculty will read its output as a pass.
   standard is **WCAG 2.1 Level AA** (DOJ April 2024 rule, April 26, 2027). The Gem's name
   and instructions must say 2.1 AA. Re-shoot the screenshot; do not reuse it (item 709).
 
-### Drafted — `gem-instructions.txt`
+### Drafted — `wcag-review-instructions.txt`
 Paste-ready instructions written September 11, 2026, plus setup notes, optional knowledge
 files, and a five-probe test document with known answers to run **before** recording.
 
@@ -456,15 +456,15 @@ possible live demo in a session already under time pressure (item 10), and the o
 that is genuinely better watched than performed. Contrast the screenshot-to-chatbot move
 (item 35), which is ten seconds and should stay live.
 
-**Outline drafted — `gem-video-outline.md`.** 8–9 minutes, chaptered, with a pre-record
-checklist (entitlement check first, test against the five probes, build the demo doc from the
-probe document, clean browser), an accessibility spec for the video itself, and a fallback
-re-cut if Gems turn out to be a paid tier.
+**Outline drafted — `video-outline.md`.** **SUPERSEDED September 14 — rewritten shorter and
+container-neutral; see "THE CONTAINER IS NOT THE SKILL" below for the decision and the current
+shape.** The paragraph below is kept because its argument survived the rewrite intact.
 
-**The chapter that matters is chapter 4: reject a finding on camera.** A tutorial in which the
-tool is right about everything teaches faculty to paste output. Showing it flag a decorative
+**The chapter that matters is the one where the tool is wrong on camera.** A tutorial in which
+it is right about everything teaches faculty to paste output. Showing it flag a decorative
 divider, and saying out loud *the tool does not know what the image is for — you do*, is the
-deck's entire argument delivered in forty seconds. Not optional.
+deck's entire argument delivered in forty seconds. Not optional — and in the rewrite it grew a
+third move, naming something the tool missed entirely.
 
 **So: record the Gem build as a full tutorial, link it from the Tools slide, and spend
 session time on the Gem's *output* instead — one file, one set of findings, one confirmed
@@ -745,6 +745,85 @@ place, on PDFs.** So the whole chain is demonstrable end to end:
 real file change rather than a derivative, it pays off the spine's "back to Ally" beat, and it
 ties the language thread to the audio segment instead of leaving it an aside. **Verify the
 quick-fix panel is enabled at Rutgers first** — if it is off, this demo does not exist.
+
+---
+## THE CONTAINER IS NOT THE SKILL — September 14, 2026
+
+**Position for the deck: teach what you can do inside the chatbot. Treat every saved-automation
+container as temporary.** Rick's call, and it is the right one.
+
+### What is actually reported, and how much to trust it
+Searched September 14, 2026. **All of this is secondary — vendor blogs, SEO posts, one
+migration sales page. NONE of it is a primary announcement, and no date below belongs on a
+slide without confirming it at the source.** Recording it here for direction only:
+- **Custom GPT *creation*** reportedly restricted to Business/Enterprise/Edu workspaces as of
+  September 2026.
+- **OpenAI Workspace Agents** announced April 2026 as the successor; the visual **Agent
+  Builder** reportedly deprecated June 2026 with shutdown scheduled November 30, 2026.
+- **Gemini Gems** reportedly still free to all users — the more stable of the two.
+- **`SKILL.md` "Agent Skills"** published by Anthropic as an open format, claimed supported
+  across 30+ tools. The portable-instructions direction, whatever wins.
+
+**The pattern is clear even though the particulars are not: the containers churn every few
+months and the instructions inside them do not.**
+
+### Why this barely costs us anything
+**`wcag-review-instructions.txt` was already written as portable text.** It works pasted at the top of
+an ordinary chat — the video outline already carried that as the fallback. **So the fallback
+becomes the main path and the Gem becomes an optional convenience.** That is a reframe, not a
+rewrite. The artifact survives its container, which is exactly the argument.
+
+### And it is the stronger teaching position anyway
+It matches the voice check — *"I don't tell faculty what to do. I want them to add to their
+toolbox and to their experiences."*
+
+- A faculty member who learns **to write and paste an instruction block** can carry it to any
+  tool, including ones that do not exist yet.
+- A faculty member who learns **the Gem Manager UI** has learned nothing transferable, and
+  gets stranded when the button moves.
+- **The deadline is April 26, 2027 — roughly three semesters out.** Faculty will be doing this
+  work across all of them. A container deprecated mid-remediation is a real cost to someone
+  who built a routine on it, and this room is being asked to build routines.
+
+This adds a **temporal axis** to the discipline the deck already runs on. Entitlement
+discipline asked *does Rutgers license it.* The tenant rule asked *is it switched on here.*
+This asks **will it still exist when they act on it.**
+
+### What to say, and what not to say
+**Do not predict any product's death from the podium.** It is unverifiable, it dates the talk,
+and being wrong about it costs more than staying quiet. Say the durable version:
+
+> *These saved-assistant features come and go — the one I built this in may be renamed or
+> replaced by the time you try it. So what I am actually showing you is the instructions. Those
+> you can paste into whatever you are using.*
+
+True regardless of what happens, ages well either way, and it teaches the transferable thing.
+
+### OPEN DECISION — does the video still exist?
+**The video's whole justification was that building a Gem is five minutes of stateful
+clicking.** If the main path is "paste this text at the top of a chat," **that is a ten-second
+live demo and needs no video.**
+
+What survives and is still worth recording is **chapter 4 — running the instructions and
+rejecting a finding on camera.** That beat is tool-agnostic, it is the deck's argument, and
+nothing about the container churn touches it.
+
+**DECIDED September 14 — re-cut, not cancelled.** `video-outline.md` rewritten as
+**"Checking What an AI Tells You About Your Course."** Six minutes. Pasting the block is a
+thirty-second step; the build-a-Gem walkthrough is now a clearly-skippable appendix that gets
+cut outright if a NetID cannot save a Gem.
+
+**The middle chapter grew a third move and it is the best thing in the rewrite:** confirm a
+finding, reject a finding, **then name one it missed.** You built the probe document, so you
+know the answers. Confirming alone teaches trust; confirming and rejecting teaches judgment;
+adding the miss teaches what the session is actually about — **fluent output tells you nothing
+about coverage, and silence is the failure nobody notices on their own.** Same argument as the
+silent-notation slide, turned on the review tool itself.
+
+### Housekeeping — DONE September 14
+Both artifacts renamed away from the product now that the decision is settled:
+`gem-instructions.txt` -> **`wcag-review-instructions.txt`**, and
+`gem-video-outline.md` -> **`video-outline.md`**. Neither name now bets on a container.
 
 ---
 ## REVIEW NOTES — second pass, September 2, 2026
