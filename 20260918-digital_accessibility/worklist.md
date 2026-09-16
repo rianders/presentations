@@ -1177,7 +1177,38 @@ and teal-on-teal `Interact` treatments ported from August have never been checke
 WCAG 2.1 AA. Confirm the `&print` view is readable in greyscale. Being caught with an
 inaccessible accessibility deck is the worst available outcome.
 
-### 7. Replace the invented chart numbers. (Slide 10)
+### 7. Replace the invented chart numbers. (now slide 9) — CHART SUPPLIED September 16, 2026
+`enrollment-chart.png` is in the folder and on the slide. **Three things about it:**
+
+**1. It fixed a bug that would have been ruinous in this room.** The slide's fourth alt
+text read *"400, 395, 405, 240, 290, 340, 380"* — seven values for an eight-year range,
+four of them not matching anything. Nobody could see it while the figure was imaginary.
+Now corrected to the figure's real values: **400, 400, 400, 240, 275, 310, 345, 380.**
+The third card's prose version was already accurate and is unchanged. **If the PNG is
+regenerated, the fourth card and the `img` alt text both have to move with it.**
+
+**2. The numbers are still invented, and that is now a decision rather than an oversight.**
+The original objection stands on its own terms — real material every time, and fabricated
+numbers are off-voice here. But an alt-text *exercise* is the one place the objection is
+weakest: you need a figure whose content you control completely so the good/bad/better
+versions can be exact, and a real Rutgers enrollment chart would drag a data question
+into a session that has enough of those. Worth one sentence from the podium if it comes
+up — "these numbers are made up, the alt text is the point" — rather than a fix.
+
+**3. The chart encodes meaning in colour alone, and it is the accessibility deck.**
+2022 is red because it is the low point, 2026 is green because it is the recovery, and
+nothing but hue says so. That is WCAG 1.4.1. It is mitigated — every bar is labelled with
+its value, so the *data* survives colour blindness — but the emphasis does not. The `img`
+alt text names the colours out loud, which is why it is acceptable as it stands.
+
+It is also a genuine specimen of a real problem sitting in the middle of a slide about
+figures, and there is an argument for naming it from the podium: *"and notice what I did
+here — I made the point with colour and nothing else."* **Slide 9 has no room for it** —
+it is already a figure, four cards, a CodeBlock and a Note at 5 minutes. Options: one
+spoken line with no slide change, or move it to the vision-failures slide. **Decide
+before the run-through; do not improvise it live.**
+
+### Original note, kept:
 The good/bad/better example uses a fabricated enrollment chart (400 → 240 in 2022 → 380
 by 2026). **The instinct worth keeping is real material every time** — a real reading, a real
 Canvas page, a real figure. Fabricated numbers are off-voice here.

@@ -778,11 +778,39 @@ const slides = [
   // ACCESSIBILITY OF THIS SLIDE: the good/bad comparison must be labelled in
   // text, not signalled by red/green alone. It is, deliberately. Do not
   // "simplify" it back to colour-only.
+  //
+  // THE FIGURE IS NOW REAL — enrollment-chart.png, added September 16, 2026.
+  // Until then this slide taught alt text for an image that was not on it.
+  //
+  // THE NUMBERS ON THIS SLIDE MUST MATCH THE PNG. They did not: the fourth
+  // card read "400, 395, 405, 240, 290, 340, 380" — seven values for an eight
+  // year range, four of them wrong. Fixed to the figure's actual values:
+  // 400, 400, 400, 240, 275, 310, 345, 380. If the PNG is ever regenerated,
+  // BOTH the fourth card and the img alt text have to move with it. There is
+  // no worse place in this deck to be caught with unverified alt text.
+  //
+  // The chart encodes meaning in colour — red for the 2022 low, green for the
+  // 2026 recovery — and nothing but colour carries that. The img alt says so
+  // out loud, which is the only reason it is acceptable here. See worklist
+  // item 7: it is a candidate teaching point, NOT one this slide has room for.
   {
     label: "Alt Text Example",
     content: (
       <SlideShell tag="Segment 2 · Vision · 5 min" tagColor="bg-purple-700">
         <Heading>The Same Chart, Three Ways</Heading>
+
+        <div className="flex flex-col items-center mb-4">
+          <img
+            src="20260918-digital_accessibility/enrollment-chart.png"
+            alt="Bar chart of enrollment by year, 2019 to 2026. Values: 400, 400, 400, 240, 275, 310, 345, 380. The 2022 bar, the low point at 240, is red and the 2026 bar, 380, is green; the rest are blue."
+            className="rounded-lg border border-gray-200 shadow-sm w-full max-w-[420px]"
+            width="420"
+          />
+          <p className="text-xs text-gray-500 italic text-center mt-2 max-w-[420px]">
+            This is the figure. Every version below is alt text for <em>this</em> image — read
+            them against it.
+          </p>
+        </div>
 
         <div className="space-y-3 mb-4">
           <div className="bg-gray-50 border-l-4 border-gray-400 rounded-r-lg px-4 py-3">
@@ -814,7 +842,7 @@ const slides = [
               And when the figure is the exercise — say less
             </p>
             <p className="text-sm text-gray-700 font-mono">
-              "Bar chart, 2019–2026. Values by year: 400, 395, 405, 240, 290, 340, 380."
+              "Bar chart, 2019–2026. Values by year: 400, 400, 400, 240, 275, 310, 345, 380."
             </p>
             <p className="text-xs text-blue-800 mt-2">
               If students are meant to read the trend themselves, naming it hands them the
