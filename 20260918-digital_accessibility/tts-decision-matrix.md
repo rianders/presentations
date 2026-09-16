@@ -45,6 +45,7 @@ best. Almost every tool comparison in this space fails because it starts from th
 | 9 | Directed, multi-speaker, 70+ languages | Gemini API TTS (`2.5-flash-preview-tts`, etc.) | **T4** | API key, billing, chunk anything long | ● | Faculty | Everything. ~$0.55–0.90 per hour of audio; 32k context; drifts past a few minutes |
 | 10 | Your own voice, cloned | Chatterbox (MIT), Orpheus, Dia | T3/T4 | Install — **and settle the consent question first** | ● | Faculty | Policy before output |
 | 11 | Show the room what current synthesis *sounds* like | Qwen3-TTS demo Space (Hugging Face, ZeroGPU) | **T4** | Paste text in a public web app, listen | ◑ | Faculty | **Everything — and see the note below.** Not on it.rutgers.edu/ai; text goes to a third party; the Space queues and sleeps |
+| 12 | A second showcase voice / backup for row 11 | Supertonic-3 demo Space (Hugging Face) | **T4** | Paste text in a public web app, listen | ◑ | Faculty | **Everything, and nothing about it is verified.** Language support UNCONFIRMED — see the note below |
 | — | ~~Subscription TTS products~~ | ElevenLabs, Speechify, Murf | T4 | — | — | — | **Skip.** No entitlement, data exposure, and it makes the deck sound like it's selling something |
 
 ---
@@ -92,6 +93,50 @@ local second, never the reverse.
 Staged as **Demo 1** in `demos.md`: three beats, 2.5–3 minutes, all three pastes in
 `prompts-to-paste.txt`. It is still a showcase and still gets said out loud as one,
 and it is still recorded in advance because ZeroGPU Spaces queue and sleep.
+
+---
+
+### Note on row 12 — Supertonic-3, raised September 16, 2026
+
+`huggingface.co/spaces/Supertone/supertonic-3`. Proposed as **a multilingual option for
+the Resources slide.** Recommendation: **not on the Resources slide, and not described as
+multilingual.** Reasons, in order of how much they matter.
+
+**1. Its language support is unconfirmed.** The Space page is a JS app and does not fetch
+— exactly as with row 11, nothing was verified: not the languages, not the licence, not
+whether it needs a login, not what happens to submitted text. Right now "multilingual" for
+this tool is sourced from the proposal itself, not from the tool.
+
+**2. Multilingual is this deck's scar tissue.** Item 26 killed the slide 7 sentence
+because *nothing verified supports that*. The same claim came off slides 1 and 4 on
+September 16. Row 6 still reads **"the chain is unverified — do not claim this yet."**
+Reintroducing a multilingual audio claim as a *resource link* is the same claim through a
+side door, and it arrives without the verification the other three removals demanded. The
+September 18 room is the one most likely to test it.
+
+**3. The Resources slide is a recommendation surface.** Every item on it is Rutgers policy,
+the Rutgers AI hub, W3C, or this series. It is headed *"Where to Go Next."* A T4 Space with
+no entitlement and no data agreement, listed there, reads as endorsed — four slides after
+the Limits slide tells the room to check where their content is going.
+
+**4. It does not close the gap it appears to close.** The real unmet need is *verbatim
+audio of the assigned reading, in another language, at T1*. A public Space cannot take
+licensed readings and cannot be handed to students, so it does not answer that need for
+anybody. The deck's honest multilingual answer today is row 4 — Gemini Notebook's
+companion, T2, entitled, and already in the matrix.
+
+**Where it does belong.** Two places, both real:
+
+- **As the backup for Demo 1, beats 1–2.** A second T4 showcase voice is genuinely useful
+  insurance: if the Qwen Space is queuing or asleep, the demo can run here instead without
+  losing the argument, because the argument is *the notation fails either way* — and a
+  second cloud tool failing identically makes that case **stronger**, not weaker. Verify
+  it fails on `x² + y² = r²` the same way before relying on it.
+- **Here, as row 12**, so the option is recorded and nobody has to rediscover it.
+
+**If it goes on a slide anyway**, the conditions are not negotiable: confirm the language
+list on the Space itself, say T4 out loud, and put it under a heading that is visibly not
+a recommendation — a "where this is going" line, never "where to go next."
 
 ---
 

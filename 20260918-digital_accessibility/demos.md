@@ -147,6 +147,13 @@ demo costs more than the demo was worth.
 If a live beat stalls: stop, say *"it's queuing — here's the one I recorded,"* and play
 the clip. Do not wait, do not reload, do not narrate the spinner.
 
+**Second cloud voice, if Qwen3 is the thing that is down:** Supertonic-3
+(`huggingface.co/spaces/Supertone/supertonic-3`, row 12, also T4, also a showcase). The
+argument survives the substitution intact, because the argument is that the notation
+fails *either way* — and a second cloud tool failing identically makes it stronger.
+**Verify it fails on `x² + y² = r²` the same way before relying on it**, and do not
+describe it as multilingual: nothing about its language support has been confirmed.
+
 **The beats degrade independently, which is the good news.** If Qwen3 is down, beat 3
 still runs locally and still demonstrates the notation failure — you lose the "paying
 more doesn't fix it" comparison but keep the point. If the network is gone entirely, the
