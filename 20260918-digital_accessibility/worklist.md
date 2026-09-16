@@ -1,7 +1,7 @@
 # Worklist — AI-Assisted Digital Accessibility Workflows
 
 **September 18, 2026 · 11:00 am – 12:30 pm · Zoom**
-Deck: `20260918-digital_accessibility/digital-accessibility.jsx` — 18 slides
+Deck: `20260918-digital_accessibility/digital-accessibility.jsx` — 19 slides
 Preview: `shell.html?p=20260918-digital_accessibility/digital-accessibility`
 
 Status as of **August 28, 2026**: structural draft complete and compiling. The spine,

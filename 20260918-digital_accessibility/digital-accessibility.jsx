@@ -310,7 +310,7 @@ const slides = [
             <h2 className="text-lg sm:text-xl font-semibold text-gray-500 mb-4">Text-to-speech, vision, and content conversion</h2>
             <div className="w-20 h-1 bg-red-600 rounded mb-5" />
             <p className="text-sm text-gray-600 max-w-xl leading-relaxed mb-5">
-              Repeatable routines you can run yourself: multilingual audio for readings and
+              Repeatable routines you can run yourself: audio for readings and
               announcements, alt text and figure descriptions that actually say something, and
               scanned PDFs turned into Canvas content people can read. Every one of them ends
               with a human check.
@@ -449,7 +449,7 @@ const slides = [
             <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-3">Today · September 18</p>
             <ul className="space-y-2">
               <Bullet icon="✓">Finding out what’s already broken, using Ally — it’s in your Canvas now</Bullet>
-              <Bullet icon="✓">Readings and announcements as audio, including in other languages</Bullet>
+              <Bullet icon="✓">Readings and announcements as audio</Bullet>
               <Bullet icon="✓">Alt text for photographs, screenshots, and ordinary charts</Bullet>
               <Bullet icon="✓">Scanned PDFs and image-heavy slides into real Canvas content</Bullet>
               <Bullet icon="✓">The verification step for each — what to check, and how fast</Bullet>
