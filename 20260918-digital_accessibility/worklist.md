@@ -1171,7 +1171,33 @@ you do want one: opening multi-select, "what have you already tried to make acce
 
 ## IMPORTANT — do before the run-through
 
-### 6. Contrast-check the deck itself. (whole deck)
+### 6. Contrast-check the deck itself. (whole deck) — DONE September 16, 2026
+**Computed, not eyeballed** — every treatment is a Tailwind value in the source, so the
+ratios are exact. **The worry in the original note was misdirected.** The amber `Note`
+(6.84:1) and teal `Interact` (9.88:1) both pass comfortably; so do all eight tag pills
+(4.83–14.68:1), the CodeBlock (10.18:1), Link (5.17:1), Lede (7.56:1) and the title
+slide's draft badge (5.43:1).
+
+**Four real failures, all fixed. Every one was in an emphasis treatment** — the deck was
+weakest exactly where it was shouting:
+
+| What | Was | Now | Fix |
+|---|---|---|---|
+| `SectionCard` accent body | 4.41:1 | **5.91:1** | `bg-red-600` → `bg-red-700` |
+| `SectionCard` accent title | 3.95:1 | **5.30:1** | same |
+| Red panel eyebrow labels (slides 3, 14) | 3.34:1 | **5.30:1** | `text-red-200` → `text-red-100` |
+| `DraftChip` (10px, every slide) | 3.74:1 | **5.47:1** | `bg-teal-600` → `bg-teal-700` |
+| `Bullet` glyph | 3.76:1 | **4.83:1** | `text-red-500` → `text-red-600` |
+
+The accent card is the notation card — the segment's punchline — so it mattered.
+
+**Still not done: the greyscale `&print` check.** Ratios are luminance maths and catch
+everything luminance can catch; they say nothing about two colours of equal brightness
+being indistinguishable, which is exactly the enrollment chart's problem below. Walk
+`&print` before the run-through.
+
+### Original note, kept:
+
 This is the accessibility session; the deck will be inspected. The amber-on-amber `Note`
 and teal-on-teal `Interact` treatments ported from August have never been checked at
 WCAG 2.1 AA. Confirm the `&print` view is readable in greyscale. Being caught with an
@@ -1205,8 +1231,21 @@ It is also a genuine specimen of a real problem sitting in the middle of a slide
 figures, and there is an argument for naming it from the podium: *"and notice what I did
 here — I made the point with colour and nothing else."* **Slide 9 has no room for it** —
 it is already a figure, four cards, a CodeBlock and a Note at 5 minutes. Options: one
-spoken line with no slide change, or move it to the vision-failures slide. **Decide
-before the run-through; do not improvise it live.**
+spoken line with no slide change, or move it to the vision-failures slide. **DONE September 16, 2026 — it is on the slide**, as an amber aside in the left column
+under the figure, where that column was empty and it costs no height.
+
+The measured numbers, because the lesson is better than "check your contrast":
+`#2b5c8f` / `#d9534f` / `#4682b4` / `#2e8b57`. **Every bar clears 1.4.11 against white
+(3.96–6.93:1)** — so this is *not* a contrast failure in the ordinary sense, and saying
+that out loud is half the point. The failure is bar-against-bar: **red vs green is
+1.07:1**, the same luminance in two different hues. Simulated deuteranopia puts them at
+`#978b4b` and `#7f775a`, 1.30:1 apart. The two blues are 1.69:1 and encode "before" vs
+"recovery" — the same mistake a second time.
+
+So: remove hue — greyscale print, the `&print` view, a tired projector, red-green colour
+blindness — and **every bar stays visible while the point disappears.** The value labels
+save the data; nothing saves the emphasis. The line on the slide is *label what matters,
+don't just colour it.*
 
 ### Original note, kept:
 The good/bad/better example uses a fabricated enrollment chart (400 → 240 in 2022 → 380

@@ -162,7 +162,7 @@ const SlideShell = ({ tag, tagColor = "bg-red-600", children }) => (
 
 const Bullet = ({ icon = "▸", children }) => (
   <li className="flex items-start gap-3 text-gray-700 text-sm leading-relaxed">
-    <span className="text-red-500 mt-0.5 flex-shrink-0 font-bold">{icon}</span>
+    <span className="text-red-600 mt-0.5 flex-shrink-0 font-bold">{icon}</span>
     <span>{children}</span>
   </li>
 );
@@ -179,7 +179,7 @@ const Link = ({ href, children }) => (
 );
 
 const SectionCard = ({ title, icon, accent, children }) => (
-  <div className={`rounded-xl p-5 ${accent ? "bg-red-600 text-white" : "bg-gray-50 border border-gray-200"}`}>
+  <div className={`rounded-xl p-5 ${accent ? "bg-red-700 text-white" : "bg-gray-50 border border-gray-200"}`}>
     <div className="flex items-center gap-2 mb-3">
       <span className="text-xl">{icon}</span>
       <h3 className={`font-bold text-sm uppercase tracking-wide ${accent ? "text-red-100" : "text-gray-500"}`}>{title}</h3>
@@ -261,7 +261,7 @@ const Poll = ({ question, options = [], questions, anonymous = false }) => {
 /* Non-poll audience moment — chat waterfall, reactions, unmute. */
 const Interact = ({ kind = "Shared doc", prompt }) => (
   <div className="border-2 border-teal-400 bg-teal-50 rounded-xl p-4 mb-4">
-    <span className="bg-teal-600 text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
+    <span className="bg-teal-700 text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
       {kind}
     </span>
     <p className="text-sm font-bold text-gray-900 mt-2">{prompt}</p>
@@ -302,7 +302,7 @@ const slides = [
       <SlideShell tag="Faculty Workshop 2026–27" tagColor="bg-red-600">
         <div className="flex flex-col md:flex-row gap-8 items-start justify-between h-full min-h-[380px]">
           <div className="flex flex-col items-start justify-center flex-1">
-            <p className="text-xs font-bold uppercase tracking-widest text-red-500 mb-3">Rutgers UOES · TIIP Partnership</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-red-600 mb-3">Rutgers UOES · TIIP Partnership</p>
             <h1 className="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-1">AI-Assisted</h1>
             <h1 className="text-4xl sm:text-5xl font-black text-red-600 leading-tight mb-2">Accessibility Workflows</h1>
             <div className="mb-4">
@@ -386,8 +386,8 @@ const slides = [
       <SlideShell tag="Framing · 4 min" tagColor="bg-teal-700">
         <Heading>April 26, 2027</Heading>
 
-        <div className="bg-red-600 text-white rounded-xl p-5 mb-4">
-          <p className="text-xs font-black uppercase tracking-widest text-red-200 mb-1">Deadline — already extended once</p>
+        <div className="bg-red-700 text-white rounded-xl p-5 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-red-100 mb-1">Deadline — already extended once</p>
           <p className="text-lg font-bold mb-1">Course materials must meet WCAG 2.1 Level AA</p>
           <p className="text-sm text-red-100">
             Federal digital accessibility requirements. Not a recommendation — a compliance
@@ -802,6 +802,20 @@ const slides = [
   // column collapses to on a narrow window. Do not reorder for visual reasons.
   // The caption says "here", not "below" or "right" — directional words are
   // meaningless to a screen reader and wrong once the columns stack.
+  //
+  // THE COLOUR ASIDE, September 16, 2026. Measured off the PNG, not estimated:
+  //   2019-21 #2b5c8f   2022 #d9534f   2023-25 #4682b4   2026 #2e8b57
+  // Every bar clears 1.4.11 against white (3.96-6.93:1), so this is NOT a
+  // contrast failure in the usual sense, and saying so is half the lesson.
+  // The failure is bar-against-bar: red vs green is 1.07:1 — the same
+  // luminance. Simulated deuteranopia takes them to #978b4b and #7f775a,
+  // 1.30:1 apart. The two blues are 1.69:1 and encode "before" vs "recovery",
+  // which is a second instance of the same mistake.
+  // Remove hue — greyscale print, the &print view, a bad projector, red-green
+  // colour blindness — and every bar survives while the emphasis dies. The
+  // value labels are what save the data.
+  // It sits in the left column because that column was empty below the figure:
+  // the aside costs no vertical height, and it is beside the thing it is about.
   {
     label: "Alt Text Example",
     content: (
@@ -820,6 +834,23 @@ const slides = [
               This is the figure. Every version here is alt text for <em>this</em> image — read
               each one against it.
             </p>
+
+            <div className="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg px-4 py-3 mt-4 w-full">
+              <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">
+                And the figure itself has a problem
+              </p>
+              <p className="text-xs text-amber-800 leading-relaxed">
+                Every bar passes contrast against the background. It still fails. The red 2022
+                bar and the green 2026 bar sit at <strong>1.07:1 against each other</strong> —
+                same brightness, different hue. Print it greyscale, or hand it to someone with
+                red-green colour blindness, and every bar stays perfectly visible while
+                <strong> the point disappears</strong>.
+              </p>
+              <p className="text-xs text-amber-800 leading-relaxed mt-2">
+                The value labels save the data. Nothing saves the emphasis.
+                <strong> Label what matters; don't just colour it.</strong>
+              </p>
+            </div>
           </div>
 
           <div className="md:col-span-2 space-y-3">
@@ -1120,8 +1151,8 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
         </Lede>
 
         <div className="space-y-3 mb-4">
-          <div className="bg-red-600 text-white rounded-xl px-5 py-4">
-            <p className="text-xs font-black uppercase tracking-widest text-red-200 mb-1">The one thing</p>
+          <div className="bg-red-700 text-white rounded-xl px-5 py-4">
+            <p className="text-xs font-black uppercase tracking-widest text-red-100 mb-1">The one thing</p>
             <p className="text-base font-bold">Source → AI pass → Verify → Place it.</p>
             <p className="text-sm text-red-100 mt-1">
               Three different problems today, one shape. It outlives every tool name in
@@ -1359,7 +1390,7 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
     content: (
       <SlideShell tag="Questions" tagColor="bg-gray-700">
         <div className="flex flex-col items-start justify-center h-full min-h-[380px]">
-          <p className="text-xs font-bold uppercase tracking-widest text-red-500 mb-3">Rutgers UOES · TIIP Partnership · September 18, 2026</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-red-600 mb-3">Rutgers UOES · TIIP Partnership · September 18, 2026</p>
           <h1 className="text-4xl font-black text-gray-900 mb-2">Questions?</h1>
           <div className="w-20 h-1 bg-red-600 rounded mb-6" />
           <ul className="space-y-2 mb-8">
