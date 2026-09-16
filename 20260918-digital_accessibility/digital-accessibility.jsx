@@ -793,63 +793,74 @@ const slides = [
   // 2026 recovery — and nothing but colour carries that. The img alt says so
   // out loud, which is the only reason it is acceptable here. See worklist
   // item 7: it is a candidate teaching point, NOT one this slide has room for.
+  //
+  // LAYOUT — chart left, the four versions right, September 16, 2026. Stacked,
+  // the figure scrolled off the top before you reached the versions describing
+  // it, which defeats the slide. Side by side it stays on screen the whole way
+  // down. Keep the DOM order figure-then-versions: it is the reading order a
+  // screen reader gets, it matches the visual order, and it is what the single
+  // column collapses to on a narrow window. Do not reorder for visual reasons.
+  // The caption says "here", not "below" or "right" — directional words are
+  // meaningless to a screen reader and wrong once the columns stack.
   {
     label: "Alt Text Example",
     content: (
       <SlideShell tag="Segment 2 · Vision · 5 min" tagColor="bg-purple-700">
         <Heading>The Same Chart, Three Ways</Heading>
 
-        <div className="flex flex-col items-center mb-4">
-          <img
-            src="20260918-digital_accessibility/enrollment-chart.png"
-            alt="Bar chart of enrollment by year, 2019 to 2026. Values: 400, 400, 400, 240, 275, 310, 345, 380. The 2022 bar, the low point at 240, is red and the 2026 bar, 380, is green; the rest are blue."
-            className="rounded-lg border border-gray-200 shadow-sm w-full max-w-[420px]"
-            width="420"
-          />
-          <p className="text-xs text-gray-500 italic text-center mt-2 max-w-[420px]">
-            This is the figure. Every version below is alt text for <em>this</em> image — read
-            them against it.
-          </p>
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start mb-4">
+          <div className="flex flex-col items-center">
+            <img
+              src="20260918-digital_accessibility/enrollment-chart.png"
+              alt="Bar chart of enrollment by year, 2019 to 2026. Values: 400, 400, 400, 240, 275, 310, 345, 380. The 2022 bar, the low point at 240, is red and the 2026 bar, 380, is green; the rest are blue."
+              className="rounded-lg border border-gray-200 shadow-sm w-full max-w-[420px]"
+              width="420"
+            />
+            <p className="text-xs text-gray-500 italic text-center mt-2 max-w-[420px]">
+              This is the figure. Every version here is alt text for <em>this</em> image — read
+              each one against it.
+            </p>
+          </div>
 
-        <div className="space-y-3 mb-4">
-          <div className="bg-gray-50 border-l-4 border-gray-400 rounded-r-lg px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Not acceptable — no information</p>
-            <p className="text-sm text-gray-700 font-mono">"chart.png"</p>
-          </div>
-          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-lg px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">Passes a checker — still useless</p>
-            <p className="text-sm text-gray-700 font-mono">"A bar chart showing enrollment data over time"</p>
-            <p className="text-xs text-amber-800 mt-2">
-              An automated accessibility scan marks this green. A student still cannot
-              answer a single question about it.
-            </p>
-          </div>
-          <div className="bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">Actually works — replaces the image</p>
-            <p className="text-sm text-gray-700 font-mono">
-              "Bar chart, 2019–2026. Enrollment holds near 400 through 2021, drops sharply
-              to 240 in 2022, then recovers to 380 by 2026 — ending just below where it started."
-            </p>
-            <p className="text-xs text-emerald-800 mt-2">
-              Names the trend, gives the numbers that carry it, and states the conclusion —
-              which is right when the figure is there to illustrate a point you have already
-              made.
-            </p>
-          </div>
-          <div className="bg-blue-50 border-l-4 border-blue-600 rounded-r-lg px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">
-              And when the figure is the exercise — say less
-            </p>
-            <p className="text-sm text-gray-700 font-mono">
-              "Bar chart, 2019–2026. Values by year: 400, 400, 400, 240, 275, 310, 345, 380."
-            </p>
-            <p className="text-xs text-blue-800 mt-2">
-              If students are meant to read the trend themselves, naming it hands them the
-              answer a sighted student still has to work for. Give the data and let them do
-              the same reading. <strong>You have to decide which kind of image this is — the
-              tool can't know, and it will usually offer you the conclusion.</strong>
-            </p>
+          <div className="md:col-span-2 space-y-3">
+            <div className="bg-gray-50 border-l-4 border-gray-400 rounded-r-lg px-4 py-3">
+              <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">Not acceptable — no information</p>
+              <p className="text-sm text-gray-700 font-mono">"chart.png"</p>
+            </div>
+            <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-lg px-4 py-3">
+              <p className="text-xs font-black uppercase tracking-widest text-amber-700 mb-1">Passes a checker — still useless</p>
+              <p className="text-sm text-gray-700 font-mono">"A bar chart showing enrollment data over time"</p>
+              <p className="text-xs text-amber-800 mt-2">
+                An automated accessibility scan marks this green. A student still cannot
+                answer a single question about it.
+              </p>
+            </div>
+            <div className="bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg px-4 py-3">
+              <p className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-1">Actually works — replaces the image</p>
+              <p className="text-sm text-gray-700 font-mono">
+                "Bar chart, 2019–2026. Enrollment holds near 400 through 2021, drops sharply
+                to 240 in 2022, then recovers to 380 by 2026 — ending just below where it started."
+              </p>
+              <p className="text-xs text-emerald-800 mt-2">
+                Names the trend, gives the numbers that carry it, and states the conclusion —
+                which is right when the figure is there to illustrate a point you have already
+                made.
+              </p>
+            </div>
+            <div className="bg-blue-50 border-l-4 border-blue-600 rounded-r-lg px-4 py-3">
+              <p className="text-xs font-black uppercase tracking-widest text-blue-700 mb-1">
+                And when the figure is the exercise — say less
+              </p>
+              <p className="text-sm text-gray-700 font-mono">
+                "Bar chart, 2019–2026. Values by year: 400, 400, 400, 240, 275, 310, 345, 380."
+              </p>
+              <p className="text-xs text-blue-800 mt-2">
+                If students are meant to read the trend themselves, naming it hands them the
+                answer a sighted student still has to work for. Give the data and let them do
+                the same reading. <strong>You have to decide which kind of image this is — the
+                tool can't know, and it will usually offer you the conclusion.</strong>
+              </p>
+            </div>
           </div>
         </div>
 
