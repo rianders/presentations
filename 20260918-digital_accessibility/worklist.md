@@ -1143,6 +1143,13 @@ moved by a DOJ Interim Final Rule.
 
 **Fix applied:** slide 3 now reads "WCAG 2.1 Level AA" rather than bare "WCAG 2.1".
 
+### 4. Write `demos.md`. (whole deck) — STARTED September 16, 2026
+**`demos.md` now exists and Demo 1 is fully specified**: three passes in Segment 1 —
+Qwen3-TTS succeeding, the same voice failing on notation, then the browser model failing
+in the same place. Pastes are in `prompts-to-paste.txt`, staging and fallback in
+`demos.md`. **Demos 2 and 3 are still unwritten**, and the recorded fallback for Demo 1
+has not been made yet. Original note follows.
+
 ### 4. Write `demos.md`. (whole deck)
 Minimum: one demo per segment, each with a fallback, plus the decision on which are
 recorded. **No longer starting from zero — see item 19.** Five recorded

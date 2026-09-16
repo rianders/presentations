@@ -124,3 +124,55 @@ These have known answers, so they tell you whether the tool is accurate or fluen
                               A tool that silently corrects these is smoothing the
                               source, which is a fidelity failure even though it
                               looks like a favour.
+
+
+================================================================
+DEMO 1 · TEXT-TO-SPEECH — THREE PASSES
+Added September 16, 2026. Full staging in demos.md.
+================================================================
+
+Two tabs, warmed at 10:45:
+  Beats 1-2   huggingface.co/spaces/Qwen/Qwen3-TTS      (T4 - showcase only)
+  Beat 3      rianders.github.io/kittenttsinweb/        (T3 - local, ours)
+
+SAME VOICE for beats 1 and 2 or the comparison is worthless.
+
+Say this BEFORE the first paste:
+  "This isn't a tool I'm telling you to use - it isn't ours and your course
+   material shouldn't go in it. It's the clearest way I know to show you what
+   to listen for."
+
+--- PASTE 1 · Qwen3 · the success pass ---------------------------
+
+Every student in this course receives the same reading, in the same week, in a
+format they can actually use. Some read it on a screen, some listen to it on the
+walk in, and some do both. None of that requires a separate version, a special
+request, or a conversation with anyone about why they need it.
+
+--- PASTE 2 · Qwen3 · the failure pass, SAME VOICE ----------------
+
+Following the DOJ's April 2024 update to ADA Title II, Rutgers must meet WCAG 2.1
+Level AA by April 26, 2027. See Csikszentmihalyi, pp. 114-17, and the 2024-25
+pilot. The identity x² + y² = r² appears throughout, as does H₂SO₄. As Bourdieu
+put it, it is a question of la distinction.
+
+  Listen for:  Csikszentmihalyi, Bourdieu          (names)
+               DOJ, ADA Title II, WCAG 2.1 Level AA (acronyms)
+               April 26 2027, pp. 114-17, 2024-25   (dates, ranges, hyphens)
+               la distinction                       (language switch)
+               x² + y² = r², H₂SO₄                   (NOTATION - the silent one)
+
+--- PASTE 3 · browser model · ONLY this sentence -----------------
+
+The identity x² + y² = r² appears throughout, as does H₂SO₄.
+
+  One sentence. Fifteen seconds. Not the whole paragraph - that is how this
+  demo turns into four minutes.
+
+--- THE LINE AFTER BEAT 3 ----------------------------------------
+
+  "The failure doesn't sound like failure - and paying more doesn't fix it."
+
+Everything above is deck content. No course material, no student work, and no
+licensed reading goes into a third-party Space. The Limits slide tells the room
+to check where their content is going; this demo must not contradict it.
