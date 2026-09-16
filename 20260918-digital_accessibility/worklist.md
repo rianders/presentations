@@ -1,7 +1,7 @@
 # Worklist — AI-Assisted Digital Accessibility Workflows
 
 **September 18, 2026 · 11:00 am – 12:30 pm · Zoom**
-Deck: `20260918-digital_accessibility/digital-accessibility.jsx` — 19 slides
+Deck: `20260918-digital_accessibility/digital-accessibility.jsx` — 18 slides
 Preview: `shell.html?p=20260918-digital_accessibility/digital-accessibility`
 
 Status as of **August 28, 2026**: structural draft complete and compiling. The spine,
@@ -28,6 +28,61 @@ risk (item 26).
 
 Slide numbers come from the `// ── N:` markers and shift on reorder. Re-extract with:
 `grep -n "// ── " 20260918-digital_accessibility/digital-accessibility.jsx`
+
+---
+
+## THE SEGMENT 1 MERGE — September 16, 2026
+
+**Old slides 7 and 8 are now one slide.** The standing first cut named in the deck
+header was taken. Segment 1 goes **11 minutes to 7**, which is the 4 minutes the time
+budget needed. The deck is now **18 slides**, not 19.
+
+**Slide numbers below this section predate the merge.** Everything from old 9 onward
+shifted down by one — old 9 (AI Vision) is now 8, old 16 (Work Session) is now 15,
+old 19 (Contact) is now 18. Re-extract before trusting any number in this file:
+
+```
+grep -n "// ── " 20260918-digital_accessibility/digital-accessibility.jsx
+```
+
+### What survived, and why
+
+- **The verification list stayed a list.** This was the whole point of the merge
+  question. The four audible failures — names and terms, acronyms and numbers,
+  structure it can't see, language switches — are the thing faculty write down and
+  carry out of the room. The first draft of this merge dissolved them into VerifyBeat
+  prose to save space. That was the wrong economy: prose is for reading once, a
+  numbered list is for working through. They are now a numbered block above the
+  verify beat, with the reusable-pronunciation tip folded in as its closing line.
+- **The notation card stayed whole and stayed accent.** Slide 4 promises November 6
+  "equations, structural formulas, syntax trees." Cutting the handoff would make that
+  boundary a lie, and the card is the segment's best moment: four failures announce
+  themselves, the fifth doesn't.
+- **The Gemini Notebook card lost its `accent`.** Two accent treatments on one slide
+  dilute each other, and notation needs it more.
+
+### What came off, and where it went
+
+The **"a companion is not a substitute"** DropIn lost a fight for vertical space with
+the notation card. It is the other strongest moment in this segment, so it is not
+dead — a compressed version is now a clause on the third lane card ("Offer it
+*alongside* the reading, never instead of it"), and **the full text is preserved here
+to be said out loud**:
+
+> A companion is not a substitute for the reading. If the student who needs audio gets
+> a generated discussion *about* the article while everyone else gets the article, that
+> is not equal access. Offer both. Don't swap one for the other.
+
+This is the same failure as the auto-generate trap on the Ally slide and the middle
+tier on the alt-text slide: it sounds accessible and isn't. **Say it. It does not need
+a card to land.**
+
+### A trap found while doing this
+
+`Bullet` is `text-gray-700`. `VerifyBeat` is `bg-gray-900`. A bullet list inside a
+verify beat is **1.7:1** — a flat WCAG failure, on the accessibility deck. The list
+lives in its own light block for that reason. A `// DO NOT` comment now sits on the
+slide. This is a live example of open item 6 and an argument for doing that pass.
 
 ---
 
@@ -1149,10 +1204,12 @@ URL itself, not "QR code".
 ### 9. Set up the shared questions doc. (Slide 16)
 Slide 16 references "the shared doc" and links nothing. Create it and add the link.
 
-### 10. Reconcile the time budget. (whole deck) — URGENT AFTER ITEM 15
-`time-budget.md` was re-derived August 28, 2026 and the content block is now **60 of 60
-with zero slack.** Merging slides 7 and 8 (text-to-speech) returns 4 minutes and should
-be decided in advance rather than live. Items 16, 17, and 20 all still add time on top.
+### 10. Reconcile the time budget. (whole deck) — PARTIALLY ADDRESSED September 16, 2026
+**The merge is done** — old slides 7 and 8 are one slide, Segment 1 is 7 minutes, and the
+content block is now **56 of 60**. That is the entire slack and the demos are still
+unplanned, so it is already spoken for. `time-budget.md` has **not** been re-derived
+against the merged deck and still describes 19 slides — do that before the run-through.
+The next cut, if one is needed, is Segment 2 at 14 minutes. Items 16, 17, and 20 all still add time on top.
 The older text below still applies:
 
 `time-budget.md` is a first pass. Segment tags total 56 of 60 minutes and the August

@@ -74,19 +74,22 @@ const _params = new URLSearchParams(window.location.search);
 
      Opening 4      Framing (deadline + scope) 6
      The Shape 4    Start With Ally (triage)   4
-     Seg 1  Text-to-Speech     11
+     Seg 1  Text-to-Speech      7  ── was 11; slides merged Sept 16
      Seg 2  Vision / Alt Text  14
      Seg 3  Conversion         12
-     Limits 5                                  = 60
+     Limits 5                                  = 56
 
      Takeaways 2  ── drawn from the work session's 0–5 setup beat
      Hands-On work session                      = 30
 
-   ZERO slack against a 60-minute content block, as of the Ally slide
-   going in on August 28, 2026. The August session's demos each ran
-   long, so this WILL need a cut, not might. The standing first cut is
-   merging slides 7 and 8 (text-to-speech), which returns 4 minutes.
-   Make that call before September 18, not during. See time-budget.md.
+   The standing first cut was TAKEN on September 16, 2026: old slides 7
+   and 8 are now one slide and Segment 1 returned 4 minutes. That buys
+   4 minutes of slack against a 60-minute content block, and no more.
+   The August session's demos each ran long and this deck's demos are
+   still unplanned, so the slack is already spoken for. The next cut,
+   if one is needed, is Segment 2 at 14 minutes — it is the longest and
+   it carries three slides. Do NOT spend the 4 minutes in advance.
+   See time-budget.md, which has NOT been re-derived against this.
 
    ── DEMOS — NOT YET PLANNED ─────────────────────────────────
    Demos in this series run off a written demos.md with a prep
@@ -599,11 +602,12 @@ const slides = [
   },
 
   // ── 7: TEXT-TO-SPEECH ──
-  // PURPOSE: reframe the segment. The naive version of this slide is "here is how to
-  // make audio." That version is wrong. For the most common need — a student who wants
-  // the reading in their ears — Ally is ALREADY generating an MP3, in every Canvas
-  // course, whether or not the instructor knows it. So the faculty job is not making
-  // audio. It is making the source worth listening to, which is beat one of the spine.
+  // PURPOSE: reframe the segment, then hand over the verification list. The naive
+  // version of this slide is "here is how to make audio." That version is wrong. For
+  // the most common need — a student who wants the reading in their ears — Ally is
+  // ALREADY generating an MP3, in every Canvas course, whether or not the instructor
+  // knows it. So the faculty job is not making audio. It is making the source worth
+  // listening to, which is beat one of the spine.
   //
   // Three lanes, ranked by what you can rely on institutionally:
   //   1 INSTITUTIONAL (Ally, SensusAccess) — Rutgers-licensed, supported, no caveat
@@ -612,6 +616,24 @@ const slides = [
   // The full matrix — faculty effort, entitlement tier, who starts it, what you verify,
   // and the tools this deck deliberately skips — is in tts-decision-matrix.md.
   // Do NOT put that table on a slide. Reason is in that file.
+  //
+  // THE MERGE — September 16, 2026. Old slides 7 and 8 are one slide. Segment 1 goes
+  // 11 minutes to 7, the standing first cut named in the time budget above. What
+  // survived, and why, so this does not get relitigated in rehearsal:
+  //   — THE VERIFICATION LIST STAYS A LIST. It is the thing faculty write down and
+  //     carry out of the room. Dissolving it into VerifyBeat prose was the wrong
+  //     economy. Four items, the four that announce themselves when they fail.
+  //   — The notation card stays whole and stays accent. Slide 4 promises November 6
+  //     equations and notation; cutting the handoff makes that boundary a lie.
+  //   — The reusable-pronunciation Note folded into the list's closing line.
+  //   — The "a companion is not a substitute" DropIn came OFF this slide. It is the
+  //     other strongest moment in this segment and it lost a fight for vertical space
+  //     with notation. It is not dead: say it out loud on the third lane card, where
+  //     Gemini Notebook is introduced. Full text preserved in worklist.md.
+  //
+  // DO NOT put a Bullet list inside VerifyBeat. Bullet is gray-700, VerifyBeat is
+  // gray-900 — 1.7:1, a WCAG failure, on this deck of all decks. The list lives in
+  // its own light block above it.
   //
   // ENTITLEMENT DISCIPLINE — every claim here was verified August 28, 2026. Ally is a
   // Rutgers enterprise license present in all Rutgers courses; SensusAccess is
@@ -646,82 +668,44 @@ const slides = [
               site.
             </p>
           </SectionCard>
-          <SectionCard title="Yours to drive" icon="🎙️" accent={true}>
+          <SectionCard title="Yours to drive" icon="🎙️">
             <p className="text-sm">
               <strong>Gemini Notebook</strong> builds an audio companion from your sources, and you
-              can steer it toward your own objectives. For material that can't go to a cloud
-              tool at all, a speech model small enough to run in a browser tab.
+              can steer it toward your own objectives. Offer it <em>alongside</em> the reading,
+              never instead of it. For material that can't go to a cloud tool at all, a speech
+              model small enough to run in a browser tab.
             </p>
           </SectionCard>
         </div>
 
-        <DropIn label="One thing to watch">
-          A companion is not a substitute for the reading. If the student who needs audio
-          gets a generated discussion <em>about</em> the article while everyone else gets the
-          article, that is not equal access. Offer both. Don't swap one for the other.
-        </DropIn>
-
-        <VerifyBeat>
-          What you check depends on which one you used. <strong>Anything that reads your words
-          fails at pronunciation</strong> — listen to the first thirty seconds, then skip to any
-          proper noun, acronym, or number. <strong>A companion fails at fidelity</strong> — it will
-          pronounce every word perfectly and still tell your students something you never
-          said.
-        </VerifyBeat>
-      </SlideShell>
-    ),
-  },
-
-  // ── 8: TTS — WHAT GOES WRONG ──
-  // PURPOSE: the verify beat, expanded. Four audible failures, then the fifth.
-  //
-  // THE NOTATION CARD IS THE POINT OF THIS SLIDE. The first four failures announce
-  // themselves — a mangled name still sounds like a mangled name, and the listener
-  // knows something went past. Notation fails SILENTLY: fluent, confident, wrong.
-  // That difference is why notation is a separate session and not a longer card.
-  //
-  // It also does double duty as the honest handoff to November 6. Notation is easy to
-  // gesture at and hard to deliver, so name it here as real, hard, and the whole of
-  // the next session — a specific promise you intend to keep, made once.
-  //
-  // SCOPE GUARD: name notation, do not teach it. No MathML, no LaTeX, no equation
-  // editor on this slide. The moment this card grows examples it has annexed
-  // November 6 and slide 4's boundary is a lie.
-  {
-    label: "TTS Verification",
-    content: (
-      <SlideShell tag="Segment 1 · Text-to-Speech · 4 min" tagColor="bg-blue-700">
-        <Heading>What Goes Wrong</Heading>
-        <Lede>
-          These failures are predictable, so you can check for them in about a minute
-          instead of listening to forty. Four of them you can hear. The fifth one you can't.
-        </Lede>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-          <SectionCard title="Names and terms" icon="🗣️">
-            <p className="text-sm">
-              Author names, place names, and any term your field pronounces differently than
-              it looks. A reading list is almost entirely made of these.
-            </p>
-          </SectionCard>
-          <SectionCard title="Acronyms and numbers" icon="🔢">
-            <p className="text-sm">
-              Read as words when they should be spelled out, or the reverse. Dates, ranges,
-              and anything hyphenated often don't come out right.
-            </p>
-          </SectionCard>
-          <SectionCard title="Structure it can't see" icon="📄">
-            <p className="text-sm">
-              Footnotes, captions, and headers get read inline, mid-sentence, unless you
-              strip them out first. Fix this in the source, not the audio.
-            </p>
-          </SectionCard>
-          <SectionCard title="Language switches" icon="🌍">
-            <p className="text-sm">
-              A quoted phrase in another language usually gets read with the wrong phonetics.
-              Worth catching in anything comparative or in translation.
-            </p>
-          </SectionCard>
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-3">
+            Before you hand it to anyone · the four you can hear
+          </p>
+          <ul className="space-y-2">
+            <Bullet icon="1">
+              <strong>Names and terms.</strong> Author names, place names, and any term your field
+              pronounces differently than it looks. A reading list is almost entirely made of these.
+            </Bullet>
+            <Bullet icon="2">
+              <strong>Acronyms and numbers.</strong> Read as words when they should be spelled out,
+              or the reverse. Dates, ranges, and anything hyphenated often don't come out right.
+            </Bullet>
+            <Bullet icon="3">
+              <strong>Structure it can't see.</strong> Footnotes, captions, and headers get read
+              inline, mid-sentence, unless you strip them out first. Fix this in the source, not
+              the audio.
+            </Bullet>
+            <Bullet icon="4">
+              <strong>Language switches.</strong> A quoted phrase in another language usually gets
+              read with the wrong phonetics. Worth catching in anything comparative or in translation.
+            </Bullet>
+          </ul>
+          <p className="text-xs text-gray-500 italic mt-3">
+            All four are cheap to fix and stay fixed — most tools let you correct a pronunciation
+            once and reuse it. Doing that for the twenty names in your syllabus is a one-time cost
+            every later file inherits.
+          </p>
         </div>
 
         <SectionCard title="The fifth one · Notation" icon="⚠️" accent={true}>
@@ -735,16 +719,18 @@ const slides = [
           </p>
         </SectionCard>
 
-        <Note>
-          The first four are cheap to fix and stay fixed: most tools let you correct a
-          pronunciation once and reuse it. Doing that for the twenty names in your syllabus
-          is a one-time cost every later file inherits.
-        </Note>
+        <VerifyBeat>
+          Thirty seconds at the top, then skip to any proper noun, acronym, or number — that
+          catches most of the four above, in about a minute instead of forty.
+          <strong> A companion fails somewhere else entirely</strong>: it will pronounce every
+          word perfectly and still tell your students something you never said. There you are
+          checking fidelity, not pronunciation.
+        </VerifyBeat>
       </SlideShell>
     ),
   },
 
-  // ── 9: AI VISION / ALT TEXT ──
+  // ── 8: AI VISION / ALT TEXT ──
   {
     label: "AI Vision",
     content: (
@@ -788,7 +774,7 @@ const slides = [
     ),
   },
 
-  // ── 10: ALT TEXT — WORKED EXAMPLE ──
+  // ── 9: ALT TEXT — WORKED EXAMPLE ──
   // ACCESSIBILITY OF THIS SLIDE: the good/bad comparison must be labelled in
   // text, not signalled by red/green alone. It is, deliberately. Do not
   // "simplify" it back to colour-only.
@@ -862,7 +848,7 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
     ),
   },
 
-  // ── 11: VISION — WHAT IT GETS WRONG ──
+  // ── 10: VISION — WHAT IT GETS WRONG ──
   {
     label: "Vision Verification",
     content: (
@@ -921,7 +907,7 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
     ),
   },
 
-  // ── 12: SCANNED PDFs ──
+  // ── 11: SCANNED PDFs ──
   {
     label: "PDF Conversion",
     content: (
@@ -979,7 +965,7 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
     ),
   },
 
-  // ── 13: THE CONVERSION ROUND TRIP ──
+  // ── 12: THE CONVERSION ROUND TRIP ──
   {
     label: "The Round Trip",
     content: (
@@ -1026,7 +1012,7 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
     ),
   },
 
-  // ── 14: THE LIMITS ──
+  // ── 13: THE LIMITS ──
   // PURPOSE: this slide is why the room trusts the other twelve. Do not cut it
   // for time — cut a segment example instead.
   {
@@ -1084,7 +1070,7 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
     ),
   },
 
-  // ── 15: TAKEAWAYS ──
+  // ── 14: TAKEAWAYS ──
   {
     label: "Takeaways",
     content: (
@@ -1132,7 +1118,7 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
     ),
   },
 
-  // ── 16: WORK SESSION ──
+  // ── 15: WORK SESSION ──
   {
     label: "Work Session",
     content: (
@@ -1190,7 +1176,7 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
     ),
   },
 
-  // ── 17: THE TOOLS AND THEIR DOCUMENTATION ──
+  // ── 16: THE TOOLS AND THEIR DOCUMENTATION ──
   // PURPOSE: a reference page. Nobody reads this from the podium — it exists so the room
   // can find the tool again on Monday, and so the work session has somewhere to point.
   //
@@ -1277,7 +1263,7 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
     ),
   },
 
-  // ── 18: RESOURCES ──
+  // ── 17: RESOURCES ──
   {
     label: "Resources",
     content: (
@@ -1328,7 +1314,7 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
     ),
   },
 
-  // ── 19: CONTACT ──
+  // ── 18: CONTACT ──
   {
     label: "Contact",
     content: (
