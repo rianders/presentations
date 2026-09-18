@@ -953,7 +953,9 @@ the things nothing else will read: image-only PDFs, JPGs, PowerPoints.
 **Two consequences.** On the slide, say plainly that this one lives outside Canvas; that
 contrast with ReadSpeaker is informative rather than confusing. And separately: **Rutgers
 could turn the Canvas LTI on.** That is a concrete, cheap, high-value ask, and it is
-exactly the kind of thing to carry to the AI Academic Working Group.
+exactly the kind of thing to carry to the AI Academic Working Group. **(That group is
+not active as of September 17, 2026 — the slide 2 line promising to carry things there was
+removed. Route is currently unclear; do not promise one from the podium.)**
 
 ### 12 · Handwriting, and the PDF standard question — verified
 **Handwriting:** the honest line is that it produces a best-effort reading, and context

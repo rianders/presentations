@@ -357,6 +357,16 @@ const slides = [
   //
   // It is "University Online Education Services", not "Office of ..." — the
   // earlier wording on this slide was wrong.
+  //
+  // REMOVED September 17, 2026: "I sit on the Rutgers AI Academic Working Group
+  // — put anything the University ought to hear in the chat and I will carry it
+  // there." That committee is not active right now, so the sentence promised a
+  // channel that does not currently exist. Do not restore it without confirming
+  // the group is meeting again.
+  // What replaced it is the promise actually being made this session: hard cases
+  // get taken away, tested, and reported back. That is true, it is the ask the
+  // shared doc is built around, and it belongs in the opening rather than only
+  // at minute 60.
   {
     label: "Who I Am",
     content: (
@@ -391,8 +401,9 @@ const slides = [
               I don't.
             </p>
             <p className="text-sm mt-3">
-              I sit on the <strong>Rutgers AI Academic Working Group</strong> — put anything
-              the University ought to hear in the chat and I will carry it there.
+              <strong>If your case beats the pattern, that is the useful result.</strong> I
+              take the hard ones away, actually test them, and report back — rather than
+              inventing an answer in the room.
             </p>
           </SectionCard>
         </div>
