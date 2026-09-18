@@ -336,40 +336,70 @@ const slides = [
   },
 
   // ── 2: WHO I AM ──
-  // PURPOSE: standing. Keep to ~45 seconds — this is the least important
-  // slide in the deck and the deadline slide matters far more.
+  // PURPOSE: standing — and as of September 17, 2026 the department carries it,
+  // not the person. Keep to ~45 seconds. This is still the least important slide
+  // in the deck and the deadline slide matters far more.
+  //
+  // Was three cards about me: role, the series, and a bias-I'll-admit-to accent
+  // card. Now two, weighted 2:1 toward UOES. The stance line survived as one
+  // sentence because it sets the session's contract; it did not need a card.
+  //
+  // UOES text is PORTED, not written: 20251216/camden-faculty-senate-20251216.jsx,
+  // the UOES Mission slide. Part of University Academic Affairs; instructional
+  // designers, media specialists and facilitators of educational technology;
+  // partners with academic units on their online programs.
+  // NOT carried over: that deck names an Associate Vice President. It is from
+  // December 2025, nine months stale, and a named person on a slide has to be
+  // re-verified before it goes up. It is also not needed here.
+  //
+  // It is "University Online Education Services", not "Office of ..." — the
+  // earlier wording on this slide was wrong.
   {
     label: "Who I Am",
     content: (
       <SlideShell tag="Opening · 2 min" tagColor="bg-red-700">
-        <Heading>Why Me, On This</Heading>
+        <Heading>Who You're Hearing From</Heading>
         <Lede>
           Short version, because the clock is the point of this session.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <SectionCard title="Role" icon="🏛️">
+          <div className="md:col-span-2">
+            <SectionCard title="UOES · University Online Education Services" icon="🏛️" accent={true}>
+              <p className="text-sm">
+                A department inside <strong>University Academic Affairs</strong>: instructional
+                designers, media specialists, and facilitators of educational technology. We
+                partner with academic units to strengthen and support their online programs.
+              </p>
+              <p className="text-sm mt-3">
+                <strong>Which means today is not a one-off.</strong> Everything in this session is
+                something a team here does with faculty all year — the deadline, the tools, the
+                material you cannot face on your own. You are not meant to do this alone, and
+                you do not have to wait for the next workshop to ask.
+              </p>
+            </SectionCard>
+          </div>
+
+          <SectionCard title="Me" icon="🔭">
             <p className="text-sm">
-              Director of Emerging Technology, Office of University Online Education
-              Services. I research emerging technologies and bring back what might be worth
-              <strong>adding to your toolbox</strong>. You know your course and its context; I don't.
-              I also sit on the Rutgers AI Academic Working Group — put anything the
-              University ought to hear in the chat and I will carry it there.
+              <strong>Rick Anderson</strong>, Director of Emerging Technology for UOES. I
+              research emerging technologies and bring back what might be worth
+              <strong> adding to your toolbox</strong>. You know your course and its context;
+              I don't.
             </p>
-          </SectionCard>
-          <SectionCard title="This series" icon="📚">
-            <p className="text-sm">
-              Sixth session of the 2026–27 Teaching with GenAI series. Today and
-              November 6 are the two that are entirely about accessibility.
-            </p>
-          </SectionCard>
-          <SectionCard title="The bias I'll admit to" icon="⚖️" accent={true}>
-            <p className="text-sm">
-              I would rather show you something you can repeat next Tuesday than a demo
-              that only works when I run it. Take what fits your course and leave the rest.
+            <p className="text-sm mt-3">
+              I sit on the <strong>Rutgers AI Academic Working Group</strong> — put anything
+              the University ought to hear in the chat and I will carry it there.
             </p>
           </SectionCard>
         </div>
+
+        <p className="text-sm text-gray-600 leading-relaxed mb-1">
+          Sixth session of the 2026–27 Teaching with GenAI series; today and November 6 are
+          the two entirely about accessibility. <strong>The standard I hold myself to:</strong> I
+          would rather show you something you can repeat next Tuesday than a demo that only
+          works when I run it.
+        </p>
 
         <Interact kind="Zoom chat" prompt="One word in chat: what's the material in your course you've been avoiding? Scanned readings, figures, slide decks, video?" />
       </SlideShell>
