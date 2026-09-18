@@ -86,6 +86,58 @@ slide. This is a live example of open item 6 and an argument for doing that pass
 
 ---
 
+## THE SANDBOX, READ PROPERLY — September 17, 2026
+
+Read from the local export (`edu.coursebackup.manager/workspaces/accessibility-sandbox-export-1-…`),
+course **375349 · "Accessibility Sandbox"** on rutgers.instructure.com. **It is far more
+built out than this worklist assumed** — 48 steps across seven modules, 50 pages, 28 files.
+
+### It already mirrors the deck, module for module
+
+| Sandbox module | Deck |
+|---|---|
+| 1. Start With Ally (Triage) | slide 6 |
+| 2. Text-to-Speech | Segment 1 |
+| 3. Alt Text (AI Vision) — 17 items | Segment 2 |
+| 4. Scanned Pages to Canvas Page | Segment 3 |
+| 5. Limits (video captions) | the limits slide |
+| 6. Beyond Alt Text (November 6) — 28 items | held for November 6, correctly |
+
+Its four tracks are the deck's four work-session tracks, and the **"Done when" lines are
+verbatim identical** to slide 15. Its home page re-states the spine, the deadline, the
+scope boundary and the two cautions in the deck's own voice. Its Tools and Resources page
+mirrors slide 16 and adds one thing slide 16 does not have: **the Libraries content
+remediation request, answered within two business days.**
+
+### The gap: the link only goes one way
+
+The sandbox links the deck ("Workshop slides: AI-Assisted Accessibility Workflows"). **The
+deck mentions the sandbox zero times.** Slide 15 tells the room to run a track on *"the
+document you brought"* — and anyone who brought nothing has nowhere to go, while a course
+built precisely for that sits unmentioned. This is the same species of gap the shared doc
+had, and it is bigger.
+
+**BLOCKED ON ONE FACT:** the course is `is_public: false`, `license: private`. A bare link
+fails for anyone not enrolled. **How do 30 faculty get in tomorrow — self-enrol link,
+added in advance, or a published copy?** Answer that and the link goes in slide 15 in a
+minute. Do not put an unresolvable link on a slide.
+
+### Small things worth knowing
+
+- The sandbox home says **"Rutgers Office of University Online Education Services"** — the
+  same "Office of" wording corrected on slide 2 today. Sandbox-side, cosmetic, not urgent.
+- Contact email matches the deck (`rick.anderson@uoes.rutgers.edu`). Verified, not assumed.
+- Module 3 carries a placeholder: **"Still to add: a bar chart for The Same Chart, Three
+  Ways."** That is slide 9, and `enrollment-chart.png` now fills it.
+- Other "Still to add" placeholders: an announcement to turn into audio (module 2), an alt
+  text prompt template (module 3), a round-trip checklist (module 4), a What This Does Not
+  Solve page (module 5). The deck has finished text for most of these already.
+- Module 3 holds the real alt-text specimens — the keynote photo, the microcontroller
+  board, the two dogs, the counting sketch, the UDL/DI Venn, the state fair parking map,
+  each as a before/after pair. **This is the demo material item 18 kept pointing at.**
+
+---
+
 ## What the review changes about this plan
 
 Short version, so the item list below makes sense:
