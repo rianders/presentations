@@ -259,12 +259,13 @@ const Poll = ({ question, options = [], questions, anonymous = false }) => {
 };
 
 /* Non-poll audience moment — chat waterfall, reactions, unmute. */
-const Interact = ({ kind = "Shared doc", prompt }) => (
+const Interact = ({ kind = "Shared doc", prompt, children }) => (
   <div className="border-2 border-teal-400 bg-teal-50 rounded-xl p-4 mb-4">
     <span className="bg-teal-700 text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
       {kind}
     </span>
     <p className="text-sm font-bold text-gray-900 mt-2">{prompt}</p>
+    {children && <p className="text-sm text-gray-700 mt-2 leading-relaxed">{children}</p>}
   </div>
 );
 
@@ -403,7 +404,13 @@ const slides = [
           works when I run it.
         </p>
 
-        <Interact kind="Zoom chat" prompt="One word in chat: what's the material in your course you've been avoiding? Scanned readings, figures, slide decks, video?" />
+        <Interact kind="Zoom chat" prompt="One word in chat: what's the material in your course you've been avoiding? Scanned readings, figures, slide decks, video?">
+          <strong>And if yours is a stubborn one</strong> — the thing where the standard tools
+          give you nothing usable — put it in{" "}
+          <Link href="https://docs.google.com/document/d/1HMrAtBlcGT7J7soCVuBay2hseF0Sd-mnteU2QCNVtrc/edit">the shared doc</Link> with a link if you can share one. That doc is
+          the point of today for me: I want the cases that beat the pattern, and I would
+          rather work on yours than on my examples.
+        </Interact>
       </SlideShell>
     ),
   },
@@ -1229,7 +1236,8 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
         <Lede>
           Pick one track and run it on <strong>the document you brought</strong> — something
           from a course you are actually teaching. Everyone stays in the main room; questions
-          go in the shared doc and I'll answer out loud.
+          and anything that fights back go in{" "}
+          <Link href="https://docs.google.com/document/d/1HMrAtBlcGT7J7soCVuBay2hseF0Sd-mnteU2QCNVtrc/edit">the shared doc</Link> and I'll answer out loud.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-4 text-center">
@@ -1402,6 +1410,10 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
           <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">This series</p>
           <ul className="space-y-2">
+            <Bullet icon="→">
+              <Link href="https://docs.google.com/document/d/1HMrAtBlcGT7J7soCVuBay2hseF0Sd-mnteU2QCNVtrc/edit">Today's shared doc — the hard cases</Link>
+              {" "}— it stays up after today, and I answer what we don't reach
+            </Bullet>
             <Bullet icon="→">
               <Link href="https://rianders.github.io/presentations">rianders.github.io/presentations</Link>
               {" "}— every deck in the 2026–27 series, including today's
