@@ -100,6 +100,20 @@ undefined component surfaces as `RUNTIME FAIL: SlideShell is not defined` instea
 an empty white card in front of a room. Run **both** before committing — deleting a
 component definition is exactly the edit `check.js` waves through.
 
+Before a deck goes out of draft, also run:
+
+```bash
+python3 .claude/skills/deck/stage-check.py path/to/deck.jsx
+```
+
+It strips comments, extracts only the strings the audience actually sees, and flags
+presenter stage directions that leaked into them — "Said plainly", "Short version,
+because the clock is the point", anything referring to *this slide* rather than to the
+subject. **It reports candidates, not errors**, and some are legitimate: "a first draft
+is faster to fix than a blank field" is about alt text, not about the deck. Read each
+one and decide. Neither compile check can catch this, because a stage direction compiles
+and renders perfectly.
+
 ## Ship
 
 1. Branch first: `git switch -c YYYYMMDD-short-name`. Never commit to `main`.

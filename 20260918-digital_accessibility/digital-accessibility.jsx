@@ -370,7 +370,7 @@ const slides = [
       <SlideShell tag="Opening · 2 min" tagColor="bg-red-700">
         <Heading>Who You're Hearing From</Heading>
         <Lede>
-          Short version, because the clock is the point of this session.
+          Who is behind this session, and the one thing I want from you before we start.
         </Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -1138,8 +1138,8 @@ image is posing. Give what is on the page and stop.`}</CodeBlock>
       <SlideShell tag="Honest Limits · 5 min" tagColor="bg-gray-800">
         <Heading>What This Does Not Solve</Heading>
         <Lede>
-          Said plainly. If a session oversells these tools, you walk out with inaccessible
-          material you think is fine.
+          If a session oversells these tools, you walk out with inaccessible material you
+          think is fine.
         </Lede>
 
         <ul className="space-y-3 mb-4">
