@@ -348,9 +348,11 @@ const slides = [
   // the UOES Mission slide. Part of University Academic Affairs; instructional
   // designers, media specialists and facilitators of educational technology;
   // partners with academic units on their online programs.
-  // NOT carried over: that deck names an Associate Vice President. It is from
-  // December 2025, nine months stale, and a named person on a slide has to be
-  // re-verified before it goes up. It is also not needed here.
+  // NOT carried over: that deck names an Associate Vice President in the
+  // reporting line. The reporting line is real — confirmed September 17, 2026 —
+  // and it is deliberately off the slide anyway: it is not what this slide is
+  // for. SETTLED, do not re-add. (If it ever does go up, the name is from
+  // December 2025 and would need re-verifying first.)
   //
   // It is "University Online Education Services", not "Office of ..." — the
   // earlier wording on this slide was wrong.
