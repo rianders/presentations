@@ -360,10 +360,11 @@ const slides = [
   // there." That committee is not active right now, so the sentence promised a
   // channel that does not currently exist. Do not restore it without confirming
   // the group is meeting again.
-  // What replaced it is the promise actually being made this session: hard cases
-  // get taken away, tested, and reported back. That is true, it is the ask the
-  // shared doc is built around, and it belongs in the opening rather than only
-  // at minute 60.
+  // Nothing replaced it. A stand-in about taking hard cases away and reporting
+  // back went in and came straight out again on September 18 — clunky, and it
+  // was saying in three clauses what the Interact below already says in its own
+  // words. The card is now the role sentence and nothing else, which suits a
+  // slide whose point is the department.
   {
     label: "Who I Am",
     content: (
@@ -396,11 +397,6 @@ const slides = [
               research emerging technologies and bring back what might be worth
               <strong> adding to your toolbox</strong>. You know your course and its context;
               I don't.
-            </p>
-            <p className="text-sm mt-3">
-              <strong>If your case beats the pattern, that is the useful result.</strong> I
-              take the hard ones away, actually test them, and report back — rather than
-              inventing an answer in the room.
             </p>
           </SectionCard>
         </div>
