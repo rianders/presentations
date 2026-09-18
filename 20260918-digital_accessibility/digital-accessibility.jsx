@@ -127,10 +127,13 @@ const RutgersLogo = () => (
   </div>
 );
 
-/* DRAFT CHROME — remove all five markers when this goes out of draft:
-   this component, its use in SlideShell, the title-slide badge, the DRAFT
-   in the print header, the audience banner text, and the badge in
-   index.html. Flip README status to Live in the same commit. */
+/* DRAFT CHROME — OFF as of September 18, 2026, delivery day. All five markers
+   cleared: this component's use in SlideShell, the title-slide badge, the DRAFT
+   in the print header, the audience banner above the slide, and the badge in
+   index.html. README flipped to Live in the same commit.
+   The component below is kept, unused. The November 6 deck ports this file and
+   starts in draft again — render <DraftChip /> in SlideShell's header row and
+   restore the other four to turn it back on. */
 const DraftChip = () => (
   <span className="bg-amber-400 text-amber-900 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
     Draft
@@ -142,7 +145,6 @@ const SlideShell = ({ tag, tagColor = "bg-red-600", children }) => (
     <div className="flex items-center justify-between px-6 py-3 border-b border-gray-100">
       <div className="flex items-center gap-3">
         <RutgersLogo />
-        <DraftChip />
       </div>
       <span className={`text-xs font-bold uppercase tracking-widest text-white px-3 py-1 rounded-full ${tagColor}`}>
         {tag}
@@ -306,11 +308,6 @@ const slides = [
             <p className="text-xs font-bold uppercase tracking-widest text-red-600 mb-3">Rutgers UOES · TIIP Partnership</p>
             <h1 className="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-1">AI-Assisted</h1>
             <h1 className="text-4xl sm:text-5xl font-black text-red-600 leading-tight mb-2">Accessibility Workflows</h1>
-            <div className="mb-4">
-              <span className="bg-amber-400 text-amber-900 text-xs font-black uppercase tracking-widest px-3 py-1 rounded">
-                Draft — not for distribution
-              </span>
-            </div>
             <h2 className="text-lg sm:text-xl font-semibold text-gray-500 mb-4">Text-to-speech, vision, and content conversion</h2>
             <div className="w-20 h-1 bg-red-600 rounded mb-5" />
             <p className="text-sm text-gray-600 max-w-xl leading-relaxed mb-5">
@@ -1492,7 +1489,7 @@ function PrintView() {
       `}</style>
       <div className="print-nav" style={{ padding: '12px 20px', background: '#f3f4f6', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '12px' }}>
         <span style={{ fontSize: '13px', color: '#6b7280' }}>
-          Print view — {slides.length} slides · DRAFT
+          Print view — {slides.length} slides
         </span>
         <button onClick={() => window.print()} style={{ padding: '6px 16px', background: '#dc2626', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '13px', cursor: 'pointer' }}>
           Save as PDF
@@ -1550,10 +1547,6 @@ function Presentation() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col">
-      <div className="text-center text-xs font-black uppercase tracking-widest py-1.5 bg-amber-400 text-amber-900">
-        Draft · September 18, 2026
-      </div>
-
       <div className="flex-1 flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-auto">
         <div className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden relative">
           {slides[current].content}
