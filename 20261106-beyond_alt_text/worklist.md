@@ -14,6 +14,26 @@ the plan.
 
 ---
 
+## Source deck — decided October 15, 2026
+**This session is the "Transcribing Scientific Notation" project**:
+`20260225-EmergingTechCommunity/scientific-notation-presentation.jsx` (February 25, 2026,
+5 slides). Port its *content*; take the *visual vocabulary* (SlideShell, notes,
+`&print`) from the September 18 deck. The February deck predates both.
+
+What it brings: four projects bundled into one workflow, with **Carmela** credited as
+collaborator; multilingual voice/ASR tuned for STEM; inputs (handwriting, legacy PDFs,
+image captures); a parse → detect symbols → spatial processing pipeline; output formats
+(LaTeX, MathML, accessible text); limits (0 vs θ, multi-line arrays, discipline variants).
+
+Re-verify before porting:
+- **The accuracy bars** (printed 88%, handwriting 58%). Are those measured, and on what?
+  If not, they don't go in under the "no fabricated numbers" rule.
+- **The four projects are never named** in the February deck. Name them.
+- February framed this for an emerging-tech audience; November is faculty who teach,
+  including mathematicians.
+
+---
+
 ## What the abstract already commits you to
 
 The published abstract is the spec, and it is unusually specific. It promises:
@@ -54,9 +74,36 @@ deck pays. Re-read it before building — do not let the two drift.
 
 ## BLOCKING
 
-### 1. Decide the screen-reader demo — hardest logistics in the series.
-The abstract's headline differentiator, and nothing like it has been attempted in these
-sessions. Unresolved:
+### 1. Decide the screen-reader demo — hardest logistics in the series. — DECIDED October 15, 2026
+**Rick is prepping this demo himself.** Two halves:
+- **Existing screen readers — recorded.** Rick has recordings of current screen-reader
+  tech reading notation element by element. Settles "live or recorded" for this half.
+- **A Gen AI–style reader.** Recognizes the notation and reads it *the way people say
+  it*, not symbol by symbol. This is the thesis ("read differently than they'd ever say
+  aloud") as a working demo.
+
+Open questions the deck has to answer around it:
+- **The room knows MathCAT (Rick, October 15, 2026).** Mathematicians who teach will be
+  in the audience and are familiar with it. Don't present MathCAT or MathSpeak/ClearSpeak
+  as a discovery. Treat it as the baseline they already trust. Rick has researched it and
+  adopted its best practices. **TODO: get the list from Rick and put it in the deck
+  rather than re-deriving it.**
+- **Why not ClearSpeak?** MathCAT's ClearSpeak already does natural phrasing for MathML
+  (see 5b). The Gen AI demo needs to show what ClearSpeak can't: notation that arrives
+  as an image or handwriting, notation outside math (IPA, chemistry, logic, Leiden), and
+  reading that follows the course's conventions.
+- **Its silent failure.** Reading "how we say it" means inferring, and the 5b handwriting
+  note warns that's where AI starts concluding. The P ⟹ Q / P ⟺ Q specimen is the
+  obvious test: does the Gen AI reader fluently say "implies"? Show the failure as well
+  as the win.
+- **Rutgers-accessible is the requirement (Rick, October 15, 2026).** Most options must
+  be things the room can use with Rutgers accounts. Build the Gen AI reader in Gemini or
+  Copilot on a NetID: September's "bring your own" lane. If it needs a Gem, verify that
+  a NetID account can save Gems; that was still unverified on September 18. If it only
+  works on a paid or personal account, it's a showcase: say so on the slide.
+- Audio routing and pacing below still apply to whatever plays over Zoom.
+
+Original notes:
 - **Which reader, on which OS.** NVDA (Windows, free), JAWS (Windows, licensed), or
   VoiceOver (macOS, built in). Free and installable matters if the room is to try it.
 - **Audio routing over Zoom.** Screen-reader speech is system audio, not microphone —
@@ -98,7 +145,17 @@ Strongest candidates from `notation-inventory.md`, chosen to prove the range:
 **Carry September 18's entitlement discipline over verbatim: the moment you name a tool
 you inherit the obligation to be right.** Every claim gets verified with a date.
 
-### 4. Build the deck.
+### 4. Build the deck. — FIRST DRAFT October 15, 2026
+`beyond-alt-text.jsx`, draft chrome on. Open items are dashed amber `<Placeholder>`
+boxes on the slides themselves: `grep -n "<Placeholder" beyond-alt-text.jsx`.
+
+**Less is more (Rick, October 15, 2026).** Cut from 16 slides to 11, one idea each.
+Removed: Scope, Voice In (multilingual dictation), separate Resources. Merged: sources,
+pipeline and outputs into one slide. Time tags now total 54 of 60, which leaves 6 minutes
+of slack for the demos. The cut material lives in git history and `notation-inventory.md`.
+Say it out loud; don't put it back on a slide.
+
+Original note:
 Port the component vocabulary from `20260918-digital_accessibility/digital-accessibility.jsx`
 so the series keeps one visual language. Run both checks before shipping —
 `.claude/skills/deck/check.js` catches syntax, `render-check.js` catches blank slides.
