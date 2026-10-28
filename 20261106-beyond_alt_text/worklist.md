@@ -2,7 +2,7 @@
 
 **November 6, 2026 · 11:00 am – 12:30 pm · Zoom**
 Format: 60 min content · 30 min work session
-Folder: `20261106-beyond_alt_text/` — **deck not started.** No `.jsx` yet.
+Folder: `20261106-beyond_alt_text/` — **first draft built October 15, 2026** (`beyond-alt-text.jsx`).
 
 Started **August 28, 2026**, out of the September 18 text-to-speech work. Nothing here
 has been built; this is the spec plus everything already known, so the deck can start
@@ -265,6 +265,18 @@ duplicate slides, and notes-to-self left visible to the audience.
   drifted here and it needed a deliberate fix.
 - **A compare-the-tools moment** in the work session — make the room do the evaluating.
 - **POUR** — name the four WCAG principles once.
+
+### 11b. Dance is the horizon-widening example — DECIDED October 26, 2026
+**Rick: the dance example is really important to help people expand their horizons of
+notation.** Slide 9 features Labanotation in its own card, not as one field among many.
+Keep it featured through every cut. **Image added October 26, 2026:**
+`labanotation-symbols.png`, the 12-symbol hand-drawn sheet from the Movement4Brain Game
+Design Document, section 5.2. It is a key, not a score, so the slide says "symbols", not
+"staff". The high/low/middle symbols differ only by fill, which is failure type 4 (meaning
+carried by things with no sound) shown in one picture.
+- **Credit:** who drew the sheet? Name them on the slide if they want credit.
+- **The game doesn't show these symbols yet.** The vertical slice uses stars and light
+  trails. Don't say on the slide that players see Labanotation in the game.
 
 ### 12. Consider a "notation your field bans" beat.
 Medicine's Joint Commission / ISMP **"Do Not Use" list** exists because certain notation is

@@ -395,6 +395,50 @@ const slides = [
       <SlideShell tag="Every Discipline · 7 min" tagColor="bg-teal-700">
         <Heading>Your Field Has This Too</Heading>
 
+        {/* Every professional field writes in a notation its experts read and outsiders can't.
+            Samples are real conventions from notation-inventory.md. Dance is featured on
+            purpose (Rick, October 26, 2026): it is the example that widens what the room
+            counts as notation. Don't fold it back into the grid. */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 my-4">
+          {[
+            ["Mathematics", "∫ₐᵇ f(x) dx"],
+            ["Chemistry", "H₂SO₄"],
+            ["Linguistics", "/ˈfoʊ.nə.tɪk/"],
+            ["Music", "♩ = 120 · F♯"],
+            ["Medicine", "1 tab PO b.i.d."],
+            ["Law", "42 U.S.C. § 1983"],
+          ].map(([field, sample]) => (
+            <div key={field} className="bg-white border border-gray-200 rounded-lg p-3">
+              <p className="text-xs font-black uppercase tracking-widest text-gray-500">{field}</p>
+              <p className="text-sm text-gray-900 font-serif mt-1">{sample}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Symbol sheet from the Movement4Brain Game Design Document, section 5.2 (Rick's
+            project). It is a key, not a score, so the copy says "symbols", not "staff". */}
+        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl p-4 my-4 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 items-center">
+          <img
+            src="20261106-beyond_alt_text/labanotation-symbols.png"
+            alt="Twelve hand-drawn Labanotation symbols, each labelled with the movement it means: any action, stillness, rotation, flexion, extension, jump, balance, move forward, move away, up or high, down or low, and middle or horizontal. The last three are the same upright rectangle, told apart only by its fill: diagonal hatching means high, solid black means low, and a single dot means middle."
+            className="rounded-lg border border-gray-200 bg-white w-full max-w-[220px] mx-auto"
+            width="220"
+          />
+          <div>
+            <p className="text-xs font-black uppercase tracking-widest text-amber-800 mb-1">Dance · Labanotation</p>
+            <p className="text-base text-gray-900">
+              Movement has a notation too. It has no spoken form, because what it records was
+              never speech.
+            </p>
+            <p className="text-sm text-gray-700 mt-2">
+              High, low and middle are one shape. Only the fill changes: hatched, solid, a dot.
+            </p>
+            <p className="text-xs text-gray-500 italic mt-2">
+              The symbol set from Movement4Brain, a movement game built on BrainDance.
+            </p>
+          </div>
+        </div>
+
         <div className="space-y-3 my-4">
           <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl p-4">
             <p className="text-xs font-black uppercase tracking-widest text-emerald-800 mb-1">Has a spoken form</p>
@@ -406,7 +450,7 @@ const slides = [
           </div>
           <div className="bg-gray-100 border-l-4 border-gray-600 rounded-r-xl p-4">
             <p className="text-xs font-black uppercase tracking-widest text-gray-800 mb-1">Can't be spoken at all</p>
-            <p className="text-sm text-gray-700">Music staves · syntax trees · structural formulas</p>
+            <p className="text-sm text-gray-700">Music staves · Labanotation · syntax trees · structural formulas</p>
           </div>
         </div>
 
