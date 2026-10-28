@@ -31,7 +31,43 @@ across the series.
 When you port, re-verify every fact: dates, policy numbers, product names, prices,
 entitlements. Tools get renamed between sessions.
 
-## Component vocabulary
+## Theme: UOES (every deck from November 6, 2026 on)
+
+New decks use the shared UOES theme, ported from the office's PowerPoint template
+(`UOES_ppt_template_RED.pptx`, official UOES use). Opt in with one line among the
+deck's first five:
+
+```js
+// @theme uoes
+```
+
+`shell.html` then loads `themes/uoes/theme.jsx` before the deck. The deck **does not
+define components**: it uses the theme's, calls `UOES.configure({ draft, footer })`,
+and ends with `root.render(<Deck slides={slides} meta="…" />)`. Redefining a theme
+name (`SlideShell`, `Link`, …) breaks the whole deck with "Identifier has already been
+declared"; `render-check.js` catches it.
+
+**Start from the specimen**, which has one slide per component:
+`shell.html?p=themes/uoes/specimen` (source: `themes/uoes/specimen.jsx`).
+
+| Theme component | Use |
+|---|---|
+| `TitleSlide` / `SectionSlide` / `ClosingSlide` | Full-bleed scarlet slides with the white lockup |
+| `SlideShell` | Every content slide: white, scarlet footer band, page number |
+| `Heading sub="Demo · 8 min"` | Serif title; `sub` is the scarlet caps line (segment + time) |
+| `Columns n={2–4}` + `Column` | Column layouts with dotted scarlet dividers |
+| `Stats`, `People`, `Agenda`, `Quote` | The template's stats, speakers/thanks, agenda and quote layouts |
+| `Lede`, `Bullet`, `Link` (`onDark` on scarlet), `SectionCard`, `Note`, `DropIn`, `PipelineStep`, `VerifyBeat`, `CodeBlock`, `Interact`, `Tag` | As below, restyled |
+| `Placeholder`, `DraftChip` | Draft chrome: amber on purpose, outside the palette |
+
+For one-off blocks on a slide, use the theme's colour classes rather than Tailwind's
+reds: `bg-scarlet`, `text-scarlet`, `bg-blush`, `bg-mist`, `bg-ink`, `text-ink`,
+`text-slate`, `border-line`, and `uoes-serif` / `uoes-sub` for type. One red, no
+colour-coded segment pills, no underline bar under titles.
+
+Decks before November 6, 2026 keep their own inline components and load as before.
+
+## Component vocabulary (pre-theme decks)
 
 Audience-facing. **Use these instead of hand-rolling `<div>`s** — inline cards are how
 a deck ends up with five different card styles.
@@ -95,9 +131,10 @@ defines compiles clean and renders blank. Catch that with:
 node .claude/skills/deck/render-check.js path/to/deck.jsx
 ```
 
-It executes the compiled deck against a stub React and walks the whole tree, so an
-undefined component surfaces as `RUNTIME FAIL: SlideShell is not defined` instead of as
-an empty white card in front of a room. Run **both** before committing — deleting a
+It executes the compiled deck against a stub React and walks **every slide**, so an
+undefined component surfaces as `RUNTIME FAIL: SlideShell is not defined` (or
+`RENDER FAIL: slide 9 (…)`) instead of as an empty white card in front of a room. For a
+themed deck it loads the theme first, the way `shell.html` does. Run **both** before committing — deleting a
 component definition is exactly the edit `check.js` waves through.
 
 Before a deck goes out of draft, also run:
