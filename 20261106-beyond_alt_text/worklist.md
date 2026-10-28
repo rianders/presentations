@@ -2,7 +2,7 @@
 
 **November 6, 2026 · 11:00 am – 12:30 pm · Zoom**
 Format: 60 min content · 30 min work session
-Folder: `20261106-beyond_alt_text/` — **deck not started.** No `.jsx` yet.
+Folder: `20261106-beyond_alt_text/` — **first draft built October 15, 2026** (`beyond-alt-text.jsx`).
 
 Started **August 28, 2026**, out of the September 18 text-to-speech work. Nothing here
 has been built; this is the spec plus everything already known, so the deck can start
@@ -11,6 +11,26 @@ from a running position instead of a blank file.
 **Content seed: `notation-inventory.md` in this folder.** Failure taxonomy, discipline
 inventory, and the A/B/C fix grouping. That file is the raw material; this file is
 the plan.
+
+---
+
+## Source deck — decided October 15, 2026
+**This session is the "Transcribing Scientific Notation" project**:
+`20260225-EmergingTechCommunity/scientific-notation-presentation.jsx` (February 25, 2026,
+5 slides). Port its *content*; take the *visual vocabulary* (SlideShell, notes,
+`&print`) from the September 18 deck. The February deck predates both.
+
+What it brings: four projects bundled into one workflow, with **Carmela** credited as
+collaborator; multilingual voice/ASR tuned for STEM; inputs (handwriting, legacy PDFs,
+image captures); a parse → detect symbols → spatial processing pipeline; output formats
+(LaTeX, MathML, accessible text); limits (0 vs θ, multi-line arrays, discipline variants).
+
+Re-verify before porting:
+- **The accuracy bars** (printed 88%, handwriting 58%). Are those measured, and on what?
+  If not, they don't go in under the "no fabricated numbers" rule.
+- **The four projects are never named** in the February deck. Name them.
+- February framed this for an emerging-tech audience; November is faculty who teach,
+  including mathematicians.
 
 ---
 
@@ -54,9 +74,36 @@ deck pays. Re-read it before building — do not let the two drift.
 
 ## BLOCKING
 
-### 1. Decide the screen-reader demo — hardest logistics in the series.
-The abstract's headline differentiator, and nothing like it has been attempted in these
-sessions. Unresolved:
+### 1. Decide the screen-reader demo — hardest logistics in the series. — DECIDED October 15, 2026
+**Rick is prepping this demo himself.** Two halves:
+- **Existing screen readers — recorded.** Rick has recordings of current screen-reader
+  tech reading notation element by element. Settles "live or recorded" for this half.
+- **A Gen AI–style reader.** Recognizes the notation and reads it *the way people say
+  it*, not symbol by symbol. This is the thesis ("read differently than they'd ever say
+  aloud") as a working demo.
+
+Open questions the deck has to answer around it:
+- **The room knows MathCAT (Rick, October 15, 2026).** Mathematicians who teach will be
+  in the audience and are familiar with it. Don't present MathCAT or MathSpeak/ClearSpeak
+  as a discovery. Treat it as the baseline they already trust. Rick has researched it and
+  adopted its best practices. **TODO: get the list from Rick and put it in the deck
+  rather than re-deriving it.**
+- **Why not ClearSpeak?** MathCAT's ClearSpeak already does natural phrasing for MathML
+  (see 5b). The Gen AI demo needs to show what ClearSpeak can't: notation that arrives
+  as an image or handwriting, notation outside math (IPA, chemistry, logic, Leiden), and
+  reading that follows the course's conventions.
+- **Its silent failure.** Reading "how we say it" means inferring, and the 5b handwriting
+  note warns that's where AI starts concluding. The P ⟹ Q / P ⟺ Q specimen is the
+  obvious test: does the Gen AI reader fluently say "implies"? Show the failure as well
+  as the win.
+- **Rutgers-accessible is the requirement (Rick, October 15, 2026).** Most options must
+  be things the room can use with Rutgers accounts. Build the Gen AI reader in Gemini or
+  Copilot on a NetID: September's "bring your own" lane. If it needs a Gem, verify that
+  a NetID account can save Gems; that was still unverified on September 18. If it only
+  works on a paid or personal account, it's a showcase: say so on the slide.
+- Audio routing and pacing below still apply to whatever plays over Zoom.
+
+Original notes:
 - **Which reader, on which OS.** NVDA (Windows, free), JAWS (Windows, licensed), or
   VoiceOver (macOS, built in). Free and installable matters if the room is to try it.
 - **Audio routing over Zoom.** Screen-reader speech is system audio, not microphone —
@@ -98,7 +145,17 @@ Strongest candidates from `notation-inventory.md`, chosen to prove the range:
 **Carry September 18's entitlement discipline over verbatim: the moment you name a tool
 you inherit the obligation to be right.** Every claim gets verified with a date.
 
-### 4. Build the deck.
+### 4. Build the deck. — FIRST DRAFT October 15, 2026
+`beyond-alt-text.jsx`, draft chrome on. Open items are dashed amber `<Placeholder>`
+boxes on the slides themselves: `grep -n "<Placeholder" beyond-alt-text.jsx`.
+
+**Less is more (Rick, October 15, 2026).** Cut from 16 slides to 11, one idea each.
+Removed: Scope, Voice In (multilingual dictation), separate Resources. Merged: sources,
+pipeline and outputs into one slide. Time tags now total 54 of 60, which leaves 6 minutes
+of slack for the demos. The cut material lives in git history and `notation-inventory.md`.
+Say it out loud; don't put it back on a slide.
+
+Original note:
 Port the component vocabulary from `20260918-digital_accessibility/digital-accessibility.jsx`
 so the series keeps one visual language. Run both checks before shipping —
 `.claude/skills/deck/check.js` catches syntax, `render-check.js` catches blank slides.
@@ -208,6 +265,33 @@ duplicate slides, and notes-to-self left visible to the audience.
   drifted here and it needed a deliberate fix.
 - **A compare-the-tools moment** in the work session — make the room do the evaluating.
 - **POUR** — name the four WCAG principles once.
+
+### 11b. Dance is the horizon-widening example — DECIDED October 26, 2026
+**Rick: the dance example is really important to help people expand their horizons of
+notation.** Slide 9 features Labanotation in its own card, not as one field among many.
+Keep it featured through every cut. **Image added October 26, 2026:**
+`labanotation-symbols.png`, the 12-symbol hand-drawn sheet from the Movement4Brain Game
+Design Document, section 5.2. It is a key, not a score, so the slide says "symbols", not
+"staff". The high/low/middle symbols differ only by fill, which is failure type 4 (meaning
+carried by things with no sound) shown in one picture.
+- **Credit:** who drew the sheet? Name them on the slide if they want credit.
+- **The game doesn't show these symbols yet.** The vertical slice uses stars and light
+  trails. Don't say on the slide that players see Labanotation in the game.
+
+### 11c. Thank the faculty on slide 2 — DECIDED October 28, 2026
+**Rick: thank Carmela Scala and Melike Gursoy**, the faculty who helped with the project.
+Slide 2 now carries a "With thanks" card with both names. Names only for now.
+- [ ] Confirm the role and department each wants shown under their name.
+- [ ] Ask whether either wants to say a word live, or be named in the chat.
+
+### 11d. First deck on the UOES theme — DECIDED October 28, 2026
+Rick: adopt the office PowerPoint template (`UOES_ppt_template_RED.pptx`, official UOES
+use) as the look for this deck and every one after it. The deck now loads
+`themes/uoes/theme.jsx` and defines no components of its own. Segment times moved from
+the coloured pills into the scarlet subhead under each title. Slide 2's thanks uses the
+template's speakers layout; slide 11 is its closing slide.
+- [ ] Slide 9 still scrolls inside the frame: the busiest slide. A cut, or a split, before delivery.
+- [ ] Going live: set `draft` to null in `UOES.configure` at the top of the deck.
 
 ### 12. Consider a "notation your field bans" beat.
 Medicine's Joint Commission / ISMP **"Do Not Use" list** exists because certain notation is

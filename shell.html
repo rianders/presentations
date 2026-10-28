@@ -42,19 +42,35 @@
                     return response.text();
                 })
                 .then(jsxCode => {
+                    // A deck opts into a shared theme with "// @theme name" in its first
+                    // five lines; themes/name/theme.jsx then loads first. Decks without
+                    // the line load exactly as before.
+                    const head = jsxCode.split('\n').slice(0, 5).join('\n');
+                    const m = head.match(/^\s*\/\/\s*@theme\s+([a-z0-9-]+)\s*$/im);
+                    if (!m) return [null, jsxCode];
+                    return fetch('themes/' + m[1] + '/theme.jsx').then(r => {
+                        if (!r.ok) throw new Error('Theme not found: ' + m[1]);
+                        return r.text();
+                    }).then(themeCode => [themeCode, jsxCode]);
+                })
+                .then(([themeCode, jsxCode]) => {
                     // Transform JSX to plain JS using Babel directly
-                    const output = Babel.transform(jsxCode, {
+                    const compile = (code) => Babel.transform(code, {
                         presets: [['react', { runtime: 'classic' }]],
                         sourceType: 'script'
-                    });
+                    }).code;
+                    const compiled = [themeCode, jsxCode].filter(Boolean).map(compile);
 
                     // Hide loading indicator
                     document.getElementById('loading').classList.add('hidden');
 
-                    // Inject the compiled JS as a plain script tag
-                    const script = document.createElement('script');
-                    script.textContent = output.code;
-                    document.body.appendChild(script);
+                    // Inject each as a plain script tag, theme first. Classic scripts
+                    // share one global scope, so the deck sees the theme's components.
+                    for (const code of compiled) {
+                        const script = document.createElement('script');
+                        script.textContent = code;
+                        document.body.appendChild(script);
+                    }
                 })
                 .catch(error => {
                     document.getElementById('loading').innerHTML = `
