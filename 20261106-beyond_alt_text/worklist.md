@@ -278,6 +278,12 @@ carried by things with no sound) shown in one picture.
 - **The game doesn't show these symbols yet.** The vertical slice uses stars and light
   trails. Don't say on the slide that players see Labanotation in the game.
 
+### 11c. Thank the faculty on slide 2 — DECIDED October 28, 2026
+**Rick: thank Carmela Scala and Melike Gursoy**, the faculty who helped with the project.
+Slide 2 now carries a "With thanks" card with both names. Names only for now.
+- [ ] Confirm the role and department each wants shown under their name.
+- [ ] Ask whether either wants to say a word live, or be named in the chat.
+
 ### 12. Consider a "notation your field bans" beat.
 Medicine's Joint Commission / ISMP **"Do Not Use" list** exists because certain notation is
 routinely misread by *humans*. A discipline that outlawed its own notation for being

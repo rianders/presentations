@@ -243,11 +243,20 @@ const slides = [
       <SlideShell tag="Opening · 3 min" tagColor="bg-red-700">
         <Heading>Where This Comes From</Heading>
         <Lede>
-          A UOES project on transcribing scientific notation, built with Carmela.
+          A UOES project on transcribing scientific notation, built with faculty.
         </Lede>
-        <Placeholder title="The four projects and the credit">
-          Name the four projects (February never lists them). Confirm Carmela's full name, role,
-          and how she wants to be credited.
+
+        {/* Thanks named by Rick, October 28, 2026. Names only until each confirms the
+            role and department they want shown; don't guess titles. */}
+        <div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-4 my-4">
+          <p className="text-xs font-black uppercase tracking-widest text-red-800 mb-1">With thanks</p>
+          <p className="text-lg text-gray-900 font-semibold">Carmela Scala · Melike Gursoy</p>
+          <p className="text-sm text-gray-700 mt-1">The faculty who helped build this project.</p>
+        </div>
+
+        <Placeholder title="The four projects and the roles">
+          Name the four projects (February never lists them). Confirm the role and department
+          Carmela and Melike each want shown under their names.
         </Placeholder>
       </SlideShell>
     ),
