@@ -284,6 +284,15 @@ Slide 2 now carries a "With thanks" card with both names. Names only for now.
 - [ ] Confirm the role and department each wants shown under their name.
 - [ ] Ask whether either wants to say a word live, or be named in the chat.
 
+### 11d. First deck on the UOES theme — DECIDED October 28, 2026
+Rick: adopt the office PowerPoint template (`UOES_ppt_template_RED.pptx`, official UOES
+use) as the look for this deck and every one after it. The deck now loads
+`themes/uoes/theme.jsx` and defines no components of its own. Segment times moved from
+the coloured pills into the scarlet subhead under each title. Slide 2's thanks uses the
+template's speakers layout; slide 11 is its closing slide.
+- [ ] Slide 9 still scrolls inside the frame: the busiest slide. A cut, or a split, before delivery.
+- [ ] Going live: set `draft` to null in `UOES.configure` at the top of the deck.
+
 ### 12. Consider a "notation your field bans" beat.
 Medicine's Joint Commission / ISMP **"Do Not Use" list** exists because certain notation is
 routinely misread by *humans*. A discipline that outlawed its own notation for being
