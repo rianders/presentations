@@ -451,13 +451,15 @@ Mark anything you were unsure of.`}</CodeBlock>
         {/* Gems are being replaced by skills (Google, September 2026: no new Gems from
             October 13, migration from November 17) and custom GPTs by plugins (OpenAI:
             new GPTs end October 26, shutdown December 11). Checked November 2, 2026.
-            The skill file is plain text, so it pastes into any of them. The link is the
-            GitHub file view, not GitHub Pages: Pages turns a .md with front matter into
-            HTML, so SKILL.md 404s there. GitHub's view has a "Copy raw file" button. */}
+            The link is the skill's GitHub folder, not GitHub Pages: Pages turns a .md with
+            front matter into HTML, so SKILL.md 404s there. GitHub shows the folder's
+            README.md, the how-to for all four tools, under the files. Gemini skills aren't
+            on work or school accounts yet (November 2, 2026), so the slide doesn't promise
+            Gemini on a NetID. */}
         <p className="text-sm text-slate">
-          The full rules are a skill you can take:{' '}
-          <Link href="https://github.com/rianders/presentations/blob/main/20261106-beyond_alt_text/notation-access/SKILL.md">notation-access skill</Link>.
-          Paste it into a skill in Gemini, or an agent in Copilot, and every page gets the same rules.
+          The full rules are a skill you can take, with how to add it to Gemini, Copilot,
+          ChatGPT or Claude:{' '}
+          <Link href="https://github.com/rianders/presentations/tree/main/20261106-beyond_alt_text/notation-access">notation-access skill</Link>.
         </p>
 
         <Placeholder title="Work session">
@@ -468,8 +470,34 @@ Mark anything you were unsure of.`}</CodeBlock>
     ),
   },
 
-  // ── 12: RESOURCES + CONTACT ──
-  // The template's closing slide.
+  // ── 12: RESOURCES ──
+  // Rick, November 2, 2026: every deck ends with standard useful resources. The theme's
+  // ResourcesSlide puts this session's links beside the standard Rutgers set.
+  // Verified November 2, 2026: NVDA is free with MathCAT built in since 2026.1; Rutgers
+  // licenses Fusion (JAWS + ZoomText), and JAWS has read MathCAT since December 2024.
+  // The skill links to its GitHub folder, where README.md is the how-to for Gemini,
+  // Copilot, ChatGPT and Claude. (Pages turns SKILL.md into HTML; GitHub shows it as is.)
+  {
+    label: "Resources",
+    content: (
+      <ResourcesSlide
+        items={[
+          { label: "The notation-access skill", href: "https://github.com/rianders/presentations/tree/main/20261106-beyond_alt_text/notation-access", note: "Today's rules, and how to add them to Gemini, Copilot, ChatGPT or Claude" },
+          { label: "NVDA", href: "https://www.nvaccess.org/", note: "Free screen reader for Windows, with MathCAT built in" },
+          { label: "MathCAT", href: "https://daisy.github.io/MathCAT", note: "Speech styles, braille and navigation for MathML" },
+        ]}
+        checked="November 2, 2026"
+      >
+        <Placeholder title="Gen AI reader">
+          The tool and account the slide 8 demo runs on, once confirmed on a NetID.
+        </Placeholder>
+      </ResourcesSlide>
+    ),
+  },
+
+  // ── 13: CLOSING ──
+  // The template's closing slide. Links live on slide 12 now; this one is the line
+  // to leave the room with, and how to reach Rick.
   {
     label: "Questions",
     content: (
@@ -477,21 +505,6 @@ Mark anything you were unsure of.`}</CodeBlock>
         {/* Rick, November 2, 2026: accessible also means able to read the notation, and
             students have to write it too. Any sense: sight, hearing, touch, movement. */}
         <p className="text-lg mb-4">Accessible means a student can read it and write it, with whatever senses they use.</p>
-        <p><Link onDark href="https://rianders.github.io/presentations">rianders.github.io/presentations</Link> — every deck in this series</p>
-        <p><Link onDark href="https://it.rutgers.edu/ai">it.rutgers.edu/ai</Link> — the AI tools your Rutgers account includes</p>
-        <p><Link onDark href="https://github.com/rianders/presentations/blob/main/20261106-beyond_alt_text/notation-access/SKILL.md">The notation-access skill</Link> — today's rules, ready to paste into Gemini or Copilot</p>
-        {/* Verified November 2, 2026: NVDA is free and has MathCAT built in since 2026.1
-            (nvaccess.org); Rutgers licenses Fusion (JAWS + ZoomText), and JAWS has read
-            MathCAT since December 2024; RADR runs screen-reader training for faculty. */}
-        <p>
-          Screen readers: <Link onDark href="https://www.nvaccess.org/">NVDA</Link>, free, MathCAT built in
-          · <Link onDark href="https://radr.rutgers.edu/resource/screen-readers">JAWS</Link>, Rutgers licence
-          · <Link onDark href="https://radr.rutgers.edu/resource/screen-reader-training">training</Link>
-          <span className="text-xs opacity-80"> (checked November 2, 2026)</span>
-        </p>
-        <Placeholder title="Gen AI reader">
-          The tool and account the slide 8 demo runs on, once confirmed on a NetID.
-        </Placeholder>
         <div className="pt-4">
           <p className="font-bold">Rick Anderson</p>
           <p><Link onDark href="mailto:rick.anderson@uoes.rutgers.edu">rick.anderson@uoes.rutgers.edu</Link></p>
