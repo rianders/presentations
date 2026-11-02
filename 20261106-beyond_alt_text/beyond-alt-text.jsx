@@ -152,8 +152,8 @@ const slides = [
           student has no way to know.
         </Lede>
 
-        {/* Deadline wording is the published brief's (November 2, 2026). VERIFY the date
-            and its source before delivery: see worklist. */}
+        {/* Deadline wording is the published brief's. April 2027 confirmed by Rick,
+            November 2, 2026. */}
         <p className="uoes-sub">
           The slowest material to make accessible, and the last the April 2027 deadline will reach
         </p>
@@ -417,17 +417,40 @@ const slides = [
         <Heading sub="Hands-On · 30 min">Your Turn</Heading>
         <Lede>One equation set, unit or figure from your own course.</Lede>
 
-        <div className="space-y-4">
-          <PipelineStep num="1" title="Run the AI pass">
-            Notation: ask for LaTeX, and how someone in your field would say it. A figure or
-            diagram: ask for the walkthrough or the description.
-          </PipelineStep>
-          <PipelineStep num="2" title="Verify">Where did it guess?</PipelineStep>
-          <PipelineStep num="3" title="Listen">Put it in Canvas and hear it.</PipelineStep>
+        <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-6 items-start">
+          <div className="space-y-4">
+            <PipelineStep num="1" title="Run the prompt">On one page, not the whole unit.</PipelineStep>
+            <PipelineStep num="2" title="Verify">Where did it guess? Did it change anything?</PipelineStep>
+            <PipelineStep num="3" title="Listen">Put it in Canvas and hear it.</PipelineStep>
+          </div>
+
+          {/* Rick, November 2, 2026: asked to make a problem accessible, AI tends to SOLVE
+              it. That destroys a worksheet, and "find the error" exercises worst of all,
+              because it fixes the error. The first line of the prompt forbids it. This is
+              the short form; the full rules are the notation-access skill linked below. */}
+          <CodeBlock>{`Make this accessible. Do not solve, simplify,
+correct or finish anything.
+
+Notation: the LaTeX, and how someone in
+[your field] would read it aloud.
+Figure: what it shows, not what it proves.
+
+Mark anything you were unsure of.`}</CodeBlock>
         </div>
 
+        {/* Gems are being replaced by skills (Google, September 2026: no new Gems from
+            October 13, migration from November 17) and custom GPTs by plugins (OpenAI:
+            new GPTs end October 26, shutdown December 11). Checked November 2, 2026.
+            The skill file is plain text, so it pastes into any of them. */}
+        <p className="text-sm text-slate">
+          The full rules are a skill you can take:{' '}
+          <Link href="https://rianders.github.io/presentations/20261106-beyond_alt_text/notation-access/SKILL.md">notation-access skill</Link>.
+          Paste it into a skill in Gemini, or an agent in Copilot, and every page gets the same rules.
+        </p>
+
         <Placeholder title="Work session">
-          The prompt, the tool and account, and a fallback page for anyone who brought nothing.
+          Which tool and account, confirmed on a NetID, and a fallback page for anyone who
+          brought nothing.
         </Placeholder>
       </SlideShell>
     ),
@@ -444,6 +467,7 @@ const slides = [
         <p className="text-lg mb-4">Accessible means a student can read it and write it, with whatever senses they use.</p>
         <p><Link onDark href="https://rianders.github.io/presentations">rianders.github.io/presentations</Link> — every deck in this series</p>
         <p><Link onDark href="https://it.rutgers.edu/ai">it.rutgers.edu/ai</Link> — the AI tools your Rutgers account includes</p>
+        <p><Link onDark href="https://rianders.github.io/presentations/20261106-beyond_alt_text/notation-access/SKILL.md">The notation-access skill</Link> — today's rules, ready to paste into Gemini or Copilot</p>
         <Placeholder title="Notation tools">
           MathCAT, NVDA, and whatever the Gen AI reader runs on. Each link verified with a date.
         </Placeholder>

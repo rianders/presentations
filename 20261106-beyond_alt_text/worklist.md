@@ -65,7 +65,7 @@ Checked against the event listing. Shot list for every recording is in `demos.md
 | Narrated walkthroughs of flow charts, process diagrams, decision trees | Nothing | **Missing.** Clip 6 |
 | Audio descriptions of technical and disciplinary figures | Nothing | **Missing.** Clip 7 |
 | *Live* screen-reader demonstrations, accessible vs inaccessible | Slide 4: recordings (decided October 15) | **Recorded, not live.** Say why on slide 4. Make it a before/after of one figure. Clip 1 |
-| April 2027 deadline | Not mentioned | **Missing.** One line on slide 2 or 3. Verify the date first |
+| April 2027 deadline | Slide 3 | **Done.** Date confirmed November 2, 2026 |
 | Work session on your own content, any discipline | Slide 10, equation-only steps | **Partial.** Needs a path for a figure or diagram, since the brief invites people to bring one |
 | Competencies 1, 3 and 4 | Not checkable: the competency definitions aren't in this repo | **Open.** Need the Pathways Program text |
 | Title says Notation, *Diagrams* and Symbols | Diagrams appear only in the Labanotation card | Same gap as the walkthrough and figure rows |
@@ -86,9 +86,7 @@ gap. It fits in the 6 minutes of slack if slide 9 trims too.
 - Limits 7 → 6. The total is now 57 of 60.
 
 Still open from this review:
-- [ ] **Verify the April 2027 date and its source.** The DOJ's ADA Title II web rule
-      originally set April 24, 2026 for large public entities. Confirm what makes it 2027
-      for Rutgers before saying it to a room.
+- [x] **April 2027 date: confirmed by Rick, November 2, 2026.** Slide 3 stands as written.
 - [ ] Competencies 1, 3 and 4: get the Pathways Program text and check the deck against it.
 - [ ] Record clips 1, 3, 6 and 7. Those are the brief's promises; the slides hold placeholders until then.
 
@@ -114,6 +112,42 @@ grid swaps Law for Electronics. See `demos.md`.
 **Said out loud, not on a slide:** in a test, a full description can give the answer away.
 How much to describe has to match what the question tests, and only the instructor knows
 that. Bring it up in the work session.
+
+## The prompt, and saving it — November 2, 2026
+
+**Rick: asked to make a math problem accessible, AI tends to answer it instead.** That
+destroys a worksheet, and a "find the error" exercise worst of all, because it fixes the
+error. Slide 11 now carries the work-session prompt, and its first line forbids solving,
+simplifying, correcting or finishing anything. The figure line says "without saying what it
+proves", for the same reason in tests.
+
+**Saving the prompt so the rules travel with it** (Rick's "AI skills" idea): slide 11 says
+"Save it as a skill in Gemini, or an agent in Copilot."
+
+**Gems and GPTs are being retired, checked November 2, 2026:**
+- **Gemini: Gems → skills.** No new or edited Gems from October 13, 2026; automatic
+  migration to skills from November 17; Gems removed from the Gemini app December 17.
+  Google's Workspace post says Gems on education accounts last until at least June 1,
+  2027. Skills started rolling out in Workspace on October 5.
+- **ChatGPT: custom GPTs → plugins.** No new GPTs from October 26, 2026; GPTs stop
+  working December 11. A migrated GPT's instructions become a skill inside the plugin.
+  Not the 2023 plugins: a different product with the old name.
+- **Copilot: still "agents".** No rename found.
+- [ ] **Verify on a NetID** that a Rutgers account can create a Gemini skill, and a Copilot
+      agent. If either can't, drop it from the line.
+- [ ] Earlier decks in the series say "Gem" (August 21's Gem share link). They're past
+      talks; leave them. The January 29 Prompting Cookbook should say skills and plugins.
+- [ ] Record clip 10 (it answers instead, then the prompt fixes it). See `demos.md`.
+
+**The rules live in a skill — built November 2, 2026** (Rick: "shouldn't this kind of advice
+live in a skill anyway?"). `notation-access/SKILL.md` is the full rule set: never solve or
+correct, keep local conventions, mark uncertainty at the symbol, describe without concluding,
+what to produce for notation, diagrams, figures and notation with no spoken form, and a
+closing "Check these" list. It's plain Markdown with a name and description at the top, so it
+works as an Agent Skill as-is and pastes into a Gemini skill or Copilot agent. Slide 11 keeps
+a short form of the prompt and links the skill; the closing slide lists it.
+- [ ] Paste it into a Gemini skill on a NetID and run it on two specimens before Friday.
+      Check it transcribes and doesn't solve.
 
 ## Two promises this session inherits
 
@@ -160,8 +194,8 @@ Open questions the deck has to answer around it:
   as the win.
 - **Rutgers-accessible is the requirement (Rick, October 15, 2026).** Most options must
   be things the room can use with Rutgers accounts. Build the Gen AI reader in Gemini or
-  Copilot on a NetID: September's "bring your own" lane. If it needs a Gem, verify that
-  a NetID account can save Gems; that was still unverified on September 18. If it only
+  Copilot on a NetID: September's "bring your own" lane. If it needs a saved assistant,
+  that's now a Gemini skill, not a Gem (see the November 2 note below on Gems → skills). If it only
   works on a paid or personal account, it's a showcase: say so on the slide.
 - Audio routing and pacing below still apply to whatever plays over Zoom.
 
