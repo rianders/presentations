@@ -62,6 +62,7 @@ fullscreen where allowed; Esc leaves). The bar names every slide, so keep each s
 | `Heading sub="Demo · 8 min"` | Serif title; `sub` is the scarlet caps line (segment + time) |
 | `Columns n={2–4}` + `Column` | Column layouts with dotted scarlet dividers |
 | `Stats`, `People`, `Agenda`, `Quote` | The template's stats, speakers/thanks, agenda and quote layouts |
+| `ResourcesSlide items={[…]} checked="…"` | The standard last-but-one slide: this deck's links beside the standard Rutgers set (`UOES.resources`). Every themed deck ends Resources → ClosingSlide |
 | `CardGrid cols={2–4}` | Card spotlight: click or W A S D brings one card forward, Space steps, Esc clears |
 | `Lede`, `Bullet`, `Link` (`onDark` on scarlet), `SectionCard`, `Note`, `DropIn`, `PipelineStep`, `VerifyBeat`, `CodeBlock`, `Interact`, `Tag` | As below, restyled |
 | `Placeholder`, `DraftChip` | Draft chrome: amber on purpose, outside the palette |
