@@ -59,7 +59,8 @@
    Recordings are the right call; say why out loud on slide 4.
 
    ── TIME BUDGET — PROVISIONAL, not reconciled ───────────────
-   Heading subs sum to 54 of 60. Six minutes of slack; the demos will want it. Work session 30. Write time-budget.md.
+   Heading subs sum to 57 of 60 (November 2, 2026: the diagrams slide added 7,
+   Your Field went 7 → 4 and Limits 7 → 6). Three minutes of slack. Work session 30.
 
    ── SHARED, RECORDED, AND CLIPPED ───────────────────────────
    1. ONE VIEW, PUBLIC.  2. EVERY SEGMENT STANDS ALONE.
@@ -150,6 +151,12 @@ const slides = [
           A mangled name still sounds mangled. Notation read wrong sounds fluent, so the
           student has no way to know.
         </Lede>
+
+        {/* Deadline wording is the published brief's (November 2, 2026). VERIFY the date
+            and its source before delivery: see worklist. */}
+        <p className="uoes-sub">
+          The slowest material to make accessible, and the last the April 2027 deadline will reach
+        </p>
       </SlideShell>
     ),
   },
@@ -162,9 +169,24 @@ const slides = [
     content: (
       <SlideShell>
         <Heading sub="Demo · 8 min">What a Screen Reader Says Today</Heading>
+
+        {/* The brief promises "the difference between an accessible figure and an
+            inaccessible one", LIVE. Recorded instead (decided October 15, 2026): say why
+            out loud, that the room should hear the screen reader rather than Zoom's audio.
+            One equation, both ways: clip 1 in demos.md. */}
+        <Columns n={2}>
+          <Column title="Inaccessible · the equation as an image">
+            The screen reader finds a picture. It says “graphic”, or reads whatever alt text
+            someone typed.
+          </Column>
+          <Column title="Accessible · the same equation as MathML">
+            The screen reader reads the mathematics, and the student can step through it.
+          </Column>
+        </Columns>
+
         <Placeholder title="Recordings">
-          Rick's recordings. For each: which reader, which OS, what speed, and the source
-          (MathML, LaTeX, or an image). A transcript under each clip so it works without audio.
+          Clip 1: one equation, both ways, in a Canvas page. NVDA version and speech rate, and a
+          transcript under each clip so it works without audio.
         </Placeholder>
       </SlideShell>
     ),
@@ -248,10 +270,16 @@ const slides = [
     label: "Where It Fails",
     content: (
       <SlideShell>
-        <Heading sub="Limits · 7 min">When Reading Becomes Guessing</Heading>
+        <Heading sub="Limits · 6 min">When Reading Becomes Guessing</Heading>
         <Lede>
           When the source is unclear, the AI writes what was <em>probably</em> meant. A good
           guess sounds exactly like a correct reading.
+        </Lede>
+        {/* Rick, November 2, 2026: common ideas are guessed well, specialized ones badly,
+            so a strong model fails at the edges. Prefer a specialized specimen to prove it. */}
+        <Lede>
+          It guesses best on what's common and worst on what's specialized: the material your
+          course depends on, and the fewest people can check.
         </Lede>
         <Placeholder title="Specimen">
           The logic truth table headed P ⟹ Q where the source says P ⟺ Q. Confirm by eye;
@@ -261,46 +289,87 @@ const slides = [
     ),
   },
 
-  // ── 9: BEYOND MATH ──
+  // ── 9: DIAGRAMS ──
+  // Added November 2, 2026: the brief promises narrated walkthroughs of flow charts and
+  // decision trees, and audio descriptions of disciplinary figures. Both social-science
+  // examples it names (supply-demand, choropleth) live here. Clips 6 and 7 in demos.md.
+  {
+    label: "Diagrams",
+    content: (
+      <SlideShell>
+        <Heading sub="Diagrams · 7 min">Describe the Path, Not the Picture</Heading>
+        <Lede>
+          A diagram makes an argument with arrows and position. The accessible version says
+          the argument.
+        </Lede>
+
+        <Columns n={3}>
+          <Column title="Flow chart · decision tree">
+            AI writes the walkthrough: the start, each decision, each branch. In Canvas it
+            becomes a nested list, so a screen reader announces every level.
+          </Column>
+          <Column title="Supply and demand · Economics">
+            AI describes what the graph shows and what it means: the two curves, where they
+            cross, what a shift does. You check it against the graph.
+          </Column>
+          <Column title="Choropleth map · Geography">
+            Colour carries all of the data, so no description is enough. The accessible
+            version is the table behind the map.
+          </Column>
+        </Columns>
+
+        <Placeholder title="Recordings">
+          Clip 6, a real flow chart as a narrated walkthrough in Canvas, and clip 7, the
+          supply-demand figure as an audio description. See demos.md.
+        </Placeholder>
+      </SlideShell>
+    ),
+  },
+
+  // ── 10: BEYOND MATH ──
   // The A/B/C grouping from notation-inventory.md. Group C is the honest core.
   {
     label: "Your Field",
     content: (
       <SlideShell>
-        <Heading sub="Every Discipline · 7 min">Your Field Has This Too</Heading>
+        <Heading sub="Every Discipline · 4 min">Your Field Has This Too</Heading>
 
         {/* Every professional field writes in a notation its experts read and outsiders can't.
             Samples are real conventions from notation-inventory.md. Dance is featured on
             purpose (Rick, October 26, 2026): it is the example that widens what the room
             counts as notation. Don't fold it back into the grid. */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 my-4">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-2 my-3">
           {[
             ["Mathematics", "∫ₐᵇ f(x) dx"],
             ["Chemistry", "H₂SO₄"],
             ["Linguistics", "/ˈfoʊ.nə.tɪk/"],
             ["Music", "♩ = 120 · F♯"],
             ["Medicine", "1 tab PO b.i.d."],
-            ["Law", "42 U.S.C. § 1983"],
+            ["Electronics", "R1 vin vout 4.7k"],
           ].map(([field, sample]) => (
-            <div key={field} className="bg-white border border-line rounded-lg p-3">
+            <div key={field} className="bg-white border border-line rounded-lg px-3 py-2">
               <p className="text-xs font-black uppercase tracking-widest text-slate">{field}</p>
               <p className="text-sm text-ink font-serif mt-1">{sample}</p>
             </div>
           ))}
         </div>
 
+        {/* Dance card on the left, the three levels stacked on the right: side by side so
+            the slide fits a 16:9 frame (November 2, 2026). */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3 my-3 items-stretch">
+
         {/* Symbol sheet from the Movement4Brain Game Design Document, section 5.2 (Rick's
             project). It is a key, not a score, so the copy says "symbols", not "staff". */}
-        <div className="bg-blush rounded-xl p-4 my-4 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 items-center">
+        <div className="bg-blush rounded-xl p-4 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 items-center">
           <img
             src="20261106-beyond_alt_text/labanotation-symbols.png"
             alt="Twelve hand-drawn Labanotation symbols, each labelled with the movement it means: any action, stillness, rotation, flexion, extension, jump, balance, move forward, move away, up or high, down or low, and middle or horizontal. The last three are the same upright rectangle, told apart only by its fill: diagonal hatching means high, solid black means low, and a single dot means middle."
-            className="rounded-lg border border-line bg-white w-full max-w-[220px] mx-auto"
-            width="220"
+            className="rounded-lg border border-line bg-white w-full max-w-[130px] mx-auto"
+            width="130"
           />
           <div>
             <p className="uoes-sub mb-1">Dance · Labanotation</p>
-            <p className="text-base text-ink">
+            <p className="text-sm text-ink">
               Movement has a notation too. It has no spoken form, because what it records was
               never speech.
             </p>
@@ -314,20 +383,25 @@ const slides = [
         </div>
 
         {/* Three levels, darkening as the notation gets harder to speak. The label
-            carries the meaning; the shade only reinforces it. */}
-        <div className="space-y-3 my-4">
-          <div className="bg-white border border-line rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-slate mb-1">Has a spoken form</p>
+            carries the meaning; the shade only reinforces it. The third level names the
+            fix, not just the limit (November 2, 2026): the brief promises syntax trees and
+            structural formulas converted, and a different form is that conversion. */}
+        <div className="flex flex-col gap-2">
+          <div className="bg-white border border-line rounded-xl px-4 py-2">
+            <p className="text-xs font-black uppercase tracking-widest text-slate">Has a spoken form</p>
             <p className="text-sm text-ink">H₂SO₄ · x̄ · basic math</p>
           </div>
-          <div className="bg-mist rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-slate mb-1">Needs its structure announced</p>
+          <div className="bg-mist rounded-xl px-4 py-2">
+            <p className="text-xs font-black uppercase tracking-widest text-slate">Needs its structure announced</p>
             <p className="text-sm text-ink">Fractions · ∀x∃y · IPA</p>
           </div>
-          <div className="bg-ink rounded-xl p-4">
-            <p className="text-xs font-black uppercase tracking-widest text-silver mb-1">Can't be spoken at all</p>
+          <div className="bg-ink rounded-xl px-4 py-2 flex-1">
+            <p className="text-xs font-black uppercase tracking-widest text-silver">Needs a different form</p>
             <p className="text-sm text-white">Music staves · Labanotation · syntax trees · structural formulas</p>
+            <p className="text-xs text-silver mt-1">A circuit as a netlist. A tree in brackets. A molecule by name, or by touch.</p>
           </div>
+        </div>
+
         </div>
 
         <Interact prompt="In chat: one piece of notation from your field a screen reader would get wrong." />
@@ -335,16 +409,19 @@ const slides = [
     ),
   },
 
-  // ── 10: WORK SESSION ──
+  // ── 11: WORK SESSION ──
   {
     label: "Work Session",
     content: (
       <SlideShell>
         <Heading sub="Hands-On · 30 min">Your Turn</Heading>
-        <Lede>One page of notation from your own course.</Lede>
+        <Lede>One equation set, unit or figure from your own course.</Lede>
 
         <div className="space-y-4">
-          <PipelineStep num="1" title="Run the AI pass">Ask for LaTeX, and for how someone in your field would say it.</PipelineStep>
+          <PipelineStep num="1" title="Run the AI pass">
+            Notation: ask for LaTeX, and how someone in your field would say it. A figure or
+            diagram: ask for the walkthrough or the description.
+          </PipelineStep>
           <PipelineStep num="2" title="Verify">Where did it guess?</PipelineStep>
           <PipelineStep num="3" title="Listen">Put it in Canvas and hear it.</PipelineStep>
         </div>
@@ -356,12 +433,15 @@ const slides = [
     ),
   },
 
-  // ── 11: RESOURCES + CONTACT ──
+  // ── 12: RESOURCES + CONTACT ──
   // The template's closing slide.
   {
     label: "Questions",
     content: (
       <ClosingSlide title="Questions?">
+        {/* Rick, November 2, 2026: accessible also means able to read the notation, and
+            students have to write it too. Any sense: sight, hearing, touch, movement. */}
+        <p className="text-lg mb-4">Accessible means a student can read it and write it, with whatever senses they use.</p>
         <p><Link onDark href="https://rianders.github.io/presentations">rianders.github.io/presentations</Link> — every deck in this series</p>
         <p><Link onDark href="https://it.rutgers.edu/ai">it.rutgers.edu/ai</Link> — the AI tools your Rutgers account includes</p>
         <Placeholder title="Notation tools">

@@ -53,6 +53,68 @@ differently than they'd ever say aloud." **That sentence is the deck.**
 
 ---
 
+## Review against the published brief — November 2, 2026
+
+Checked against the event listing. Shot list for every recording is in `demos.md`.
+
+| The brief promises | In the deck now | Status |
+|---|---|---|
+| Humanities, social sciences, natural sciences *and* STEM | Slide 9 grid: math, chemistry, linguistics, music, medicine, law, dance | **Social sciences missing.** No supply-demand curve, no choropleth |
+| Converting equation images into screen-reader-renderable notation **in Canvas** | Slide 6 pipeline, generic; slide 10 says "put it in Canvas" | **Partial.** Canvas is never shown. Clip 3 |
+| Converting structural formulas and syntax trees | Slide 9 lists both under "can't be spoken at all" | **Contradicts the brief.** Show what can be done. Clip 8 |
+| Narrated walkthroughs of flow charts, process diagrams, decision trees | Nothing | **Missing.** Clip 6 |
+| Audio descriptions of technical and disciplinary figures | Nothing | **Missing.** Clip 7 |
+| *Live* screen-reader demonstrations, accessible vs inaccessible | Slide 4: recordings (decided October 15) | **Recorded, not live.** Say why on slide 4. Make it a before/after of one figure. Clip 1 |
+| April 2027 deadline | Not mentioned | **Missing.** One line on slide 2 or 3. Verify the date first |
+| Work session on your own content, any discipline | Slide 10, equation-only steps | **Partial.** Needs a path for a figure or diagram, since the brief invites people to bring one |
+| Competencies 1, 3 and 4 | Not checkable: the competency definitions aren't in this repo | **Open.** Need the Pathways Program text |
+| Title says Notation, *Diagrams* and Symbols | Diagrams appear only in the Labanotation card | Same gap as the walkthrough and figure rows |
+
+**What it means for the deck:** the brief is built around three outputs: renderable notation,
+narrated walkthroughs and audio descriptions. The deck covers the first. One new slide
+covering diagrams (walkthrough plus figure description, clips 6 and 7) closes most of the
+gap. It fits in the 6 minutes of slack if slide 9 trims too.
+
+**Done November 2, 2026** (Rick: "add them"):
+- New slide 9, **Diagrams**: flow chart walkthrough, supply-demand description, choropleth
+  as a table. Covers walkthroughs, audio descriptions and the social sciences.
+- Slide 4 is now one equation before and after, inaccessible as an image and accessible as MathML.
+- Slide 3 carries the April 2027 line, worded as in the brief.
+- Slide 10 (Your Field): the third level is now "Needs a different form" and names the fix.
+  The layout is tightened, and the time goes 7 → 4.
+- Slide 11 (work session) takes a figure or diagram as well as notation.
+- Limits 7 → 6. The total is now 57 of 60.
+
+Still open from this review:
+- [ ] **Verify the April 2027 date and its source.** The DOJ's ADA Title II web rule
+      originally set April 24, 2026 for large public entities. Confirm what makes it 2027
+      for Rutgers before saying it to a room.
+- [ ] Competencies 1, 3 and 4: get the Pathways Program text and check the deck against it.
+- [ ] Record clips 1, 3, 6 and 7. Those are the brief's promises; the slides hold placeholders until then.
+
+## The argument, in Rick's words — November 2, 2026
+
+1. Notation is specific on purpose, and we don't speak it the way we read it.
+2. Automated readers are literal: they read the symbols, not the meaning an expert would put into words.
+3. Seeing, hearing and spatial sense loop together. A capture that is too complete, too
+   real, in image or audio, buries the important part.
+4. AI reads a page accurately now, and can work out what is meant, but it guesses. It
+   guesses common ideas well and specialized ones badly, so **a strong model fails at
+   the edges**, where the notation is rarest and the information thinnest.
+5. Accessible includes being *able to read* the notation, not only being unable to see or
+   hear. Senses beyond sight and hearing: touch (braille, tactile graphics, models),
+   movement (dance), sign, sonification, colour.
+
+Where it lands: 1–2 on slides 3–7, 3 on slide 9, 4 on slide 8, and 5 on slides 10 and 12.
+
+**Demos use Rick's own fields**, because he is the verifier: music, propositional logic,
+math from tensors to stochastic calculus, simple electronic schematics, code. Slide 10's
+grid swaps Law for Electronics. See `demos.md`.
+
+**Said out loud, not on a slide:** in a test, a full description can give the answer away.
+How much to describe has to match what the question tests, and only the instructor knows
+that. Bring it up in the work session.
+
 ## Two promises this session inherits
 
 ### The earlier promise
@@ -290,7 +352,7 @@ use) as the look for this deck and every one after it. The deck now loads
 `themes/uoes/theme.jsx` and defines no components of its own. Segment times moved from
 the coloured pills into the scarlet subhead under each title. Slide 2's thanks uses the
 template's speakers layout; slide 11 is its closing slide.
-- [ ] Slide 9 still scrolls inside the frame: the busiest slide. A cut, or a split, before delivery.
+- [x] Slide 9 (now 10, Your Field) scrolled inside the frame. Tightened November 2, 2026.
 - [ ] Going live: set `draft` to null in `UOES.configure` at the top of the deck.
 
 ### 12. Consider a "notation your field bans" beat.
