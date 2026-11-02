@@ -90,6 +90,19 @@ Still open from this review:
 - [ ] Competencies 1, 3 and 4: get the Pathways Program text and check the deck against it.
 - [ ] Record clips 1, 3, 6 and 7. Those are the brief's promises; the slides hold placeholders until then.
 
+## Screen readers at Rutgers — checked November 2, 2026
+
+- **NVDA**: free, Windows 10+ 64-bit; **MathCAT built in since NVDA 2026.1**. Download
+  from nvaccess.org only.
+- **JAWS**: Rutgers has an institutional licence for Fusion (JAWS + ZoomText), on the
+  Rutgers software download page. JAWS has supported MathCAT since December 2024. Windows only.
+- **Mac**: VoiceOver is built in. NVDA and JAWS aren't available.
+- **Training**: RADR's Screen Reader Training covers JAWS, NVDA, VoiceOver and Narrator.
+- On Rutgers-managed Windows machines, installing NVDA may need departmental IT.
+
+The closing slide now links NVDA, the Rutgers JAWS page and the training. Only the Gen AI
+reader's tool is still a placeholder there.
+
 ## The order: the room's challenge first — November 2, 2026
 
 **Rick: "The presentation is almost backwards."** The challenge is something everyone in the

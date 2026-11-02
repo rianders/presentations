@@ -480,8 +480,17 @@ Mark anything you were unsure of.`}</CodeBlock>
         <p><Link onDark href="https://rianders.github.io/presentations">rianders.github.io/presentations</Link> — every deck in this series</p>
         <p><Link onDark href="https://it.rutgers.edu/ai">it.rutgers.edu/ai</Link> — the AI tools your Rutgers account includes</p>
         <p><Link onDark href="https://github.com/rianders/presentations/blob/main/20261106-beyond_alt_text/notation-access/SKILL.md">The notation-access skill</Link> — today's rules, ready to paste into Gemini or Copilot</p>
-        <Placeholder title="Notation tools">
-          MathCAT, NVDA, and whatever the Gen AI reader runs on. Each link verified with a date.
+        {/* Verified November 2, 2026: NVDA is free and has MathCAT built in since 2026.1
+            (nvaccess.org); Rutgers licenses Fusion (JAWS + ZoomText), and JAWS has read
+            MathCAT since December 2024; RADR runs screen-reader training for faculty. */}
+        <p>
+          Screen readers: <Link onDark href="https://www.nvaccess.org/">NVDA</Link>, free, MathCAT built in
+          · <Link onDark href="https://radr.rutgers.edu/resource/screen-readers">JAWS</Link>, Rutgers licence
+          · <Link onDark href="https://radr.rutgers.edu/resource/screen-reader-training">training</Link>
+          <span className="text-xs opacity-80"> (checked November 2, 2026)</span>
+        </p>
+        <Placeholder title="Gen AI reader">
+          The tool and account the slide 8 demo runs on, once confirmed on a NetID.
         </Placeholder>
         <div className="pt-4">
           <p className="font-bold">Rick Anderson</p>
