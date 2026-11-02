@@ -152,8 +152,8 @@ const slides = [
           student has no way to know.
         </Lede>
 
-        {/* Deadline wording is the published brief's (November 2, 2026). VERIFY the date
-            and its source before delivery: see worklist. */}
+        {/* Deadline wording is the published brief's. April 2027 confirmed by Rick,
+            November 2, 2026. */}
         <p className="uoes-sub">
           The slowest material to make accessible, and the last the April 2027 deadline will reach
         </p>

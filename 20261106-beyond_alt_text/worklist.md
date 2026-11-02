@@ -65,7 +65,7 @@ Checked against the event listing. Shot list for every recording is in `demos.md
 | Narrated walkthroughs of flow charts, process diagrams, decision trees | Nothing | **Missing.** Clip 6 |
 | Audio descriptions of technical and disciplinary figures | Nothing | **Missing.** Clip 7 |
 | *Live* screen-reader demonstrations, accessible vs inaccessible | Slide 4: recordings (decided October 15) | **Recorded, not live.** Say why on slide 4. Make it a before/after of one figure. Clip 1 |
-| April 2027 deadline | Not mentioned | **Missing.** One line on slide 2 or 3. Verify the date first |
+| April 2027 deadline | Slide 3 | **Done.** Date confirmed November 2, 2026 |
 | Work session on your own content, any discipline | Slide 10, equation-only steps | **Partial.** Needs a path for a figure or diagram, since the brief invites people to bring one |
 | Competencies 1, 3 and 4 | Not checkable: the competency definitions aren't in this repo | **Open.** Need the Pathways Program text |
 | Title says Notation, *Diagrams* and Symbols | Diagrams appear only in the Labanotation card | Same gap as the walkthrough and figure rows |
@@ -86,9 +86,7 @@ gap. It fits in the 6 minutes of slack if slide 9 trims too.
 - Limits 7 → 6. The total is now 57 of 60.
 
 Still open from this review:
-- [ ] **Verify the April 2027 date and its source.** The DOJ's ADA Title II web rule
-      originally set April 24, 2026 for large public entities. Confirm what makes it 2027
-      for Rutgers before saying it to a room.
+- [x] **April 2027 date: confirmed by Rick, November 2, 2026.** Slide 3 stands as written.
 - [ ] Competencies 1, 3 and 4: get the Pathways Program text and check the deck against it.
 - [ ] Record clips 1, 3, 6 and 7. Those are the brief's promises; the slides hold placeholders until then.
 
