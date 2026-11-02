@@ -245,11 +245,13 @@ const PipelineStep = ({ num, title, children }) => (
 
 /* Non-poll audience moment — chat waterfall, reactions, unmute. */
 const Interact = ({ kind = "Zoom chat", prompt, children }) => (
-  <div className="border-2 border-line bg-white rounded-xl p-4 mb-4">
-    <span className="bg-ink text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
-      {kind}
-    </span>
-    <p className="text-base font-bold text-ink mt-2">{prompt}</p>
+  <div className="border-2 border-line bg-white rounded-xl px-4 py-3 mb-4">
+    <p className="text-base font-bold text-ink">
+      <span className="bg-ink text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded mr-2 align-middle">
+        {kind}
+      </span>
+      {prompt}
+    </p>
     {children && <p className="text-sm text-slate mt-2 leading-relaxed">{children}</p>}
   </div>
 );
