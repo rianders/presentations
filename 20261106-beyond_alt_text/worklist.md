@@ -90,6 +90,26 @@ Still open from this review:
 - [ ] Competencies 1, 3 and 4: get the Pathways Program text and check the deck against it.
 - [ ] Record clips 1, 3, 6 and 7. Those are the brief's promises; the slides hold placeholders until then.
 
+## The order: the room's challenge first — November 2, 2026
+
+**Rick: "The presentation is almost backwards."** The challenge is something everyone in the
+workshop is living with; the math pathway is a good example of working through it. So the
+thread is the attendees' problem, and the deck now runs:
+
+| New | Slide | Was |
+|---|---|---|
+| 1 | Title | 1 |
+| 2 | **Your Field Has Its Own Notation**: the challenge, with the chat prompt as the opener | 10 |
+| 3 | It Sounds Right, and It Isn't: why it's hard, plus the April 2027 deadline | 3 |
+| 4 | Where This Comes From: the math project and thanks, now "today's worked example" | 2 |
+| 5–9 | The math pathway: screen readers today, MathML baseline, the pipeline, the Gen AI reader, where it fails | 4–8 |
+| 10 | Diagrams: the same moves outside math | 9 |
+| 11 | Work session: their own material | 11 |
+| 12 | Closing | 12 |
+
+Slide numbers in the sections below this one are from before the reorder. `demos.md` uses
+the new numbers.
+
 ## The argument, in Rick's words — November 2, 2026
 
 1. Notation is specific on purpose, and we don't speak it the way we read it.

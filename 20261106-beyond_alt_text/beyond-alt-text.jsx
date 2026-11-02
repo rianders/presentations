@@ -33,7 +33,7 @@
    ── AUDIENCE ────────────────────────────────────────────────
    Faculty from every discipline, INCLUDING mathematicians who teach and
    already know MathCAT. MathCAT is the baseline they trust, not a reveal
-   (slide 5). The new ground is notation that has no markup behind it.
+   (slide 6). The new ground is notation that has no markup behind it.
 
    ── LESS IS MORE (Rick, October 15, 2026) ──────────────────
    One idea per slide. If a slide needs a second idea, it is two
@@ -43,20 +43,26 @@
    Notation "that experts read differently than they'd ever say aloud."
    And it fails SILENTLY: "x two plus y two" is fluent and false.
 
+   ── THE ORDER (Rick, November 2, 2026) ──────────────────────
+   The room's own problem first: every field has notation, and it fails
+   silently (slides 2–3). Then ONE worked example, the math pathway
+   (slides 4–9), then the same moves on diagrams (10), then their own
+   material (11). The thread is the attendees' challenge, not our project.
+
    ── THE SPINE — from the February deck ──────────────────────
        SOURCE → AI READS IT → OUTPUT (LaTeX · MathML · spoken) → VERIFY
    The verify beat is where the room's expertise is the tool. Name it.
 
    ── DEMOS — Rick is prepping both ───────────────────────────
-   Slide 4: recordings of existing screen readers.
-   Slide 7: the Gen AI reader that says notation the way people say it.
+   Slide 5: recordings of existing screen readers.
+   Slide 8: the Gen AI reader that says notation the way people say it.
    Rule carried over: if the room cannot use it on Monday with a Rutgers
    account, it is a showcase. Label it.
 
    ── SEPTEMBER 18 PROMISED, IN WRITING ───────────────────────
    Slide 4 of that deck lists "Live screen-reader demonstrations" for
    today, and its notation card says this is "the whole of November 6."
-   Recordings are the right call; say why out loud on slide 4.
+   Recordings are the right call; say why out loud on slide 5.
 
    ── TIME BUDGET — PROVISIONAL, not reconciled ───────────────
    Heading subs sum to 57 of 60 (November 2, 2026: the diagrams slide added 7,
@@ -101,238 +107,15 @@ const slides = [
     ),
   },
 
-  // ── 2: THE PROJECT ──
-  // PORTED from February slides 1 and 5.
-  {
-    label: "The Project",
-    content: (
-      <SlideShell>
-        <Heading sub="Opening · 3 min">Where This Comes From</Heading>
-        <Lede>
-          A UOES project on transcribing scientific notation, built with faculty.
-        </Lede>
-
-        {/* Thanks named by Rick, October 28, 2026. Names only until each confirms the
-            role and department they want shown; don't guess titles. */}
-        <People
-          label="With thanks"
-          people={[{ name: "Carmela Scala" }, { name: "Melike Gursoy" }]}
-          note="The faculty who helped build this project."
-        />
-
-        <Placeholder title="The four projects and the roles">
-          Name the four projects (February never lists them). Confirm the role and department
-          Carmela and Melike each want shown under their names.
-        </Placeholder>
-      </SlideShell>
-    ),
-  },
-
-  // ── 3: THE SILENT FAILURE ──
-  // The opening argument (worklist item 7). Pays September 18's notation card.
-  {
-    label: "Silent Failure",
-    content: (
-      <SlideShell>
-        <Heading sub="Framing · 5 min">It Sounds Right, and It Isn't</Heading>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-          <div className="bg-mist rounded-xl p-6">
-            <p className="text-xs font-black uppercase tracking-widest text-slate mb-2">On the page</p>
-            <p className="text-4xl font-serif text-ink">x² + y²</p>
-          </div>
-          <div className="bg-blush rounded-xl p-6">
-            <p className="uoes-sub mb-2">Read aloud · Wrong</p>
-            <p className="text-2xl text-ink italic">“x two plus y two”</p>
-          </div>
-        </div>
-
-        <Lede>
-          A mangled name still sounds mangled. Notation read wrong sounds fluent, so the
-          student has no way to know.
-        </Lede>
-
-        {/* Deadline wording is the published brief's. April 2027 confirmed by Rick,
-            November 2, 2026. */}
-        <p className="uoes-sub">
-          The slowest material to make accessible, and the last the April 2027 deadline will reach
-        </p>
-      </SlideShell>
-    ),
-  },
-
-  // ── 4: DEMO 1 · WHAT SCREEN READERS SAY TODAY ──
-  // Rick's recordings. September 18 promised LIVE demonstrations; recorded is the
-  // right call (system audio over Zoom, live screen readers misbehave).
-  {
-    label: "Hear It: Today",
-    content: (
-      <SlideShell>
-        <Heading sub="Demo · 8 min">What a Screen Reader Says Today</Heading>
-
-        {/* The brief promises "the difference between an accessible figure and an
-            inaccessible one", LIVE. Recorded instead (decided October 15, 2026): say why
-            out loud, that the room should hear the screen reader rather than Zoom's audio.
-            One equation, both ways: clip 1 in demos.md. */}
-        <Columns n={2}>
-          <Column title="Inaccessible · the equation as an image">
-            The screen reader finds a picture. It says “graphic”, or reads whatever alt text
-            someone typed.
-          </Column>
-          <Column title="Accessible · the same equation as MathML">
-            The screen reader reads the mathematics, and the student can step through it.
-          </Column>
-        </Columns>
-
-        <Placeholder title="Recordings">
-          Clip 1: one equation, both ways, in a Canvas page. NVDA version and speech rate, and a
-          transcript under each clip so it works without audio.
-        </Placeholder>
-      </SlideShell>
-    ),
-  },
-
-  // ── 5: THE BASELINE · MATHML + MATHCAT ──
-  // The math faculty already know this: common ground, not a reveal.
-  // Facts from notation-inventory.md, verified September 2, 2026. Re-verify before delivery.
-  {
-    label: "The Baseline",
-    content: (
-      <SlideShell>
-        <Heading sub="Baseline · 6 min">When It's MathML, This Already Works</Heading>
-        <Lede>
-          MathCAT reads it in NVDA and JAWS, two ways: <strong>MathSpeak</strong> (precise)
-          or <strong>ClearSpeak</strong> (the way a teacher says it). The listener chooses.
-        </Lede>
-        <Placeholder title="Best practices">
-          Rick's adopted MathCAT / MathML best practices.
-        </Placeholder>
-      </SlideShell>
-    ),
-  },
-
-  // ── 6: THE PIPELINE ──
-  // PORTED from February slides 3 and 4: inputs, analysis, outputs, in one line.
-  // The 88% / 58% accuracy bars are NOT carried over until confirmed as measured.
-  {
-    label: "The Pipeline",
-    content: (
-      <SlideShell>
-        <Heading sub="Workflow · 8 min">Most Notation Isn't MathML</Heading>
-        <Lede>
-          It's handwriting, scanned PDFs, and photos of whiteboards. AI can turn those into
-          something a screen reader can use.
-        </Lede>
-
-        <div className="space-y-4">
-          <PipelineStep num="1" title="Source">
-            Handwriting · scanned PDF · photo
-          </PipelineStep>
-          <PipelineStep num="2" title="AI reads it">
-            Layout, symbols, structure
-          </PipelineStep>
-          <PipelineStep num="3" title="Output">
-            LaTeX · MathML · the words a person would say
-          </PipelineStep>
-        </div>
-
-        <VerifyBeat>
-          Someone who reads the notation checks it against the source.
-        </VerifyBeat>
-
-        <Placeholder title="Accuracy">
-          February showed 88% printed / 58% handwriting. Measured? If so, source and date. If
-          not, it stays out.
-        </Placeholder>
-      </SlideShell>
-    ),
-  },
-
-  // ── 7: DEMO 2 · THE GEN AI READER ──
-  // Must answer "why not ClearSpeak?": image/handwriting sources, notation outside
-  // math, course conventions. Must run on a Rutgers account or be labelled a showcase.
-  {
-    label: "Hear It: Gen AI",
-    content: (
-      <SlideShell>
-        <Heading sub="Demo · 10 min">Said the Way People Say It</Heading>
-        <Placeholder title="Demo">
-          Rick's Gen AI reader: the same examples as slide 4, then a handwritten source and
-          notation outside math. Which Rutgers tool it runs on, or label it a showcase.
-        </Placeholder>
-      </SlideShell>
-    ),
-  },
-
-  // ── 8: WHERE IT FAILS ──
-  // February's limits, reduced to the one that matters, plus the handwriting finding.
-  {
-    label: "Where It Fails",
-    content: (
-      <SlideShell>
-        <Heading sub="Limits · 6 min">When Reading Becomes Guessing</Heading>
-        <Lede>
-          When the source is unclear, the AI writes what was <em>probably</em> meant. A good
-          guess sounds exactly like a correct reading.
-        </Lede>
-        {/* Rick, November 2, 2026: common ideas are guessed well, specialized ones badly,
-            so a strong model fails at the edges. Prefer a specialized specimen to prove it. */}
-        <Lede>
-          It guesses best on what's common and worst on what's specialized: the material your
-          course depends on, and the fewest people can check.
-        </Lede>
-        <Placeholder title="Specimen">
-          The logic truth table headed P ⟹ Q where the source says P ⟺ Q. Confirm by eye;
-          recreate it rather than screenshot it (copyrighted source).
-        </Placeholder>
-      </SlideShell>
-    ),
-  },
-
-  // ── 9: DIAGRAMS ──
-  // Added November 2, 2026: the brief promises narrated walkthroughs of flow charts and
-  // decision trees, and audio descriptions of disciplinary figures. Both social-science
-  // examples it names (supply-demand, choropleth) live here. Clips 6 and 7 in demos.md.
-  {
-    label: "Diagrams",
-    content: (
-      <SlideShell>
-        <Heading sub="Diagrams · 7 min">Describe the Path, Not the Picture</Heading>
-        <Lede>
-          A diagram makes an argument with arrows and position. The accessible version says
-          the argument.
-        </Lede>
-
-        <Columns n={3}>
-          <Column title="Flow chart · decision tree">
-            AI writes the walkthrough: the start, each decision, each branch. In Canvas it
-            becomes a nested list, so a screen reader announces every level.
-          </Column>
-          <Column title="Supply and demand · Economics">
-            AI describes what the graph shows and what it means: the two curves, where they
-            cross, what a shift does. You check it against the graph.
-          </Column>
-          <Column title="Choropleth map · Geography">
-            Colour carries all of the data, so no description is enough. The accessible
-            version is the table behind the map.
-          </Column>
-        </Columns>
-
-        <Placeholder title="Recordings">
-          Clip 6, a real flow chart as a narrated walkthrough in Canvas, and clip 7, the
-          supply-demand figure as an audio description. See demos.md.
-        </Placeholder>
-      </SlideShell>
-    ),
-  },
-
-  // ── 10: BEYOND MATH ──
-  // The A/B/C grouping from notation-inventory.md. Group C is the honest core.
+  // ── 2: THE CHALLENGE ──
+  // Rick, November 2, 2026: open with the problem everyone in the room shares, then use
+  // math as the worked example. The A/B/C grouping from notation-inventory.md; group C
+  // is the honest core. The chat prompt is the opener.
   {
     label: "Your Field",
     content: (
       <SlideShell>
-        <Heading sub="Every Discipline · 4 min">Your Field Has This Too</Heading>
+        <Heading sub="The Challenge · 4 min">Your Field Has Its Own Notation</Heading>
 
         {/* Every professional field writes in a notation its experts read and outsiders can't.
             Samples are real conventions from notation-inventory.md. Dance is featured on
@@ -405,6 +188,233 @@ const slides = [
         </div>
 
         <Interact prompt="In chat: one piece of notation from your field a screen reader would get wrong." />
+      </SlideShell>
+    ),
+  },
+
+  // ── 3: THE SILENT FAILURE ──
+  // The opening argument (worklist item 7). Pays September 18's notation card.
+  {
+    label: "Silent Failure",
+    content: (
+      <SlideShell>
+        <Heading sub="Framing · 5 min">It Sounds Right, and It Isn't</Heading>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+          <div className="bg-mist rounded-xl p-6">
+            <p className="text-xs font-black uppercase tracking-widest text-slate mb-2">On the page</p>
+            <p className="text-4xl font-serif text-ink">x² + y²</p>
+          </div>
+          <div className="bg-blush rounded-xl p-6">
+            <p className="uoes-sub mb-2">Read aloud · Wrong</p>
+            <p className="text-2xl text-ink italic">“x two plus y two”</p>
+          </div>
+        </div>
+
+        <Lede>
+          A mangled name still sounds mangled. Notation read wrong sounds fluent, so the
+          student has no way to know.
+        </Lede>
+
+        {/* Deadline wording is the published brief's. April 2027 confirmed by Rick,
+            November 2, 2026. */}
+        <p className="uoes-sub">
+          The slowest material to make accessible, and the last the April 2027 deadline will reach
+        </p>
+      </SlideShell>
+    ),
+  },
+
+  // ── 4: THE MATH PATHWAY ──
+  // PORTED from February slides 1 and 5. Now the start of the worked example: slides 4–9
+  // walk one pathway through math, then slide 10 takes it back out to diagrams.
+  {
+    label: "Math Pathway",
+    content: (
+      <SlideShell>
+        <Heading sub="The Math Pathway · 3 min">Where This Comes From</Heading>
+        <Lede>
+          Today's worked example: a UOES project on transcribing scientific notation, built
+          with faculty.
+        </Lede>
+
+        {/* Thanks named by Rick, October 28, 2026. Names only until each confirms the
+            role and department they want shown; don't guess titles. */}
+        <People
+          label="With thanks"
+          people={[{ name: "Carmela Scala" }, { name: "Melike Gursoy" }]}
+          note="The faculty who helped build this project."
+        />
+
+        <Placeholder title="The four projects and the roles">
+          Name the four projects (February never lists them). Confirm the role and department
+          Carmela and Melike each want shown under their names.
+        </Placeholder>
+      </SlideShell>
+    ),
+  },
+
+  // ── 5: DEMO 1 · WHAT SCREEN READERS SAY TODAY ──
+  // Rick's recordings. September 18 promised LIVE demonstrations; recorded is the
+  // right call (system audio over Zoom, live screen readers misbehave).
+  {
+    label: "Hear It: Today",
+    content: (
+      <SlideShell>
+        <Heading sub="Demo · 8 min">What a Screen Reader Says Today</Heading>
+
+        {/* The brief promises "the difference between an accessible figure and an
+            inaccessible one", LIVE. Recorded instead (decided October 15, 2026): say why
+            out loud, that the room should hear the screen reader rather than Zoom's audio.
+            One equation, both ways: clip 1 in demos.md. */}
+        <Columns n={2}>
+          <Column title="Inaccessible · the equation as an image">
+            The screen reader finds a picture. It says “graphic”, or reads whatever alt text
+            someone typed.
+          </Column>
+          <Column title="Accessible · the same equation as MathML">
+            The screen reader reads the mathematics, and the student can step through it.
+          </Column>
+        </Columns>
+
+        <Placeholder title="Recordings">
+          Clip 1: one equation, both ways, in a Canvas page. NVDA version and speech rate, and a
+          transcript under each clip so it works without audio.
+        </Placeholder>
+      </SlideShell>
+    ),
+  },
+
+  // ── 6: THE BASELINE · MATHML + MATHCAT ──
+  // The math faculty already know this: common ground, not a reveal.
+  // Facts from notation-inventory.md, verified September 2, 2026. Re-verify before delivery.
+  {
+    label: "The Baseline",
+    content: (
+      <SlideShell>
+        <Heading sub="Baseline · 6 min">When It's MathML, This Already Works</Heading>
+        <Lede>
+          MathCAT reads it in NVDA and JAWS, two ways: <strong>MathSpeak</strong> (precise)
+          or <strong>ClearSpeak</strong> (the way a teacher says it). The listener chooses.
+        </Lede>
+        <Placeholder title="Best practices">
+          Rick's adopted MathCAT / MathML best practices.
+        </Placeholder>
+      </SlideShell>
+    ),
+  },
+
+  // ── 7: THE PIPELINE ──
+  // PORTED from February slides 3 and 4: inputs, analysis, outputs, in one line.
+  // The 88% / 58% accuracy bars are NOT carried over until confirmed as measured.
+  {
+    label: "The Pipeline",
+    content: (
+      <SlideShell>
+        <Heading sub="Workflow · 8 min">Most Notation Isn't MathML</Heading>
+        <Lede>
+          It's handwriting, scanned PDFs, and photos of whiteboards. AI can turn those into
+          something a screen reader can use.
+        </Lede>
+
+        <div className="space-y-4">
+          <PipelineStep num="1" title="Source">
+            Handwriting · scanned PDF · photo
+          </PipelineStep>
+          <PipelineStep num="2" title="AI reads it">
+            Layout, symbols, structure
+          </PipelineStep>
+          <PipelineStep num="3" title="Output">
+            LaTeX · MathML · the words a person would say
+          </PipelineStep>
+        </div>
+
+        <VerifyBeat>
+          Someone who reads the notation checks it against the source.
+        </VerifyBeat>
+
+        <Placeholder title="Accuracy">
+          February showed 88% printed / 58% handwriting. Measured? If so, source and date. If
+          not, it stays out.
+        </Placeholder>
+      </SlideShell>
+    ),
+  },
+
+  // ── 8: DEMO 2 · THE GEN AI READER ──
+  // Must answer "why not ClearSpeak?": image/handwriting sources, notation outside
+  // math, course conventions. Must run on a Rutgers account or be labelled a showcase.
+  {
+    label: "Hear It: Gen AI",
+    content: (
+      <SlideShell>
+        <Heading sub="Demo · 10 min">Said the Way People Say It</Heading>
+        <Placeholder title="Demo">
+          Rick's Gen AI reader: the same examples as slide 5, then a handwritten source and
+          notation outside math. Which Rutgers tool it runs on, or label it a showcase.
+        </Placeholder>
+      </SlideShell>
+    ),
+  },
+
+  // ── 9: WHERE IT FAILS ──
+  // February's limits, reduced to the one that matters, plus the handwriting finding.
+  {
+    label: "Where It Fails",
+    content: (
+      <SlideShell>
+        <Heading sub="Limits · 6 min">When Reading Becomes Guessing</Heading>
+        <Lede>
+          When the source is unclear, the AI writes what was <em>probably</em> meant. A good
+          guess sounds exactly like a correct reading.
+        </Lede>
+        {/* Rick, November 2, 2026: common ideas are guessed well, specialized ones badly,
+            so a strong model fails at the edges. Prefer a specialized specimen to prove it. */}
+        <Lede>
+          It guesses best on what's common and worst on what's specialized: the material your
+          course depends on, and the fewest people can check.
+        </Lede>
+        <Placeholder title="Specimen">
+          The logic truth table headed P ⟹ Q where the source says P ⟺ Q. Confirm by eye;
+          recreate it rather than screenshot it (copyrighted source).
+        </Placeholder>
+      </SlideShell>
+    ),
+  },
+
+  // ── 10: DIAGRAMS ──
+  // Added November 2, 2026: the brief promises narrated walkthroughs of flow charts and
+  // decision trees, and audio descriptions of disciplinary figures. Both social-science
+  // examples it names (supply-demand, choropleth) live here. Clips 6 and 7 in demos.md.
+  {
+    label: "Diagrams",
+    content: (
+      <SlideShell>
+        <Heading sub="Diagrams · 7 min">Describe the Path, Not the Picture</Heading>
+        <Lede>
+          A diagram makes an argument with arrows and position. The accessible version says
+          the argument.
+        </Lede>
+
+        <Columns n={3}>
+          <Column title="Flow chart · decision tree">
+            AI writes the walkthrough: the start, each decision, each branch. In Canvas it
+            becomes a nested list, so a screen reader announces every level.
+          </Column>
+          <Column title="Supply and demand · Economics">
+            AI describes what the graph shows and what it means: the two curves, where they
+            cross, what a shift does. You check it against the graph.
+          </Column>
+          <Column title="Choropleth map · Geography">
+            Colour carries all of the data, so no description is enough. The accessible
+            version is the table behind the map.
+          </Column>
+        </Columns>
+
+        <Placeholder title="Recordings">
+          Clip 6, a real flow chart as a narrated walkthrough in Canvas, and clip 7, the
+          supply-demand figure as an audio description. See demos.md.
+        </Placeholder>
       </SlideShell>
     ),
   },
