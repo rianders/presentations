@@ -37,6 +37,16 @@ const UOES = {
   //   draft  — banner text while in draft, e.g. 'Draft · November 6, 2026'; null when live
   //   footer — right side of the footer band. Put the date in it: slides get clipped.
   config: { draft: null, footer: 'UOES' },
+  // The standard "At Rutgers" column of ResourcesSlide, on every deck that uses it.
+  // Each URL checked November 2, 2026. Re-check before a deck goes live.
+  resources: [
+    { label: 'Every deck in this series', href: 'https://rianders.github.io/presentations', note: 'rianders.github.io/presentations' },
+    { label: 'AI tools at Rutgers', href: 'https://it.rutgers.edu/ai', note: 'What your Rutgers account includes' },
+    { label: 'Digital accessibility at Rutgers', href: 'https://it.rutgers.edu/digital-accessibility/', note: 'Guidance and the knowledge base' },
+    { label: 'Screen readers at Rutgers', href: 'https://radr.rutgers.edu/resource/screen-readers', note: 'JAWS is licensed for you; NVDA is free' },
+    { label: 'Screen reader training', href: 'https://radr.rutgers.edu/resource/screen-reader-training', note: 'JAWS, NVDA, VoiceOver, Narrator' },
+    { label: 'Assistive technology basics for faculty', href: 'https://radr.rutgers.edu/resource/assistive-technology-basics-faculty', note: 'What your students may be using' },
+  ],
   configure(c) { Object.assign(UOES.config, c); },
 };
 
@@ -165,6 +175,36 @@ const ClosingSlide = ({ title = "Thank you!", children }) => (
     <h1 className="uoes-serif text-4xl sm:text-5xl font-bold leading-tight mb-6">{title}</h1>
     <div className="text-base space-y-2 max-w-2xl">{children}</div>
   </ScarletSlide>
+);
+
+/* The standard closing resources: this deck's own links on the left, the
+   standard Rutgers set (UOES.resources) on the right. Goes just before the
+   ClosingSlide. items = [{ label, href, note }]. Children render under the
+   columns (a Placeholder while something is still to confirm). */
+const ResourceList = ({ title, items }) => (
+  <div>
+    <p className="uoes-sub mb-2">{title}</p>
+    <ul className="space-y-1.5">
+      {items.map((r) => (
+        <li key={r.href}>
+          <Link href={r.href}>{r.label}</Link>
+          {r.note && <p className="text-sm text-slate leading-snug">{r.note}</p>}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const ResourcesSlide = ({ title = "Resources", sub = "Take With You", items = [], itemsTitle = "From today", standard = true, checked, children }) => (
+  <SlideShell>
+    <Heading sub={sub}>{title}</Heading>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {items.length > 0 && <ResourceList title={itemsTitle} items={items} />}
+      {standard && <ResourceList title="At Rutgers" items={UOES.resources} />}
+    </div>
+    {children}
+    {checked && <p className="text-xs text-slate mt-4">Links checked {checked}</p>}
+  </SlideShell>
 );
 
 /* ── Text ───────────────────────────────────────────────────────────── */

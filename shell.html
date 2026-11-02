@@ -36,7 +36,10 @@
         
         if (presentation) {
             // Fetch the JSX file
-            fetch(presentation + '.jsx')
+            // cache: 'no-cache' revalidates with the server every load (a cheap 304
+            // when unchanged), so a deck and its theme are never a mismatched pair
+            // after an update: a fresh deck on a cached old theme renders blank.
+            fetch(presentation + '.jsx', { cache: 'no-cache' })
                 .then(response => {
                     if (!response.ok) throw new Error('Presentation not found');
                     return response.text();
@@ -48,7 +51,7 @@
                     const head = jsxCode.split('\n').slice(0, 5).join('\n');
                     const m = head.match(/^\s*\/\/\s*@theme\s+([a-z0-9-]+)\s*$/im);
                     if (!m) return [null, jsxCode];
-                    return fetch('themes/' + m[1] + '/theme.jsx').then(r => {
+                    return fetch('themes/' + m[1] + '/theme.jsx', { cache: 'no-cache' }).then(r => {
                         if (!r.ok) throw new Error('Theme not found: ' + m[1]);
                         return r.text();
                     }).then(themeCode => [themeCode, jsxCode]);

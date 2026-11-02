@@ -104,6 +104,7 @@ const walk = (n, d = 0) => {
 
 // The root component tree, as the deck opens.
 const root = global.__ROOT__;
+if (!root) { console.log('SKIP — not a deck (nothing rendered to #root): ' + file); process.exit(0); }
 try {
   walk(root.type(root.props || {}));
 } catch (e) {

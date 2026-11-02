@@ -145,6 +145,18 @@ const slides = [
     ),
   },
   {
+    label: "ResourcesSlide",
+    content: (
+      <ResourcesSlide
+        items={[
+          { label: "Something from today", href: "https://uoes.rutgers.edu", note: "One line on why it's useful" },
+          { label: "Another", href: "https://uoes.rutgers.edu", note: "The right column is the standard Rutgers set" },
+        ]}
+        checked="Month XX, 20XX"
+      />
+    ),
+  },
+  {
     label: "ClosingSlide",
     content: (
       <ClosingSlide>
