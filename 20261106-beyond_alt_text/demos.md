@@ -52,6 +52,8 @@ Every clip exists because the abstract promises it; the promise is named on each
 | 10 | 11 | **It answers instead.** A worksheet with a deliberate error (a "find the mistake" exercise) → a plain "make this accessible" prompt → the AI solves it and quietly fixes the error. Then the slide 11 prompt on the same page → transcribed as written, error kept. | Rick's most common failure in practice. It turns a worksheet into an answer key, and the first line of the prompt is the fix. |
 
 Clips 3 and 9 use the slide 11 prompt word for word, so the room sees the prompt they'll use.
+Clip 9 can end by pasting `notation-access/SKILL.md` into a Gemini skill, so the room
+sees the take-away working too.
 
 ## Before recording, verify (worklist item 3, still open)
 

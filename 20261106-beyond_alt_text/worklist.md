@@ -139,6 +139,16 @@ proves", for the same reason in tests.
       talks; leave them. The January 29 Prompting Cookbook should say skills and plugins.
 - [ ] Record clip 10 (it answers instead, then the prompt fixes it). See `demos.md`.
 
+**The rules live in a skill — built November 2, 2026** (Rick: "shouldn't this kind of advice
+live in a skill anyway?"). `notation-access/SKILL.md` is the full rule set: never solve or
+correct, keep local conventions, mark uncertainty at the symbol, describe without concluding,
+what to produce for notation, diagrams, figures and notation with no spoken form, and a
+closing "Check these" list. It's plain Markdown with a name and description at the top, so it
+works as an Agent Skill as-is and pastes into a Gemini skill or Copilot agent. Slide 11 keeps
+a short form of the prompt and links the skill; the closing slide lists it.
+- [ ] Paste it into a Gemini skill on a NetID and run it on two specimens before Friday.
+      Check it transcribes and doesn't solve.
+
 ## Two promises this session inherits
 
 ### The earlier promise
