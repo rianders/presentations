@@ -122,9 +122,21 @@ simplifying, correcting or finishing anything. The figure line says "without say
 proves", for the same reason in tests.
 
 **Saving the prompt so the rules travel with it** (Rick's "AI skills" idea): slide 11 says
-"Save it as a Gem in Gemini, or an agent in Copilot."
-- [ ] **Verify on a NetID** that a Rutgers account can save a Gem, and create a Copilot
-      agent. Both were unverified on September 18. If either can't, drop it from the line.
+"Save it as a skill in Gemini, or an agent in Copilot."
+
+**Gems and GPTs are being retired, checked November 2, 2026:**
+- **Gemini: Gems → skills.** No new or edited Gems from October 13, 2026; automatic
+  migration to skills from November 17; Gems removed from the Gemini app December 17.
+  Google's Workspace post says Gems on education accounts last until at least June 1,
+  2027. Skills started rolling out in Workspace on October 5.
+- **ChatGPT: custom GPTs → plugins.** No new GPTs from October 26, 2026; GPTs stop
+  working December 11. A migrated GPT's instructions become a skill inside the plugin.
+  Not the 2023 plugins: a different product with the old name.
+- **Copilot: still "agents".** No rename found.
+- [ ] **Verify on a NetID** that a Rutgers account can create a Gemini skill, and a Copilot
+      agent. If either can't, drop it from the line.
+- [ ] Earlier decks in the series say "Gem" (August 21's Gem share link). They're past
+      talks; leave them. The January 29 Prompting Cookbook should say skills and plugins.
 - [ ] Record clip 10 (it answers instead, then the prompt fixes it). See `demos.md`.
 
 ## Two promises this session inherits
@@ -172,8 +184,8 @@ Open questions the deck has to answer around it:
   as the win.
 - **Rutgers-accessible is the requirement (Rick, October 15, 2026).** Most options must
   be things the room can use with Rutgers accounts. Build the Gen AI reader in Gemini or
-  Copilot on a NetID: September's "bring your own" lane. If it needs a Gem, verify that
-  a NetID account can save Gems; that was still unverified on September 18. If it only
+  Copilot on a NetID: September's "bring your own" lane. If it needs a saved assistant,
+  that's now a Gemini skill, not a Gem (see the November 2 note below on Gems → skills). If it only
   works on a paid or personal account, it's a showcase: say so on the slide.
 - Audio routing and pacing below still apply to whatever plays over Zoom.
 

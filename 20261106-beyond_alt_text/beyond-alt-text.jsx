@@ -439,8 +439,11 @@ step, without saying what it proves.
 Then list anything you were unsure of.`}</CodeBlock>
         </div>
 
+        {/* Gems are being replaced by skills (Google, September 2026: no new Gems from
+            October 13, migration from November 17) and custom GPTs by plugins (OpenAI:
+            new GPTs end October 26, shutdown December 11). Checked November 2, 2026. */}
         <p className="text-sm text-slate">
-          Save it as a Gem in Gemini, or an agent in Copilot, and every page gets the same rules.
+          Save it as a skill in Gemini, or an agent in Copilot, and every page gets the same rules.
         </p>
 
         <Placeholder title="Work session">
