@@ -92,6 +92,29 @@ Still open from this review:
 - [ ] Competencies 1, 3 and 4: get the Pathways Program text and check the deck against it.
 - [ ] Record clips 1, 3, 6 and 7. Those are the brief's promises; the slides hold placeholders until then.
 
+## The argument, in Rick's words — November 2, 2026
+
+1. Notation is specific on purpose, and we don't speak it the way we read it.
+2. Automated readers are literal: they read the symbols, not the meaning an expert would put into words.
+3. Seeing, hearing and spatial sense loop together. A capture that is too complete, too
+   real, in image or audio, buries the important part.
+4. AI reads a page accurately now, and can work out what is meant, but it guesses. It
+   guesses common ideas well and specialized ones badly, so **a strong model fails at
+   the edges**, where the notation is rarest and the information thinnest.
+5. Accessible includes being *able to read* the notation, not only being unable to see or
+   hear. Senses beyond sight and hearing: touch (braille, tactile graphics, models),
+   movement (dance), sign, sonification, colour.
+
+Where it lands: 1–2 on slides 3–7, 3 on slide 9, 4 on slide 8, and 5 on slides 10 and 12.
+
+**Demos use Rick's own fields**, because he is the verifier: music, propositional logic,
+math from tensors to stochastic calculus, simple electronic schematics, code. Slide 10's
+grid swaps Law for Electronics. See `demos.md`.
+
+**Said out loud, not on a slide:** in a test, a full description can give the answer away.
+How much to describe has to match what the question tests, and only the instructor knows
+that. Bring it up in the work session.
+
 ## Two promises this session inherits
 
 ### The earlier promise

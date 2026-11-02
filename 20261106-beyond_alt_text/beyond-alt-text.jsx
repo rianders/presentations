@@ -275,6 +275,12 @@ const slides = [
           When the source is unclear, the AI writes what was <em>probably</em> meant. A good
           guess sounds exactly like a correct reading.
         </Lede>
+        {/* Rick, November 2, 2026: common ideas are guessed well, specialized ones badly,
+            so a strong model fails at the edges. Prefer a specialized specimen to prove it. */}
+        <Lede>
+          It guesses best on what's common and worst on what's specialized: the material your
+          course depends on, and the fewest people can check.
+        </Lede>
         <Placeholder title="Specimen">
           The logic truth table headed P ⟹ Q where the source says P ⟺ Q. Confirm by eye;
           recreate it rather than screenshot it (copyrighted source).
@@ -339,7 +345,7 @@ const slides = [
             ["Linguistics", "/ˈfoʊ.nə.tɪk/"],
             ["Music", "♩ = 120 · F♯"],
             ["Medicine", "1 tab PO b.i.d."],
-            ["Law", "42 U.S.C. § 1983"],
+            ["Electronics", "R1 vin vout 4.7k"],
           ].map(([field, sample]) => (
             <div key={field} className="bg-white border border-line rounded-lg px-3 py-2">
               <p className="text-xs font-black uppercase tracking-widest text-slate">{field}</p>
@@ -392,7 +398,7 @@ const slides = [
           <div className="bg-ink rounded-xl px-4 py-2 flex-1">
             <p className="text-xs font-black uppercase tracking-widest text-silver">Needs a different form</p>
             <p className="text-sm text-white">Music staves · Labanotation · syntax trees · structural formulas</p>
-            <p className="text-xs text-silver mt-1">A tree as a bracketed list. A molecule by its name.</p>
+            <p className="text-xs text-silver mt-1">A circuit as a netlist. A tree in brackets. A molecule by name, or by touch.</p>
           </div>
         </div>
 
@@ -433,6 +439,9 @@ const slides = [
     label: "Questions",
     content: (
       <ClosingSlide title="Questions?">
+        {/* Rick, November 2, 2026: accessible also means able to read the notation, and
+            students have to write it too. Any sense: sight, hearing, touch, movement. */}
+        <p className="text-lg mb-4">Accessible means a student can read it and write it, with whatever senses they use.</p>
         <p><Link onDark href="https://rianders.github.io/presentations">rianders.github.io/presentations</Link> — every deck in this series</p>
         <p><Link onDark href="https://it.rutgers.edu/ai">it.rutgers.edu/ai</Link> — the AI tools your Rutgers account includes</p>
         <Placeholder title="Notation tools">
