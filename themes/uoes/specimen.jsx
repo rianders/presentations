@@ -120,6 +120,21 @@ const slides = [
     ),
   },
   {
+    label: "CardGrid",
+    content: (
+      <SlideShell>
+        <Heading sub="Spotlight">CardGrid</Heading>
+        <Lede>Click a card, or W A S D. Space steps through, Esc clears.</Lede>
+        <CardGrid cols={2}>
+          <SectionCard title="First card" icon="1️⃣">Supporting text.</SectionCard>
+          <SectionCard title="Second card" icon="2️⃣">Supporting text.</SectionCard>
+          <SectionCard title="Third card" icon="3️⃣">Supporting text.</SectionCard>
+          <SectionCard title="Fourth card" icon="4️⃣" accent>The emphasized one.</SectionCard>
+        </CardGrid>
+      </SlideShell>
+    ),
+  },
+  {
     label: "Interact, Placeholder",
     content: (
       <SlideShell>

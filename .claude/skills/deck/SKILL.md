@@ -47,6 +47,11 @@ and ends with `root.render(<Deck slides={slides} meta="…" />)`. Redefining a t
 name (`SlideShell`, `Link`, …) breaks the whole deck with "Identifier has already been
 declared"; `render-check.js` catches it.
 
+**Navigating a themed deck:** → ← or Space (Shift+Space back), Page Up/Down for a
+clicker, Home/End, and **F for present mode** (slide only, scaled to fill the screen,
+fullscreen where allowed; Esc leaves). The bar names every slide, so keep each slide's
+`label` to a word or two.
+
 **Start from the specimen**, which has one slide per component:
 `shell.html?p=themes/uoes/specimen` (source: `themes/uoes/specimen.jsx`).
 
@@ -57,6 +62,7 @@ declared"; `render-check.js` catches it.
 | `Heading sub="Demo · 8 min"` | Serif title; `sub` is the scarlet caps line (segment + time) |
 | `Columns n={2–4}` + `Column` | Column layouts with dotted scarlet dividers |
 | `Stats`, `People`, `Agenda`, `Quote` | The template's stats, speakers/thanks, agenda and quote layouts |
+| `CardGrid cols={2–4}` | Card spotlight: click or W A S D brings one card forward, Space steps, Esc clears |
 | `Lede`, `Bullet`, `Link` (`onDark` on scarlet), `SectionCard`, `Note`, `DropIn`, `PipelineStep`, `VerifyBeat`, `CodeBlock`, `Interact`, `Tag` | As below, restyled |
 | `Placeholder`, `DraftChip` | Draft chrome: amber on purpose, outside the palette |
 

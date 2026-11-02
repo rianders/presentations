@@ -337,10 +337,69 @@ const Agenda = ({ items }) => (
   </ol>
 );
 
+/* Card spotlight, from the April 2026 decks. Click a card, or W A S D, to
+   bring it forward and dim the rest; Space steps through, Esc clears.
+   Any children work: SectionCard, Column, a plain div. */
+const CardGrid = ({ cols = 2, children }) => {
+  const [active, setActive] = React.useState(null);
+  const activeRef = React.useRef(null);
+  const items = [].concat(children).flat().filter(Boolean);
+  const count = items.length;
+
+  React.useEffect(() => { activeRef.current = active; }, [active]);
+
+  React.useEffect(() => {
+    // Capture phase, so a spotlit grid gets Space and Esc before the deck does.
+    const handler = (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const key = e.key.toLowerCase();
+      if (key === 'escape' || key === ' ') {
+        if (activeRef.current === null) return;   // nothing spotlit: the deck's key
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        if (key === 'escape') setActive(null);
+        else setActive((a) => (a < count - 1 ? a + 1 : null));
+        return;
+      }
+      if (!['w', 'a', 's', 'd'].includes(key)) return;
+      setActive((a) => {
+        const cur = a === null ? 0 : a;
+        const row = Math.floor(cur / cols), col = cur % cols;
+        if (a === null) return 0;
+        if (key === 'a') return Math.max(0, cur - 1);
+        if (key === 'd') return Math.min(count - 1, cur + 1);
+        if (key === 'w') { const n = (row - 1) * cols + col; return n >= 0 ? n : cur; }
+        const n = (row + 1) * cols + col; return n < count ? n : cur;
+      });
+    };
+    window.addEventListener('keydown', handler, true);
+    return () => window.removeEventListener('keydown', handler, true);
+  }, [cols, count]);
+
+  return (
+    <div className={`grid grid-cols-1 md:grid-cols-${cols} gap-4 my-4`}>
+      {items.map((child, i) => {
+        const on = active === i, dim = active !== null && !on;
+        return (
+          <div key={i} role="button" tabIndex={0} aria-pressed={on}
+            onClick={() => setActive(on ? null : i)}
+            onKeyDown={(e) => { if (e.key === 'Enter') setActive(on ? null : i); }}
+            className={`rounded-xl cursor-pointer transition-all duration-200 ${on ? "ring-4 ring-[#CC0033] scale-[1.03] relative z-10 shadow-xl" : ""} ${dim ? "opacity-30" : ""}`}>
+            {child}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 /* ── The deck: navigation, deep links, print view ───────────────────
    <Deck slides={slides} meta="60 min content + 30 min work session" />
    slides = [{ label, content }]. URL: &s=N opens slide N and tracks as
-   you move; &print is the paginated view the shared PDF is made from. */
+   you move; &print is the paginated view the shared PDF is made from.
+   Keys: → ← Space (Shift+Space back), Page Up/Down for clickers, Home and
+   End, F for present mode, Esc to leave it. Every slide's label is a
+   button in the bar, so keep labels short. */
 
 const UOESPrintView = ({ slides }) => (
   <div className="uoes" style={{ background: 'white' }}>
@@ -376,6 +435,9 @@ const UOESPrintView = ({ slides }) => (
   </div>
 );
 
+/* Design width of a slide. Present mode scales this box to fill the screen. */
+const UOES_SLIDE_WIDTH = 1024;
+
 const Deck = ({ slides, meta }) => {
   const params = new URLSearchParams(window.location.search);
   const startAt = (() => {
@@ -383,6 +445,10 @@ const Deck = ({ slides, meta }) => {
     return Number.isFinite(n) && n >= 1 && n <= slides.length ? n - 1 : 0;
   })();
   const [current, setCurrent] = React.useState(startAt);
+  const [presenting, setPresenting] = React.useState(false);
+  const [scale, setScale] = React.useState(1);
+  const presentingRef = React.useRef(false);
+  const stageRef = React.useRef(null);
 
   React.useEffect(() => {
     const u = new URL(window.location.href);
@@ -392,14 +458,64 @@ const Deck = ({ slides, meta }) => {
 
   const prev = () => setCurrent((c) => Math.max(0, c - 1));
   const next = () => setCurrent((c) => Math.min(slides.length - 1, c + 1));
+  const first = () => setCurrent(0);
+  const last = () => setCurrent(slides.length - 1);
+
+  /* Present mode: the slide alone, scaled to fill the screen, fullscreen
+     where the browser allows it. F toggles, Esc leaves. */
+  const enterPresent = () => {
+    presentingRef.current = true;
+    setPresenting(true);
+    const el = document.documentElement;
+    if (el.requestFullscreen && !document.fullscreenElement) el.requestFullscreen().catch(() => {});
+  };
+  const exitPresent = () => {
+    presentingRef.current = false;
+    setPresenting(false);
+    if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => {});
+  };
 
   React.useEffect(() => {
-    const handler = (e) => {
-      if (e.key === "ArrowRight") { e.preventDefault(); next(); }
-      if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
+    // Esc in real fullscreen goes to the browser, not the page: follow it out.
+    const onFs = () => { if (!document.fullscreenElement && presentingRef.current) exitPresent(); };
+    document.addEventListener('fullscreenchange', onFs);
+    return () => document.removeEventListener('fullscreenchange', onFs);
+  }, []);
+
+  React.useEffect(() => {
+    if (!presenting) return;
+    const fit = () => {
+      const el = stageRef.current;
+      if (!el) return;
+      setScale(Math.min(window.innerWidth / UOES_SLIDE_WIDTH, window.innerHeight / el.offsetHeight));
     };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    fit();
+    const late = setTimeout(fit, 150);   // again once images have their size
+    window.addEventListener('resize', fit);
+    return () => { clearTimeout(late); window.removeEventListener('resize', fit); };
+  }, [presenting, current]);
+
+  /* Keys. Clickers send Page Up / Page Down. A CardGrid with a card in the
+     spotlight takes Space and Esc first and stops them here. */
+  React.useEffect(() => {
+    const handler = (e) => {
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
+      const t = e.target;
+      if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName || ''))) return;
+      const go = (fn) => { e.preventDefault(); fn(); };
+      switch (e.key) {
+        case 'ArrowRight': case 'PageDown': return go(next);
+        case 'ArrowLeft': case 'PageUp': return go(prev);
+        case ' ': return go(e.shiftKey ? prev : next);
+        case 'Home': return go(first);
+        case 'End': return go(last);
+        case 'f': case 'F': return go(presentingRef.current ? exitPresent : enterPresent);
+        case 'Escape': if (presentingRef.current) go(exitPresent); return;
+        default: return;
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
   }, []);
 
   const openPrint = () => {
@@ -411,7 +527,24 @@ const Deck = ({ slides, meta }) => {
 
   if (params.has('print')) return <UOESPrintView slides={slides} />;
 
-  const btn = "px-5 py-2 bg-scarlet text-white text-sm font-bold rounded-md hover:bg-scarlet-dark active:scale-95 transition-all disabled:bg-gray-300 disabled:cursor-not-allowed";
+  const slide = (
+    <UOESSlide.Provider value={{ n: current + 1, total: slides.length }}>
+      {slides[current].content}
+    </UOESSlide.Provider>
+  );
+
+  if (presenting) {
+    return (
+      <div className="uoes fixed inset-0 bg-black flex items-center justify-center overflow-hidden">
+        <div ref={stageRef} className="bg-white flex-shrink-0"
+             style={{ width: UOES_SLIDE_WIDTH, transform: `scale(${scale})`, transformOrigin: 'center center' }}>
+          {slide}
+        </div>
+      </div>
+    );
+  }
+
+  const btn = "px-4 py-2 bg-scarlet text-white text-sm font-bold rounded-md hover:bg-scarlet-dark active:scale-95 transition-all disabled:bg-gray-300 disabled:cursor-not-allowed";
 
   return (
     <div className="uoes min-h-screen bg-gray-200 flex flex-col">
@@ -422,28 +555,33 @@ const Deck = ({ slides, meta }) => {
       )}
       <div className="flex-1 flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-auto">
         <div className="bg-white rounded-md shadow-2xl w-full max-w-5xl overflow-hidden">
-          <UOESSlide.Provider value={{ n: current + 1, total: slides.length }}>
-            {slides[current].content}
-          </UOESSlide.Provider>
+          {slide}
         </div>
       </div>
 
-      <div className="sticky bottom-0 bg-white border-t border-gray-200 shadow-lg px-4 py-3 flex items-center justify-center gap-2 flex-wrap">
-        <button onClick={() => setCurrent(0)} className={btn}>⏮ Begin</button>
-        <button onClick={prev} disabled={current === 0} className={btn}>← Prev</button>
-        <div className="flex gap-2 items-center">
+      <div className="sticky bottom-0 bg-white border-t border-gray-200 shadow-lg px-4 py-3 space-y-2">
+        {/* Every slide by name, so a demo is one click away. */}
+        <nav aria-label="Slides" className="flex flex-wrap gap-1 justify-center">
           {slides.map((s, i) => (
-            <button key={i} onClick={() => setCurrent(i)} title={s.label} aria-label={`Slide ${i + 1}: ${s.label}`}
-              className={`transition-all rounded-full ${i === current ? "w-6 h-2.5 bg-scarlet" : "w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400"}`} />
+            <button key={i} onClick={() => setCurrent(i)} aria-current={i === current ? 'step' : undefined}
+              className={`text-xs px-2 py-1 rounded transition-colors ${i === current ? "bg-scarlet text-white font-bold" : "bg-gray-100 text-slate hover:bg-gray-200"}`}>
+              {i + 1} · {s.label}
+            </button>
           ))}
+        </nav>
+        <div className="flex items-center justify-center gap-2 flex-wrap">
+          <button onClick={first} className={btn}>⏮ Begin</button>
+          <button onClick={prev} disabled={current === 0} className={btn}>← Prev</button>
+          <span className="text-sm text-slate tabular-nums w-16 text-center">{current + 1} / {slides.length}</span>
+          <button onClick={next} disabled={current === slides.length - 1} className={btn}>Next →</button>
+          <button onClick={last} className={btn}>End ⏭</button>
+          <button onClick={enterPresent} className="px-4 py-2 bg-ink text-white text-sm font-bold rounded-md active:scale-95 transition-all" title="Full screen, slide only (F). Esc to leave.">▶ Present</button>
+          <button onClick={openPrint} className="px-4 py-2 bg-ink text-white text-sm font-bold rounded-md active:scale-95 transition-all" title="Export all slides as PDF">PDF</button>
         </div>
-        <button onClick={next} disabled={current === slides.length - 1} className={btn}>Next →</button>
-        <button onClick={() => setCurrent(slides.length - 1)} className={btn}>End ⏭</button>
-        <button onClick={openPrint} className="px-5 py-2 bg-ink text-white text-sm font-bold rounded-md active:scale-95 transition-all" title="Export all slides as PDF">PDF</button>
       </div>
 
       <div className="text-center text-xs text-slate py-2">
-        Use ← → arrow keys to navigate · {slides.length} slides{meta ? ` · ${meta}` : ''}
+        ← → or Space to move · F to present, Esc to leave · {slides.length} slides{meta ? ` · ${meta}` : ''}
       </div>
     </div>
   );
