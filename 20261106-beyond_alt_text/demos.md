@@ -45,6 +45,14 @@ Every clip exists because the abstract promises it; the promise is named on each
 | 8 | 10 | **A schematic as a netlist.** A simple circuit schematic → AI writes the netlist (each component and the nodes it connects) → Rick checks every connection → NVDA reads it. The syntax tree as bracket notation is the backup. | The abstract names both as conversions. Slide 10 now says they need "a different form"; this clip shows that form. |
 | 9 | 11 | **Work-session walkthrough, 60 seconds.** The exact prompt, the exact account, the result pasted into Canvas. Played once before people start. Optionally, a short code sample read by NVDA: the structure-announced level, in a notation half the room uses. | Makes the 30 minutes start on minute one |
 
+## Should have, added November 2, 2026
+
+| # | Slide | Clip | Why |
+|---|---|---|---|
+| 10 | 11 | **It answers instead.** A worksheet with a deliberate error (a "find the mistake" exercise) → a plain "make this accessible" prompt → the AI solves it and quietly fixes the error. Then the slide 11 prompt on the same page → transcribed as written, error kept. | Rick's most common failure in practice. It turns a worksheet into an answer key, and the first line of the prompt is the fix. |
+
+Clips 3 and 9 use the slide 11 prompt word for word, so the room sees the prompt they'll use.
+
 ## Before recording, verify (worklist item 3, still open)
 
 - Does the Canvas equation editor produce MathML or an image? Clip 3 depends on it.

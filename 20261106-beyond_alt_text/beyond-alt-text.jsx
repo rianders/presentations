@@ -417,17 +417,35 @@ const slides = [
         <Heading sub="Hands-On · 30 min">Your Turn</Heading>
         <Lede>One equation set, unit or figure from your own course.</Lede>
 
-        <div className="space-y-4">
-          <PipelineStep num="1" title="Run the AI pass">
-            Notation: ask for LaTeX, and how someone in your field would say it. A figure or
-            diagram: ask for the walkthrough or the description.
-          </PipelineStep>
-          <PipelineStep num="2" title="Verify">Where did it guess?</PipelineStep>
-          <PipelineStep num="3" title="Listen">Put it in Canvas and hear it.</PipelineStep>
+        <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-6 items-start">
+          <div className="space-y-4">
+            <PipelineStep num="1" title="Run the prompt">On one page, not the whole unit.</PipelineStep>
+            <PipelineStep num="2" title="Verify">Where did it guess? Did it change anything?</PipelineStep>
+            <PipelineStep num="3" title="Listen">Put it in Canvas and hear it.</PipelineStep>
+          </div>
+
+          {/* Rick, November 2, 2026: asked to make a problem accessible, AI tends to SOLVE
+              it. That destroys a worksheet, and "find the error" exercises worst of all,
+              because it fixes the error. The first line of the prompt forbids it. */}
+          <CodeBlock>{`Make this accessible. Do not solve, simplify, correct
+or finish anything: errors, blanks and unfinished
+steps stay exactly as they are.
+
+Notation: give the LaTeX, and how someone in
+[your field] would read it aloud.
+Figure or diagram: describe what it shows, step by
+step, without saying what it proves.
+
+Then list anything you were unsure of.`}</CodeBlock>
         </div>
 
+        <p className="text-sm text-slate">
+          Save it as a Gem in Gemini, or an agent in Copilot, and every page gets the same rules.
+        </p>
+
         <Placeholder title="Work session">
-          The prompt, the tool and account, and a fallback page for anyone who brought nothing.
+          Which tool and account, confirmed on a NetID, and a fallback page for anyone who
+          brought nothing.
         </Placeholder>
       </SlideShell>
     ),

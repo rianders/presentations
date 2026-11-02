@@ -113,6 +113,20 @@ grid swaps Law for Electronics. See `demos.md`.
 How much to describe has to match what the question tests, and only the instructor knows
 that. Bring it up in the work session.
 
+## The prompt, and saving it — November 2, 2026
+
+**Rick: asked to make a math problem accessible, AI tends to answer it instead.** That
+destroys a worksheet, and a "find the error" exercise worst of all, because it fixes the
+error. Slide 11 now carries the work-session prompt, and its first line forbids solving,
+simplifying, correcting or finishing anything. The figure line says "without saying what it
+proves", for the same reason in tests.
+
+**Saving the prompt so the rules travel with it** (Rick's "AI skills" idea): slide 11 says
+"Save it as a Gem in Gemini, or an agent in Copilot."
+- [ ] **Verify on a NetID** that a Rutgers account can save a Gem, and create a Copilot
+      agent. Both were unverified on September 18. If either can't, drop it from the line.
+- [ ] Record clip 10 (it answers instead, then the prompt fixes it). See `demos.md`.
+
 ## Two promises this session inherits
 
 ### The earlier promise
