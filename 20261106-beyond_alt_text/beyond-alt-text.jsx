@@ -318,8 +318,11 @@ const slides = [
         </Lede>
 
         <div className="space-y-4">
+          {/* November 3, 2026: PDFs read better as page images (the text layer breaks
+              symbols and layout), and a tall page read whole lost lines that the same
+              page in pieces kept. tools/prep_pages.py; recordings/split-vs-whole.md. */}
           <PipelineStep num="1" title="Source">
-            Handwriting · scanned PDF · photo
+            Handwriting · scanned PDF · photo, sent one page at a time as images
           </PipelineStep>
           <PipelineStep num="2" title="AI reads it">
             Layout, symbols, structure
@@ -333,9 +336,17 @@ const slides = [
           Someone who reads the notation checks it against the source.
         </VerifyBeat>
 
-        <Placeholder title="Accuracy">
-          February showed 88% printed / 58% handwriting. Measured? If so, source and date. If
-          not, it stays out.
+        {/* November 3, 2026: replaces February's 88% / 58%, which were never sourced.
+            Ten models, one handwritten page (sandbox algebra p.13), 30 lines, one run each:
+            recordings/tier-comparison.md. Gemini Flash 29, Copilot Auto 23, ChatGPT 5.6
+            Instant 27, Luna 24; Gemini Thinking 30, Copilot Think deeper 29, Astra 30. */}
+        <Note>
+          One handwritten page, 30 lines: each tool's default model missed some (23 to 29
+          right). Its strongest model got 29 or 30. Pick the model; don't take the default.
+        </Note>
+        <Placeholder title="Review">
+          Counts are one page, one run each (November 3, 2026). Say so out loud. February's
+          88% / 58% are dropped.
         </Placeholder>
       </SlideShell>
     ),
@@ -349,9 +360,28 @@ const slides = [
     content: (
       <SlideShell>
         <Heading sub="Demo · 10 min">Said the Way People Say It</Heading>
-        <Placeholder title="Demo">
-          Rick's Gen AI reader: the same examples as slide 5, then a handwritten source and
-          notation outside math. Which Rutgers tool it runs on, or label it a showcase.
+        {/* November 3, 2026, both on Rick's NetID, so neither is a showcase. Every Rutgers
+            faculty member has Gemini and Copilot; ChatGPT Edu with GPT-6 Astra is an
+            upgrade (Rick). Page 13: Gemini 3.6 Thinking 30/30 but adds "final answer";
+            Astra 30/30, nothing added, positions described. Astra's line below is quoted
+            from its answer. recordings/tier-comparison.md. */}
+        <Lede>
+          It reads handwriting, says each line the way a teacher would, and describes where
+          things sit on the page.
+        </Lede>
+        <Columns n={2}>
+          <Column title="Everyone · Gemini, Thinking model">
+            Every line of a handwritten page right. It still adds steps the page doesn't
+            have (“final answer”), so check it.
+          </Column>
+          <Column title="ChatGPT Edu upgrade · GPT-6 Astra">
+            Every line right, nothing added, and the layout kept:
+            <br /><span className="italic">“Upper right, green: two x plus nine over…”</span>
+          </Column>
+        </Columns>
+        <Placeholder title="Review">
+          Demo: the same examples as slide 5, then the handwritten page, then notation outside
+          math. Live or recorded? Say that Astra needs the upgrade.
         </Placeholder>
       </SlideShell>
     ),
@@ -446,7 +476,34 @@ const slides = [
     ),
   },
 
-  // ── 11: WORK SESSION ──
+  // ── 11: IT ANSWERS INSTEAD ──
+  // Added November 3, 2026 (Rick: "New slide before 11"). Clip 10: the GIF is cut from the
+  // November 3 Gemini run (recordings/clip10-take1-it-answers-instead.gif), three captioned
+  // frames slow enough to read. Sets up the first line of the work-session prompt.
+  {
+    label: "Answers Instead",
+    content: (
+      <SlideShell>
+        <Heading sub="The Prompt · 2 min">Ask for Access, Get an Answer Key</Heading>
+        <Lede>
+          Ask a tool to make a worksheet accessible and it tends to fix it. On a “find the
+          mistake” page, the fix is the answer.
+        </Lede>
+        <img
+          src="20261106-beyond_alt_text/clip10-it-answers-instead.gif"
+          alt="Three frames, looping. First, the handwritten page: two x plus nine over the square root of x squared equals two x plus nine over x. Second, Gemini's answer to “Make this accessible”: the same line with “x greater than zero” added. Third, the answer to the work-session prompt: the line kept exactly as written."
+          className="rounded-lg border border-line w-full max-w-3xl mx-auto my-4"
+          width="900"
+          height="260"
+        />
+        <p className="uoes-sub">
+          The first line of the prompt is the fix: do not solve, simplify, correct or finish anything
+        </p>
+      </SlideShell>
+    ),
+  },
+
+  // ── 12: WORK SESSION ──
   {
     label: "Work Session",
     content: (
@@ -465,7 +522,11 @@ const slides = [
               it. That destroys a worksheet, and "find the error" exercises worst of all,
               because it fixes the error. The first line of the prompt forbids it. This is
               the short form; the full rules are the notation-access skill linked below. */}
-          <CodeBlock>{`Make this accessible. Do not solve, simplify,
+          {/* November 3, 2026, page 13: the plain "Make this accessible" changed the page in
+              6 of 8 runs (added x > 0, |x|, or images); this prompt kept it as written in
+              all 7 runs that finished. recordings/clip10-history-matrix.md. */}
+          <div>
+            <CodeBlock>{`Make this accessible. Do not solve, simplify,
 correct or finish anything.
 
 Notation: the LaTeX, and how someone in
@@ -473,6 +534,10 @@ Notation: the LaTeX, and how someone in
 Figure: what it shows, not what it proves.
 
 Mark anything you were unsure of.`}</CodeBlock>
+            <p className="text-xs text-slate -mt-2">
+              On one page: “make this accessible” changed it 6 times in 8. This prompt: 0 in 7.
+            </p>
+          </div>
         </div>
 
         {/* Gems are being replaced by skills (Google, September 2026: no new Gems from
@@ -489,15 +554,24 @@ Mark anything you were unsure of.`}</CodeBlock>
           <Link href="https://github.com/rianders/presentations/tree/main/20261106-beyond_alt_text/notation-access">notation-access skill</Link>.
         </p>
 
-        <Placeholder title="Work session">
-          Which tool and account, confirmed on a NetID, and a fallback page for anyone who
-          brought nothing.
+        {/* Confirmed on Rick's NetID November 3, 2026: Gemini (Edu), Copilot Chat (Basic),
+            ChatGPT Edu. Limits seen that day: Gemini took 10 files a message and dropped
+            the rest silently; Copilot Chat (Basic) took 2 images. Fallback page: the
+            sandbox's "After: Handwritten Algebra Worked Problems". */}
+        <Note>
+          Use Gemini or Copilot on your NetID, and switch to <strong>Thinking</strong> or{' '}
+          <strong>Think deeper</strong>. Send a page at a time: Gemini takes up to 9 pages,
+          Copilot 2 images. No page with you? Use the sandbox's handwritten algebra.
+        </Note>
+        <Placeholder title="Review">
+          Are attendees enrolled in the Accessibility Sandbox? Its pages are unpublished. If
+          not, share the algebra page another way.
         </Placeholder>
       </SlideShell>
     ),
   },
 
-  // ── 12: RESOURCES ──
+  // ── 13: RESOURCES ──
   // Rick, November 2, 2026: every deck ends with standard useful resources. The theme's
   // ResourcesSlide puts this session's links beside the standard Rutgers set.
   // Verified November 2, 2026: NVDA is free with MathCAT built in since 2026.1; Rutgers
@@ -512,18 +586,21 @@ Mark anything you were unsure of.`}</CodeBlock>
           { label: "The notation-access skill", href: "https://github.com/rianders/presentations/tree/main/20261106-beyond_alt_text/notation-access", note: "Today's rules, and how to add them to Gemini, Copilot, ChatGPT or Claude" },
           { label: "NVDA", href: "https://www.nvaccess.org/", note: "Free screen reader for Windows, with MathCAT built in" },
           { label: "MathCAT", href: "https://daisy.github.io/MathCAT", note: "Speech styles, braille and navigation for MathML" },
+          { label: "Gemini", href: "https://gemini.google.com", note: "On your NetID. Choose the Thinking model" },
+          { label: "ChatGPT Edu", href: "https://chatgpt.com", note: "With the upgrade: Work mode, GPT-6 Astra" },
         ]}
-        checked="November 2, 2026"
+        checked="November 3, 2026"
       >
-        <Placeholder title="Gen AI reader">
-          The tool and account the slide 8 demo runs on, once confirmed on a NetID.
+        <Placeholder title="Review">
+          Is there a Rutgers page for getting Gemini, Copilot and the ChatGPT Edu upgrade? If
+          so, link that instead of the tools themselves.
         </Placeholder>
       </ResourcesSlide>
     ),
   },
 
-  // ── 13: CLOSING ──
-  // The template's closing slide. Links live on slide 12 now; this one is the line
+  // ── 14: CLOSING ──
+  // The template's closing slide. Links live on slide 13 now; this one is the line
   // to leave the room with, and how to reach Rick.
   {
     label: "Questions",
