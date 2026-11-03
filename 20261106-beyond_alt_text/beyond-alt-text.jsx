@@ -374,10 +374,20 @@ const slides = [
           It guesses best on what's common and worst on what's specialized: the material your
           course depends on, and the fewest people can check.
         </Lede>
-        <Placeholder title="Specimen">
-          The logic truth table headed P ⟹ Q where the source says P ⟺ Q. Confirm by eye;
-          recreate it rather than screenshot it (copyrighted source).
-        </Placeholder>
+        {/* November 3, 2026: checked against page 1 of the Section 2.1 notes in the
+            Accessibility Sandbox (limits-2-1-notes.pdf) and the OCR page
+            limits-2-1-ocr-to-inline-latex. Clip 5. Backups, still unconfirmed: P ⟹ Q for
+            P ⟺ Q in the logic text; P_ij(n) for P_ij in the Gursoy Markov notes. */}
+        <Columns n={2}>
+          <Column title="The notes · Section 2.1, page 1">
+            <span className="uoes-serif text-2xl text-ink">7·1²</span>
+            <br />“seven times one squared”, which is 7.
+          </Column>
+          <Column title="The OCR · read aloud">
+            <span className="uoes-serif text-2xl text-scarlet">7.1^2</span>
+            <br />“seven point one squared”, which is 50.41. Nothing sounds wrong.
+          </Column>
+        </Columns>
       </SlideShell>
     ),
   },
