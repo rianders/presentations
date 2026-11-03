@@ -1,5 +1,10 @@
 # Clip 10 — tools × history × prompt · November 3, 2026
 
+> **Access tiers (Rick, November 3):** every Rutgers faculty member has **Gemini and
+> Copilot**. **ChatGPT Edu** with GPT-6 Astra is an **upgrade** only some have. Read the
+> results below as two levels: what everyone can use, and what the upgrade adds. Copilot is
+> not tested yet.
+
 Rick's question: does it matter that the assistant has his conversation history?
 Same page every run: `test-specimens/algebra-worked-problems-section-13.png`.
 Prompts: "Make this accessible." (plain) and the slide 11 prompt, `[your field]` = college algebra.

@@ -376,8 +376,9 @@ const slides = [
         </Lede>
         {/* November 3, 2026: checked against page 1 of the Section 2.1 notes in the
             Accessibility Sandbox (limits-2-1-notes.pdf) and the OCR page
-            limits-2-1-ocr-to-inline-latex. Clip 5. Backups, still unconfirmed: P ⟹ Q for
-            P ⟺ Q in the logic text; P_ij(n) for P_ij in the Gursoy Markov notes. */}
+            limits-2-1-ocr-to-inline-latex. Clip 5. Backup, still unconfirmed: P ⟹ Q for
+            P ⟺ Q in the logic text. (The GLM OCR's P_ij(n) and "/" in the Markov notes
+            turned out to be faithful to the handwriting, so that backup is gone.) */}
         <Columns n={2}>
           <Column title="The notes · Section 2.1, page 1">
             <span className="uoes-serif text-2xl text-ink">7·1²</span>
@@ -386,6 +387,22 @@ const slides = [
           <Column title="The OCR · read aloud">
             <span className="uoes-serif text-2xl text-scarlet">7.1^2</span>
             <br />“seven point one squared”, which is 50.41. Nothing sounds wrong.
+          </Column>
+        </Columns>
+
+        {/* November 3, 2026: Melike Gursoy's Markov chains lecture (Jan 27, 2021), pages 2
+            and 3, run through the notation-access skill. GPT-6 Astra (ChatGPT Edu Work) and
+            Gemini 3.6 Thinking both wrote P_ij^(n), neither marked it uncertain. Rick ruled
+            from the page: P subscript ij, then (n) on the line. Evidence in
+            recordings/gursoy-lecture-comparison.md. The specialized case the Lede predicts. */}
+        <Columns n={2}>
+          <Column title="The notes · Markov chains">
+            <span className="uoes-serif text-2xl text-ink">P<sub>ij</sub>(n)</span>
+            <br />The chance of going from i to j at time n.
+          </Column>
+          <Column title="The best models · transcribed">
+            <span className="uoes-serif text-2xl text-scarlet">P<sub>ij</sub><sup>(n)</sup></span>
+            <br />The chance of getting there in n steps: a different idea. Neither flagged it.
           </Column>
         </Columns>
       </SlideShell>
