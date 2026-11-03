@@ -1,0 +1,4 @@
+algebra-worked-problems-section-13-part1of4.png	from algebra-worked-problems-section-13.png	rows 0-681
+algebra-worked-problems-section-13-part2of4.png	from algebra-worked-problems-section-13.png	rows 681-1594
+algebra-worked-problems-section-13-part3of4.png	from algebra-worked-problems-section-13.png	rows 1594-2536
+algebra-worked-problems-section-13-part4of4.png	from algebra-worked-problems-section-13.png	rows 2536-3072
