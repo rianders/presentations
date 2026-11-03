@@ -57,6 +57,19 @@ Clips 3 and 9 use the slide 11 prompt word for word, so the room sees the prompt
 Clip 9 can end by pasting `notation-access/SKILL.md` into a Gemini skill, so the room
 sees the take-away working too.
 
+## Ready-made sources in the sandbox course — November 3, 2026
+
+The Canvas sandbox's module 6 already holds pages for several clips. Record from these
+before building anything new. `worklist.md` has the details.
+
+| Clip | Page in the sandbox | What it gives you |
+|---|---|---|
+| 3 | `limits-2-1-markdown-latex-paste-…` → `limits-2-1-mathml-conversion` | Raw `$…$` showing in Canvas, then the same notes as MathML. The pipeline's before and after, already built. |
+| 5 | `limits-2-1-ocr-to-inline-latex`, page 1 | Source `7·1²` read as `7.1^2`, "seven point one squared". A verified, fluent, wrong reading. Play NVDA on both pages. |
+| 5 (backup) | `markov-chains-glm-ocr-to-mathml` vs `gursoy-class-notes` | `P_ij(n)` vs `P_ij`, and `/` in place of `\|`. Confirm against Gursoy's original before recording. |
+| 6 | `gursoy-class-notes` | The repairable-machine state diagram, already described in text. |
+| 10 | `after-logic-and-proofs-textbook-pdf`, `after-handwritten-algebra-…` | Empty after templates: real pages to run both prompts on. |
+
 ## Before recording, verify (worklist item 3, still open)
 
 - Does the Canvas equation editor produce MathML or an image? Clip 3 depends on it.

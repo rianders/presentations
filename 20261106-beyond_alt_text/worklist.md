@@ -182,6 +182,69 @@ a short form of the prompt and links the skill; the closing slide lists it.
 - [ ] Paste it into a Gemini skill on a NetID and run it on two specimens before Friday.
       Check it transcribes and doesn't solve.
 
+## The Accessibility Sandbox course — mapped November 3, 2026
+
+The Canvas sandbox (`RUCanvasCourses/accessibility-sandbox-2026-09-18.imscc`) already has
+a module **6. Beyond Alt Text (November 6)**, and it holds this deck's real material. Use
+it before making anything new. Pages are in `wiki_content/`, and files in `web_resources/`.
+
+**The limits notes: one chain, five tries.** These are the Section 2.1 handwritten notes
+(`handwritten-math/limits-2-1-notes.pdf`, 7 pages, plus a whiteboard photo and a car
+sketch). The module keeps every conversion attempt, which together make up the pipeline
+slide (slide 7) and clip 3:
+- `limits-2-1-markdown-latex-paste-…` and `…-bracket-latex-paste-…`: LaTeX pasted into
+  Canvas shows as raw `$…$` and `\(…\)`. This is the "Canvas doesn't render it" beat.
+- `limits-2-1-ocr-to-inline-latex`: OCR to LaTeX.
+- `html-mathml-…-with-gemini`, `limits-2-1-mathml-conversion` (68 equations), and
+  `…-with-described-car-diagram`: the MathML results.
+- `section-2-1-introduction-to-limits-worksheet`: LaTeX with a spoken form written under
+  each item ("f of x equals 2 times the natural log of…"). This is the house pattern, and
+  it is the same output the skill asks for.
+
+**A verified OCR error, for slide 9 and clip 5.** On page 1 of the notes, the source says
+`7·1²` (a raised dot: seven times one squared). The OCR page has `7.1^2`, which a screen
+reader speaks as "seven point one squared". It sounds right and gives 50.41 where the
+source means 7. The same page also invents fractions: the source's boxed `14.7` comes out
+as `\frac{14.7}{1}`. The MathML conversion reads `7·1²` correctly, so the two conversions
+of one page can be compared side by side. This is common material that still failed: it
+supports the argument without a specialist example.
+
+**Markov chains (Gursoy), for slide 9 and Rick's stochastic area.** Two conversions of the
+same handwritten notes disagree. The handwritten source is not in the course, so before
+quoting either one, Melike Gursoy or Rick has to confirm which is right.
+- `gursoy-class-notes`: `P{X_{n+1}=j | X_n=i} = P_ij`, with "past" and "present state"
+  underbraces.
+- `markov-chains-glm-ocr-to-mathml`:
+  - `P_ij(n)`. The added `(n)` makes the chain depend on time, which changes the meaning.
+  - A `/` in place of the conditioning bar `|`, with unbalanced braces.
+  - `S′` where the other version has `S`.
+  - A stray `α ∩ β`.
+  - The state labels 0 and 1 pulled into the matrix entries.
+- Each one reads aloud fluently. This is the specialized case the argument predicts, and
+  it is Rick's own field, so he can verify it on camera.
+
+**Diagrams, for slide 10.** Two sources:
+- In `gursoy-class-notes`, the repairable-machine state diagram is already described as
+  text (two states, self-loops α and β), and so is a hand-drawn sample-path graph.
+- In `before-limits-2-1-handwritten-notes`, the car-on-a-line sketch is described in
+  `…-with-described-car-diagram`.
+
+**Colour carries meaning.** On page 2 of the notes, blue and green highlights pair each `h`
+with its `av(h)`, and a red margin note says "cannot take h = 0 in this expression: simplify
+algebraically first". The conversions drop the colour. The Gemini full-prompt version
+rewrites the note as its own heading ("Algebraic Confirmation… assuming h ≠ 0"). That is
+the line between describing the page and teaching it, which the skill's "describe, don't
+conclude" rule covers. The after-algebra page already asks: "Is every warning or correction
+shown in color also stated in text?"
+
+**Still empty in the course.** The after pages for `logic-and-proofs` (P⟹Q, Rick's
+propositional-logic area) and `handwritten-algebra` are templates with "[to fill in]". Each
+one is a ready work-session target, or a recording for clip 10 (it answers instead).
+
+**Resources.** `tools-and-resources` already lists Ally, ReadSpeaker, SensusAccess, CidiLabs,
+the Libraries remediation request and the AI Hub. This deck's Resources slide could link the
+sandbox course itself. The course is not public, so link it only if attendees are enrolled.
+
 ## Two promises this session inherits
 
 ### The earlier promise
