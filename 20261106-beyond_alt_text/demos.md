@@ -62,6 +62,24 @@ sees the take-away working too.
 The Canvas sandbox's module 6 already holds pages for several clips. Record from these
 before building anything new. `worklist.md` has the details.
 
+> **Live Canvas uses different addresses, checked November 3, 2026.** The page names below
+> are the local export's. Rick imported it on November 3 (`accessibility-sandbox-2026-11-03.imscc`,
+> completed, no issues). Canvas updated the existing pages in place and kept their old URLs,
+> so in the live course the titles match but the addresses don't:
+>
+> | Title | Live URL (`/courses/375349/pages/…`) |
+> |---|---|
+> | Limits 2.1: Markdown LaTeX Paste (Does Not Render) | `test1-2` |
+> | Limits 2.1: Bracket LaTeX Paste (Does Not Render) | `math-notation-test-2` |
+> | Limits 2.1: OCR to Inline LaTeX | `math-ocr-test-2` (has `7.1^2`) |
+> | Limits 2.1: MathML Conversion | `test2-3` (68 MathML equations) |
+> | Limits 2.1: MathML With Described Car Diagram | `test-import-2` |
+> | Markov Chains: GLM OCR to MathML | `glm-ocr-test-2` |
+> | Markov Chains: MathML Conversion | `test2-2-2` |
+> | Markov Chains: MathML Conversion (Second Pass) | `test-page3-2` |
+>
+> All are in module 6 and unpublished. Navigate from the module, not by URL.
+
 | Clip | Page in the sandbox | What it gives you |
 |---|---|---|
 | 3 | `limits-2-1-markdown-latex-paste-…` → `limits-2-1-mathml-conversion` | Raw `$…$` showing in Canvas, then the same notes as MathML. The pipeline's before and after, already built. |

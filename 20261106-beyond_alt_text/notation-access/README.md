@@ -43,7 +43,7 @@ Microsoft 365 Copilot **agents** can carry skills.
 2. Add a skill and upload **notation-access.zip**. Upload the whole .zip; Microsoft says not to
    upload `SKILL.md` on its own.
 3. Or, more simply, paste the contents of `SKILL.md` into the agent's **Instructions**. It's
-   under 4,000 characters, well within the limit.
+   about 6,100 characters, within Copilot's 8,000-character limit.
 
 **Rutgers NetID:** which Copilot features your account has depends on its licence. Check that
 you can create an agent before relying on it.
