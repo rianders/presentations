@@ -223,6 +223,13 @@ quoting either one, Melike Gursoy or Rick has to confirm which is right.
 - Each one reads aloud fluently. This is the specialized case the argument predicts, and
   it is Rick's own field, so he can verify it on camera.
 
+**Resolved November 3, 2026, against the original** (`Class Notes-Jan27-2021.pdf`, page 2).
+The page does write `P_ij(n)` and uses `/` as the conditioning bar, so the GLM OCR's `(n)`
+and `/` are faithful readings, not errors; that backup is dropped. The real error is the
+other way: GPT-6 Astra and Gemini 3.6 Thinking both wrote `P_ij^{(n)}` (n-step) for the
+page's `P_ij(n)` (Rick's ruling: on the line). It is now on slide 9.
+See `recordings/gursoy-lecture-comparison.md`.
+
 **Diagrams, for slide 10.** Two sources:
 - In `gursoy-class-notes`, the repairable-machine state diagram is already described as
   text (two states, self-loops α and β), and so is a hand-drawn sample-path graph.
