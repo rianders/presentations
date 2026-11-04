@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testing AI on Handwritten Notation: What We Learned</title>
+</head>
+<body style="margin: 0; background-color: #ffffff; color: #1a1a1a; font-family: Arial, Helvetica, sans-serif; line-height: 1.55;">
+<!-- The content of this div is Canvas-safe: no style blocks, no classes, no scripts.
+     Paste everything inside it into a Canvas page's HTML editor. -->
+<div lang="en" style="max-width: 46em; margin: 0 auto; padding: 1.5em 1.25em;">
+
+<h1 style="font-size: 1.8em; line-height: 1.25; margin: 0 0 0.3em;">Testing AI on Handwritten Notation: What We Learned</h1>
+<p style="margin: 0 0 1.5em; color: #444444;">From <em>Beyond Alt Text: Notation, Diagrams &amp; Symbols</em>, Rutgers UOES, November 6, 2026. Tests run November 3, 2026 by Rick Anderson.</p>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">In short</h2>
+<ul>
+  <li><strong>The prompt matters more than the tool.</strong> Asked only to “make this accessible”, every run changed the page. With a prompt that forbids solving or correcting, every completed run kept it as written.</li>
+  <li><strong>Don’t take the default model.</strong> In every tool the default model missed lines. The stronger model in the same tool did best, and two of the three best are in tools every Rutgers faculty member already has.</li>
+  <li><strong>Send one page at a time, as images.</strong> Tall pages and PDFs read worse whole. Each tool also limits how many files it takes per message.</li>
+  <li><strong>The best model still makes fluent, unmarked mistakes on specialized notation.</strong> Only someone who reads the notation can catch them.</li>
+</ul>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">What we tested</h2>
+<p>One real page of handwritten college algebra from the Accessibility Sandbox course: 30 lines of worked problems, with colours, circles, cross-outs and a warning written in capitals. It contains five details tools tend to “fix”, among them:</p>
+<ul>
+  <li>a simplification written as
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mfrac><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>9</mn></mrow><msqrt><msup><mi>x</mi><mn>2</mn></msup></msqrt></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>9</mn></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{2x+9}{\sqrt{x^2}} = \frac{2x+9}{x}</annotation></semantics></math>,
+    which is true only when x is not negative;</li>
+  <li>the instructor’s note “DO NOT REWRITE NEGATIVE EXPONENTS!”;</li>
+  <li>an extra factor of (2x + 9) in one line that the later steps don’t use.</li>
+</ul>
+<p>A faithful transcription keeps all of these exactly as written. We then ran a full 14-page graduate lecture on Markov chains, with state diagrams and derivations, through the two strongest models.</p>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">1. The prompt</h2>
+<p>A plain “Make this accessible.” corrected the square-root line in <strong>6 of 8 runs</strong> across Gemini and ChatGPT, and in the other 2 made new mistakes in the math. Tools added “x &gt; 0”, replaced the line with an absolute value, reworded the warning to “do not rewrite negative exponents <em>too early</em>”, or returned a cleaned-up <em>image</em> of the page that a screen reader cannot read. One said the notes themselves made the point, which they don’t.</p>
+<p>This prompt kept the line as written in <strong>all 7 runs that finished</strong>:</p>
+<pre style="background-color: #f3f3f3; border-left: 4px solid #cc0033; padding: 0.8em 1em; white-space: pre-wrap; font-family: Consolas, Menlo, monospace; font-size: 0.95em;">Make this accessible. Do not solve, simplify, correct or finish anything.
+
+Notation: the LaTeX, and how someone in [your field] would read it aloud.
+Figure: what it shows, not what it proves.
+
+Mark anything you were unsure of.</pre>
+<p>On a “find the mistake” worksheet, a tool that fixes the mistake has written the answer key. The first line of the prompt is what prevents it.</p>
+<p>Your chat history made no visible difference: runs with no history or memory changed the page the same way. In ChatGPT, a Temporary chat still uses memory and custom instructions unless you switch it to <strong>Unpersonalized</strong>.</p>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">2. The model, at two levels of access</h2>
+<p>Every Rutgers faculty member has <strong>Gemini</strong> and <strong>Copilot</strong>. <strong>ChatGPT Edu with GPT-6 Astra</strong> is an upgrade only some have. Same page, same prompt, one run each:</p>
+<table style="border-collapse: collapse; width: 100%; margin: 0.8em 0;">
+  <caption style="text-align: left; font-weight: bold; padding-bottom: 0.4em;">Lines transcribed as written (of 30), and details kept (of 5)</caption>
+  <thead>
+    <tr>
+      <th scope="col" style="text-align: left; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Access</th>
+      <th scope="col" style="text-align: left; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Tool and model</th>
+      <th scope="col" style="text-align: right; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Lines</th>
+      <th scope="col" style="text-align: right; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Everyone</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Gemini 3.6 Flash (default)</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">29</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">5</td></tr>
+    <tr><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Everyone</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;"><strong>Gemini 3.6 Thinking</strong></td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;"><strong>30</strong></td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;"><strong>5</strong></td></tr>
+    <tr><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Everyone</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Gemini 3.1 Pro</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">29</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">4</td></tr>
+    <tr><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Everyone</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Copilot Chat, Auto (default)</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">23</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">4</td></tr>
+    <tr><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Everyone</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;"><strong>Copilot Chat, Think deeper</strong></td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;"><strong>29</strong></td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;"><strong>5</strong></td></tr>
+    <tr><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Upgrade</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">ChatGPT Edu Chat, 5.6 Instant (default)</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">27</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">4</td></tr>
+    <tr><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Upgrade</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">ChatGPT Edu Chat, GPT-6</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">27</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">4</td></tr>
+    <tr><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Upgrade</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">ChatGPT Edu Work, GPT-5.6 Luna (default)</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">24</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">4</td></tr>
+    <tr><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Upgrade</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">ChatGPT Edu Work, GPT-6 Sol</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">29</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">4</td></tr>
+    <tr><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Upgrade</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;"><strong>ChatGPT Edu Work, GPT-6 Astra</strong></td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;"><strong>30</strong></td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;"><strong>5</strong></td></tr>
+  </tbody>
+</table>
+<ul>
+  <li><strong>Everyone:</strong> choose Gemini’s <em>Thinking</em> model or Copilot’s <em>Think deeper</em>. Gemini Thinking still adds steps the page doesn’t have, such as “final answer”, and failed once with “something went wrong” before succeeding on a retry.</li>
+  <li><strong>The upgrade:</strong> GPT-6 Astra was the only run that was complete, added nothing, and described where each mark sits (“Upper right, green: …”). The upgrade’s other models did no better than Gemini Thinking.</li>
+  <li><strong>The hardest detail was the extra (2x + 9).</strong> Four models dropped it. One did so while writing “Nothing has been corrected.”</li>
+</ul>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">3. Preparing the page</h2>
+<ul>
+  <li><strong>One page at a time, as an image.</strong> A PDF’s hidden text layer can scramble symbols and layout; an image of the page shows the tool what a person sees.</li>
+  <li><strong>Cut tall pages into page-shaped pieces</strong>, in the white space between problems. Our test page is 4.4 times taller than it is wide. Read whole, it lost lines and one run quietly corrected a line; cut into four pieces, the same model got them right. Tell the tool the pieces are one page, in order.</li>
+  <li><strong>Know each tool’s limits.</strong> Copilot Chat (Basic) takes 2 images per message. Gemini took 10 files and silently dropped the rest: given a 14-page lecture, it transcribed 9 pages and described them as “the 9 attached pages”.</li>
+</ul>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">4. A hard lecture, and the mistake only an expert would catch</h2>
+<p>The 14-page Markov chains lecture went to the two strongest models with the notation-access skill attached. GPT-6 Astra transcribed all 14 pages into one Canvas page: 157 equations in MathML, the original diagrams kept with descriptions, and 15 places marked as uncertain. Gemini 3.6 Thinking covered 9 pages and marked nothing as uncertain.</p>
+<p>Both made the same mistake on pages 2 and 3, and neither flagged it. The notes write</p>
+<p style="margin-left: 1.5em;">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>P</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_{ij}(n)</annotation></semantics></math>,
+  the chance of going from state i to state j at time n. Both models wrote
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msubsup><mi>P</mi><mrow><mi>i</mi><mi>j</mi></mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">P_{ij}^{(n)}</annotation></semantics></math>,
+  the chance of getting there in n steps: a different idea.
+</p>
+<p>Read aloud, nothing sounds wrong. The mistake was found only because the instructor reads the notation. It was settled by looking at the handwriting, after the models had run.</p>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">5. Putting it in Canvas</h2>
+<ul>
+  <li>Ask for <strong>MathML</strong>, with the LaTeX kept inside it, so a screen reader with MathCAT can read each equation and step through it.</li>
+  <li>Check what you get. One answer claimed to follow WCAG 2.2 AA and hid every one of its 30 equations from screen readers, with the readings collapsed out of sight. Naming the two problems fixed both in one revision.</li>
+  <li>Pasted into a sandbox page through the HTML editor, Canvas kept all 30 MathML equations, their LaTeX, the circles and cross-outs, and the colours. Copy and paste as UTF-8, or characters such as ’ and − arrive garbled.</li>
+  <li>Not yet tested: listening to the page with NVDA and MathCAT.</li>
+</ul>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">What to do</h2>
+<ol>
+  <li>Use the prompt above, or the notation-access skill, every time.</li>
+  <li>Switch from the default model to the stronger one.</li>
+  <li>Send one page at a time, as images; cut tall pages into pieces.</li>
+  <li>Check the output against the page yourself, starting with everything it marked as uncertain.</li>
+  <li>For an assessment, decide yourself whether any note about an error stays in.</li>
+  <li>Ask for MathML for Canvas, and listen to the page before students do.</li>
+</ol>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">Limits of these tests</h2>
+<p>One algebra page and one lecture, one run per model, on one day. This is a demonstration, not a ranking: tools and models change month to month, and the same model can answer differently on another run. Model names and limits are as of November 3, 2026.</p>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">Take it with you</h2>
+<ul>
+  <li><a href="https://github.com/rianders/presentations/tree/main/20261106-beyond_alt_text/notation-access" style="color: #0b5cad;">The notation-access skill</a>, with how to add it to Gemini, Copilot, ChatGPT or Claude</li>
+  <li><a href="https://rianders.github.io/presentations/shell.html?p=20261106-beyond_alt_text/beyond-alt-text" style="color: #0b5cad;">The workshop slides</a></li>
+  <li><a href="https://github.com/rianders/presentations/tree/main/20261106-beyond_alt_text/recordings" style="color: #0b5cad;">The detailed test notes</a></li>
+</ul>
+
+</div>
+</body>
+</html>
