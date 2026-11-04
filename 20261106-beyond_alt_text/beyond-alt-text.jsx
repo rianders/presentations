@@ -379,9 +379,24 @@ const slides = [
             <br /><span className="italic">“Upper right, green: two x plus nine over…”</span>
           </Column>
         </Columns>
+        {/* November 3, 2026 demo: three lines of sandbox page 13 with GPT-6 Astra's exact
+            readings from that day's run (recordings/tier-comparison.md), spoken by the macOS
+            voice Samantha, so it's Astra's words, not a screen reader. 44 s, captions in
+            the .vtt. */}
+        <video
+          controls
+          preload="metadata"
+          className="rounded-lg border border-line w-full max-w-xl mx-auto mt-4"
+          width="1280"
+          height="720"
+          aria-label="Demo, 44 seconds: GPT-6 Astra's readings of three handwritten algebra lines, spoken aloud, with captions"
+        >
+          <source src="20261106-beyond_alt_text/slide8-said-the-way-people-say-it.mp4" type="video/mp4" />
+          <track kind="captions" src="20261106-beyond_alt_text/slide8-said-the-way-people-say-it.vtt" srcLang="en" label="English" default />
+        </video>
         <Placeholder title="Review">
-          Demo: the same examples as slide 5, then the handwritten page, then notation outside
-          math. Live or recorded? Say that Astra needs the upgrade.
+          The demo is Astra's words in a macOS voice. Say that out loud, and that Astra needs the
+          upgrade.
         </Placeholder>
       </SlideShell>
     ),
