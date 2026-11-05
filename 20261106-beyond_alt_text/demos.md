@@ -2,7 +2,7 @@
 
 Shot list for the recordings, written November 2, 2026 against the published abstract.
 Slide numbers follow the November 2 reorder: the room's challenge first (slides 2–3), the
-math pathway as the worked example (4–9), diagrams (10), it answers instead (11, added November 3), work session (12).
+math pathway as the worked example (4–9), diagrams (10), it answers instead (11, added November 3), which model (12, added November 5), work session (13).
 Every clip exists because the abstract promises it; the promise is named on each one.
 
 ## Rules for every clip
@@ -45,7 +45,7 @@ Every clip exists because the abstract promises it; the promise is named on each
 | # | Slide | Clip | Why |
 |---|---|---|---|
 | 8 | 2 | **A schematic as a netlist.** A simple circuit schematic → AI writes the netlist (each component and the nodes it connects) → Rick checks every connection → NVDA reads it. The syntax tree as bracket notation is the backup. | The abstract names both as conversions. Slide 10 now says they need "a different form"; this clip shows that form. |
-| 9 | 12 | **Work-session walkthrough, 60 seconds.** The exact prompt, the exact account, the result pasted into Canvas. Played once before people start. Optionally, a short code sample read by NVDA: the structure-announced level, in a notation half the room uses. | Makes the 30 minutes start on minute one |
+| 9 | 13 | **Work-session walkthrough, 60 seconds.** The exact prompt, the exact account, the result pasted into Canvas. Played once before people start. Optionally, a short code sample read by NVDA: the structure-announced level, in a notation half the room uses. | Makes the 30 minutes start on minute one |
 
 ## Should have, added November 2, 2026
 
@@ -53,7 +53,7 @@ Every clip exists because the abstract promises it; the promise is named on each
 |---|---|---|---|
 | 10 | 11 | **It answers instead.** Done November 3 as `clip10-it-answers-instead.gif`. A worksheet with a deliberate error (a "find the mistake" exercise) → a plain "make this accessible" prompt → the AI solves it and quietly fixes the error. Then the work-session prompt on the same page → transcribed as written, error kept. | Rick's most common failure in practice. It turns a worksheet into an answer key, and the first line of the prompt is the fix. |
 
-Clips 3 and 9 use the work-session prompt (slide 12) word for word, so the room sees the prompt they'll use.
+Clips 3 and 9 use the work-session prompt (slide 13) word for word, so the room sees the prompt they'll use.
 Clip 9 can end by pasting `notation-access/SKILL.md` into a Gemini skill, so the room
 sees the take-away working too.
 
