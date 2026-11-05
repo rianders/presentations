@@ -73,3 +73,40 @@ in reading order, with each decision and where each branch leads."
 
 Both noted that the last question has no Yes or No branches. Copilot not run on this one. An
 easy case: a flow chart that's almost all text. The screenshot isn't kept in the repo; it's W3C's.
+
+## Supply and demand, and a choropleth
+
+Rick's choice, November 5: test both, so slide 10's last two rows stop saying "Not tested".
+Specimens drawn for this test, keys written before any model ran (`../test-specimens/`). The
+numbers and regions are invented, and the map says "illustrative data" in its title.
+
+- `supply-demand-shift`: S, D1, dashed D2 parallel to D1, crossings E1 and E2, an arrow at
+  price 7 pointing right. Nothing on it says "supply", "demand", "equilibrium" or "shift".
+- `choropleth-broadband`: eight regions A–H in four shades of one blue, with no numbers on
+  the regions, so colour alone carries the values.
+
+**Prompt:** the work-session prompt, with `[your field]` as "economics" or "geography". One
+scored run each, normal chat. Rick to confirm the keys and these scores.
+
+| Model | Access | Graph, of 7 | Map, of 10 | Notes |
+|---|---|---|---|---|
+| GPT-6 Astra (Work) | Upgrade | 7 | 10 | Flagged supply, demand and equilibrium as its own expansions |
+| Gemini 3.6 Thinking | Everyone | 7 | 10 | Graph: added `E1 = (Q1, P1)` and "initial", "shifted", "new", none on the figure |
+| Copilot, Think deeper | Everyone | 6 | 10 | Graph: gave D2's endpoints but never said it sits right of D1 |
+
+Calls for Rick to check:
+
+- **Copilot's 6.** It gave D2's coordinates, so the position can be worked out. I scored it as a
+  miss because check 3 asks for it stated, the same way I scored the LED's direction. It also says
+  the arrow is between the curves "for part of its length"; the arrow is between them for all of it.
+- **Gemini's 7.** Its "shifted" and "new" pass check 7, which is about causes and predictions, but
+  they do read a story into the figure. Copilot was the strictest here: "the arrow's intended
+  meaning is not stated".
+
+**Gemini errored on the first try at both,** with a generic error and no answer. A fresh chat with the
+same image and prompt worked each time; the scores are from those runs. I don't know the cause.
+
+**These are easy cases, the map especially.** Letters on the regions, four clearly different shades
+of one colour. Not tested: a real map with place names, a rainbow or diverging scale, a continuous
+scale, a heat map with many cells. Nothing here predicts those. The graph's description wasn't
+listened to or played as audio, and neither answer was reviewed by an economist or a geographer.

@@ -495,8 +495,8 @@ const slides = [
         {/* November 5, 2026: specimens drawn with keys written first; the flow chart is a
             screenshot of W3C's alt decision tree, keyed against W3C's own text. Work-session
             prompt, one run each: recordings/diagram-tests.md. Easy cases: clean and labelled.
-            Supply-demand and the choropleth are in the published brief, but not tested. Canvas
-            tools: from the sandbox's Tools and Resources page, not checked inside each one. */}
+            Supply-demand and the choropleth: drawn specimens, tested November 5, an easy map.
+            Canvas tools: from the sandbox's Tools and Resources page, not checked inside each. */}
         <div className="grid grid-cols-2 gap-3 my-2">
           <img
             src="20261106-beyond_alt_text/test-specimens/schematic-led-pot-switch.png"
@@ -524,13 +524,13 @@ const slides = [
               ["Flow chart (W3C alt text tree)", "Nested list: each decision, each branch", "Astra and Gemini: every step right"],
               ["Circuit schematic", "Walk the loop, or a netlist", "Astra and Gemini 7 of 7; Copilot 6"],
               ["Database entity diagram", "Tables, then each relationship", "Astra and Copilot 7 of 7; Gemini invented a field"],
-              ["Supply and demand", "The curves, where they cross; you check", "Not tested"],
-              ["Choropleth map", "The table behind the map", "Not tested"],
+              ["Supply and demand", "The curves, where they cross; you check", "Astra and Gemini 7 of 7; Copilot 6"],
+              ["Choropleth map", "The table behind the map", "All three: all 8 regions right"],
             ].map(([kind, form, result]) => (
               <tr key={kind} className="border-b border-line">
                 <th scope="row" className="py-1 pr-2 text-left font-bold">{kind}</th>
                 <td className="py-1 pr-2">{form}</td>
-                <td className={`py-1 ${result === "Not tested" ? "text-slate" : ""}`}>{result}</td>
+                <td className="py-1">{result}</td>
               </tr>
             ))}
           </tbody>
