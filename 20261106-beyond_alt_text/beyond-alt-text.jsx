@@ -238,18 +238,13 @@ const slides = [
           with faculty.
         </Lede>
 
-        {/* Thanks named by Rick, October 28, 2026. Names only until each confirms the
-            role and department they want shown; don't guess titles. */}
+        {/* Thanks named by Rick, October 28, 2026. Names only, no titles (Rick, November 5:
+            just a thank-you; he'll call them out if they're in the room). */}
         <People
           label="With thanks"
           people={[{ name: "Carmela Scala" }, { name: "Melike Gursoy" }]}
-          note="The faculty who helped build this project."
+          note="The faculty who made this possible."
         />
-
-        <Placeholder title="The four projects and the roles">
-          Name the four projects (February never lists them). Confirm the role and department
-          Carmela and Melike each want shown under their names.
-        </Placeholder>
       </SlideShell>
     ),
   },
