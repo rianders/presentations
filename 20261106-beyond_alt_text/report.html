@@ -11,7 +11,7 @@
 <div lang="en" style="max-width: 46em; margin: 0 auto; padding: 1.5em 1.25em;">
 
 <h1 style="font-size: 1.8em; line-height: 1.25; margin: 0 0 0.3em;">Testing AI on Handwritten Notation: What We Learned</h1>
-<p style="margin: 0 0 1.5em; color: #444444;">From <em>Beyond Alt Text: Notation, Diagrams &amp; Symbols</em>, Rutgers UOES, November 6, 2026. Tests run November 3, 2026 by Rick Anderson.</p>
+<p style="margin: 0 0 1.5em; color: #444444;">From <em>Beyond Alt Text: Notation, Diagrams &amp; Symbols</em>, Rutgers UOES, November 6, 2026. Tests run November 3–5, 2026 by Rick Anderson.</p>
 
 <h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">In short</h2>
 <ul>
@@ -98,6 +98,7 @@ Mark anything you were unsure of.</pre>
   <li>Ask for <strong>MathML</strong>, with the LaTeX kept inside it, so a screen reader with MathCAT can read each equation and step through it.</li>
   <li>Check what you get. One answer claimed to follow WCAG 2.2 AA and hid every one of its 30 equations from screen readers, with the readings collapsed out of sight. Naming the two problems fixed both in one revision.</li>
   <li>Pasted into a sandbox page through the HTML editor, Canvas kept all 30 MathML equations, their LaTeX, the circles and cross-outs, and the colours. Copy and paste as UTF-8, or characters such as ’ and − arrive garbled.</li>
+  <li>Canvas’s own <strong>Immersive Reader</strong> button read the MathML aloud correctly in the two equations we checked by ear, with no extra software. It reads each equation and then the written reading under it, so you hear it twice, and it clips ovals drawn around terms.</li>
   <li>Not yet tested: listening to the page with NVDA and MathCAT.</li>
 </ul>
 
