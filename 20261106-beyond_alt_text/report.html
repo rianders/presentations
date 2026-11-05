@@ -3,26 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Testing AI on Handwritten Notation: What We Learned</title>
+<title>Testing AI on Handwritten Notes, Printed Notation and Diagrams: What We Learned</title>
 </head>
 <body style="margin: 0; background-color: #ffffff; color: #1a1a1a; font-family: Arial, Helvetica, sans-serif; line-height: 1.55;">
 <!-- The content of this div is Canvas-safe: no style blocks, no classes, no scripts.
      Paste everything inside it into a Canvas page's HTML editor. -->
 <div lang="en" style="max-width: 46em; margin: 0 auto; padding: 1.5em 1.25em;">
 
-<h1 style="font-size: 1.8em; line-height: 1.25; margin: 0 0 0.3em;">Testing AI on Handwritten Notation: What We Learned</h1>
+<h1 style="font-size: 1.8em; line-height: 1.25; margin: 0 0 0.3em;">Testing AI on Handwritten Notes, Printed Notation and Diagrams: What We Learned</h1>
 <p style="margin: 0 0 1.5em; color: #444444;">From <em>Beyond Alt Text: Notation, Diagrams &amp; Symbols</em>, Rutgers UOES, November 6, 2026. Tests run November 3–5, 2026 by Rick Anderson.</p>
 
 <h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">In short</h2>
 <ul>
-  <li><strong>The prompt matters more than the tool.</strong> Asked only to “make this accessible”, every run changed the page. With a prompt that forbids solving or correcting, every completed run kept it as written.</li>
+  <li><strong>The prompt matters more than the tool.</strong> Asked only to “make this accessible”, tools changed the page or added answers to it. With a prompt that forbids solving or correcting, every completed run kept it as written.</li>
+  <li><strong>“Accurate” can mean “correct it”.</strong> “Transcribe this accurately” kept a page’s mistakes in all three models. “Make this accessible and accurate” got the page solved in all three.</li>
   <li><strong>Don’t take the default model.</strong> In every tool the default model missed lines. The stronger model in the same tool did best, and two of the three best are in tools every Rutgers faculty member already has.</li>
   <li><strong>Send one page at a time, as images.</strong> Tall pages and PDFs read worse whole. Each tool also limits how many files it takes per message.</li>
   <li><strong>The best model still makes fluent, unmarked mistakes on specialized notation.</strong> Only someone who reads the notation can catch them.</li>
+  <li><strong>Canvas’s tools help, but a score isn’t a check.</strong> Ally can draft a one-sentence description, and it scored a page 92% while the page’s math was being read aloud with “s” as “South”. Listen to the page yourself.</li>
 </ul>
 
 <h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">What we tested</h2>
-<p>One real page of handwritten college algebra from the Accessibility Sandbox course: 30 lines of worked problems, with colours, circles, cross-outs and a warning written in capitals. It contains five details tools tend to “fix”, among them:</p>
+<p>This report covers both handwritten lecture notes and material made for testing. The handwritten notes are real course material: an algebra page and a graduate lecture. The short printed pages and diagrams were drawn or chosen for these tests, so we could write answer keys first.</p>
+<p>The main handwritten test was one real page of college algebra from the Accessibility Sandbox course: 30 lines of worked problems, with colours, circles, cross-outs and a warning written in capitals. It contains five details tools tend to “fix”, among them:</p>
 <ul>
   <li>a simplification written as
     <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mfrac><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>9</mn></mrow><msqrt><msup><mi>x</mi><mn>2</mn></msup></msqrt></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>9</mn></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{2x+9}{\sqrt{x^2}} = \frac{2x+9}{x}</annotation></semantics></math>,
@@ -43,6 +46,22 @@ Figure: what it shows, not what it proves.
 Mark anything you were unsure of.</pre>
 <p>On a “find the mistake” worksheet, a tool that fixes the mistake has written the answer key. The first line of the prompt is what prevents it.</p>
 <p>Your chat history made no visible difference: runs with no history or memory changed the page the same way. In ChatGPT, a Temporary chat still uses memory and custom instructions unless you switch it to <strong>Unpersonalized</strong>.</p>
+
+<h3 style="font-size: 1.1em; margin: 1.2em 0 0.3em;">What caused the answers</h3>
+<p>To find out, we moved from handwriting to one short printed page of notes with deliberate mistakes (2x = 20, x⁶, 3x + 2) and one blank to fill in. Same page, three models, one run per cell:</p>
+<table style="border-collapse: collapse; width: 100%; margin: 0.8em 0;">
+  <caption style="text-align: left; font-weight: bold; padding-bottom: 0.4em;">What each prompt did to a page with mistakes on it</caption>
+  <thead>
+    <tr><th scope="col" style="text-align: left; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Prompt</th><th scope="col" style="text-align: left; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">GPT-6 Astra</th><th scope="col" style="text-align: left; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Gemini Thinking</th><th scope="col" style="text-align: left; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Copilot Think deeper</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row" style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Transcribe this accurately.</th><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Kept all</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Kept all</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Kept all</td></tr>
+    <tr><th scope="row" style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Make this accessible.</th><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Kept, added answers</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Solved, as a picture</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Solved</td></tr>
+    <tr><th scope="row" style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Make this accessible and accurate.</th><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Solved, no note</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Solved</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Solved, as a picture, with a new error</td></tr>
+    <tr><th scope="row" style="padding: 0.4em; border-bottom: 1px solid #cccccc;">The prompt above</th><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Kept all</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Kept all</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Kept all</td></tr>
+  </tbody>
+</table>
+<p>The wording did it, not the model: “accurately” about the copying was safe, and “accurate” about the page got it corrected. “Transcribe this accurately” isn’t enough on its own, though, because it returned plain text with no LaTeX, reading or description. A blank quiz with the plain prompt drew no answers in what we could read, but the tools changed it: one rewrote the instructions and added a hint, and another returned a picture of the quiz. Gemini failed to answer on the quiz.</p>
 
 <h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">2. The model, at two levels of access</h2>
 <p>Every Rutgers faculty member has <strong>Gemini</strong> and <strong>Copilot</strong>. <strong>ChatGPT Edu with GPT-6 Astra</strong> is an upgrade only some have. Same page, same prompt, one run each:</p>
@@ -93,13 +112,41 @@ Mark anything you were unsure of.</pre>
 </p>
 <p>Read aloud, nothing sounds wrong. The mistake was found only because the instructor reads the notation. It was settled by looking at the handwriting, after the models had run.</p>
 
-<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">5. Putting it in Canvas</h2>
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">5. Diagrams</h2>
+<p>Not handwritten: clean, labelled diagrams drawn or chosen for this test, scored against answer keys. The Ally column is its Auto-generate button, one sentence each. It isn’t a fair contest with a prompted answer, because the keys ask for more than a short description is meant to hold.</p>
+<table style="border-collapse: collapse; width: 100%; margin: 0.8em 0;">
+  <caption style="text-align: left; font-weight: bold; padding-bottom: 0.4em;">Checks passed against an answer key</caption>
+  <thead>
+    <tr><th scope="col" style="text-align: left; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Diagram</th><th scope="col" style="text-align: right; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">GPT-6 Astra</th><th scope="col" style="text-align: right; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Gemini Thinking</th><th scope="col" style="text-align: right; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Copilot Think deeper</th><th scope="col" style="text-align: right; border-bottom: 2px solid #1a1a1a; padding: 0.4em;">Ally</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row" style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Flow chart (W3C alt text tree)</th><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">15/15</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">15/15</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">Not run</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">Not run</td></tr>
+    <tr><th scope="row" style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Circuit schematic</th><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">7/7</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">7/7</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">6/7</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">3/7</td></tr>
+    <tr><th scope="row" style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Database entity diagram</th><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">7/7</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">6/7</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">7/7*</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">1/7</td></tr>
+    <tr><th scope="row" style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Supply and demand</th><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">7/7</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">7/7</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">6/7</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">4/7</td></tr>
+    <tr><th scope="row" style="padding: 0.4em; border-bottom: 1px solid #cccccc;">Choropleth map</th><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">10/10</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">10/10</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">10/10</td><td style="padding: 0.4em; border-bottom: 1px solid #cccccc; text-align: right;">1/10</td></tr>
+  </tbody>
+</table>
+<p style="font-size: 0.9em;">* We could read most of this answer, not all of it.</p>
+<ul>
+  <li><strong>One error sounded sure.</strong> Gemini wrote a field into a table that doesn’t have it, in tidy notation, with no doubt marked. <strong>One said so.</strong> Copilot left out the LED’s direction and marked that it was unsure.</li>
+  <li><strong>A one-sentence label leaves out what a diagram says.</strong> On the map, Ally described “eight labeled regions (A–H) shaded in four colors”, with no region’s value.</li>
+  <li>These are easy cases. Expect worse from scans, handwriting, crowded circuits, and maps with real place names or rainbow scales.</li>
+</ul>
+
+<h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">6. Putting it in Canvas</h2>
 <ul>
   <li>Ask for <strong>MathML</strong>, with the LaTeX kept inside it, so a screen reader with MathCAT can read each equation and step through it.</li>
   <li>Check what you get. One answer claimed to follow WCAG 2.2 AA and hid every one of its 30 equations from screen readers, with the readings collapsed out of sight. Naming the two problems fixed both in one revision.</li>
   <li>Pasted into a sandbox page through the HTML editor, Canvas kept all 30 MathML equations, their LaTeX, the circles and cross-outs, and the colours. Copy and paste as UTF-8, or characters such as ’ and − arrive garbled.</li>
-  <li>Canvas’s own <strong>Immersive Reader</strong> button read the MathML aloud correctly in the two equations we checked by ear, with no extra software. It reads each equation and then the written reading under it, so you hear it twice, and it clips ovals drawn around terms.</li>
-  <li>Not yet tested: listening to the page with NVDA and MathCAT.</li>
+  <li>Canvas’s own <strong>Immersive Reader</strong> button read the MathML aloud correctly in the two algebra equations we checked by ear, with no extra software. It reads each equation and then the written reading under it, so you hear it twice, and it clips ovals drawn around terms.</li>
+  <li><strong>It isn’t always right.</strong> On one page with the sample standard deviation, Immersive Reader read “s” as “South”, in plain alt text and in MathML alike. We don’t know why. The rest of the formula’s structure came through in MathML: “square root of, sum from i equals 1 to n of …”.</li>
+  <li><strong>An image with no description gives it nothing to read.</strong> The Canvas equation editor gave the same reading as MathML pasted into the HTML editor, with no HTML needed.</li>
+  <li><strong>Ally can draft a description.</strong> In our Rutgers sandbox course, an image’s Ally dial opens a panel with “Auto-generate description”. It’s labelled as needing a check. On the formula it wrote a paraphrase that doesn’t say whether the root covers the “n minus 1”, and it doesn’t correct or transcribe a page of math.</li>
+  <li><strong>Ally’s score checks that a description exists.</strong> A handwritten page with 30 equations scored 100% with a one-sentence description and no math. Canvas’s own checker flagged Ally’s drafted sentence as over 120 characters.</li>
+  <li><strong>Signal code in words.</strong> A code block alone ran straight on from the equation, and “#” became “hashtag”. A lead-in sentence, a heading, and the results in plain sentences after it were all heard clearly. The code itself is still read as flat words.</li>
+  <li><strong>If one image file is used twice,</strong> a description on one copy can show up on the other. We saw this once and don’t know the cause.</li>
+  <li>Not yet tested: listening to any of this with a screen reader such as NVDA, JAWS or VoiceOver.</li>
 </ul>
 
 <h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">What to do</h2>
@@ -109,11 +156,13 @@ Mark anything you were unsure of.</pre>
   <li>Send one page at a time, as images; cut tall pages into pieces.</li>
   <li>Check the output against the page yourself, starting with everything it marked as uncertain.</li>
   <li>For an assessment, decide yourself whether any note about an error stays in.</li>
-  <li>Ask for MathML for Canvas, and listen to the page before students do.</li>
+  <li>Ask for MathML for Canvas, or use the equation editor, and listen to the page before students do. A checker’s score doesn’t replace that.</li>
+  <li>Don’t ask a tool to make a page “accurate”. Say what must stay as written.</li>
+  <li>Give the equation its context: what you’d say in the lecture. For code, say that it’s code and what it does.</li>
 </ol>
 
 <h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">Limits of these tests</h2>
-<p>One algebra page and one lecture, one run per model, on one day. This is a demonstration, not a ranking: tools and models change month to month, and the same model can answer differently on another run. Model names and limits are as of November 3, 2026.</p>
+<p>One handwritten algebra page, one handwritten lecture, a few short printed test pages and five diagrams, generally one run per model, over three days. This is a demonstration, not a ranking: tools and models change month to month, and the same model can answer differently on another run. Gemini also failed to answer on several tries. Scores were checked by the author. Model names and limits are as of November 5, 2026.</p>
 
 <h2 style="font-size: 1.35em; margin: 1.5em 0 0.4em;">Take it with you</h2>
 <ul>
