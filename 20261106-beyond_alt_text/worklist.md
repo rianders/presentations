@@ -28,9 +28,9 @@ We step through these in order. Status: **open**, **now**, **done**.
 | 6 | Slides 8, 9, 16: clear the Review notes that show on screen | Rick + Claude | **done** November 5 |
 | 7 | Confirm the schematic and entity diagram keys and scores: `recordings/diagram-tests.md` | Rick | **done** November 5: confirmed |
 | 8 | Public report: add the accuracy test, Ally and diagram scores; fix old slide numbers | Claude | **done** November 5 |
-| 9 | Canvas copy of the report: update it, publish it, add it to the module | Rick + Claude | **now** |
-| 10 | Tell Melike her notes appear on slide 10 | Rick | open |
-| 11 | Skill: it always adds a spoken reading, but slide 7 calls that a decision. Reconcile them | Claude | open |
+| 9 | Canvas copy of the report: update it, publish it, add it to the module | Rick + Claude | **done** November 5: module published with only the report page in it; its 6 subheaders also show |
+| 10 | Tell Melike her notes appear on slide 10 | Rick | **now** |
+| 11 | Skill: it always adds a spoken reading, but slide 7 calls that a decision. Reconcile them | Claude | **done** November 5: v3, not re-run |
 | 12 | **Last:** send the request for examples, Rick drafting: `zoom-kit.md` | Rick | open |
 | 13 | After the talk: delete the sandbox's `ally-test-2026-11-05`, `clip1-one-equation`, `clip1-option1` and `clip1-std-dev` folders and the TEST pages | Rick + Claude | open |
 

@@ -80,8 +80,11 @@ better.
 
 - Write every equation as **MathML** with its LaTeX as an annotation, so a screen reader
   with MathCAT can read and step through it.
-- Never hide an equation from assistive technology (no `aria-hidden`), and show each
-  spoken reading as visible text, not inside a collapsed control.
+- Never hide an equation from assistive technology (no `aria-hidden`).
+- A visible spoken reading on the page is the instructor's decision: with it, a read-aloud
+  tool can read the equation and then the reading, so the listener hears both. If they
+  haven't said, include it as visible text, not inside a collapsed control, and say in
+  **Check these** that it can be removed.
 - Don't rely on `<style>` blocks or classes, which editors like Canvas may drop. Use inline
   styles only, and make sure the meaning survives if styling is lost.
 - Show circles, boxes and cross-outs inside the math with `menclose`.
