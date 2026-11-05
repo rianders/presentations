@@ -46,3 +46,12 @@ a skill can't cut images up in Gemini or Copilot.
   it matches what the slide 11 prompt plus the follow-up achieved, in one step.
 - Listen to the Canvas test page with NVDA + MathCAT.
 - Re-run Gemini's temporary chat, which failed 4 times on the long prompt.
+
+## v3, November 5, 2026
+
+| What changed | Why |
+|---|---|
+| A visible spoken reading on a Canvas page is now the instructor's decision. It stays by default, and **Check these** says it can be removed. | Immersive Reader reads the equation, then the written reading, so the listener hears both. Slide 7 presents that as a decision, and the skill made it for them. |
+
+The answer in chat still gives the spoken reading, because the instructor needs it to check the work.
+Not re-run after this change.
