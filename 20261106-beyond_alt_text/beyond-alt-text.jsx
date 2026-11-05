@@ -379,9 +379,6 @@ const slides = [
             Read twice in Immersive Reader, but you get both: the literal and the spoken.
           </Column>
         </Columns>
-        <Placeholder title="Best practices">
-          Rick's adopted MathCAT / MathML best practices.
-        </Placeholder>
       </SlideShell>
     ),
   },
@@ -426,10 +423,8 @@ const slides = [
           One handwritten page, 30 lines: each tool's default model missed some (23 to 29
           right). Its strongest model got 29 or 30. Pick the model; don't take the default.
         </Note>
-        <Placeholder title="Review">
-          Counts are one page, one run each (November 3, 2026). Say so out loud. February's
-          88% / 58% are dropped.
-        </Placeholder>
+        {/* February's 88% / 58% are dropped. */}
+        <p className="text-xs text-slate mt-2">One page, one run each, November 3, 2026.</p>
       </SlideShell>
     ),
   },
@@ -476,10 +471,7 @@ const slides = [
           <source src="20261106-beyond_alt_text/slide8-said-the-way-people-say-it.mp4" type="video/mp4" />
           <track kind="captions" src="20261106-beyond_alt_text/slide8-said-the-way-people-say-it.vtt" srcLang="en" label="English" default />
         </video>
-        <Placeholder title="Review">
-          The demo is Astra's words in a macOS voice. Say that out loud, and that Astra needs the
-          upgrade.
-        </Placeholder>
+        <p className="text-xs text-slate mt-2">Astra's words, spoken by a macOS voice. Astra needs the ChatGPT Edu upgrade.</p>
       </SlideShell>
     ),
   },
@@ -844,6 +836,8 @@ Mark anything you were unsure of.`}</CodeBlock>
   // licenses Fusion (JAWS + ZoomText), and JAWS has read MathCAT since December 2024.
   // The skill links to its GitHub folder, where README.md is the how-to for Gemini,
   // Copilot, ChatGPT and Claude. (Pages turns SKILL.md into HTML; GitHub shows it as is.)
+  // Gemini and ChatGPT links removed November 5: the standard column's it.rutgers.edu/ai covers
+  // getting all three tools, and the Which Model slide says which model to choose.
   {
     label: "Resources",
     content: (
@@ -853,16 +847,9 @@ Mark anything you were unsure of.`}</CodeBlock>
           { label: "The notation-access skill", href: "https://github.com/rianders/presentations/tree/main/20261106-beyond_alt_text/notation-access", note: "Today's rules, and how to add them to Gemini, Copilot, ChatGPT or Claude" },
           { label: "NVDA", href: "https://www.nvaccess.org/", note: "Free screen reader for Windows, with MathCAT built in" },
           { label: "MathCAT", href: "https://daisy.github.io/MathCAT", note: "Speech styles, braille and navigation for MathML" },
-          { label: "Gemini", href: "https://gemini.google.com", note: "On your NetID. Choose the Thinking model" },
-          { label: "ChatGPT Edu", href: "https://chatgpt.com", note: "With the upgrade: Work mode, GPT-6 Astra" },
         ]}
         checked="November 3, 2026"
-      >
-        <Placeholder title="Review">
-          Is there a Rutgers page for getting Gemini, Copilot and the ChatGPT Edu upgrade? If
-          so, link that instead of the tools themselves.
-        </Placeholder>
-      </ResourcesSlide>
+      />
     ),
   },
 

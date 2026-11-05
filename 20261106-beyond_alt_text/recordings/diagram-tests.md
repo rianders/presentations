@@ -10,7 +10,7 @@ Canvas at Rutgers describe a diagram, or does it take an AI prompt?
   One relationship differs on purpose: Instructor–Course is zero-or-many, the others one-or-many.
 
 **Prompt:** the work-session prompt, with `[your field]` as "electronics" or "databases".
-One run each, normal chat. Rick to confirm the keys and these scores.
+One run each, normal chat. **Rick confirmed the keys and these scores, November 5.**
 
 | Model | Access | Schematic, of 7 | ER diagram, of 7 | What it got wrong |
 |---|---|---|---|---|
