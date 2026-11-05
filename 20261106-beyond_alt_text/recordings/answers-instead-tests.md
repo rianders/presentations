@@ -4,7 +4,7 @@ Rick's question: "Asking for accuracy and you get solutions... What caused answe
 wanted accuracy?" The November 3 algebra page was too subtle to show this at a glance, so these
 are two short printed specimens with keys written first (`../test-specimens/`). Models: GPT-6
 Astra (Work, Medium), Gemini 3.6 Thinking, Copilot Think deeper. Normal chats, a fresh chat
-each. One scored run per cell. Rick to confirm the scoring.
+each. One scored run per cell. **Rick confirmed the grid, including Astra's "Kept, added answers", November 5.**
 
 ## Worked notes with deliberate mistakes (`worked-notes-errors`)
 

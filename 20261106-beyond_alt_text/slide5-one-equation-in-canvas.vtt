@@ -1,0 +1,113 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:04.900
+Test, clip 1, one equation in Canvas, November 5, unpublished.
+
+2
+00:00:06.100 --> 00:00:08.300
+Option 1, image, no description.
+
+3
+00:00:09.600 --> 00:00:12.200
+Option 2, image, with Ally's description.
+
+4
+00:00:13.500 --> 00:00:21.400
+Formula for sample standard deviation, South equals the square root of the sum of squared deviations from the mean divided by n minus 1.
+
+5
+00:00:21.400 --> 00:00:24.800
+Option 3, Canvas equation editor.
+
+6
+00:00:24.800 --> 00:00:35.300
+South equals square root of, sum from i equals 1 to n of, open paren x sub i, minus over bar x close paren squared, over n minus 1.
+
+7
+00:00:35.300 --> 00:00:39.500
+Option 4, MathML in the HTML editor.
+
+8
+00:00:40.400 --> 00:00:49.900
+South equals square root of, sum from i equals 1 to n of, open paren x sub i, minus over bar x close paren squared, over n minus 1.
+
+9
+00:00:49.900 --> 00:00:53.900
+Option 5, the same equation, in context.
+
+10
+00:00:53.900 --> 00:00:59.000
+The sample standard deviation measures how far values spread from their mean.
+
+11
+00:00:59.000 --> 00:01:07.700
+Subtract the mean from each value, square the results, add them up, divide by n minus 1, and take the square root of all of that.
+
+12
+00:01:08.500 --> 00:01:16.800
+South equals square root of, sum from i equals 1 to n of, open paren x sub i, minus over bar x close paren squared, over n minus 1,
+
+13
+00:01:16.800 --> 00:01:19.500
+import numpy as np.
+
+14
+00:01:19.500 --> 00:01:27.500
+x equals np.array, 2, 4, 4, 4, 5, 5, 7, 9.
+
+15
+00:01:27.500 --> 00:01:35.100
+np.std, x, doff equals 1, hashtag 2.138, divides by n 1.
+
+16
+00:01:35.100 --> 00:01:41.400
+np.std, x, hashtag 2.0, the default divides by n.
+
+17
+00:01:41.400 --> 00:01:44.800
+Option 6, the code, with a signal.
+
+18
+00:01:44.800 --> 00:01:47.800
+The next section is Python code.
+
+19
+00:01:47.800 --> 00:01:52.400
+It finds the standard deviation of 8 values, 2 ways.
+
+20
+00:01:53.500 --> 00:01:54.400
+Python code.
+
+21
+00:01:54.400 --> 00:01:56.800
+import numpy as np.
+
+22
+00:01:56.800 --> 00:02:04.700
+x equals np.array, 2, 4, 4, 4, 5, 5, 7, 9.
+
+23
+00:02:04.700 --> 00:02:08.800
+np.std, x, doff equals 1.
+
+24
+00:02:08.800 --> 00:02:11.800
+np.std, x.
+
+25
+00:02:11.800 --> 00:02:13.900
+What the code does.
+
+26
+00:02:14.400 --> 00:02:17.800
+The first calculation divides by n minus 1,
+
+27
+00:02:17.800 --> 00:02:22.800
+which matches the formula. The result is about 2.138.
+
+28
+00:02:23.400 --> 00:02:29.400
+The second uses the default, which divides by n. The result is 2.0.

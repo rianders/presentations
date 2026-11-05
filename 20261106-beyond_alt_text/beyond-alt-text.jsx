@@ -265,38 +265,96 @@ const slides = [
     ),
   },
 
-  // ── 5: DEMO 1 · WHAT SCREEN READERS SAY TODAY ──
-  // Rick's recordings. September 18 promised LIVE demonstrations; recorded is the
-  // right call (system audio over Zoom, live screen readers misbehave).
+  // ── 5: DEMO 1 · ONE EQUATION IN CANVAS ──
+  // Rebuilt November 5, 2026 (Rick: one focused example, what's possible in Canvas, recorded).
+  // His OBS recording of Immersive Reader on an unpublished sandbox page, transcribed with Whisper
+  // and checked by isolating the "s". recordings/clip1-canvas-options.md. Immersive Reader is
+  // not a screen reader: say so. NVDA and JAWS weren't tested. The brief promised LIVE;
+  // recorded stays the right call over Zoom.
   {
-    label: "Hear It: Today",
+    label: "Hear It: Canvas",
     content: (
       <SlideShell>
-        <Heading sub="Demo · 8 min">What a Screen Reader Says Today</Heading>
-
-        {/* The brief promises "the difference between an accessible figure and an
-            inaccessible one", LIVE. Recorded instead (decided October 15, 2026): say why
-            out loud, that the room should hear the screen reader rather than Zoom's audio.
-            One equation, both ways: clip 1 in demos.md. */}
-        <Columns n={2}>
-          <Column title="Inaccessible · the equation as an image">
-            The screen reader finds a picture. It says “graphic”, or reads whatever alt text
-            someone typed.
-          </Column>
-          <Column title="Accessible · the same equation as MathML">
-            The screen reader reads the mathematics, and the student can step through it.
-          </Column>
-        </Columns>
-
-        <Placeholder title="Recordings">
-          Clip 1: one equation, both ways, in a Canvas page. NVDA version and speech rate, and a
-          transcript under each clip so it works without audio.
-        </Placeholder>
+        <Heading sub="Demo · 6 min">One Equation, Six Ways in Canvas</Heading>
+        <video
+          controls
+          preload="metadata"
+          className="rounded-lg border border-line mx-auto my-2"
+          style={{ maxHeight: "32vh" }}
+          width="1280"
+          height="680"
+          aria-label="Demo, 150 seconds: Canvas's Immersive Reader reading the sample standard deviation formula six ways, with captions."
+        >
+          <source src="20261106-beyond_alt_text/slide5-one-equation-in-canvas.mp4" type="video/mp4" />
+          <track kind="captions" src="20261106-beyond_alt_text/slide5-one-equation-in-canvas.vtt" srcLang="en" label="English" default />
+        </video>
+        <table className="w-full text-xs text-ink border-collapse my-2">
+          <caption className="sr-only">What Immersive Reader said for each of six ways to put one equation in Canvas.</caption>
+          <thead>
+            <tr className="border-b-2 border-ink text-left">
+              <th scope="col" className="py-1 pr-2">In Canvas</th>
+              <th scope="col" className="py-1">What Immersive Reader said</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["Image, no description", "Nothing"],
+              ["Image, Ally's description", "“South equals the square root of the sum of squared deviations from the mean divided by n minus 1”"],
+              ["Canvas equation editor", "“South equals square root of, sum from i equals 1 to n of, open paren x sub i …”"],
+              ["MathML", "The same words as the equation editor"],
+              ["In context, with code", "What it means, then the math, then “… over n minus 1, import numpy as np”, “hashtag”"],
+              ["Code, with a signal", "“The next section is Python code.” “Python code.” Then the code, then “What the code does”"],
+            ].map(([option, said]) => (
+              <tr key={option} className="border-b border-line">
+                <th scope="row" className="py-1 pr-2 text-left font-bold">{option}</th>
+                <td className="py-1">{said}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="text-xs text-slate">Immersive Reader, one recording, November 5. It's a read-aloud tool, not a screen reader: NVDA and JAWS not tested here.</p>
       </SlideShell>
     ),
   },
 
-  // ── 6: THE BASELINE · MATHML + MATHCAT ──
+  // ── 6: ONE PAGE, ALL THE QUESTIONS ──
+  // Added November 5, 2026 (Rick: this is one page with all the problems, so raise the questions
+  // and make them part of the through line). Everything here is from clip 1 and the checkers on that
+  // page. The cause of "South" is not documented anywhere I found: don't state one as fact.
+  {
+    label: "The Questions",
+    content: (
+      <SlideShell>
+        <Heading sub="The Through Line · 2 min">One Page, Every Question</Heading>
+        <table className="w-full text-sm text-ink border-collapse my-3">
+          <caption className="sr-only">What happened on the one test page, and the question each raises.</caption>
+          <thead>
+            <tr className="border-b-2 border-ink text-left">
+              <th scope="col" className="py-2 pr-3">What happened</th>
+              <th scope="col" className="py-2">The question</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["“s” was read as “South”, in the description and in the MathML", "Who listens before students do?"],
+              ["Ally gave this page 92%. It flagged one image, and nothing about what was said", "What does a score measure?"],
+              ["Canvas's checker flagged Ally's own description as too long", "Which tool do you believe?"],
+              ["Code ran straight on from the equation, until a lead-in and headings signalled it", "How do you signal that the language changed?"],
+              ["Only the version in context said what the formula means", "What would you say in the lecture?"],
+            ].map(([happened, question]) => (
+              <tr key={question} className="border-b border-line">
+                <td className="py-2 pr-3">{happened}</td>
+                <th scope="row" className="py-2 text-left font-bold">{question}</th>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="uoes-sub">Hold these questions. The rest of the session comes back to them.</p>
+      </SlideShell>
+    ),
+  },
+
+  // ── 7: THE BASELINE · MATHML + MATHCAT ──
   // The math faculty already know this: common ground, not a reveal.
   // Facts from notation-inventory.md, verified September 2, 2026. Re-verify before delivery.
   {
@@ -328,7 +386,7 @@ const slides = [
     ),
   },
 
-  // ── 7: THE PIPELINE ──
+  // ── 8: THE PIPELINE ──
   // PORTED from February slides 3 and 4: inputs, analysis, outputs, in one line.
   // The 88% / 58% accuracy bars are NOT carried over until confirmed as measured.
   {
@@ -376,7 +434,7 @@ const slides = [
     ),
   },
 
-  // ── 8: DEMO 2 · THE GEN AI READER ──
+  // ── 9: DEMO 2 · THE GEN AI READER ──
   // Must answer "why not ClearSpeak?": image/handwriting sources, notation outside
   // math, course conventions. Must run on a Rutgers account or be labelled a showcase.
   {
@@ -426,7 +484,7 @@ const slides = [
     ),
   },
 
-  // ── 9: WHERE IT FAILS ──
+  // ── 10: WHERE IT FAILS ──
   // February's limits, reduced to the one that matters, plus the handwriting finding.
   {
     label: "Where It Fails",
@@ -478,7 +536,7 @@ const slides = [
     ),
   },
 
-  // ── 10: DIAGRAMS ──
+  // ── 11: DIAGRAMS ──
   // Added November 2, 2026: the brief promises narrated walkthroughs of flow charts and
   // decision trees, and audio descriptions of disciplinary figures. Both social-science
   // examples it names (supply-demand, choropleth) live here. Clips 6 and 7 in demos.md.
@@ -551,7 +609,7 @@ const slides = [
     ),
   },
 
-  // ── 11: TWO EXAMPLES ──
+  // ── 12: TWO EXAMPLES ──
   // Added November 5, 2026 (Rick: "a slide of 2 examples following slide 10"). The two misses behind
   // slide 10's grid, one per tool. Gemini's line and Copilot's sentence are from their answers:
   // recordings/diagram-tests.md. Crops of test-specimens/ drawn for the test.
@@ -587,7 +645,7 @@ const slides = [
     ),
   },
 
-  // ── 12: ASK FOR ACCURACY ──
+  // ── 13: ASK FOR ACCURACY ──
   // Rebuilt November 5, 2026 (Rick: "Asking for accuracy and you get solutions", the old GIF
   // was hard to follow). Printed notes with deliberate mistakes, key written first, one scored
   // run per cell: recordings/answers-instead-tests.md. The picture is Gemini's real answer to
@@ -650,7 +708,7 @@ const slides = [
     ),
   },
 
-  // ── 13: WHICH MODEL ──
+  // ── 14: WHICH MODEL ──
   // Added November 5, 2026 (Rick: a matrix or leaderboard of models and topics, then what to
   // recommend). Page 13 scores from recordings/tier-comparison.md, every miss checked by eye.
   // Copilot's runs used 2 pieces, its limit; the others 4. Lecture from
@@ -713,7 +771,7 @@ const slides = [
     ),
   },
 
-  // ── 14: WORK SESSION ──
+  // ── 15: WORK SESSION ──
   {
     label: "Work Session",
     content: (
@@ -779,7 +837,7 @@ Mark anything you were unsure of.`}</CodeBlock>
     ),
   },
 
-  // ── 15: RESOURCES ──
+  // ── 16: RESOURCES ──
   // Rick, November 2, 2026: every deck ends with standard useful resources. The theme's
   // ResourcesSlide puts this session's links beside the standard Rutgers set.
   // Verified November 2, 2026: NVDA is free with MathCAT built in since 2026.1; Rutgers
@@ -808,7 +866,7 @@ Mark anything you were unsure of.`}</CodeBlock>
     ),
   },
 
-  // ── 16: CLOSING ──
+  // ── 17: CLOSING ──
   // The template's closing slide. Links live on the Resources slide now; this one is the line
   // to leave the room with, and how to reach Rick.
   {

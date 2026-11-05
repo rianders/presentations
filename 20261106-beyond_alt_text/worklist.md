@@ -14,6 +14,28 @@ the plan.
 
 ---
 
+## Working list: before November 6 — started November 5, 2026
+
+We step through these in order. Status: **open**, **now**, **done**.
+
+| # | Item | Who | Status |
+|---|---|---|---|
+| 1 | Verify Ally's scores on slide 10: `recordings/ally-score-check.md` | Rick | **done** November 5: scores kept |
+| 2 | Confirm the other new scores: `recordings/answers-instead-tests.md`, the graph and map in `recordings/diagram-tests.md` | Rick | **done** November 5: confirmed |
+| 3 | Set up pre-poll and post-poll in Zoom, and paste the description: `zoom-kit.md` | Rick | Rick doing it |
+| 4 | Slides 5–6: one equation in Canvas, then the questions: `recordings/clip1-canvas-options.md`. Built; Rick to check captions | Rick + Claude | **now** |
+| 5 | Slide 7: fill or cut the Best practices placeholder | Rick + Claude | open |
+| 6 | Slides 8, 9, 16: clear the Review notes that show on screen | Rick + Claude | open |
+| 7 | Confirm the schematic and entity diagram keys and scores: `recordings/diagram-tests.md` | Rick | open |
+| 8 | Public report: add the accuracy test, Ally and diagram scores; fix old slide numbers | Claude | open |
+| 9 | Canvas copy of the report: update it, publish it, add it to the module | Rick + Claude | open |
+| 10 | Tell Melike her notes appear on slide 10 | Rick | open |
+| 11 | Skill: it always adds a spoken reading, but slide 7 calls that a decision. Reconcile them | Claude | open |
+| 12 | **Last:** send the request for examples, Rick drafting: `zoom-kit.md` | Rick | open |
+| 13 | After the talk: delete the sandbox's `ally-test-2026-11-05`, `clip1-one-equation`, `clip1-option1` and `clip1-std-dev` folders and the TEST pages | Rick + Claude | open |
+
+---
+
 ## Source deck — decided October 15, 2026
 **This session is the "Transcribing Scientific Notation" project**:
 `20260225-EmergingTechCommunity/scientific-notation-presentation.jsx` (February 25, 2026,

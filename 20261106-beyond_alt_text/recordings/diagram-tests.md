@@ -93,7 +93,7 @@ numbers and regions are invented, and the map says "illustrative data" in its ti
   the regions, so colour alone carries the values.
 
 **Prompt:** the work-session prompt, with `[your field]` as "economics" or "geography". One
-scored run each, normal chat. Rick to confirm the keys and these scores.
+scored run each, normal chat. **Rick confirmed these scores, including Copilot's 6 and Gemini's 7, November 5.**
 
 | Model | Access | Graph, of 7 | Map, of 10 | Notes |
 |---|---|---|---|---|
