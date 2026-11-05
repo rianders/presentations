@@ -27,8 +27,8 @@ We step through these in order. Status: **open**, **now**, **done**.
 | 5 | Slide 7: Best practices placeholder | Rick + Claude | **done** November 5: cut |
 | 6 | Slides 8, 9, 16: clear the Review notes that show on screen | Rick + Claude | **done** November 5 |
 | 7 | Confirm the schematic and entity diagram keys and scores: `recordings/diagram-tests.md` | Rick | **done** November 5: confirmed |
-| 8 | Public report: add the accuracy test, Ally and diagram scores; fix old slide numbers | Claude | **now** |
-| 9 | Canvas copy of the report: update it, publish it, add it to the module | Rick + Claude | open |
+| 8 | Public report: add the accuracy test, Ally and diagram scores; fix old slide numbers | Claude | **done** November 5 |
+| 9 | Canvas copy of the report: update it, publish it, add it to the module | Rick + Claude | **now** |
 | 10 | Tell Melike her notes appear on slide 10 | Rick | open |
 | 11 | Skill: it always adds a spoken reading, but slide 7 calls that a decision. Reconcile them | Claude | open |
 | 12 | **Last:** send the request for examples, Rick drafting: `zoom-kit.md` | Rick | open |

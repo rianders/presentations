@@ -843,7 +843,7 @@ Mark anything you were unsure of.`}</CodeBlock>
     content: (
       <ResourcesSlide
         items={[
-          { label: "What we learned testing AI", href: "https://rianders.github.io/presentations/20261106-beyond_alt_text/report.html", note: "The prompt, the models, page prep and Canvas, from the November 2026 tests" },
+          { label: "What we learned testing AI", href: "https://rianders.github.io/presentations/20261106-beyond_alt_text/report.html", note: "Handwritten notes, printed notation and diagrams: the prompt, the models, page prep and Canvas" },
           { label: "The notation-access skill", href: "https://github.com/rianders/presentations/tree/main/20261106-beyond_alt_text/notation-access", note: "Today's rules, and how to add them to Gemini, Copilot, ChatGPT or Claude" },
           { label: "NVDA", href: "https://www.nvaccess.org/", note: "Free screen reader for Windows, with MathCAT built in" },
           { label: "MathCAT", href: "https://daisy.github.io/MathCAT", note: "Speech styles, braille and navigation for MathML" },
