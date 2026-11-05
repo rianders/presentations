@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620"><rect width="900" height="620" fill="white"/>
+<text x="60" y="36" font-family="Arial" font-size="24" font-weight="bold">Households with broadband, by region (illustrative data)</text>
+<polygon points="60,70 240,60 270,190 90,220" fill="#e3eef9" stroke="#333" stroke-width="2"/>
+<polygon points="240,60 430,80 410,210 270,190" fill="#5a9bd0" stroke="#333" stroke-width="2"/>
+<polygon points="430,80 620,60 640,200 410,210" fill="#a9cce8" stroke="#333" stroke-width="2"/>
+<polygon points="620,60 790,90 770,240 640,200" fill="#135a9a" stroke="#333" stroke-width="2"/>
+<polygon points="90,220 270,190 290,350 70,380" fill="#a9cce8" stroke="#333" stroke-width="2"/>
+<polygon points="270,190 410,210 640,200 620,340 290,350" fill="#5a9bd0" stroke="#333" stroke-width="2"/>
+<polygon points="640,200 770,240 790,390 620,340" fill="#e3eef9" stroke="#333" stroke-width="2"/>
+<polygon points="70,380 290,350 620,340 610,470 100,480" fill="#135a9a" stroke="#333" stroke-width="2"/>
+<text x="165" y="145" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="black">A</text>
+<text x="340" y="140" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="black">B</text>
+<text x="525" y="140" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="black">C</text>
+<text x="705" y="150" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="white">D</text>
+<text x="175" y="290" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="black">E</text>
+<text x="450" y="280" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="black">F</text>
+<text x="705" y="305" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="black">G</text>
+<text x="345" y="420" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="white">H</text>
+<rect x="60" y="530" width="44" height="30" fill="#e3eef9" stroke="#333"/><text x="114" y="553" font-family="Arial" font-size="22">Under 60%</text>
+<rect x="260" y="530" width="44" height="30" fill="#a9cce8" stroke="#333"/><text x="314" y="553" font-family="Arial" font-size="22">60–70%</text>
+<rect x="460" y="530" width="44" height="30" fill="#5a9bd0" stroke="#333"/><text x="514" y="553" font-family="Arial" font-size="22">70–80%</text>
+<rect x="660" y="530" width="44" height="30" fill="#135a9a" stroke="#333"/><text x="714" y="553" font-family="Arial" font-size="22">Over 80%</text>
+</svg>
