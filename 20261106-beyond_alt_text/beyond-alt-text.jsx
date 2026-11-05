@@ -492,25 +492,54 @@ const slides = [
           the argument.
         </Lede>
 
-        <Columns n={3}>
-          <Column title="Flow chart · decision tree">
-            AI writes the walkthrough: the start, each decision, each branch. In Canvas it
-            becomes a nested list, so a screen reader announces every level.
-          </Column>
-          <Column title="Supply and demand · Economics">
-            AI describes what the graph shows and what it means: the two curves, where they
-            cross, what a shift does. You check it against the graph.
-          </Column>
-          <Column title="Choropleth map · Geography">
-            Colour carries all of the data, so no description is enough. The accessible
-            version is the table behind the map.
-          </Column>
-        </Columns>
+        {/* November 5, 2026: specimens drawn with keys written first; the flow chart is a
+            screenshot of W3C's alt decision tree, keyed against W3C's own text. Work-session
+            prompt, one run each: recordings/diagram-tests.md. Easy cases: clean and labelled.
+            Supply-demand and the choropleth are in the published brief, but not tested. Canvas
+            tools: from the sandbox's Tools and Resources page, not checked inside each one. */}
+        <div className="grid grid-cols-2 gap-3 my-2">
+          <img
+            src="20261106-beyond_alt_text/test-specimens/schematic-led-pot-switch.png"
+            alt="Circuit schematic: one loop from a 9 volt battery through an open switch, a 10 kilohm potentiometer with its wiper tied to one end, a 330 ohm resistor and an LED, back to the battery."
+            className="rounded border border-line w-full h-32 object-contain bg-white"
+          />
+          <img
+            src="20261106-beyond_alt_text/test-specimens/er-diagram-enrollment.png"
+            alt="Entity diagram: student and course each connect to enrollment, exactly one to one or many. Instructor connects to course, exactly one to zero or many."
+            className="rounded border border-line w-full h-32 object-contain bg-white"
+          />
+        </div>
 
-        <Placeholder title="Recordings">
-          Clip 6, a real flow chart as a narrated walkthrough in Canvas, and clip 7, the
-          supply-demand figure as an audio description. See demos.md.
-        </Placeholder>
+        <table className="w-full text-xs text-ink border-collapse">
+          <caption className="sr-only">Five kinds of diagram, the accessible form for each, and how AI models did in our tests.</caption>
+          <thead>
+            <tr className="border-b-2 border-ink text-left">
+              <th scope="col" className="py-1 pr-2">Diagram</th>
+              <th scope="col" className="py-1 pr-2">Accessible form</th>
+              <th scope="col" className="py-1">What the AI did</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["Flow chart (W3C alt text tree)", "Nested list: each decision, each branch", "Astra and Gemini: every step right"],
+              ["Circuit schematic", "Walk the loop, or a netlist", "Astra and Gemini 7 of 7; Copilot 6"],
+              ["Database entity diagram", "Tables, then each relationship", "Astra and Copilot 7 of 7; Gemini invented a field"],
+              ["Supply and demand", "The curves, where they cross; you check", "Not tested"],
+              ["Choropleth map", "The table behind the map", "Not tested"],
+            ].map(([kind, form, result]) => (
+              <tr key={kind} className="border-b border-line">
+                <th scope="row" className="py-1 pr-2 text-left font-bold">{kind}</th>
+                <td className="py-1 pr-2">{form}</td>
+                <td className={`py-1 ${result === "Not tested" ? "text-slate" : ""}`}>{result}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <Note>
+          Canvas tools flag a missing description and read the result aloud. Writing it takes
+          AI or a person. Clean, labelled diagrams, one run each: expect worse from scans.
+        </Note>
       </SlideShell>
     ),
   },

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<rect width="900" height="560" fill="white"/>
+<g fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M120 255 V110 H210"/>
+<circle cx="214" cy="110" r="5" fill="white"/><circle cx="290" cy="110" r="5" fill="white"/>
+<path d="M218 107 L285 68"/>
+<path d="M295 110 H390"/>
+<path d="M390 110 l10 -16 l20 32 l20 -32 l20 32 l20 -32 l20 32 l10 -16"/>
+<path d="M510 110 H590"/>
+<path d="M450 50 V88"/><path d="M450 94 l-8 -14 l16 0 z" fill="black"/>
+<path d="M450 50 H540 V110"/>
+<path d="M590 110 l9 -16 l18 32 l18 -32 l18 32 l18 -32 l9 16"/>
+<path d="M680 110 H780 V245"/>
+<path d="M750 245 H810 L780 295 Z"/>
+<path d="M750 295 H810"/>
+<path d="M780 295 V460 H120 V315"/>
+<path d="M822 240 l24 -24 M840 216 h6 v6"/><path d="M822 262 l24 -24 M840 238 h6 v6"/>
+<path d="M85 255 H155"/><path d="M103 270 H137"/><path d="M85 285 H155"/><path d="M103 300 H137"/>
+<path d="M120 300 V315"/>
+</g>
+<circle cx="540" cy="110" r="6" fill="black"/>
+<g font-family="Arial" font-size="24" fill="black">
+<text x="60" y="245">+</text>
+<text x="20" y="285">BT1</text><text x="20" y="315">9 V</text>
+<text x="225" y="55">S1</text>
+<text x="385" y="175">RV1 10 kΩ</text>
+<text x="605" y="175">R1 330 Ω</text>
+<text x="825" y="285">D1</text><text x="825" y="315">LED</text>
+</g>
+</svg>
