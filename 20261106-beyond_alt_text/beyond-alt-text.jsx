@@ -84,9 +84,20 @@
    remove every <Placeholder>, drop the badge in index.html, and flip
    README status to Live in the same commit. */
 UOES.configure({
-  draft: 'Draft · November 6, 2026',
+  draft: null,
   footer: 'UOES · November 6, 2026',
 });
+
+// The live deck. Same image on the first and last slides; the link is also in zoom-kit.md.
+const SlidesQR = ({ className }) => (
+  <img
+    src="20261106-beyond_alt_text/qr-beyond-alt-text.png"
+    alt="QR code that opens these slides: rianders.github.io/presentations, Beyond Alt Text."
+    className={`rounded-lg ${className}`}
+    width="144"
+    height="144"
+  />
+);
 
 // ── SLIDES ─────────────────────────────────────────────────
 
@@ -96,6 +107,7 @@ const slides = [
   {
     label: "Title",
     content: (
+      <div className="relative h-full">
       <TitleSlide
         kicker="Rutgers UOES · TIIP Partnership"
         title={<>Beyond Alt Text<br />Notation, Diagrams &amp; Symbols</>}
@@ -104,6 +116,8 @@ const slides = [
         role="Director of Emerging Technology · Rutgers UOES"
         date="November 6, 2026 · 11:00 am – 12:30 pm · Zoom"
       />
+      <SlidesQR className="absolute right-6 bottom-6 w-36" />
+      </div>
     ),
   },
 
@@ -187,7 +201,9 @@ const slides = [
 
         </div>
 
-        <Interact prompt="In chat: one piece of notation from your field a screen reader would get wrong." />
+        <Interact prompt="In chat: one piece of notation from your field a screen reader would get wrong.">
+          Got a page you want tested? Post it too. We work your examples together in the last 30 minutes.
+        </Interact>
       </SlideShell>
     ),
   },
@@ -594,13 +610,15 @@ const slides = [
     label: "Work Session",
     content: (
       <SlideShell>
-        <Heading sub="Hands-On · 30 min">Your Turn</Heading>
-        <Lede>One equation set, unit or figure from your own course.</Lede>
+        {/* Rick, November 5, 2026: a group workshop for the last 30 minutes, on examples the room
+            brings, not individual work. The request goes out beforehand: zoom-kit.md. */}
+        <Heading sub="Workshop · 30 min">Let's Work Your Examples</Heading>
+        <Lede>What you brought and posted in chat: we test it together.</Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-6 items-start">
           <div className="space-y-4">
-            <PipelineStep num="1" title="Run the prompt">On one page, not the whole unit.</PipelineStep>
-            <PipelineStep num="2" title="Verify">Where did it guess? Did it change anything?</PipelineStep>
+            <PipelineStep num="1" title="Run the prompt">On one page from your examples.</PipelineStep>
+            <PipelineStep num="2" title="Verify">Whoever reads the notation: where did it guess? Did it change anything?</PipelineStep>
             <PipelineStep num="3" title="Listen">Put it in Canvas and hear it.</PipelineStep>
           </div>
 
@@ -642,17 +660,13 @@ Mark anything you were unsure of.`}</CodeBlock>
 
         {/* Confirmed on Rick's NetID November 3, 2026: Gemini (Edu), Copilot Chat (Basic),
             ChatGPT Edu. Limits seen that day: Gemini took 10 files a message and dropped
-            the rest silently; Copilot Chat (Basic) took 2 images. Fallback page: the
-            sandbox's "After: Handwritten Algebra Worked Problems". */}
+            the rest silently; Copilot Chat (Basic) took 2 images. If nobody brings anything,
+            Rick runs the sandbox's "After: Handwritten Algebra Worked Problems". */}
         <Note>
-          Use Gemini or Copilot on your NetID, and switch to <strong>Thinking</strong> or{' '}
+          Follow along in Gemini or Copilot on your NetID: switch to <strong>Thinking</strong> or{' '}
           <strong>Think deeper</strong>. Send a page at a time: Gemini takes up to 9 pages,
-          Copilot 2 images. No page with you? Use the sandbox's handwritten algebra.
+          Copilot 2 images.
         </Note>
-        <Placeholder title="Review">
-          Are attendees enrolled in the Accessibility Sandbox? Its pages are unpublished. If
-          not, share the algebra page another way.
-        </Placeholder>
       </SlideShell>
     ),
   },
@@ -696,9 +710,16 @@ Mark anything you were unsure of.`}</CodeBlock>
         {/* Rick, November 2, 2026: accessible also means able to read the notation, and
             students have to write it too. Any sense: sight, hearing, touch, movement. */}
         <p className="text-lg mb-4">Accessible means a student can read it and write it, with whatever senses they use.</p>
+        <div className="text-ink">
+          <Interact kind="Zoom poll" prompt="One last poll before you go." />
+        </div>
         <div className="pt-4">
           <p className="font-bold">Rick Anderson</p>
           <p><Link onDark href="mailto:rick.anderson@uoes.rutgers.edu">rick.anderson@uoes.rutgers.edu</Link></p>
+        </div>
+        <div className="flex items-center gap-3 pt-3">
+          <SlidesQR className="w-28" />
+          <p className="text-sm">These slides</p>
         </div>
       </ClosingSlide>
     ),
