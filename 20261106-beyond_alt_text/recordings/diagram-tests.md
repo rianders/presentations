@@ -39,15 +39,22 @@ with each vendor, and these products add features often:
 
 | Tool | What it does with a diagram |
 |---|---|
-| Ally | Flags an image with no description and gives a score. It doesn't write the walkthrough. |
+| Ally | Flags an image with no description and gives a score. **Has an "Auto-generate description" button at Rutgers** (seen November 5, below). |
 | ReadSpeaker, Immersive Reader | Read the text on the page. An image with no text gives them nothing to read. |
 | DesignPLUS | Its checker covers alt text being present, not whether it's right. |
 | SensusAccess | Converts files to audio, EPUB or braille. |
 | Libraries remediation | People: a request answered within two business days. |
 
-So **none of those listed writes a description of a diagram. That takes an AI prompt, or a
-person.** Canvas tools can flag the gap and read the result. Check with Rutgers whether any of
-them has added an AI alt-text feature; I did not check inside each product.
+**Corrected November 5.** I first said none of these writes a description. Ally can draft one:
+in the sandbox's Files page, the dial on `complex-images/udl-vs-di-venn-diagram.jpg` opens a panel with
+an **"Auto-generate description"** button, next to "Edit image description" and Save. So it's on for
+this course. I only looked here.
+
+**Tested November 5, nothing saved.** See "Ally's Auto-generate" at the end of this file. Canvas's own
+"IgniteAI Accessibility Remediation" option wasn't checked.
+
+**Ally checks that a description exists.** That Venn diagram, full of text, scores 82% with "This image
+has a description", and its description is only "Venn diagram comparing UDL and DI". One image.
 
 ## Screen-reader options for a diagram in Canvas
 
@@ -110,3 +117,30 @@ same image and prompt worked each time; the scores are from those runs. I don't 
 of one colour. Not tested: a real map with place names, a rainbow or diverging scale, a continuous
 scale, a heat map with many cells. Nothing here predicts those. The graph's description wasn't
 listened to or played as audio, and neither answer was reviewed by an economist or a geographer.
+
+## Ally's Auto-generate
+
+Rick's choice, November 5: test it. Sandbox, signed in as Rick. Diagrams uploaded to a new folder,
+`ally-test-2026-11-05`; the button fills the box and adds "This is an auto-generated description and
+needs to be checked for accuracy". **I never pressed Add or Save.** I reopened the algebra page to check
+its description hadn't changed. One run each.
+
+| Image | What Ally wrote | Score | What's missing |
+|---|---|---|---|
+| Schematic | Circuit diagram with 9V battery, switch S1, 10kΩ potentiometer RV1, 330Ω resistor R1, and an LED D1 connected in series. | 3 of 7 | Open switch, wiper tie, both polarities |
+| ER diagram | Entity-relationship diagram showing Student, Enrollment, Course, and Instructor tables with keys and connecting relationships. | 1 of 7 | Every field and relationship |
+| Supply and demand | Supply and demand graph showing demand curve shifting right from D1 to D2, moving equilibrium from E1 (40,$4) to E2 (60,$6). | 4 of 7 | Axes, slopes, dashed line. Both crossings right |
+| Choropleth | Map chart titled "Households with broadband, by region" showing eight labeled regions (A–H) shaded in four colors representing broadband adoption ranges. | 1 of 10 | All 8 regions' values; drops "illustrative data" from the title |
+| Worked notes | Class notes titled "Algebra Review" with four examples: solving for x, simplifying exponents, expanding an expression, and evaluating a function. | Not scored | All the math. It didn't correct anything, because it transcribed nothing |
+| Handwritten algebra page | Handwritten math notes with algebraic expressions, fractions, and equations, including some crossed-out work and circled answers in blue, red, and black ink. | Not scored | All 30 equations. I didn't check "circled answers" or the ink colors against the page |
+| UDL vs DI Venn diagram | Venn diagram comparing UDL and DI educational approaches, showing distinct features and shared characteristics like flexibility and scaffolding. | Not scored | Nearly all the text in the circles |
+
+**What it says.** What it wrote was mostly true, but it's a one-sentence label, not a walkthrough. That's a
+fair use of alt text, and it also means the keys ask for more than it's built to give. It isn't a fair
+contest with a prompted AI answer, so read the column as "what the button gives you", not a ranking.
+For a diagram, a label leaves out what the diagram says.
+
+**Ally's score doesn't see this.** The algebra page already has a description with no math in it, from a
+source I didn't trace, and Ally scores it **100%**.
+
+The folder and its 5 files are still in the sandbox; nothing links to them.
