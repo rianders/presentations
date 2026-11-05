@@ -486,7 +486,7 @@ const slides = [
     label: "Diagrams",
     content: (
       <SlideShell>
-        <Heading sub="Diagrams · 7 min">Describe the Path, Not the Picture</Heading>
+        <Heading sub="Diagrams · 5 min">Describe the Path, Not the Picture</Heading>
         <Lede>
           A diagram makes an argument with arrows and position. The accessible version says
           the argument.
@@ -511,67 +511,146 @@ const slides = [
         </div>
 
         <table className="w-full text-xs text-ink border-collapse">
-          <caption className="sr-only">Five kinds of diagram, the accessible form for each, and how AI models did in our tests.</caption>
+          <caption className="sr-only">Five kinds of diagram, the accessible form for each, and each tool's score against an answer key.</caption>
           <thead>
             <tr className="border-b-2 border-ink text-left">
               <th scope="col" className="py-1 pr-2">Diagram</th>
               <th scope="col" className="py-1 pr-2">Accessible form</th>
-              <th scope="col" className="py-1">What the AI did</th>
+              <th scope="col" className="py-1 pr-2 text-right">GPT-6 Astra</th>
+              <th scope="col" className="py-1 pr-2 text-right">Gemini Thinking</th>
+              <th scope="col" className="py-1 pr-2 text-right">Copilot Think deeper</th>
+              <th scope="col" className="py-1 text-right">Ally Auto-generate</th>
             </tr>
           </thead>
           <tbody>
             {[
-              ["Flow chart (W3C alt text tree)", "Nested list: each decision, each branch", "Astra and Gemini: every step right"],
-              ["Circuit schematic", "Walk the loop, or a netlist", "Astra and Gemini 7 of 7; Copilot 6"],
-              ["Database entity diagram", "Tables, then each relationship", "Astra and Copilot 7 of 7; Gemini invented a field"],
-              ["Supply and demand", "The curves, where they cross; you check", "Astra and Gemini 7 of 7; Copilot 6"],
-              ["Choropleth map", "The table behind the map", "All three: all 8 regions right"],
-            ].map(([kind, form, result]) => (
+              ["Flow chart (W3C alt text tree)", "Nested list: each decision, each branch", "15/15", "15/15", "Not run", "Not run"],
+              ["Circuit schematic", "Walk the loop, or a netlist", "7/7", "7/7", "6/7", "3/7"],
+              ["Database entity diagram", "Tables, then each relationship", "7/7", "6/7", "7/7", "1/7"],
+              ["Supply and demand", "The curves, where they cross; you check", "7/7", "7/7", "6/7", "4/7"],
+              ["Choropleth map", "The table behind the map", "10/10", "10/10", "10/10", "1/10"],
+            ].map(([kind, form, astra, gemini, copilot, ally]) => (
               <tr key={kind} className="border-b border-line">
                 <th scope="row" className="py-1 pr-2 text-left font-bold">{kind}</th>
                 <td className="py-1 pr-2">{form}</td>
-                <td className="py-1">{result}</td>
+                <td className="py-1 pr-2 text-right">{astra}</td>
+                <td className="py-1 pr-2 text-right">{gemini}</td>
+                <td className="py-1 pr-2 text-right">{copilot}</td>
+                <td className="py-1 text-right">{ally}</td>
               </tr>
             ))}
           </tbody>
         </table>
 
         <Note>
-          Canvas tools flag a missing description and read the result aloud. Writing it takes
-          AI or a person. Clean, labelled diagrams, one run each: expect worse from scans.
+          Ally's Auto-generate writes one sentence. On the map: “eight labeled regions (A–H) shaded in
+          four colors”, and no region's value. Its score checks that a description exists: our algebra
+          page gets 100% with no math in it. Clean, labelled diagrams, one run each.
         </Note>
       </SlideShell>
     ),
   },
 
-  // ── 11: IT ANSWERS INSTEAD ──
-  // Added November 3, 2026 (Rick: "New slide before 11"). Clip 10: the GIF is cut from the
-  // November 3 Gemini run (recordings/clip10-take1-it-answers-instead.gif), three captioned
-  // frames slow enough to read. Sets up the first line of the work-session prompt.
+  // ── 11: TWO EXAMPLES ──
+  // Added November 5, 2026 (Rick: "a slide of 2 examples following slide 10"). The two misses behind
+  // slide 10's grid, one per tool. Gemini's line and Copilot's sentence are from their answers:
+  // recordings/diagram-tests.md. Crops of test-specimens/ drawn for the test.
   {
-    label: "Answers Instead",
+    label: "Two Examples",
     content: (
       <SlideShell>
-        <Heading sub="The Prompt · 2 min">Ask for Access, Get an Answer Key</Heading>
-        <Lede>
-          Ask a tool to make a worksheet accessible and it tends to fix it. On a “find the
-          mistake” page, the fix is the answer.
-        </Lede>
-        <img
-          src="20261106-beyond_alt_text/clip10-it-answers-instead.gif"
-          alt="Three frames, looping. First, the handwritten page: two x plus nine over the square root of x squared equals two x plus nine over x. Second, Gemini's answer to “Make this accessible”: the same line with “x greater than zero” added. Third, the answer to the work-session prompt: the line kept exactly as written."
-          className="rounded-lg border border-line w-full max-w-3xl mx-auto my-4"
-          width="900"
-          height="260"
-        />
+        <Heading sub="Diagrams · 2 min">One Sounds Sure, One Says So</Heading>
+        <div className="grid grid-cols-2 gap-6 my-3">
+          <div>
+            <p className="font-bold text-ink mb-2">Gemini Thinking: invented a field</p>
+            <img
+              src="20261106-beyond_alt_text/test-specimens/crop-er-course.png"
+              alt="The COURSE table on the entity diagram. Its fields are course_id, title and instructor_id. There is no student_id."
+              className="rounded border border-line w-full h-40 object-contain bg-white"
+            />
+            <p className="text-sm text-ink mt-2">It wrote <code>COURSE(student_id is not PK, …)</code></p>
+            <p className="text-sm text-ink mt-1">COURSE has no <code>student_id</code>. Nothing marks the line as a doubt.</p>
+          </div>
+          <div>
+            <p className="font-bold text-ink mb-2">Copilot Think deeper: left out a detail</p>
+            <img
+              src="20261106-beyond_alt_text/test-specimens/crop-schematic-led.png"
+              alt="The LED on the schematic, drawn with its triangle pointing down, so the anode faces the resistor and the cathode faces the battery's minus side."
+              className="rounded border border-line w-full h-40 object-contain bg-white"
+            />
+            <p className="text-sm text-ink mt-2">It wrote “I have not assigned names such as ‘anode’ or ‘cathode’”</p>
+            <p className="text-sm text-ink mt-1">An LED only lights one way round, so the listener needs this. But Copilot marked it unsure.</p>
+          </div>
+        </div>
+        <Note>Only the page or the person who knows the field can catch the first. The second tells you where to look.</Note>
+      </SlideShell>
+    ),
+  },
+
+  // ── 12: ASK FOR ACCURACY ──
+  // Rebuilt November 5, 2026 (Rick: "Asking for accuracy and you get solutions", the old GIF
+  // was hard to follow). Printed notes with deliberate mistakes, key written first, one scored
+  // run per cell: recordings/answers-instead-tests.md. The picture is Gemini's real answer to
+  // "Make this accessible." History made no visible difference: clip10-history-matrix.md.
+  {
+    label: "Ask for Accuracy",
+    content: (
+      <SlideShell>
+        <Heading sub="The Prompt · 2 min">Ask for Accuracy, Get Solutions</Heading>
+        <div className="grid grid-cols-2 gap-3 my-2">
+          <figure>
+            <figcaption className="text-xs font-bold mb-1">The page: mistakes on purpose, one blank</figcaption>
+            <img
+              src="20261106-beyond_alt_text/test-specimens/worked-notes-errors.png"
+              alt="Printed class notes. Example 1 solves 2x + 6 = 14 with 2x = 20 and x = 10. Example 2: x squared times x cubed equals x to the sixth. Example 3: 3 times x + 2 equals 3x + 2. Example 4: f of 2 equals a blank line."
+              className="rounded border border-line w-full"
+              style={{ maxHeight: "24vh", objectFit: "contain", objectPosition: "left top" }}
+            />
+          </figure>
+          <figure>
+            <figcaption className="text-xs font-bold mb-1">Gemini, “Make this accessible.”: a picture of the answer key</figcaption>
+            <img
+              src="20261106-beyond_alt_text/recordings/outputs/worked-notes-gemini-accessible.png"
+              alt="An image, not text. The same notes redrawn with the mistakes replaced: 2x = 8, x = 4, x to the fifth, 3x + 6, added rules, and f of 2 filled in as 5."
+              className="rounded border border-line w-full"
+              style={{ maxHeight: "24vh", objectFit: "contain", objectPosition: "left top" }}
+            />
+          </figure>
+        </div>
+        <table className="w-full text-xs text-ink border-collapse my-2">
+          <caption className="sr-only">What three models did with the page under four prompts.</caption>
+          <thead>
+            <tr className="border-b-2 border-ink text-left">
+              <th scope="col" className="py-1 pr-2">Prompt</th>
+              <th scope="col" className="py-1 pr-2">GPT-6 Astra</th>
+              <th scope="col" className="py-1 pr-2">Gemini Thinking</th>
+              <th scope="col" className="py-1">Copilot Think deeper</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["Transcribe this accurately.", "Kept all", "Kept all", "Kept all", false],
+              ["Make this accessible.", "Kept, added answers", "Solved, as a picture", "Solved", true],
+              ["Make this accessible and accurate.", "Solved, no note", "Solved", "Solved, as a picture, new error", true],
+              ["The work-session prompt", "Kept all", "Kept all", "Kept all", false],
+            ].map(([prompt, astra, gemini, copilot, bad]) => (
+              <tr key={prompt} className={`border-b border-line ${bad ? "bg-blush" : ""}`}>
+                <th scope="row" className="py-1 pr-2 text-left font-bold">{prompt}</th>
+                <td className="py-1 pr-2">{astra}</td>
+                <td className="py-1 pr-2">{gemini}</td>
+                <td className="py-1">{copilot}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         <p className="uoes-sub">
-          The first line of the prompt is the fix: do not solve, simplify, correct or finish anything
+          The cause was the wording, not the model. Accurate about the copy is safe; accurate about the page gets it corrected.
         </p>
       </SlideShell>
     ),
   },
 
-  // ── 12: WHICH MODEL ──
+  // ── 13: WHICH MODEL ──
   // Added November 5, 2026 (Rick: a matrix or leaderboard of models and topics, then what to
   // recommend). Page 13 scores from recordings/tier-comparison.md, every miss checked by eye.
   // Copilot's runs used 2 pieces, its limit; the others 4. Lecture from
@@ -634,7 +713,7 @@ const slides = [
     ),
   },
 
-  // ── 13: WORK SESSION ──
+  // ── 14: WORK SESSION ──
   {
     label: "Work Session",
     content: (
@@ -700,7 +779,7 @@ Mark anything you were unsure of.`}</CodeBlock>
     ),
   },
 
-  // ── 14: RESOURCES ──
+  // ── 15: RESOURCES ──
   // Rick, November 2, 2026: every deck ends with standard useful resources. The theme's
   // ResourcesSlide puts this session's links beside the standard Rutgers set.
   // Verified November 2, 2026: NVDA is free with MathCAT built in since 2026.1; Rutgers
@@ -729,8 +808,8 @@ Mark anything you were unsure of.`}</CodeBlock>
     ),
   },
 
-  // ── 15: CLOSING ──
-  // The template's closing slide. Links live on slide 14 now; this one is the line
+  // ── 16: CLOSING ──
+  // The template's closing slide. Links live on the Resources slide now; this one is the line
   // to leave the room with, and how to reach Rick.
   {
     label: "Questions",
