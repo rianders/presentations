@@ -297,6 +297,19 @@ const slides = [
           MathCAT reads it in NVDA and JAWS, two ways: <strong>MathSpeak</strong> (precise)
           or <strong>ClearSpeak</strong> (the way a teacher says it). The listener chooses.
         </Lede>
+        {/* Rick, November 5, 2026: leave the math as it is, or add a spoken version? Heard in
+            Immersive Reader on two equations (recordings/canvas-reading-tools.md): it reads the
+            equation, then the written reading. You hear it twice, but you get both. NVDA not
+            yet listened to. An instructor's decision, not a right answer. */}
+        <p className="uoes-sub mt-4">Your decision: add a spoken version?</p>
+        <Columns n={2}>
+          <Column title="Math only">
+            Shorter, and each listener's tool decides how to say it.
+          </Column>
+          <Column title="Math plus a written reading">
+            Read twice in Immersive Reader, but you get both: the literal and the spoken.
+          </Column>
+        </Columns>
         <Placeholder title="Best practices">
           Rick's adopted MathCAT / MathML best practices.
         </Placeholder>
@@ -359,7 +372,7 @@ const slides = [
     label: "Hear It: Gen AI",
     content: (
       <SlideShell>
-        <Heading sub="Demo · 10 min">Said the Way People Say It</Heading>
+        <Heading sub="Demo · 8 min">Said the Way People Say It</Heading>
         {/* November 3, 2026, both on Rick's NetID, so neither is a showcase. Every Rutgers
             faculty member has Gemini and Copilot; ChatGPT Edu with GPT-6 Astra is an
             upgrade (Rick). Page 13: Gemini 3.6 Thinking 30/30 but adds "final answer";
@@ -518,7 +531,70 @@ const slides = [
     ),
   },
 
-  // ── 12: WORK SESSION ──
+  // ── 12: WHICH MODEL ──
+  // Added November 5, 2026 (Rick: a matrix or leaderboard of models and topics, then what to
+  // recommend). Page 13 scores from recordings/tier-comparison.md, every miss checked by eye.
+  // Copilot's runs used 2 pieces, its limit; the others 4. Lecture from
+  // recordings/gursoy-lecture-comparison.md: only Astra and Gemini Thinking ran it, and both
+  // made the same P_ij(n) error (slide 9). A one-line gap in one run is not a real ranking,
+  // so say so out loud. "Adds steps": wrote things like "final answer" or "we get".
+  {
+    label: "Which Model",
+    content: (
+      <SlideShell>
+        <Heading sub="Recommendations · 3 min">Which Model Should You Use?</Heading>
+        <table className="w-full text-xs text-ink border-collapse my-2">
+          <caption className="sr-only">
+            Ten models ranked by a handwritten algebra page, with results on a 14-page lecture where tested.
+          </caption>
+          <thead>
+            <tr className="border-b-2 border-ink text-left">
+              <th scope="col" className="py-1 pr-2">Access</th>
+              <th scope="col" className="py-1 pr-2">Model</th>
+              <th scope="col" className="py-1 pr-2 text-right">Algebra lines, of 30</th>
+              <th scope="col" className="py-1 pr-2 text-right">Details kept, of 5</th>
+              <th scope="col" className="py-1 pr-2">Adds steps?</th>
+              <th scope="col" className="py-1">Hard lecture, 14 pages</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["Upgrade", "GPT-6 Astra (Work)", 30, 5, "No", "All 14; 15 doubts marked", true],
+              ["Everyone", "Gemini 3.6 Thinking", 30, 5, "Yes", "Only 9; no doubts marked", true],
+              ["Everyone", "Copilot, Think deeper", 29, 5, "No", "Not tested", true],
+              ["Everyone", "Gemini 3.6 Flash (default)", 29, 5, "Yes", "Not tested", false],
+              ["Everyone", "Gemini 3.1 Pro", 29, 4, "No", "Not tested", false],
+              ["Upgrade", "GPT-6 Sol (Work)", 29, 4, "No", "Not tested", false],
+              ["Upgrade", "GPT-5.6 Instant (Chat default)", 27, 4, "No", "Not tested", false],
+              ["Upgrade", "GPT-6 (Chat)", 27, 4, "No", "Not tested", false],
+              ["Upgrade", "GPT-5.6 Luna (Work default)", 24, 4, "No", "Not tested", false],
+              ["Everyone", "Copilot, Auto (default)", 23, 4, "Yes", "Not tested", false],
+            ].map(([access, model, lines, traps, adds, lecture, best]) => (
+              <tr key={model} className={`border-b border-line ${best ? "bg-blush font-bold" : ""}`}>
+                <td className="py-1 pr-2">{access}</td>
+                <th scope="row" className={`py-1 pr-2 text-left ${best ? "font-bold" : "font-normal"}`}>{model}</th>
+                <td className="py-1 pr-2 text-right">{lines}</td>
+                <td className="py-1 pr-2 text-right">{traps}</td>
+                <td className="py-1 pr-2">{adds}</td>
+                <td className={`py-1 ${lecture === "Not tested" ? "text-slate" : ""}`}>{lecture}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="text-xs text-slate mb-2">One page, one run each, with the work-session prompt, November 2026. Bold: our picks.</p>
+        <Columns n={2}>
+          <Column title="Everyone">
+            Gemini <strong>Thinking</strong> or Copilot <strong>Think deeper</strong>. Up to 9 pages at a time in Gemini, 2 images in Copilot.
+          </Column>
+          <Column title="With the ChatGPT Edu upgrade">
+            <strong>GPT-6 Astra</strong> for long or hard notes. It still got specialized notation wrong: check it.
+          </Column>
+        </Columns>
+      </SlideShell>
+    ),
+  },
+
+  // ── 13: WORK SESSION ──
   {
     label: "Work Session",
     content: (
@@ -586,7 +662,7 @@ Mark anything you were unsure of.`}</CodeBlock>
     ),
   },
 
-  // ── 13: RESOURCES ──
+  // ── 14: RESOURCES ──
   // Rick, November 2, 2026: every deck ends with standard useful resources. The theme's
   // ResourcesSlide puts this session's links beside the standard Rutgers set.
   // Verified November 2, 2026: NVDA is free with MathCAT built in since 2026.1; Rutgers
@@ -615,8 +691,8 @@ Mark anything you were unsure of.`}</CodeBlock>
     ),
   },
 
-  // ── 14: CLOSING ──
-  // The template's closing slide. Links live on slide 13 now; this one is the line
+  // ── 15: CLOSING ──
+  // The template's closing slide. Links live on slide 14 now; this one is the line
   // to leave the room with, and how to reach Rick.
   {
     label: "Questions",
