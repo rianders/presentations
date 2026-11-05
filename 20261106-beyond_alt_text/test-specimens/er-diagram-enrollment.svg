@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620">
+<rect width="1100" height="620" fill="white"/>
+<g fill="white" stroke="black" stroke-width="2.5">
+<rect x="40" y="60" width="240" height="170"/><rect x="430" y="60" width="240" height="170"/><rect x="820" y="60" width="240" height="170"/><rect x="820" y="400" width="240" height="170"/>
+</g>
+<g stroke="black" stroke-width="2.5"><path d="M40 100 H280 M430 100 H670 M820 100 H1060 M820 440 H1060"/></g>
+<g font-family="Arial" font-size="22" fill="black">
+<text x="110" y="88" font-weight="bold">STUDENT</text><text x="52" y="132">PK student_id</text><text x="52" y="164">name</text><text x="52" y="196">email</text>
+<text x="480" y="88" font-weight="bold">ENROLLMENT</text><text x="442" y="132">PK,FK student_id</text><text x="442" y="164">PK,FK course_id</text><text x="442" y="196">grade</text>
+<text x="895" y="88" font-weight="bold">COURSE</text><text x="832" y="132">PK course_id</text><text x="832" y="164">title</text><text x="832" y="196">FK instructor_id</text>
+<text x="865" y="428" font-weight="bold">INSTRUCTOR</text><text x="832" y="472">PK instructor_id</text><text x="832" y="504">name</text><text x="832" y="536">department</text>
+</g>
+<g fill="none" stroke="black" stroke-width="2.5">
+<path d="M280 145 H430"/><path d="M296 133 V157 M306 133 V157"/><path d="M430 125 L402 145 L430 165"/><path d="M394 133 V157"/>
+<path d="M670 145 H820"/><path d="M804 133 V157 M794 133 V157"/><path d="M670 125 L698 145 L670 165"/><path d="M706 133 V157"/>
+<path d="M940 230 V400"/><path d="M928 384 H952 M928 374 H952"/><path d="M920 230 L940 258 L960 230"/><circle cx="940" cy="270" r="8" fill="white"/>
+</g>
+</svg>
