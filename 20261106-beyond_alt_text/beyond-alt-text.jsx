@@ -121,89 +121,47 @@ const slides = [
     ),
   },
 
-  // ── 2: THE CHALLENGE ──
-  // Rick, November 2, 2026: open with the problem everyone in the room shares, then use
-  // math as the worked example. The A/B/C grouping from notation-inventory.md; group C
-  // is the honest core. The chat prompt is the opener.
+  // ── 2: BROUGHT TO YOU BY ──
+  // Ported from 20260918-digital_accessibility slide 2 and the August 21 bio slide.
+  // Rick, Nov 6, 2026: add the TIIP GenAI Pathways card + link, link UOES to its site,
+  // mention the AI Literacies Project; the old "Me" card was weak, so it now carries
+  // the career line from August 21. Reporting line stays off (settled Sept 17).
+  // AI Literacies card: no link on purpose. Rick, Nov 6: "People can contact me."
   {
-    label: "Your Field",
+    label: "Brought to You By",
     content: (
-      <SlideShell>
-        <Heading sub="The Challenge · 4 min">Your Field Has Its Own Notation</Heading>
-
-        {/* Every professional field writes in a notation its experts read and outsiders can't.
-            Samples are real conventions from notation-inventory.md. Dance is featured on
-            purpose (Rick, October 26, 2026): it is the example that widens what the room
-            counts as notation. Don't fold it back into the grid. */}
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-2 my-3">
-          {[
-            ["Mathematics", "∫ₐᵇ f(x) dx"],
-            ["Chemistry", "H₂SO₄"],
-            ["Linguistics", "/ˈfoʊ.nə.tɪk/"],
-            ["Music", "♩ = 120 · F♯"],
-            ["Medicine", "1 tab PO b.i.d."],
-            ["Electronics", "R1 vin vout 4.7k"],
-          ].map(([field, sample]) => (
-            <div key={field} className="bg-white border border-line rounded-lg px-3 py-2">
-              <p className="text-xs font-black uppercase tracking-widest text-slate">{field}</p>
-              <p className="text-sm text-ink font-serif mt-1">{sample}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Dance card on the left, the three levels stacked on the right: side by side so
-            the slide fits a 16:9 frame (November 2, 2026). */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3 my-3 items-stretch">
-
-        {/* Symbol sheet from the Movement4Brain Game Design Document, section 5.2 (Rick's
-            project). It is a key, not a score, so the copy says "symbols", not "staff". */}
-        <div className="bg-blush rounded-xl p-4 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 items-center">
-          <img
-            src="20261106-beyond_alt_text/labanotation-symbols.png"
-            alt="Twelve hand-drawn Labanotation symbols, each labelled with the movement it means: any action, stillness, rotation, flexion, extension, jump, balance, move forward, move away, up or high, down or low, and middle or horizontal. The last three are the same upright rectangle, told apart only by its fill: diagonal hatching means high, solid black means low, and a single dot means middle."
-            className="rounded-lg border border-line bg-white w-full max-w-[130px] mx-auto"
-            width="130"
-          />
-          <div>
-            <p className="uoes-sub mb-1">Dance · Labanotation</p>
-            <p className="text-sm text-ink">
-              Movement has a notation too. It has no spoken form, because what it records was
-              never speech.
+      <SlideShell time="1 min">
+        <Heading sub="Opening">Brought to You By</Heading>
+        <CardGrid cols={2}>
+          <SectionCard title="UOES · University Online Education Services" icon="🏛️" accent={true}>
+            <p className="text-sm">
+              Instructional designers, media specialists and educational technologists in University
+              Academic Affairs, partnering with academic units on their online programs.
             </p>
-            <p className="text-sm text-slate mt-2">
-              High, low and middle are one shape. Only the fill changes: hatched, solid, a dot.
+            <p className="text-sm mt-2"><Link onDark href="https://uoes.rutgers.edu">uoes.rutgers.edu</Link></p>
+          </SectionCard>
+          <SectionCard title="TIIP · Teaching and Generative AI Pathway" icon="🧭">
+            <p className="text-sm">
+              Our partner for this series, Teaching with GenAI. Today is one session on that pathway.
             </p>
-            <p className="text-xs text-slate italic mt-2">
-              The symbol set from Movement4Brain, a movement game built on BrainDance.
+            <p className="text-sm mt-2"><Link href="https://teaching.rutgers.edu/teaching-and-generative-ai-pathway/">teaching.rutgers.edu/teaching-and-generative-ai-pathway</Link></p>
+          </SectionCard>
+          <SectionCard title="AI Literacies Project" icon="📚">
+            <p className="text-sm">
+              For faculty: the many AI literacies, and the resources across Rutgers. A partnership
+              with the University Libraries to create a central inventory and resource awareness.
+              Contact me for more.
             </p>
-          </div>
-        </div>
-
-        {/* Three levels, darkening as the notation gets harder to speak. The label
-            carries the meaning; the shade only reinforces it. The third level names the
-            fix, not just the limit (November 2, 2026): the brief promises syntax trees and
-            structural formulas converted, and a different form is that conversion. */}
-        <div className="flex flex-col gap-2">
-          <div className="bg-white border border-line rounded-xl px-4 py-2">
-            <p className="text-xs font-black uppercase tracking-widest text-slate">Has a spoken form</p>
-            <p className="text-sm text-ink">H₂SO₄ · x̄ · basic math</p>
-          </div>
-          <div className="bg-mist rounded-xl px-4 py-2">
-            <p className="text-xs font-black uppercase tracking-widest text-slate">Needs its structure announced</p>
-            <p className="text-sm text-ink">Fractions · ∀x∃y · IPA</p>
-          </div>
-          <div className="bg-ink rounded-xl px-4 py-2 flex-1">
-            <p className="text-xs font-black uppercase tracking-widest text-silver">Needs a different form</p>
-            <p className="text-sm text-white">Music staves · Labanotation · syntax trees · structural formulas</p>
-            <p className="text-xs text-silver mt-1">A circuit as a netlist. A tree in brackets. A molecule by name, or by touch.</p>
-          </div>
-        </div>
-
-        </div>
-
-        <Interact prompt="In chat: one piece of notation from your field a screen reader would get wrong.">
-          Got a page you want tested? Post it too. We work your examples together in the last 30 minutes.
-        </Interact>
+          </SectionCard>
+          <SectionCard title="Rick Anderson" icon="🔭">
+            <p className="text-sm">
+              Director of Emerging Technology, UOES. Built some of Rutgers' first websites in the 1990s,
+              and worked on text markup at the Center for Electronic Texts in the Humanities. I research
+              and experiment with new technologies, from AI to 3D immersive spaces, and share them
+              with faculty to incorporate in their own work.
+            </p>
+          </SectionCard>
+        </CardGrid>
       </SlideShell>
     ),
   },
@@ -213,8 +171,8 @@ const slides = [
   {
     label: "Silent Failure",
     content: (
-      <SlideShell>
-        <Heading sub="Framing · 5 min">It Sounds Right, and It Isn't</Heading>
+      <SlideShell time="5 min">
+        <Heading sub="Framing">Looks and Sounds Right, but Is Wrong</Heading>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
           <div className="bg-mist rounded-xl p-6">
@@ -237,6 +195,8 @@ const slides = [
         <p className="uoes-sub">
           The slowest material to make accessible, and the last the April 2027 deadline will reach
         </p>
+        {/* Moved here November 6, 2026, when the Your Field slide was cut: it was the opener. */}
+        <Interact prompt="In chat: one piece of notation from your field a screen reader would get wrong." />
       </SlideShell>
     ),
   },
@@ -247,20 +207,29 @@ const slides = [
   {
     label: "Math Pathway",
     content: (
-      <SlideShell>
-        <Heading sub="The Math Pathway · 3 min">Where This Comes From</Heading>
+      <SlideShell time="3 min">
+        <Heading sub="The Math Pathway">Notation Must Be Formatted for Screen Readers</Heading>
         <Lede>
-          Today's worked example: a UOES project on transcribing scientific notation, built
-          with faculty.
+          A screen reader can only say what the page gives it. The same equation arrives three ways.
         </Lede>
+        <Columns n={3}>
+          <Column title="A picture">
+            An image of the equation, with no text behind it. The listener hears “graphic,” or nothing.
+          </Column>
+          <Column title="Plain typed text">
+            x^2 + y^2 typed as characters. It is read symbol by symbol, and the structure is lost.
+          </Column>
+          <Column title="Structured math (MathML)">
+            The page says what is a power, a fraction, a root. MathCAT turns it into speech, and the listener can step through it.
+          </Column>
+        </Columns>
 
-        {/* Thanks named by Rick, October 28, 2026. Names only, no titles (Rick, November 5:
-            just a thank-you; he'll call them out if they're in the room). */}
-        <People
-          label="With thanks"
-          people={[{ name: "Carmela Scala" }, { name: "Melike Gursoy" }]}
-          note="The faculty who made this possible."
-        />
+        {/* Thanks named by Rick, October 28, 2026. Names only (Rick, November 5: just a
+            thank-you). Kept here as one line when the slide became real content, Nov 6. */}
+        <p className="text-sm text-slate mt-5">
+          Today's worked example is a UOES project on transcribing scientific notation, built with
+          faculty. With thanks to <strong>Carmela Scala</strong> and <strong>Melike Gursoy</strong>.
+        </p>
       </SlideShell>
     ),
   },
@@ -274,8 +243,8 @@ const slides = [
   {
     label: "Hear It: Canvas",
     content: (
-      <SlideShell>
-        <Heading sub="Demo · 6 min">One Equation, Six Ways in Canvas</Heading>
+      <SlideShell time="6 min">
+        <Heading sub="Demo">Six Different Ways to Express an Equation</Heading>
         <video
           controls
           preload="metadata"
@@ -324,8 +293,8 @@ const slides = [
   {
     label: "The Questions",
     content: (
-      <SlideShell>
-        <Heading sub="The Through Line · 2 min">One Page, Every Question</Heading>
+      <SlideShell time="2 min">
+        <Heading sub="The Through Line">One Page, Every Question</Heading>
         <table className="w-full text-sm text-ink border-collapse my-3">
           <caption className="sr-only">What happened on the one test page, and the question each raises.</caption>
           <thead>
@@ -360,23 +329,29 @@ const slides = [
   {
     label: "The Baseline",
     content: (
-      <SlideShell>
-        <Heading sub="Baseline · 6 min">When It's MathML, This Already Works</Heading>
+      <SlideShell time="6 min">
+        <Heading sub="Baseline">Ask AI for MathML and LaTeX</Heading>
         <Lede>
-          MathCAT reads it in NVDA and JAWS, two ways: <strong>MathSpeak</strong> (precise)
-          or <strong>ClearSpeak</strong> (the way a teacher says it). The listener chooses.
+          Ask for MathML with the LaTeX kept inside it, so a screen reader with MathCAT can read
+          each equation and step through it.
         </Lede>
-        {/* Rick, November 5, 2026: leave the math as it is, or add a spoken version? Heard in
-            Immersive Reader on two equations (recordings/canvas-reading-tools.md): it reads the
-            equation, then the written reading. You hear it twice, but you get both. NVDA not
-            yet listened to. An instructor's decision, not a right answer. */}
-        <p className="uoes-sub mt-4">Your decision: add a spoken version?</p>
-        <Columns n={2}>
-          <Column title="Math only">
-            Shorter, and each listener's tool decides how to say it.
+        {/* Rick, November 6, 2026: faculty are expected to prompt AI to convert to MathML and
+            LaTeX. Canvas facts are from report.html. The written reading: heard in Immersive
+            Reader on two equations (recordings/canvas-reading-tools.md); it reads the equation,
+            then the written reading. NVDA not yet listened to. An instructor's decision, not a
+            right answer. */}
+        <Columns n={3}>
+          <Column title="Put it in Canvas">
+            Paste it through the HTML editor: all 30 equations came through in our test. The
+            equation editor gave the same reading.
           </Column>
-          <Column title="Math plus a written reading">
-            Read twice in Immersive Reader, but you get both: the literal and the spoken.
+          <Column title="The listener's tool voices it">
+            MathCAT in NVDA and JAWS offers <strong>MathSpeak</strong> (precise) or{' '}
+            <strong>ClearSpeak</strong> (the way an instructor says it). The listener chooses.
+          </Column>
+          <Column title="Your decision">
+            Also have the AI write out how you'd say it? You get both, but Immersive Reader
+            reads it twice, and you check the wording.
           </Column>
         </Columns>
       </SlideShell>
@@ -389,8 +364,8 @@ const slides = [
   {
     label: "The Pipeline",
     content: (
-      <SlideShell>
-        <Heading sub="Workflow · 8 min">Most Notation Isn't MathML</Heading>
+      <SlideShell time="8 min">
+        <Heading sub="Workflow">Most Notation Isn't MathML</Heading>
         <Lede>
           It's handwriting, scanned PDFs, and photos of whiteboards. AI can turn those into
           something a screen reader can use.
@@ -435,15 +410,15 @@ const slides = [
   {
     label: "Hear It: Gen AI",
     content: (
-      <SlideShell>
-        <Heading sub="Demo · 8 min">Said the Way People Say It</Heading>
+      <SlideShell time="8 min">
+        <Heading sub="Demo">Said the Way People Say It</Heading>
         {/* November 3, 2026, both on Rick's NetID, so neither is a showcase. Every Rutgers
             faculty member has Gemini and Copilot; ChatGPT Edu with GPT-6 Astra is an
             upgrade (Rick). Page 13: Gemini 3.6 Thinking 30/30 but adds "final answer";
             Astra 30/30, nothing added, positions described. Astra's line below is quoted
             from its answer. recordings/tier-comparison.md. */}
         <Lede>
-          It reads handwriting, says each line the way a teacher would, and describes where
+          It reads handwriting, says each line the way an instructor would, and describes where
           things sit on the page.
         </Lede>
         <Columns n={2}>
@@ -481,8 +456,8 @@ const slides = [
   {
     label: "Where It Fails",
     content: (
-      <SlideShell>
-        <Heading sub="Limits · 6 min">When Reading Becomes Guessing</Heading>
+      <SlideShell time="6 min">
+        <Heading sub="Limits">When Reading Becomes Guessing</Heading>
         <Lede>
           When the source is unclear, the AI writes what was <em>probably</em> meant. A good
           guess sounds exactly like a correct reading.
@@ -535,8 +510,8 @@ const slides = [
   {
     label: "Diagrams",
     content: (
-      <SlideShell>
-        <Heading sub="Diagrams · 5 min">Describe the Path, Not the Picture</Heading>
+      <SlideShell time="5 min">
+        <Heading sub="Diagrams">Describe the Path, Not the Picture</Heading>
         <Lede>
           A diagram makes an argument with arrows and position. The accessible version says
           the argument.
@@ -608,8 +583,8 @@ const slides = [
   {
     label: "Two Examples",
     content: (
-      <SlideShell>
-        <Heading sub="Diagrams · 2 min">One Sounds Sure, One Says So</Heading>
+      <SlideShell time="2 min">
+        <Heading sub="Diagrams">One Sounds Sure, One Says So</Heading>
         <div className="grid grid-cols-2 gap-6 my-3">
           <div>
             <p className="font-bold text-ink mb-2">Gemini Thinking: invented a field</p>
@@ -645,8 +620,8 @@ const slides = [
   {
     label: "Ask for Accuracy",
     content: (
-      <SlideShell>
-        <Heading sub="The Prompt · 2 min">Ask for Accuracy, Get Solutions</Heading>
+      <SlideShell time="2 min">
+        <Heading sub="The Prompt">Ask for Accuracy, Get Solutions</Heading>
         <div className="grid grid-cols-2 gap-3 my-2">
           <figure>
             <figcaption className="text-xs font-bold mb-1">The page: mistakes on purpose, one blank</figcaption>
@@ -700,6 +675,46 @@ const slides = [
     ),
   },
 
+  // ── 13b: THE SKILL ──
+  // Rick, Nov 6, 2026: the skill should be interesting in itself, because it writes down
+  // the lessons we learned. One rule per lesson from this deck; the full text is SKILL.md.
+  // Install how-to for Gemini, Copilot, ChatGPT and Claude: notation-access/README.md.
+  {
+    label: "The Skill",
+    content: (
+      <SlideShell time="3 min">
+        <Heading sub="Take It With You">What We Learned, Written Down</Heading>
+        <Lede>
+          The notation-access skill is today's lessons as rules an AI follows on every page you give it.
+        </Lede>
+        <CardGrid cols={3}>
+          <SectionCard title="Transcribe, never solve" icon="✍️" accent>
+            Mistakes and blanks stay as they are. A planted error is the exercise.
+          </SectionCard>
+          <SectionCard title="Keep your conventions" icon="📐">
+            Your words, your symbols, your decimal commas. Not the version the model sees most.
+          </SectionCard>
+          <SectionCard title="Mark what it can't read" icon="❓">
+            An [unsure] flag at the symbol, because guessing is worst on specialized material.
+          </SectionCard>
+          <SectionCard title="Describe, don't conclude" icon="🗺️">
+            For a diagram: what is there and how it connects, not what it proves.
+          </SectionCard>
+          <SectionCard title="Answer in text, say what colour means" icon="🎨">
+            Never a picture of a cleaned-up page. Meaning never rests on colour alone.
+          </SectionCard>
+          <SectionCard title="Built for Canvas" icon="🧩">
+            MathML with LaTeX inside, inline styles only, and a Check these list for you.
+          </SectionCard>
+        </CardGrid>
+        <p className="text-sm text-slate mt-4">
+          Upload it, or paste it into the chat: it is one text file, about 6,000 characters.
+          Steps for Gemini, Copilot, ChatGPT and Claude are on the resources slide.
+        </p>
+      </SlideShell>
+    ),
+  },
+
   // ── 14: WHICH MODEL ──
   // Added November 5, 2026 (Rick: a matrix or leaderboard of models and topics, then what to
   // recommend). Page 13 scores from recordings/tier-comparison.md, every miss checked by eye.
@@ -710,8 +725,8 @@ const slides = [
   {
     label: "Which Model",
     content: (
-      <SlideShell>
-        <Heading sub="Recommendations · 3 min">Which Model Should You Use?</Heading>
+      <SlideShell time="3 min">
+        <Heading sub="Recommendations">Which Model Should You Use?</Heading>
         <table className="w-full text-xs text-ink border-collapse my-2">
           <caption className="sr-only">
             Ten models ranked by a handwritten algebra page, with results on a 14-page lecture where tested.
@@ -767,10 +782,10 @@ const slides = [
   {
     label: "Work Session",
     content: (
-      <SlideShell>
+      <SlideShell time="30 min">
         {/* Rick, November 5, 2026: a group workshop for the last 30 minutes, on examples the room
             brings, not individual work. The request goes out beforehand: zoom-kit.md. */}
-        <Heading sub="Workshop · 30 min">Let's Work Your Examples</Heading>
+        <Heading sub="Workshop">Let's Work Your Examples</Heading>
         <Lede>What you brought and posted in chat: we test it together.</Lede>
 
         <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-6 items-start">

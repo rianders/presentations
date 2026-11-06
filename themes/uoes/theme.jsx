@@ -112,7 +112,7 @@ const Placeholder = ({ title, children }) => (
 /* ── Slide frames ───────────────────────────────────────────────────── */
 
 /* Content slide: white, title top left, scarlet footer band. */
-const SlideShell = ({ children }) => {
+const SlideShell = ({ children, time }) => {
   const at = React.useContext(UOESSlide);
   return (
     <div className="uoes text-ink flex flex-col h-full min-h-[540px] bg-white">
@@ -123,6 +123,7 @@ const SlideShell = ({ children }) => {
         <Lockup className="h-7" />
         <div className="flex items-center gap-3">
           {UOES.config.draft && <DraftChip />}
+          {time && <span className="text-white/80 text-[11px] font-semibold tracking-wide">{time}</span>}
           <span className="text-white text-[11px] font-semibold tracking-wide">{UOES.config.footer}</span>
           {at && (
             <span className="bg-ink text-white text-[11px] font-bold rounded-full w-6 h-6 flex items-center justify-center">

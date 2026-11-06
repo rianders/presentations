@@ -34,6 +34,24 @@ We step through these in order. Status: **open**, **now**, **done**.
 | 12 | **Last:** send the request for examples, Rick drafting: `zoom-kit.md` | Rick | open |
 | 13 | After the talk: delete the sandbox's `ally-test-2026-11-05`, `clip1-one-equation`, `clip1-option1` and `clip1-std-dev` folders and the TEST pages | Rick + Claude | open |
 
+Added November 6, morning of the talk. Slide numbers are the 18-slide deck. Items 1–13 keep the numbers they had when written.
+
+| # | Item | Who | Status |
+|---|---|---|---|
+| 14 | Slide 2: UOES / TIIP card, "Brought to You By", links, bio | Rick + Claude | **done** |
+| 15 | Old Your Field slide cut; its chat prompt moved to slide 3 | Rick + Claude | **done** |
+| 16 | Time moved to the red footer bar; "teacher" changed to "instructor" | Claude | **done** |
+| 17 | Slide 4: real content on why notation must be formatted. Rick to check "graphic, or nothing" and "symbol by symbol" against NVDA and JAWS | Rick + Claude | built, **Rick to check** |
+| 18 | Slide 7: rewritten as "Ask AI for MathML and LaTeX" | Rick + Claude | **done** |
+| 19 | Slide 14: the skill as lessons learned | Rick + Claude | built, **Rick to read** |
+| 20 | Commit today's edits and merge to `main`. The audience link serves `main`. Leave `recordings/outputs/gursoy-private/` out | Rick + Claude | **open, before 11:00** |
+| 21 | Finish slide titles: 6, 9, 10, 12, 16 | Rick | open |
+| 22 | Links: the report link is only on Resources (17). Add it where results are cited (5, 13, 15)? | Rick + Claude | open |
+| 23 | Slide 6: trim, or cut? | Rick | open |
+| 24 | Slide 16 repeats the skill sentence now that slide 14 exists: keep or drop | Rick | open |
+| 25 | Slide 7: MathCAT in NVDA and JAWS was last verified September 2 | Rick | open |
+| 26 | Play through in present mode. Slide 5 looked tight in a small window; video and table may need checking at full screen | Rick | open |
+
 ---
 
 ## Source deck — decided October 15, 2026
