@@ -111,7 +111,6 @@ const slides = [
       <TitleSlide
         kicker="Rutgers UOES · TIIP Partnership"
         title={<>Beyond Alt Text<br />Notation, Diagrams &amp; Symbols</>}
-        subtitle="What experts read differently than they'd ever say aloud"
         presenter="Rick Anderson"
         role="Director of Emerging Technology · Rutgers UOES"
         date="November 6, 2026 · 11:00 am – 12:30 pm · Zoom"
