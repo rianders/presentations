@@ -22,7 +22,7 @@ We step through these in order. Status: **open**, **now**, **done**.
 |---|---|---|---|
 | 1 | Verify Ally's scores on slide 10: `recordings/ally-score-check.md` | Rick | **done** November 5: scores kept |
 | 2 | Confirm the other new scores: `recordings/answers-instead-tests.md`, the graph and map in `recordings/diagram-tests.md` | Rick | **done** November 5: confirmed |
-| 3 | Set up pre-poll and post-poll in Zoom, and paste the description: `zoom-kit.md` | Rick | Rick doing it |
+| 3 | Set up pre-poll and post-poll in Zoom, and paste the description: `zoom-kit.md` | Rick | Polls **cut** November 6: questions in chat instead. Description still to paste |
 | 4 | Slides 5–6: one equation in Canvas, then the questions: `recordings/clip1-canvas-options.md`. Merged November 5, PR 21; Rick to play it through | Rick + Claude | **done** |
 | 5 | Slide 7: Best practices placeholder | Rick + Claude | **done** November 5: cut |
 | 6 | Slides 8, 9, 16: clear the Review notes that show on screen | Rick + Claude | **done** November 5 |

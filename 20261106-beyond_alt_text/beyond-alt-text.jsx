@@ -879,7 +879,7 @@ Mark anything you were unsure of.`}</CodeBlock>
             students have to write it too. Any sense: sight, hearing, touch, movement. */}
         <p className="text-lg mb-4">Accessible means a student can read it and write it, with whatever senses they use.</p>
         <div className="text-ink">
-          <Interact kind="Zoom poll" prompt="One last poll before you go." />
+          <Interact prompt="Put your questions in the chat." />
         </div>
         <div className="pt-4">
           <p className="font-bold">Rick Anderson</p>
