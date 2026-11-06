@@ -10,10 +10,10 @@ Everything to paste or set up in Zoom. The sections below are plain text, so the
 | When | What |
 |---|---|
 | Today, November 5 | Send the request for examples |
-| As people join | Paste the chat message; launch the **pre-poll** |
+| As people join | Paste the chat message |
 | 11:00 – 12:00 | Slides |
 | 12:00 – 12:25 | Group workshop on the examples people brought |
-| 12:25 – 12:30 | Launch the **post-poll**, then close |
+| 12:25 – 12:30 | Take questions in chat, then close |
 
 ## Zoom description
 
@@ -53,65 +53,3 @@ Welcome to Beyond Alt Text. Slides: https://rianders.github.io/presentations/she
 
 Have an example you want tested? Post it here anytime, with what you want to know. We'll work on them together in the last 30 minutes. Please leave out student names and other personal information.
 ```
-
-## Pre-poll and post-poll
-
-Questions 1–4 are the same in both, so the change can be compared. Make both anonymous.
-Create them on the meeting's page in the Zoom web portal before the session, and check that polling is on for your account.
-
-### Pre-poll: "Before we start"
-
-**1. How confident are you that you could make one page of notation from your course accessible?** (single choice)
-- Not at all
-- A little
-- Fairly
-- Very
-
-**2. You ask an AI tool to "make this accessible", and the page has a mistake on it. What do you expect it to do?** (single choice)
-- Keep the mistake as written
-- Correct the mistake
-- Not sure
-
-**3. Which of these lets a screen reader step through an equation?** (single choice)
-- An image with alt text
-- LaTeX typed into a page
-- MathML
-- Not sure
-
-**4. When you use an AI tool, which model do you use?** (single choice)
-- Whatever the default is
-- I choose a stronger model
-- I don't use AI tools for this
-- Not sure
-
-**5. Which is closest to your field?** (single choice)
-- Math, science, engineering or computing
-- Health sciences
-- Social sciences
-- Humanities or arts
-- Other
-
-### Post-poll: "Before you go"
-
-Questions 1–4, worded exactly as above, then:
-
-**5. What will you do first?** (single choice)
-- Try the prompt on one page
-- Add the skill to my AI tool
-- Put a page into Canvas as MathML
-- Listen to a page with Immersive Reader or a screen reader
-- Nothing yet
-
-**6. How useful was working through examples as a group?** (single choice)
-- Not useful
-- A little useful
-- Useful
-- Very useful
-
-### Answers, for you (the polls don't reveal them)
-
-- **Question 2:** expect "Correct the mistake" to be the honest answer. In our tests the plain prompt corrected the line in 6 of 8 runs.
-- **Question 3:** MathML.
-- **Question 4 after the session:** the aim is "I choose a stronger model".
-
-Small samples and a self-selected room: read the change as a signal, not a measurement. Export the results from the Zoom reports page afterward if you want to compare them.
