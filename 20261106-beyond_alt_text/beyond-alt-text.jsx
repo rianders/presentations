@@ -584,7 +584,7 @@ const slides = [
     label: "Two Examples",
     content: (
       <SlideShell time="2 min">
-        <Heading sub="Diagrams">One Sounds Sure, One Says So</Heading>
+        <Heading sub="Diagrams">The AI Needs an Expert to Check Its Work</Heading>
         <div className="grid grid-cols-2 gap-6 my-3">
           <div>
             <p className="font-bold text-ink mb-2">Gemini Thinking: invented a field</p>
